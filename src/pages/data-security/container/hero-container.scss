@@ -1,0 +1,47 @@
+@import '../../../assets//scss/styles.scss';
+
+.ds-hero-section {
+  @include respond-below(sm) {
+    .ds-title p:first-of-type {
+      padding-top: 0.25em;
+    }
+  }
+
+  @include respond-above(sm) {
+    .ds-title p:first-of-type {
+      padding-top: 1.25em;
+    }
+  }
+
+  .ds-title p:last-of-type {
+    padding-top: 1.56em;
+  }
+
+  .ds-feature,
+  .ds-title p:last-of-type,
+  .ds-description-two p:first-of-type {
+    font-size: 1.25em;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .blue-circle {
+    border-radius: 50%;
+    background-color: #42b9f8;
+    display: inline-block;
+    height: 1.25em;
+    width: 1.25em;
+  }
+
+  p {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: var(--font-weight400);
+    font-style: normal;
+  }
+
+  .ds-description {
+    .ds-description-two {
+      padding-top: 25px;
+    }
+  }
+}

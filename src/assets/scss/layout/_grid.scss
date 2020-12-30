@@ -1,0 +1,139 @@
+@import '../abstracts/mixins';
+
+@include respond-above(sm) {
+  #root {
+    display: grid;
+    grid-template-columns: 10% 1fr 1fr;
+    grid-template-rows: 80px auto auto auto;
+  }
+
+  /* Data Security Hero Section Styles
+---------------------------------*/
+  .ds-hero-section {
+    grid-column: 2/4;
+    grid-row: 2/3;
+    align-items: center;
+    display: grid;
+    padding: 50px 0px;
+    grid-template-columns: 1fr 1fr;
+    img {
+      max-width: 500px;
+      max-height: 400px;
+    }
+  }
+
+  .get-quote-section {
+    border-bottom: 1px solid var(--font-color);
+    grid-column: 1/4;
+    grid-row: 3/4;
+    padding-bottom: 90px;
+    display: grid;
+    grid-template-columns: 10% 1fr 1fr;
+
+    .personal-information {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .company-information {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .form-group {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding-top: 1.25em;
+    }
+  }
+
+  .footer-section {
+    padding-top: 2.3em;
+    grid-column: 2/4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-start: 8;
+    grid-row-end: 9;
+    .footer-social-wrapper {
+      justify-self: center;
+      .social-links {
+        display: grid;
+        grid-template-columns: repeat(3, 40px);
+        p {
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  .logo {
+    padding: 1.87em 6.25em;
+  }
+}
+
+@include respond-below(sm) {
+  #root {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    width: 95vw;
+  }
+  .logo {
+    padding: 0.93em 2.5em;
+  }
+  .ds-hero-section {
+    display: grid;
+    padding: 50px 0px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    img {
+      max-width: 90%;
+    }
+  }
+
+  .get-quote-section {
+    border-bottom: 1px solid var(--font-color);
+    padding-bottom: 90px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row: 3/4;
+    .personal-information {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .company-information {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .form-group {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding-top: 0.25em;
+    }
+  }
+
+  .footer-section {
+    padding-top: 0.3em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row: 4/5;
+    li {
+      display: inline;
+      padding: 5px;
+    }
+    p {
+      text-align: right;
+    }
+    span {
+      padding-bottom: 10px;
+    }
+  }
+}
+
+/* Header Styles
+---------------------------------*/
+.nav-container {
+  border-bottom: 1px solid var(--font-color);
+  grid-column: 1/4;
+}

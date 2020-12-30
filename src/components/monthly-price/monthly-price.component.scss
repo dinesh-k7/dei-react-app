@@ -1,0 +1,23 @@
+.monthly-price {
+  justify-self: center;
+  align-self: center;
+  span {
+    font-family: var(--font-family);
+    font-size: 1.87em;
+    font-style: normal;
+    font-weight: 800;
+  }
+  .btn-data-security {
+    display: block;
+    background-color: #42b9f8;
+    height: 3.75rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    width: 20rem;
+    padding: 5px;
+    cursor: pointer;
+  }
+  .lead_success {
+    color: #49e59a;
+  }
+}
