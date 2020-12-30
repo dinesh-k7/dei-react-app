@@ -10,7 +10,7 @@ import {
   siteKey,
   patterns,
 } from '../../constants';
-import { filterErrorMessage, sanitizeInput } from '../../utils';
+import { filterErrorMessage } from '../../utils';
 import '../../assets/scss/styles.scss';
 import './get-quote.component.scss';
 
