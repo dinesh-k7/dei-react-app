@@ -56,6 +56,6 @@
   "devDependencies": {
     "@types/dompurify": "^2.1.0",
     "@types/react-google-recaptcha": "^2.1.0",
-    "@types/react-router-dom": "^5.1.6"
+    "@types/react-router-dom": "^5.1.7"
   }
 }
