@@ -11,6 +11,7 @@ import {
   patterns,
 } from '../../constants';
 import { filterErrorMessage } from '../../utils';
+import { sendMail } from '../effects';
 import '../../assets/scss/styles.scss';
 import './get-quote.component.scss';
 
@@ -24,27 +25,53 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
     position: '',
     website_url: '',
     company_name: '',
+    monthlyCost: 0,
     isRecaptchaError: true,
     isFormSubmitted: false,
     isLeadDataSent: false,
+    isSendMailError: false,
   };
   const { register, handleSubmit, errors } = useForm();
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
   const [size, setCompanySize] = useState(0);
+
   let companysize = '';
 
   // handle get quote form onSubmit
   const onSubmit = (quoteData: IGetQuoteModel) => {
     const { isRecaptchaError } = quoteData;
-    quoteData.isFormSubmitted = true;
-    // quoteData = sanitizeInput(quoteData);
+    if (!isRecaptchaError) {
+      quoteData.isFormSubmitted = true;
+      quoteData.monthlyCost = size * constants.COMPANY_SIZE;
+      // quoteData = sanitizeInput(quoteData);
 
-    setQuoteState((prevState) => {
-      return {
-        ...prevState,
-        ...quoteData,
-      };
-    });
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          ...quoteData,
+        };
+      });
+      sendMail(quoteData).then(
+        () => {
+          setQuoteState((prevState) => {
+            return {
+              ...prevState,
+              isLeadDataSent: true,
+              isSendMailError: false,
+            };
+          });
+        },
+        () => {
+          setQuoteState((prevState) => {
+            return {
+              ...prevState,
+              isSendMailError: true,
+              isFormSubmitted: false,
+            };
+          });
+        },
+      );
+    }
   };
 
   //handle company size change event
@@ -53,26 +80,12 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
     setCompanySize(+companysize);
   };
 
-  const { isRecaptchaError, isFormSubmitted } = quoteState;
-
-  // If recaptcha and form submission is success, then call api to send email
-  if (!isRecaptchaError && isFormSubmitted) {
-    setTimeout(() => {
-      setQuoteState((prevState) => {
-        return {
-          ...prevState,
-          isLeadDataSent: true,
-        };
-      });
-    }, 2000);
-  }
-
   return (
     <section className="get-quote-section">
       <div className="bg-image"></div>
       <div className="form-container">
         <h1>Tell us about your company</h1>
-        <h3>Personal Information</h3>
+        <h4>Personal Information</h4>
         <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
           <div className="personal-information">
             <div className="form-group">
@@ -151,7 +164,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
             </div>
           </div>
 
-          <h3>Company Information</h3>
+          <h4>Company Information</h4>
           <div className="company-information">
             <div className="form-group">
               <label htmlFor="company_name">Company Name</label>
@@ -203,15 +216,18 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
                   ),
                 })}
               >
-                <option value="" disabled>
+                <option className="role-option" value="" disabled>
                   e.g. Project Manager
                 </option>
                 {constants.POSITION &&
                   constants.POSITION.length &&
                   constants.POSITION.map((role, idx) => {
-                    return <option key={idx}>{role}</option>;
+                    return (
+                      <option key={idx} className="role-option">
+                        {role}
+                      </option>
+                    );
                   })}
-                <option>Developer</option>
               </select>
             </div>
             <div className="form-group">
@@ -236,7 +252,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group recaptcha-container">
               <ReCAPTCHA
                 ref={register}
                 sitekey={siteKey}

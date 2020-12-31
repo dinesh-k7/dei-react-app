@@ -1,7 +1,6 @@
 .form-container {
   label {
     display: block;
-    padding-bottom: 10px;
   }
   input[type='text'],
   input[type='number'],
@@ -15,5 +14,15 @@
   select:focus {
     border: 1px solid #42b9f8 !important;
     box-shadow: 0 0 4px #42b9f8 !important;
+  }
+
+  .role-option {
+    font-size: var(--font-size5);
+    font-weight: var(--font-weight400);
+    font-family: 'OpenSansRegular';
+  }
+  .recaptcha-container {
+    justify-self: center;
+    padding-top: 0.625em;
   }
 }

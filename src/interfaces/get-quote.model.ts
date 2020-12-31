@@ -10,4 +10,6 @@ export interface IGetQuoteModel {
   isRecaptchaError: boolean;
   isFormSubmitted: boolean;
   isLeadDataSent: boolean;
+  isSendMailError?: boolean;
+  monthlyCost: number;
 }

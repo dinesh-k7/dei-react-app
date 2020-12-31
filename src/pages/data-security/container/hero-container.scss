@@ -10,18 +10,31 @@
   @include respond-above(sm) {
     .ds-title p:first-of-type {
       padding-top: 1.25em;
+      font-family: 'MontFont';
+    }
+  }
+
+  .ds-title {
+    p:last-of-type {
+      padding-top: 1.56em;
+    }
+    h1 {
+      font-size: 60px;
+      font-style: normal;
+      font-weight: var(--font-weight900);
+      letter-spacing: -0.07em;
+      text-align: left;
+      font-family: 'MontFont';
+    }
+
+    h3 {
+      font-size: 1.25em;
     }
   }
 
   .ds-title p:last-of-type {
-    padding-top: 1.56em;
-  }
-
-  .ds-feature,
-  .ds-title p:last-of-type,
-  .ds-description-two p:first-of-type {
     font-size: 1.25em;
-    font-weight: 700;
+    font-weight: var(--font-weight700);
     font-style: normal;
   }
   .blue-circle {
@@ -33,8 +46,8 @@
   }
 
   p {
-    font-family: var(--font-family);
-    font-size: 1rem;
+    font-family: 'OpenSansRegular';
+    font-size: 1em;
     font-weight: var(--font-weight400);
     font-style: normal;
   }

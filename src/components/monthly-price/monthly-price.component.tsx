@@ -5,6 +5,7 @@ import ErrorMessageContainer from '../container/error-message.container';
 import './monthly-price.component.scss';
 import '../../assets/scss/styles.scss';
 
+// eslint-disable-next-line
 const MonthlyPriceComponent = ({
   handleSubmit,
   size,
@@ -12,12 +13,25 @@ const MonthlyPriceComponent = ({
   errors,
   quoteState,
 }: any): ReactElement => {
-  const { isRecaptchaError, isFormSubmitted, isLeadDataSent } = quoteState;
+  const {
+    isRecaptchaError,
+    isFormSubmitted,
+    isLeadDataSent,
+    isSendMailError,
+  } = quoteState;
+
   return (
     <div className="monthly-price">
-      <h3>Approximate service cost</h3>
-      <strong>${size ? size * constants.COMPANY_SIZE : 0}</strong>
-      <span>/mo</span>
+      <div className="sticky-content">
+        <h4>Approximate service cost</h4>
+        <div>
+          <strong className="price">
+            ${size ? size * constants.COMPANY_SIZE : 0}
+          </strong>
+          <span className="label">/mo</span>
+        </div>
+      </div>
+
       {!isLeadDataSent && (
         <button
           type="button"
@@ -42,6 +56,7 @@ const MonthlyPriceComponent = ({
       )}
       {errors && <ErrorMessageContainer {...errors} />}
       {isRecaptchaError && isFormSubmitted && <p>{messages.captcha_error}</p>}
+      {isSendMailError && <p>{messages.mail_send_error}</p>}
       {isLeadDataSent && (
         <p className="lead_success">{messages.lead_success}</p>
       )}

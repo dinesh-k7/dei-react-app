@@ -15,7 +15,7 @@ const App: React.FC = () => {
           <DataSecurityPage />
         </Route>
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 };

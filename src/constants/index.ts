@@ -6,6 +6,7 @@ export const constants = {
     'UX Designer',
     'Project Manager',
   ],
+  MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service/sendmail',
 };
 
 export const quoteValidationErrorMessages = {
@@ -42,4 +43,5 @@ export const patterns = {
 export const messages = {
   lead_success: 'Your request is sent!',
   captcha_error: 'ReCAPTCHA Error',
+  mail_send_error: 'Error is processing Get Quote. Please try later.',
 };

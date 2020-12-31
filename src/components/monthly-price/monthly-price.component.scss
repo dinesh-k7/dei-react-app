@@ -1,3 +1,4 @@
+@import '../../assets/scss/styles.scss';
 .monthly-price {
   justify-self: center;
   align-self: center;
@@ -19,5 +20,40 @@
   }
   .lead_success {
     color: #49e59a;
+  }
+  p {
+    color: #ff3f3f;
+  }
+  h4,
+  div {
+    text-align: center;
+  }
+
+  @include respond-below(sm) {
+    .sticky-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      grid-row: 5/6;
+      h4 {
+        align-self: center;
+        text-align: left;
+        font-size: var(--font-size4);
+        font-weight: var(--font-weight700);
+      }
+      div {
+        align-self: center;
+      }
+      .price,
+      .label {
+        font-size: var(--font-size6);
+        font-weight: var(--font-weight800);
+        font-family: 'OpenSansBold';
+      }
+    }
+    .btn-data-security {
+      width: 95vw;
+      margin-top: 20px;
+    }
   }
 }

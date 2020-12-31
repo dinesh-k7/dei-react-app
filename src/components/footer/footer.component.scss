@@ -3,7 +3,7 @@
   span {
     font-family: var(--font-family);
     font-size: var(--font-medium);
-    font-weight: 600;
+    font-weight: var(--font-weight600);
     color: var(--font-color);
   }
   @include respond-above(sm) {
@@ -11,17 +11,26 @@
       padding: 0px 5px;
       display: inline-block;
     }
+    .footer-content {
+      align-self: center;
+      .contactus-container {
+        padding-top: 1.25em;
+      }
+    }
   }
 
   @include respond-below(sm) {
     .contactus-container {
-      align-self: center;
       span {
         display: inline-block;
       }
     }
     .footer-content {
       align-self: center;
+      span:first-child {
+        display: block;
+        padding-top: 5px;
+      }
     }
   }
 
@@ -48,9 +57,22 @@
       }
     }
     p {
-      font-family: var(--font-family);
-      font-size: var(--font-medium);
+      font-family: 'OpenSansRegular';
+      font-size: var(--font-size4);
       font-weight: var(--font-weight400);
+      text-align: right;
     }
+  }
+
+  .contactus-title {
+    font-size: var(--font-size3);
+    font-weight: var(--font-family900);
+    font-family: 'MontFont';
+  }
+
+  .contactus-container span {
+    font-weight: var(--font-family600);
+    font-size: var(--font-size4);
+    font-family: 'OpenSansRegular';
   }
 }
