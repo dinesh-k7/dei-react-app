@@ -95,7 +95,12 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
                 name="name"
                 placeholder="e.g. John"
                 maxLength={50}
-                ref={register}
+                ref={register({
+                  required: filterErrorMessage(
+                    quoteValidationErrorMessages.name,
+                    'required',
+                  ),
+                })}
               />
             </div>
             <div className="form-group">
@@ -136,7 +141,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="phone">Pnone Number</label>
+              <label htmlFor="phone">Phone Number</label>
               <input
                 type="text"
                 name="phone"
