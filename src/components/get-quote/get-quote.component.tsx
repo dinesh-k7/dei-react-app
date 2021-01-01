@@ -95,12 +95,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
                 name="name"
                 placeholder="e.g. John"
                 maxLength={50}
-                ref={register({
-                  required: filterErrorMessage(
-                    quoteValidationErrorMessages.name,
-                    'required',
-                  ),
-                })}
+                ref={register}
               />
             </div>
             <div className="form-group">
