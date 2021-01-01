@@ -6,7 +6,8 @@ export const constants = {
     'UX Designer',
     'Project Manager',
   ],
-  MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service/sendmail',
+  MAIL_SERVICE_ENDPOINT:
+    'https://dei-node-service.herokuapp.com/mail-service/sendmail',
 };
 
 export const quoteValidationErrorMessages = {
