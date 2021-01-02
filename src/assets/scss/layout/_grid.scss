@@ -28,6 +28,10 @@
     display: grid;
     grid-template-columns: 10% 1fr 1fr;
 
+    .bg-image img {
+      width: 9vw;
+    }
+
     .personal-information {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -46,7 +50,7 @@
   }
 
   .footer-section {
-    padding-top: 2.3em;
+    padding-top: 0.3em;
     grid-column: 2/4;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -62,7 +66,7 @@
   }
 
   .logo {
-    padding: 1.87em 6.25em;
+    padding: 1.87em 4.25em;
   }
 }
 
@@ -91,6 +95,10 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-row: 3/4;
+
+    .bg-image img {
+      display: none;
+    }
     .personal-information {
       display: grid;
       grid-template-columns: 1fr;
@@ -103,8 +111,13 @@
     .form-group {
       display: grid;
       grid-template-columns: 1fr;
+      padding-top: 1.25em;
+    }
 
-      padding-top: 0.25em;
+    input[type='text'],
+    input[type='number'],
+    select {
+      height: 3.75em;
     }
   }
 

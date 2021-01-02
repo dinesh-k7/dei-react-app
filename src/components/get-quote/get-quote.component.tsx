@@ -14,6 +14,7 @@ import { filterErrorMessage } from '../../utils';
 import { sendMail } from '../effects';
 import '../../assets/scss/styles.scss';
 import './get-quote.component.scss';
+import bg from '../../assets/images/quote-bg.svg';
 
 const GetQuoteComponent: React.FC = (): ReactElement => {
   const INITIAL_STATE: IGetQuoteModel = {
@@ -41,7 +42,6 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
   const onSubmit = (quoteData: IGetQuoteModel) => {
     const { captchaValue } = quoteData;
     quoteData.isFormSubmitted = true;
-    console.log('captchaValuecaptchaValuecaptchaValue', quoteData);
     setQuoteState((prevState) => {
       return {
         ...prevState,
@@ -84,7 +84,9 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
   const { captchaValue } = quoteState;
   return (
     <section className="get-quote-section">
-      <div className="bg-image"></div>
+      <div className="bg-image">
+        <img src={bg} alt="Quote bg vector" />
+      </div>
       <div className="form-container">
         <h1>Tell us about your company</h1>
         <h4>Personal Information</h4>
