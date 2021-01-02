@@ -8,7 +8,21 @@
     height: 2.8rem;
     margin-right: 10px;
     outline: none;
+    color: var(--font-color);
+    font-size: var(--font-size1);
   }
+  select {
+    color: var(--font-color);
+    font-size: var(--font-size5);
+    font-family: 'OpenSansLight';
+  }
+  option:not(:first-of-type) {
+    padding-bottom: 10px;
+    font-size: var(--font-size5);
+    font-weight: var(--font-weight400);
+    font-family: 'OpenSansRegular';
+  }
+
   input[type='text']:focus,
   input[type='number']:focus,
   select:focus {
@@ -25,4 +39,7 @@
     justify-self: center;
     padding-top: 0.625em;
   }
+}
+.bg-image {
+  clip: rect(10px, 20px, 30px, 40px);
 }

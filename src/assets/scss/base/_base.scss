@@ -76,13 +76,6 @@ h4 {
   font-style: normal;
 }
 
-strong {
-  font-family: var(--font-family);
-  font-size: 100px;
-  font-style: normal;
-  font-weight: 800;
-}
-
 .btn-green {
   background-color: #49e59a !important;
 }
@@ -107,4 +100,8 @@ label {
   font-size: var(--font-size5);
   font-weight: var(--font-weight400);
   font-family: 'OpenSansRegular';
+}
+
+::placeholder {
+  padding-left: 0.625em;
 }
