@@ -26,7 +26,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
     website_url: '',
     company_name: '',
     monthlyCost: 0,
-    isRecaptchaError: true,
+    captchaValue: '',
     isFormSubmitted: false,
     isLeadDataSent: false,
     isSendMailError: false,
@@ -39,18 +39,20 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
 
   // handle get quote form onSubmit
   const onSubmit = (quoteData: IGetQuoteModel) => {
-    const { isRecaptchaError } = quoteData;
-    if (!isRecaptchaError) {
-      quoteData.isFormSubmitted = true;
+    const { captchaValue } = quoteData;
+    quoteData.isFormSubmitted = true;
+    console.log('captchaValuecaptchaValuecaptchaValue', quoteData);
+    setQuoteState((prevState) => {
+      return {
+        ...prevState,
+        ...quoteData,
+      };
+    });
+    if (!captchaValue) {
+      return;
+    } else {
       quoteData.monthlyCost = size * constants.COMPANY_SIZE;
       // quoteData = sanitizeInput(quoteData);
-
-      setQuoteState((prevState) => {
-        return {
-          ...prevState,
-          ...quoteData,
-        };
-      });
       sendMail(quoteData).then(
         () => {
           setQuoteState((prevState) => {
@@ -79,7 +81,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
     companysize = event && event.target && event.target.value;
     setCompanySize(+companysize);
   };
-
+  const { captchaValue } = quoteState;
   return (
     <section className="get-quote-section">
       <div className="bg-image"></div>
@@ -93,6 +95,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
               <input
                 type="text"
                 name="name"
+                id="name"
                 placeholder="e.g. John"
                 maxLength={50}
                 ref={register({
@@ -108,6 +111,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
               <input
                 type="text"
                 name="lastname"
+                id="lastname"
                 placeholder="e.g. Doe"
                 maxLength={50}
                 ref={register({
@@ -123,6 +127,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
               <input
                 type="text"
                 name="email"
+                id="email"
                 placeholder="e.g. johndoe@email.com"
                 maxLength={50}
                 ref={register({
@@ -145,6 +150,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
               <input
                 type="text"
                 name="phone"
+                id="phone"
                 placeholder="e.g. 123456789"
                 maxLength={15}
                 ref={register({
@@ -171,6 +177,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
               <input
                 type="text"
                 name="company_name"
+                id="company_name"
                 placeholder="e.g. JohnDoe and co."
                 maxLength={70}
                 ref={register({
@@ -186,9 +193,9 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
               <input
                 type="number"
                 name="company_size"
+                id="company_size"
                 placeholder=""
                 onChange={onChangeHandler}
-                min={0}
                 ref={register({
                   required: filterErrorMessage(
                     quoteValidationErrorMessages.company_size,
@@ -208,6 +215,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
               <label htmlFor="position">Your position in company</label>
               <select
                 name="position"
+                id="position"
                 defaultValue=""
                 ref={register({
                   required: filterErrorMessage(
@@ -235,6 +243,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
               <input
                 type="text"
                 name="website_url"
+                id="website_url"
                 placeholder="e.g. https://www.company.com"
                 ref={register({
                   required: filterErrorMessage(
@@ -254,18 +263,23 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
 
             <div className="form-group recaptcha-container">
               <ReCAPTCHA
-                ref={register}
                 sitekey={siteKey}
                 onChange={(e) => {
-                  const isRecaptchaError = e ? false : true;
+                  const captchaValue = e ? e : '';
                   setQuoteState((prevState) => {
                     return {
                       ...prevState,
-                      isRecaptchaError: isRecaptchaError,
+                      captchaValue,
                       isFormSubmitted: false,
                     };
                   });
                 }}
+              />
+              <input
+                type="hidden"
+                name="captchaValue"
+                ref={register}
+                value={captchaValue}
               />
             </div>
           </div>

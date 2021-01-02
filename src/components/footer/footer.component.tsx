@@ -15,10 +15,10 @@ const Footer: React.FC = (): ReactElement => {
         <span className="contactus-title">Contact us</span>
         <div className="contactus-container">
           <span>
-            <img src={mailIcon} /> mail@nwo.com
+            <img src={mailIcon} alt="Footer Mail Icon" /> mail@nwo.com
           </span>
           <span>
-            <img src={phoneIcon} /> 123 456 789
+            <img src={phoneIcon} alt="Footer Phone number" /> 808-800-7174
           </span>
         </div>
       </div>
@@ -26,22 +26,26 @@ const Footer: React.FC = (): ReactElement => {
       <div className="footer-social-wrapper">
         <ul className="social-links">
           <li className="facebook">
-            <a target="_blank" href="#">
-              <img src={fbIcon} />
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="https://www.facebook.com/IamMrNWO/?view_public_for=102216145158646"
+            >
+              <img src={fbIcon} alt="Footer Facebook icon" />
             </a>
           </li>
-          <li className="insta">
-            <a target="_blank" href="#">
-              <img src={instaIcon} />
-            </a>
-          </li>
+
           <li className="linkedin">
-            <a target="_blank" href="#">
-              <img src={linkedInIcon} />
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="https://www.linkedin.com/company/humanityunite"
+            >
+              <img src={linkedInIcon} alt="Footer linkedin Icon" />
             </a>
           </li>
         </ul>
-        <p>DEI @ 2020</p>
+        <p>Kaliwe © 2020</p>
         <p>Privacy & Legal</p>
       </div>
     </footer>

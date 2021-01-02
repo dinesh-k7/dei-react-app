@@ -26,17 +26,19 @@ const HeroContainer: React.FC = (): ReactElement => {
           <div className="ds-description-two">
             <h3>What we offer</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut
+              Our experts monitor your domain to find out what data was leaked,
+              how it was leaked, and protect you from cyber crimes by training
+              your employees and equipping them with the necessary techniques to
+              identify future data threats in time. Our goal is to protect you
+              from the losses incurred from compromised confidential
+              information.
             </p>
           </div>
         </div>
       </div>
 
       <div className="ds-image">
-        <img src={heroImage} alt="Data Security" />
+        <img src={heroImage} alt="Data Security Image" />
       </div>
     </section>
   );

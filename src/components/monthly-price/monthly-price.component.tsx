@@ -14,7 +14,7 @@ const MonthlyPriceComponent = ({
   quoteState,
 }: any): ReactElement => {
   const {
-    isRecaptchaError,
+    captchaValue,
     isFormSubmitted,
     isLeadDataSent,
     isSendMailError,
@@ -24,10 +24,11 @@ const MonthlyPriceComponent = ({
     <div className="monthly-price">
       <div className="sticky-content">
         <h4>Approximate service cost</h4>
-        <div>
-          <strong className="price">
+        <div className="test">
+          <span className="price">
+            {' '}
             ${size ? size * constants.COMPANY_SIZE : 0}
-          </strong>
+          </span>
           <span className="label">/mo</span>
         </div>
       </div>
@@ -36,9 +37,7 @@ const MonthlyPriceComponent = ({
         <button
           type="button"
           className={`btn-data-security ${
-            isFormSubmitted && !isLeadDataSent && !isRecaptchaError
-              ? 'btn-grey'
-              : ''
+            isFormSubmitted && !isLeadDataSent && captchaValue ? 'btn-grey' : ''
           } ${isLeadDataSent ? 'btn-green' : ''} `}
           onClick={handleSubmit(onSubmit)}
         >
@@ -55,7 +54,7 @@ const MonthlyPriceComponent = ({
         </button>
       )}
       {errors && <ErrorMessageContainer {...errors} />}
-      {isRecaptchaError && isFormSubmitted && <p>{messages.captcha_error}</p>}
+      {!captchaValue && isFormSubmitted && <p>{messages.captcha_error}</p>}
       {isSendMailError && <p>{messages.mail_send_error}</p>}
       {isLeadDataSent && (
         <p className="lead_success">{messages.lead_success}</p>

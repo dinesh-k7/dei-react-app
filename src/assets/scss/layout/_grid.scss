@@ -54,8 +54,6 @@
     .footer-social-wrapper {
       justify-self: center;
       .social-links {
-        display: grid;
-        grid-template-columns: repeat(3, 40px);
         p {
           text-align: right;
         }
@@ -131,4 +129,9 @@
 .nav-container {
   border-bottom: 1px solid var(--font-color);
   grid-column: 1/4;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }

@@ -34,26 +34,14 @@
     }
   }
 
-  img {
-    width: 27px;
-    height: 22px;
-  }
-
   .footer-social-wrapper {
-    margin-left: 25px;
+    margin-left: 15px;
     .social-links {
-      li img {
-        width: 25px;
-        height: 25px;
-      }
-      .facebook {
-        img {
-          width: 15px;
-          height: 25px;
-        }
-      }
       .linkedin {
         margin-left: 10px;
+      }
+      li {
+        justify-self: end;
       }
     }
     p {

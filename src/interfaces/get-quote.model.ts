@@ -7,7 +7,7 @@ export interface IGetQuoteModel {
   position: string;
   website_url: string;
   company_name: string;
-  isRecaptchaError: boolean;
+  captchaValue: string;
   isFormSubmitted: boolean;
   isLeadDataSent: boolean;
   isSendMailError?: boolean;
