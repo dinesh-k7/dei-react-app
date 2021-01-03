@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react';
 
-import heroImage from '../../../assets/images/data-security.svg';
+import heroImage from '../../../assets/images/data_security.svg';
 import '../../../assets/scss/styles.scss';
 import './hero-container.scss';
+import serviceBlue from '../../../assets/images/service_blue.svg';
 
 const HeroContainer: React.FC = (): ReactElement => {
   return (
@@ -10,12 +11,11 @@ const HeroContainer: React.FC = (): ReactElement => {
       <div className="ds-hero-content">
         <div className="ds-title">
           <h1>Data Security</h1>
-          <div>
-            <h3>
-              <span className="blue-circle"></span> Dark Web Monitoring
-            </h3>
-            <h3>What is Dark Web Monitoring?</h3>
+          <div className="hero-subtitle-container">
+            <img src={serviceBlue} />
+            <h3>Dark Web Monitoring</h3>
           </div>
+          <h3>What is Dark Web Monitoring?</h3>
         </div>
         <div className="ds-description">
           <p>

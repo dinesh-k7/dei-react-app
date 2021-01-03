@@ -1,11 +1,6 @@
 export const constants = {
   COMPANY_SIZE: 4,
-  POSITION: [
-    'Junior Developer',
-    'Senior Developer',
-    'UX Designer',
-    'Project Manager',
-  ],
+  POSITION: ['CEO/Decision-maker', 'VP/Director', 'Manager/Inquirer'],
   MAIL_SERVICE_ENDPOINT:
     'https://dei-node-service.herokuapp.com/mail-service/sendmail',
 };

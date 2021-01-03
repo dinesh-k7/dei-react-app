@@ -1,24 +1,33 @@
+.get-quote-section {
+  background-color: #f8f8f8;
+}
 .form-container {
   label {
     display: block;
+    padding-left: 0.625em;
   }
   input[type='text'],
   input[type='number'],
   select {
-    height: 2.8rem;
+    height: 60px;
     margin-right: 10px;
     outline: none;
     color: var(--font-color);
-    font-size: var(--font-size1);
+    border: none;
+    font-family: 'OpenSansRegular';
+    padding-left: 0.625em;
   }
-  select {
-    color: var(--font-color);
-    font-size: var(--font-size5);
-    font-family: 'OpenSansLight';
-  }
+
   option:not(:first-of-type) {
     padding-bottom: 10px;
-    font-size: var(--font-size5);
+    font-size: var(--font-size4);
+    font-weight: var(--font-weight400);
+    font-family: 'OpenSansRegular';
+  }
+
+  option:not(:first-of-type) {
+    padding-bottom: 10px;
+    font-size: var(--font-size4);
     font-weight: var(--font-weight400);
     font-family: 'OpenSansRegular';
   }
@@ -36,10 +45,12 @@
     font-family: 'OpenSansRegular';
   }
   .recaptcha-container {
-    justify-self: center;
     padding-top: 0.625em;
+    border: 0 !important;
   }
-}
-.bg-image {
-  clip: rect(10px, 20px, 30px, 40px);
+  .info-icon {
+    position: absolute;
+    margin-left: 23%;
+    margin-top: 3%;
+  }
 }

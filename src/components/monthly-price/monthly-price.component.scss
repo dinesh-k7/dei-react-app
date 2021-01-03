@@ -13,52 +13,82 @@
     background-color: #42b9f8;
     height: 3.75rem;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.375em;
     width: 20rem;
     padding: 5px;
     cursor: pointer;
+    border: none;
+    font-family: 'OpenSansBold';
   }
   .lead_success {
     color: #49e59a;
+    font-family: 'OpenSansBold';
+    font-size: var(--font-size3);
   }
   .price {
-    font-size: 5em;
+    font-family: 'MontFont';
+    font-weight: var(--font-weight900);
+    font-size: 6.25em;
+  }
+  .label {
+    font-size: 1.875em;
     font-weight: var(--font-weight800);
     font-family: 'OpenSansBold';
   }
+
   p {
     color: #ff3f3f;
+    font-family: 'OpenSansRegular';
   }
   h4,
   div {
     text-align: center;
   }
 
+  @include respond-above(sm) {
+    .price-container {
+      width: 300px;
+    }
+  }
+
   @include respond-below(sm) {
+    .monthly-price {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
     .sticky-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-
       grid-row: 5/6;
+      background-color: #f8f8f8;
+      position: fixed;
+      bottom: 0;
       h4 {
         align-self: center;
         text-align: left;
-        font-size: var(--font-size4);
+        font-size: var(--font-size1);
         font-weight: var(--font-weight700);
       }
       div {
         align-self: center;
-      }
-      .price,
-      .label {
-        font-size: var(--font-size6);
-        font-weight: var(--font-weight800);
-        font-family: 'OpenSansBold';
+        justify-self: end;
+        padding-right: 0.938em;
       }
     }
     .btn-data-security {
       width: 95vw;
-      margin-top: 20px;
+      margin-top: var(--font-size1);
+    }
+    .price {
+      font-family: 'MontFont';
+      font-weight: var(--font-weight900);
+      font-size: 2.5em;
+    }
+
+    .label {
+      font-size: 1.75em;
+      font-weight: var(--font-weight900);
+      font-family: 'OpenSansBold';
     }
   }
 }

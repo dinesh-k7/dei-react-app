@@ -5,14 +5,18 @@
 *::after {
   box-sizing: border-box;
 }
+body {
+  margin: 0;
+}
 :root {
   --font-color: #2c3e50;
   --font-size1: 0.875em; //14px
-  --font-size2: 1.12em; // 18px
+  --font-size2: 1.125em; // 18px
   --font-size3: 1.25em; // 20px
   --font-sizes4: 1em; // 16px
   --font-size5: 0.75em; // 12px
   --font-size6: 1.5em; //24 px
+  --font-size7: 1.875em; //30px
   --font-weight400: 400;
   --font-weight500: 500;
   --font-weight600: 600;
@@ -39,6 +43,11 @@
 @font-face {
   font-family: 'OpenSansRegular';
   src: url('../../fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'OpenSansSemiBold';
+  src: url('../../fonts/OpenSans-SemiBold.ttf');
 }
 
 h3,
@@ -86,12 +95,12 @@ h4 {
 
 li {
   list-style: none;
-  font-family: var(--font-family);
-  font-size: 0.87em;
+  font-family: 'OpenSansRegular';
+  font-size: 1em;
   font-weight: var(--font-weight400);
   color: #ff3f3f;
-  padding: 0.62em;
   text-align: left;
+  padding-top: 1.375em;
 }
 
 ::placeholder,
@@ -100,8 +109,4 @@ label {
   font-size: var(--font-size5);
   font-weight: var(--font-weight400);
   font-family: 'OpenSansRegular';
-}
-
-::placeholder {
-  padding-left: 0.625em;
 }

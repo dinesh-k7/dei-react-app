@@ -25,6 +25,7 @@
       letter-spacing: -0.07em;
       text-align: left;
       font-family: 'MontFont';
+      margin: 25px 0px;
     }
 
     h3 {
@@ -55,6 +56,16 @@
   .ds-description {
     .ds-description-two {
       padding-top: 25px;
+    }
+  }
+
+  .hero-subtitle-container {
+    display: flex;
+    h3 {
+      padding-left: 0.625em;
+    }
+    img {
+      padding-top: 0.625em;
     }
   }
 }
