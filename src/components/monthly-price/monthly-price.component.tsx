@@ -24,7 +24,7 @@ const MonthlyPriceComponent = ({
     <div className="monthly-price">
       <div className="sticky-content">
         <h4>Approximate service cost</h4>
-        <div className="test">
+        <div className="price-container">
           <span className="price">
             {' '}
             ${size ? size * constants.COMPANY_SIZE : 0}

@@ -3,7 +3,7 @@
 @include respond-above(sm) {
   #root {
     display: grid;
-    grid-template-columns: 10% 1fr auto;
+    grid-template-columns: 10% 1fr 1fr;
     grid-template-rows: 80px auto auto auto auto;
   }
 
@@ -32,6 +32,10 @@
       width: 9vw;
     }
 
+    ul {
+      padding: 0;
+    }
+
     .personal-information {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -56,7 +60,8 @@
     grid-template-columns: 1fr 1fr;
     grid-row: 8/9;
     .footer-social-wrapper {
-      justify-self: center;
+      justify-self: end;
+      padding-right: 20%;
       .social-links {
         p {
           text-align: right;
@@ -87,6 +92,7 @@
     img {
       max-width: 90%;
     }
+    padding: 10px;
   }
 
   .get-quote-section {
@@ -119,6 +125,7 @@
     select {
       height: 3.75em;
     }
+    padding: 10px;
   }
 
   .footer-section {
@@ -136,6 +143,18 @@
     span {
       padding-bottom: 10px;
     }
+    padding: 10px;
+  }
+
+  .recaptcha-container {
+    justify-self: center;
+  }
+
+  .error-messages ul {
+    padding: 0 !important;
+  }
+  .info-icon {
+    display: none;
   }
 }
 

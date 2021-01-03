@@ -14,12 +14,14 @@ const Footer: React.FC = (): ReactElement => {
       <div className="footer-content">
         <span className="contactus-title">Contact us</span>
         <div className="contactus-container">
-          <span>
-            <img src={mailIcon} alt="Footer Mail Icon" /> mail@nwo.com
-          </span>
-          <span>
-            <img src={phoneIcon} alt="Footer Phone number" /> 808-800-7174
-          </span>
+          <div className="mail-icon">
+            <img src={mailIcon} alt="Footer Mail Icon" />
+            <span>mail@nwo.com</span>
+          </div>
+          <div className="phone-icon">
+            <img src={phoneIcon} alt="Footer Phone number" />
+            <span>808-800-7174</span>
+          </div>
         </div>
       </div>
 
@@ -46,7 +48,15 @@ const Footer: React.FC = (): ReactElement => {
           </li>
         </ul>
         <p>Kaliwe © 2020</p>
-        <p>Privacy & Legal</p>
+        <p>
+          <a
+            href="https://thenewworldorder.com/privacy-policy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Privacy & Legal
+          </a>
+        </p>
       </div>
     </footer>
   );

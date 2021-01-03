@@ -14,7 +14,8 @@ import { filterErrorMessage } from '../../utils';
 import { sendMail } from '../effects';
 import '../../assets/scss/styles.scss';
 import './get-quote.component.scss';
-import bg from '../../assets/images/quote-bg.svg';
+import bg from '../../assets/images/quote_bg.png';
+import info_icon from '../../assets/images/info_icon.png';
 
 const GetQuoteComponent: React.FC = (): ReactElement => {
   const INITIAL_STATE: IGetQuoteModel = {
@@ -196,7 +197,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
                 type="number"
                 name="company_size"
                 id="company_size"
-                placeholder=""
+                placeholder="0"
                 onChange={onChangeHandler}
                 ref={register({
                   required: filterErrorMessage(
@@ -211,7 +212,10 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
                     ),
                   },
                 })}
-              />
+              />{' '}
+              <div className="info-icon" title="lorem ipsum dummy text">
+                <img src={info_icon} width={20} height={20} alt="Info Icon" />
+              </div>
             </div>
             <div className="form-group">
               <label htmlFor="position">Your position in company</label>
