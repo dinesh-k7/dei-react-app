@@ -10,12 +10,13 @@ import {
   siteKey,
   patterns,
 } from '../../constants';
-import { filterErrorMessage } from '../../utils';
+import { filterErrorMessage, useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import '../../assets/scss/styles.scss';
 import './get-quote.component.scss';
 import bg from '../../assets/images/quote_bg.png';
 import info_icon from '../../assets/images/info_icon.png';
+import SelectBox from '../form-element/select-box';
 
 const GetQuoteComponent: React.FC = (): ReactElement => {
   const INITIAL_STATE: IGetQuoteModel = {
@@ -38,6 +39,17 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
   const [size, setCompanySize] = useState(0);
 
   let companysize = '';
+
+  // Function to handle select callback
+  const handleSelect = (event: React.FormEvent<EventTarget>) => {
+    const target = event.target as HTMLInputElement;
+    setQuoteState((prevState) => {
+      return {
+        ...prevState,
+        position: target.value,
+      };
+    });
+  };
 
   // handle get quote form onSubmit
   const onSubmit = (quoteData: IGetQuoteModel) => {
@@ -78,11 +90,14 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
   };
 
   //handle company size change event
-  const onChangeHandler = (event: any) => {
-    companysize = event && event.target && event.target.value;
+  const onChangeHandler = (event: React.FormEvent<EventTarget>) => {
+    const target = event.target as HTMLInputElement;
+    companysize = target && target.value;
     setCompanySize(+companysize);
   };
-  const { captchaValue } = quoteState;
+  const { captchaValue, position } = quoteState;
+
+  const classes = useStyles();
   return (
     <section className="get-quote-section">
       <div className="bg-image">
@@ -219,30 +234,14 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
             </div>
             <div className="form-group">
               <label htmlFor="position">Your position in company</label>
-              <select
-                name="position"
-                id="position"
-                defaultValue=""
-                ref={register({
-                  required: filterErrorMessage(
-                    quoteValidationErrorMessages.position,
-                    'required',
-                  ),
-                })}
-              >
-                <option className="role-option" value="" disabled>
-                  e.g. Project Manager
-                </option>
-                {constants.POSITION &&
-                  constants.POSITION.length &&
-                  constants.POSITION.map((role, idx) => {
-                    return (
-                      <option key={idx} className="role-option">
-                        {role}
-                      </option>
-                    );
-                  })}
-              </select>
+              <SelectBox
+                position={position}
+                className={classes}
+                variant={'outlined'}
+                name={'position'}
+                id={'position'}
+                handleSelect={handleSelect}
+              ></SelectBox>
             </div>
             <div className="form-group">
               <label htmlFor="website_url">Current website URL</label>
