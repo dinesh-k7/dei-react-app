@@ -1,6 +1,8 @@
+import { makeStyles } from '@material-ui/core';
+import createDOMPurify from 'dompurify';
+
 import { IGetQuoteModel } from '../interfaces/get-quote.model';
 
-import createDOMPurify from 'dompurify';
 const DOMPurify = createDOMPurify(window);
 
 interface IErrorMessageModel {
@@ -31,3 +33,28 @@ export const sanitizeInput = (quoteData: IGetQuoteModel): any => {
     return sanitizedData;
   }
 };
+
+// React Material style
+export const useStyles = makeStyles(() => ({
+  root: {
+    marginRight: '8px',
+    '& .MuiSelect-outlined.MuiSelect-outlined': {
+      backgroundColor: 'white',
+    },
+    '& .MuiOutlinedInput-root': {
+      height: '60px',
+      borderRadius: '0px',
+      fontSize: '12px',
+      fontWeight: '400',
+      fontFamily: 'OpenSansRegular',
+      color: '#2c3e50 !important',
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+      border: 'none',
+    },
+    '& .MuiSelect-selectMenu:focus': {
+      border: '1px solid #42b9f8 !important',
+      boxShadow: '0 0 4px #42b9f8 !important',
+    },
+  },
+}));

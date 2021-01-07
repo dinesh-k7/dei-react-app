@@ -39,5 +39,5 @@ export const patterns = {
 export const messages = {
   lead_success: 'Your request is sent!',
   captcha_error: 'ReCAPTCHA Error',
-  mail_send_error: 'Error is processing Get Quote. Please try later.',
+  mail_send_error: 'Error in processing Get Quote. Please try later.',
 };

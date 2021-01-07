@@ -103,10 +103,20 @@ li {
   padding-top: 1.375em;
 }
 
+.MuiMenuItem-root {
+  font-size: var(--font-size5) !important;
+  font-weight: var(--font-weight400) !important;
+  font-family: 'OpenSansRegular' !important;
+  color: var(--font-color) !important;
+}
 ::placeholder,
 label {
   padding-bottom: 10px;
   font-size: var(--font-size5);
   font-weight: var(--font-weight400);
   font-family: 'OpenSansRegular';
+}
+
+.rc-anchor-error-msg {
+  margin: 5px 0px 0px 5px;
 }

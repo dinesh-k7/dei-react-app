@@ -12,7 +12,7 @@ const HeroContainer: React.FC = (): ReactElement => {
         <div className="ds-title">
           <h1>Data Security</h1>
           <div className="hero-subtitle-container">
-            <img src={serviceBlue} />
+            <img src={serviceBlue} alt="Background image" />
             <h3>Dark Web Monitoring</h3>
           </div>
           <h3>What is Dark Web Monitoring?</h3>

@@ -1,9 +1,19 @@
 import React, { ReactElement } from 'react';
+import { Backdrop, CircularProgress } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { constants, messages } from '../../constants';
 import ErrorMessageContainer from '../container/error-message.container';
 import './monthly-price.component.scss';
 import '../../assets/scss/styles.scss';
+
+// Back drop styles
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+}));
 
 // eslint-disable-next-line
 const MonthlyPriceComponent = ({
@@ -19,6 +29,7 @@ const MonthlyPriceComponent = ({
     isLeadDataSent,
     isSendMailError,
   } = quoteState;
+  const classes = useStyles();
 
   return (
     <div className="monthly-price">
@@ -52,6 +63,11 @@ const MonthlyPriceComponent = ({
         >
           Start Over
         </button>
+      )}
+      {isFormSubmitted && !isLeadDataSent && captchaValue && (
+        <Backdrop className={classes.backdrop} open={true}>
+          <CircularProgress disableShrink />
+        </Backdrop>
       )}
       {errors && <ErrorMessageContainer {...errors} />}
       {!captchaValue && isFormSubmitted && <p>{messages.captcha_error}</p>}
