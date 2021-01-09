@@ -38,12 +38,11 @@ export const sanitizeInput = (quoteData: IGetQuoteModel): any => {
 // React Material style
 export const useStyles = makeStyles(() => ({
   root: {
-    marginRight: '8px',
+    marginRight: '8px !important',
     '& .MuiSelect-outlined.MuiSelect-outlined': {
       backgroundColor: 'white',
     },
     '& .MuiOutlinedInput-root': {
-      height: '60px',
       borderRadius: '0px',
       fontSize: '12px',
       fontWeight: '400',
@@ -56,6 +55,12 @@ export const useStyles = makeStyles(() => ({
     '& .MuiSelect-selectMenu:focus': {
       border: '1px solid #42b9f8 !important',
       boxShadow: '0 0 4px #42b9f8 !important',
+    },
+    '& .MuiInputBase-input': {},
+    '& .MuiOutlinedInput-input': {
+      paddingTop: '24px !important',
+      display: 'grid !important',
+      height: '16px',
     },
   },
 }));
