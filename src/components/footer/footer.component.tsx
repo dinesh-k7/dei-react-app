@@ -15,7 +15,7 @@ const Footer: React.FC = (): ReactElement => {
         <div className="contactus-container">
           <div className="mail-icon">
             <img src={mailIcon} alt="Footer Mail Icon" />
-            <span>mail@nwo.com</span>
+            <span>securus@xiiiusa.com</span>
           </div>
           <div className="phone-icon">
             <img src={phoneIcon} alt="Footer Phone number" />
