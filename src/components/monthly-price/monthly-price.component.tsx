@@ -2,8 +2,9 @@ import React, { ReactElement } from 'react';
 import { Backdrop, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { constants, messages } from '../../constants';
+import { messages } from '../../constants';
 import ErrorMessageContainer from '../container/error-message.container';
+import { calculateMonthlyAmount } from '../../utils';
 import './monthly-price.component.scss';
 import '../../assets/scss/styles.scss';
 
@@ -30,7 +31,7 @@ const MonthlyPriceComponent = ({
     isSendMailError,
   } = quoteState;
   const classes = useStyles();
-
+  const monthlyPremium = calculateMonthlyAmount(size);
   return (
     <div className="monthly-price">
       <div className="sticky-content">
@@ -38,7 +39,7 @@ const MonthlyPriceComponent = ({
         <div className="price-container">
           <span className="price">
             {' '}
-            ${size ? size * constants.COMPANY_SIZE : 0}
+            ${monthlyPremium ? monthlyPremium.toFixed(2) : 0}
           </span>
           <span className="label">/mo</span>
         </div>
@@ -52,7 +53,11 @@ const MonthlyPriceComponent = ({
           } ${isLeadDataSent ? 'btn-green' : ''} `}
           onClick={handleSubmit(onSubmit)}
         >
-          {isLeadDataSent ? 'Start Over' : 'Get a Quote'}
+          {isLeadDataSent
+            ? 'Start Over'
+            : !monthlyPremium && size
+            ? 'Call for a Quote'
+            : 'Get a Quote'}
         </button>
       )}
       {isLeadDataSent && (
