@@ -20,6 +20,7 @@ const isLocalhost = Boolean(
     ),
 );
 
+// eslint-disable-next-line
 export function register(config) {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
@@ -128,6 +129,7 @@ function checkValidServiceWorker(swUrl, config) {
     });
 }
 
+// eslint-disable-next-line
 export function unregister() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready

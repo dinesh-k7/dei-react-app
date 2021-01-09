@@ -3,6 +3,14 @@ export const constants = {
   POSITION: ['CEO/Decision-maker', 'VP/Director', 'Manager/Inquirer'],
   MAIL_SERVICE_ENDPOINT:
     'https://dei-node-service.herokuapp.com/mail-service/sendmail',
+  BASE_PREMIUM: 99.98,
+  CP_LIMIT_ONE: 30,
+  CP_LIMIT_TWO: 75,
+  CP_LIMIT_THREE: 150,
+  CP_LIMIT_FOUR: 250,
+  EU_75: 3,
+  EU_150: 2.5,
+  EU_250: 2,
 };
 
 export const quoteValidationErrorMessages = {

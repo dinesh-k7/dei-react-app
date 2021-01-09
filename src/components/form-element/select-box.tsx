@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { Select, MenuItem, FormControl } from '@material-ui/core';
 
 import { constants } from '../../constants';
 
-const SelectBox = ({
+const SelectBox: any = ({
   position,
   className,
   variant,

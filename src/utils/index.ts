@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import createDOMPurify from 'dompurify';
 
 import { IGetQuoteModel } from '../interfaces/get-quote.model';
+import { constants } from '../constants';
 
 const DOMPurify = createDOMPurify(window);
 
@@ -58,3 +59,49 @@ export const useStyles = makeStyles(() => ({
     },
   },
 }));
+
+// Function to calculate the montly price based on the company size
+export const calculateMonthlyAmount: any = (company_size: number) => {
+  const {
+    CP_LIMIT_ONE,
+    CP_LIMIT_TWO,
+    CP_LIMIT_THREE,
+    CP_LIMIT_FOUR,
+    BASE_PREMIUM,
+    EU_75,
+    EU_150,
+    EU_250,
+  } = constants;
+  let cap_diff;
+
+  if (
+    company_size &&
+    company_size <= CP_LIMIT_ONE &&
+    CP_LIMIT_ONE >= company_size
+  ) {
+    return constants.BASE_PREMIUM;
+  } else if (
+    company_size &&
+    company_size <= CP_LIMIT_TWO &&
+    CP_LIMIT_TWO >= company_size
+  ) {
+    cap_diff = (company_size - CP_LIMIT_ONE) * EU_75;
+    return BASE_PREMIUM + cap_diff;
+  } else if (
+    company_size &&
+    company_size <= CP_LIMIT_THREE &&
+    CP_LIMIT_THREE >= company_size
+  ) {
+    cap_diff = (company_size - CP_LIMIT_TWO) * EU_150;
+    return BASE_PREMIUM + cap_diff;
+  } else if (
+    company_size &&
+    company_size <= CP_LIMIT_FOUR &&
+    CP_LIMIT_FOUR >= company_size
+  ) {
+    cap_diff = (company_size - CP_LIMIT_THREE) * EU_250;
+    return BASE_PREMIUM + cap_diff;
+  }
+
+  return 0;
+};

@@ -37,8 +37,17 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
   const { register, handleSubmit, errors } = useForm();
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
   const [size, setCompanySize] = useState(0);
+  const [captcha, setCaptcha] = useState({});
 
   let companysize = '';
+
+  // Set captcha reference
+
+  const setCaptchaRef = (ref) => {
+    if (ref) {
+      setCaptcha(ref);
+    }
+  };
 
   // Function to handle select callback
   const handleSelect = (event: React.FormEvent<EventTarget>) => {
@@ -54,7 +63,9 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
   // handle get quote form onSubmit
   const onSubmit = (quoteData: IGetQuoteModel) => {
     const { captchaValue } = quoteData;
+    const { position } = quoteState;
     quoteData.isFormSubmitted = true;
+    quoteData.position = position;
     setQuoteState((prevState) => {
       return {
         ...prevState,
@@ -89,13 +100,22 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
     }
   };
 
+  // Reset captcha
+  const resetCaptcha = () => {
+    captcha['reset']();
+  };
+
   //handle company size change event
   const onChangeHandler = (event: React.FormEvent<EventTarget>) => {
     const target = event.target as HTMLInputElement;
     companysize = target && target.value;
     setCompanySize(+companysize);
   };
-  const { captchaValue, position } = quoteState;
+  const { captchaValue, position, isLeadDataSent } = quoteState;
+
+  if (isLeadDataSent) {
+    resetCaptcha();
+  }
 
   const classes = useStyles();
   return (
@@ -228,7 +248,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
                   },
                 })}
               />{' '}
-              <div className="info-icon" title="lorem ipsum dummy text">
+              <div className="info-icon" title="Employees">
                 <img src={info_icon} width={20} height={20} alt="Info Icon" />
               </div>
             </div>
@@ -268,6 +288,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
 
             <div className="form-group recaptcha-container">
               <ReCAPTCHA
+                ref={(r) => setCaptchaRef(r)}
                 sitekey={siteKey}
                 onChange={(e) => {
                   const captchaValue = e ? e : '';
