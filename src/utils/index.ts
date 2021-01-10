@@ -77,7 +77,7 @@ export const calculateMonthlyAmount: any = (company_size: number) => {
     EU_150,
     EU_250,
   } = constants;
-  const cap_diff = company_size - CP_LIMIT_ONE;
+  const cap_diff = company_size ? company_size - CP_LIMIT_ONE : 0;
 
   if (cap_diff && cap_diff <= CP_LIMIT_ONE && CP_LIMIT_ONE >= cap_diff) {
     return constants.BASE_PREMIUM;
@@ -90,9 +90,9 @@ export const calculateMonthlyAmount: any = (company_size: number) => {
   ) {
     return BASE_PREMIUM + cap_diff * EU_150;
   } else if (
-    cap_diff &&
-    cap_diff <= CP_LIMIT_FOUR &&
-    CP_LIMIT_FOUR >= cap_diff
+    company_size &&
+    company_size <= CP_LIMIT_FOUR &&
+    CP_LIMIT_FOUR >= company_size
   ) {
     return BASE_PREMIUM + cap_diff * EU_250;
   }
