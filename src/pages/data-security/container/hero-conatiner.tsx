@@ -19,19 +19,19 @@ const HeroContainer: React.FC = (): ReactElement => {
         </div>
         <div className="ds-description">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            Well, once your data is available there, the threat of a breach is
+            imminent. <br />
+            With our Dark Web Monitoring Sentinels™, we keep a close eye on
+            whether your business data is for sale on the dark web.
           </p>
           <div className="ds-description-two">
             <h3>What we offer</h3>
             <p>
-              Our experts monitor your domain to find out what data was leaked,
-              how it was leaked, and protect you from cyber crimes by training
-              your employees and equipping them with the necessary techniques to
-              identify future data threats in time. Our goal is to protect you
-              from the losses incurred from compromised confidential
-              information.
+              Our Dark Web Monitoring Sentinels™ provide you with updates and
+              details to keep you in the know. If pirates have exposed your
+              business data, our sentinels will inform you. With this powerful
+              tool in your corner, you can take immediate action and possibly
+              avert any threat even before it emerges.
             </p>
           </div>
         </div>
