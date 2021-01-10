@@ -18,7 +18,10 @@ export const quoteValidationErrorMessages = {
   lastname: [{ type: 'required', message: '*Please enter last name' }],
   email: [
     { type: 'required', message: '*Please enter email' },
-    { type: 'pattern', message: '*Please provide valid email' },
+    {
+      type: 'pattern',
+      message: '*Please provide valid Business email address',
+    },
   ],
   phone: [
     { type: 'required', message: '*Please enter phone' },
