@@ -82,6 +82,16 @@
   select {
     margin-right: 10px;
   }
+
+  .info-icon {
+    position: absolute !important;
+    margin-left: 23%;
+    margin-top: 3%;
+  }
+
+  .MuiOutlinedInput-root {
+    margin-right: 8px !important;
+  }
 }
 
 @include respond-below(sm) {
@@ -133,8 +143,7 @@
     .form-group {
       display: grid;
       grid-template-columns: 1fr;
-      padding-top: 1.25em;
-      padding-left: 10px;
+      padding: 1.25em 0.25em 0 0.625em;
     }
 
     input[type='text'],
@@ -159,7 +168,6 @@
     span {
       padding-bottom: 10px;
     }
-    //  padding: 10px;
   }
 
   .recaptcha-container {
@@ -169,8 +177,14 @@
   .error-messages ul {
     padding: 0 !important;
   }
+
   .info-icon {
-    display: none;
+    position: absolute !important;
+    margin-left: 28%;
+  }
+
+  .MuiOutlinedInput-root {
+    margin-right: 0px !important;
   }
 }
 

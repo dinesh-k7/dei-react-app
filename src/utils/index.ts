@@ -38,7 +38,6 @@ export const sanitizeInput = (quoteData: IGetQuoteModel): any => {
 // React Material style
 export const useStyles = makeStyles(() => ({
   root: {
-    marginRight: '8px !important',
     '& .MuiSelect-outlined.MuiSelect-outlined': {
       backgroundColor: 'white',
     },
