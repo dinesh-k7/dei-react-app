@@ -1,3 +1,5 @@
+@import '~balloon-css/src/balloon';
+
 .get-quote-section {
   background-color: #f8f8f8;
 }
@@ -9,8 +11,7 @@
   input[type='text'],
   input[type='number'],
   select {
-    height: 60px;
-    margin-right: 10px;
+    height: 60px !important;
     outline: none;
     color: var(--font-color);
     border: none;

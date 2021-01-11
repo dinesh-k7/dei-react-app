@@ -14,7 +14,7 @@ import { filterErrorMessage, useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import '../../assets/scss/styles.scss';
 import './get-quote.component.scss';
-import bg from '../../assets/images/quote_bg.png';
+import bg from '../../assets/images/blue_blob_vector.svg';
 import info_icon from '../../assets/images/info_icon.png';
 import SelectBox from '../form-element/select-box';
 
@@ -248,7 +248,11 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
                   },
                 })}
               />{' '}
-              <div className="info-icon" title="Employees">
+              <div
+                className="info-icon"
+                aria-label="Employees"
+                data-balloon-pos="up"
+              >
                 <img src={info_icon} width={20} height={20} alt="Info Icon" />
               </div>
             </div>
@@ -285,29 +289,28 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
                 })}
               />
             </div>
-
-            <div className="form-group recaptcha-container">
-              <ReCAPTCHA
-                ref={(r) => setCaptchaRef(r)}
-                sitekey={siteKey}
-                onChange={(e) => {
-                  const captchaValue = e ? e : '';
-                  setQuoteState((prevState) => {
-                    return {
-                      ...prevState,
-                      captchaValue,
-                      isFormSubmitted: false,
-                    };
-                  });
-                }}
-              />
-              <input
-                type="hidden"
-                name="captchaValue"
-                ref={register}
-                value={captchaValue}
-              />
-            </div>
+          </div>
+          <div className="form-group recaptcha-container">
+            <ReCAPTCHA
+              ref={(r) => setCaptchaRef(r)}
+              sitekey={siteKey}
+              onChange={(e) => {
+                const captchaValue = e ? e : '';
+                setQuoteState((prevState) => {
+                  return {
+                    ...prevState,
+                    captchaValue,
+                    isFormSubmitted: false,
+                  };
+                });
+              }}
+            />
+            <input
+              type="hidden"
+              name="captchaValue"
+              ref={register}
+              value={captchaValue}
+            />
           </div>
         </form>
       </div>

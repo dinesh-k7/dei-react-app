@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import logo from '../../assets/images/logo.svg';
+import logo from '../../assets/images/dei_dark_logo_vector.svg';
 
 const Header: React.FC = (): ReactElement => {
   return (

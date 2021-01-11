@@ -38,10 +38,13 @@ const MonthlyPriceComponent = ({
         <h4>Approximate service cost</h4>
         <div className="price-container">
           <span className="price">
-            {' '}
-            ${monthlyPremium ? monthlyPremium.toFixed(2) : 0}
+            {!monthlyPremium && size
+              ? 'TBD'
+              : monthlyPremium
+              ? monthlyPremium.toFixed(2)
+              : 0}
           </span>
-          <span className="label">/mo</span>
+          {!monthlyPremium && size ? '' : <span className="label">/mo</span>}
         </div>
       </div>
 
@@ -53,11 +56,7 @@ const MonthlyPriceComponent = ({
           } ${isLeadDataSent ? 'btn-green' : ''} `}
           onClick={handleSubmit(onSubmit)}
         >
-          {isLeadDataSent
-            ? 'Start Over'
-            : !monthlyPremium && size
-            ? 'Call for a Quote'
-            : 'Get a Quote'}
+          {isLeadDataSent ? 'Start Over' : 'Get a Quote'}
         </button>
       )}
       {isLeadDataSent && (
