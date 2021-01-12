@@ -9,8 +9,8 @@ export const constants = {
   CP_LIMIT_THREE: 150,
   CP_LIMIT_FOUR: 250,
   EU_75: 3,
-  EU_150: 2.5,
-  EU_250: 2,
+  EU_150: 2,
+  EU_250: 1.75,
 };
 
 export const quoteValidationErrorMessages = {

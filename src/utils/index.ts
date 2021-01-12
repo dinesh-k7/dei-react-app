@@ -65,36 +65,26 @@ export const useStyles = makeStyles(() => ({
 }));
 
 // Function to calculate the montly price based on the company size
-export const calculateMonthlyAmount: any = (company_size: number) => {
+export const calculateMonthlyAmount: any = (totalUsers: number) => {
   const {
     CP_LIMIT_ONE,
     CP_LIMIT_TWO,
     CP_LIMIT_THREE,
-    CP_LIMIT_FOUR,
     BASE_PREMIUM,
     EU_75,
     EU_150,
     EU_250,
   } = constants;
-  const cap_diff = company_size ? company_size - CP_LIMIT_ONE : 0;
 
-  if (cap_diff && cap_diff <= CP_LIMIT_ONE && CP_LIMIT_ONE >= cap_diff) {
-    return constants.BASE_PREMIUM;
-  } else if (cap_diff && cap_diff <= CP_LIMIT_TWO && CP_LIMIT_TWO >= cap_diff) {
-    return BASE_PREMIUM + cap_diff * EU_75;
-  } else if (
-    cap_diff &&
-    cap_diff <= CP_LIMIT_THREE &&
-    CP_LIMIT_THREE >= cap_diff
-  ) {
-    return BASE_PREMIUM + cap_diff * EU_150;
-  } else if (
-    company_size &&
-    company_size <= CP_LIMIT_FOUR &&
-    CP_LIMIT_FOUR >= company_size
-  ) {
-    return BASE_PREMIUM + cap_diff * EU_250;
+  if (totalUsers && totalUsers < 31) {
+    return BASE_PREMIUM;
+  } else if (totalUsers && totalUsers < 76) {
+    return BASE_PREMIUM + (totalUsers - CP_LIMIT_ONE) * EU_75;
+  } else if (totalUsers && totalUsers < 151) {
+    return 234.98 + (totalUsers - CP_LIMIT_TWO) * EU_150;
+  } else if (totalUsers && totalUsers < 251) {
+    return 384.98 + (totalUsers - CP_LIMIT_THREE) * EU_250;
+  } else {
+    return 0;
   }
-
-  return 0;
 };
