@@ -15,11 +15,15 @@ const Footer: React.FC = (): ReactElement => {
         <div className="contactus-container">
           <div className="mail-icon">
             <img src={mailIcon} alt="Footer Mail Icon" />
-            <span>securus@xiiiusa.com</span>
+            <span>
+              <a href="mailto:securus@xiiiusa.com">securus@xiiiusa.com</a>
+            </span>
           </div>
           <div className="phone-icon">
             <img src={phoneIcon} alt="Footer Phone number" />
-            <span>808-800-7174</span>
+            <span>
+              <a href="tel:+8088007174">808-800-7174</a>
+            </span>
           </div>
         </div>
       </div>
@@ -29,7 +33,6 @@ const Footer: React.FC = (): ReactElement => {
           <li className="facebook">
             <a
               rel="noreferrer"
-              target="_blank"
               href="https://www.facebook.com/IamMrNWO/?view_public_for=102216145158646"
             >
               <img src={fbIcon} alt="Footer Facebook icon" />
@@ -39,7 +42,6 @@ const Footer: React.FC = (): ReactElement => {
           <li className="linkedin">
             <a
               rel="noreferrer"
-              target="_blank"
               href="https://www.linkedin.com/company/humanityunite"
             >
               <img src={linkedInIcon} alt="Footer linkedin Icon" />
