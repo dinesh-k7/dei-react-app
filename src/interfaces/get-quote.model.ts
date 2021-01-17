@@ -11,5 +11,5 @@ export interface IGetQuoteModel {
   isFormSubmitted: boolean;
   isLeadDataSent: boolean;
   isSendMailError?: boolean;
-  monthlyCost: number;
+  monthly_cost: number;
 }
