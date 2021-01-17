@@ -33,6 +33,7 @@ const Footer: React.FC = (): ReactElement => {
           <li className="facebook">
             <a
               rel="noreferrer"
+              target="_top"
               href="https://www.facebook.com/IamMrNWO/?view_public_for=102216145158646"
             >
               <img src={fbIcon} alt="Footer Facebook icon" />
@@ -42,6 +43,7 @@ const Footer: React.FC = (): ReactElement => {
           <li className="linkedin">
             <a
               rel="noreferrer"
+              target="_top"
               href="https://www.linkedin.com/company/humanityunite"
             >
               <img src={linkedInIcon} alt="Footer linkedin Icon" />
