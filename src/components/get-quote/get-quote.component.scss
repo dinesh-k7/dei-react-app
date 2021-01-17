@@ -26,13 +26,6 @@
     font-family: 'OpenSansRegular';
   }
 
-  option:not(:first-of-type) {
-    padding-bottom: 10px;
-    font-size: var(--font-size4);
-    font-weight: var(--font-weight400);
-    font-family: 'OpenSansRegular';
-  }
-
   input[type='text']:focus,
   input[type='number']:focus,
   select:focus {

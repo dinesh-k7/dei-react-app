@@ -28,7 +28,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
     position: '',
     website_url: '',
     company_name: '',
-    monthlyCost: 0,
+    monthly_cost: 0,
     captchaValue: '',
     isFormSubmitted: false,
     isLeadDataSent: false,
@@ -75,7 +75,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
     if (!captchaValue) {
       return;
     } else {
-      quoteData.monthlyCost = size * constants.COMPANY_SIZE;
+      quoteData.monthly_cost = size * constants.COMPANY_SIZE;
       // quoteData = sanitizeInput(quoteData);
       sendMail(quoteData).then(
         () => {
@@ -250,7 +250,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
               />{' '}
               <div
                 className="info-icon"
-                aria-label="Employees"
+                aria-label="EMPLOYEES/END USERS"
                 data-balloon-pos="up"
               >
                 <img src={info_icon} width={20} height={20} alt="Info Icon" />
