@@ -7,9 +7,9 @@ import serviceBlue from '../../../assets/images/service_blue.svg';
 
 const HeroContainer: React.FC = (): ReactElement => {
   return (
-    <section className="ds-hero-section">
-      <div className="ds-hero-content">
-        <div className="ds-title">
+    <section className="hero-section">
+      <div className="hero-content">
+        <div className="hero-title">
           <h1>Data Security</h1>
           <div className="hero-subtitle-container">
             <img src={serviceBlue} alt="Background image" />
@@ -17,14 +17,14 @@ const HeroContainer: React.FC = (): ReactElement => {
           </div>
           <h3>What&apos;s the Dark Web?</h3>
         </div>
-        <div className="ds-description">
+        <div className="hero-description">
           <p>
             Well, once access to your data is available there, the threat of a
             breach is imminent. <br />
             With our Dark Web Monitoring Sentinels™, we keep a close eye on
             whether your business data is for sale on the dark web.
           </p>
-          <div className="ds-description-two">
+          <div className="hero-description-two">
             <h3>What we offer:</h3>
             <p>
               Our Dark Web Monitoring Sentinels™ provide you with updates and
@@ -37,7 +37,7 @@ const HeroContainer: React.FC = (): ReactElement => {
         </div>
       </div>
 
-      <div className="ds-image">
+      <div className="hero-image">
         <img src={heroImage} alt="Data Security Image" />
       </div>
     </section>

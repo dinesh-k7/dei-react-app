@@ -7,7 +7,7 @@
     grid-template-rows: 80px auto auto auto auto;
   }
 
-  .ds-hero-section {
+  .hero-section {
     grid-column: 2/4;
     grid-row: 2/3;
     align-items: center;
@@ -107,7 +107,7 @@
       width: 60px;
     }
   }
-  .ds-hero-section {
+  .hero-section {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
@@ -210,5 +210,11 @@
   .form-container .info-icon {
     margin-left: 45% !important;
     margin-top: 5% !important;
+  }
+}
+
+@include respond-below(md) {
+  .branding-container {
+    display: none !important;
   }
 }

@@ -1,6 +1,7 @@
 export const constants = {
   COMPANY_SIZE: 4,
   POSITION: ['CEO/Decision-maker', 'VP/Director', 'Manager/Inquirer'],
+  INDUSTRIES: ['Accounting', 'Finance', 'IT', 'Marketing'],
   MAIL_SERVICE_ENDPOINT:
     'https://dei-node-service.herokuapp.com/mail-service/sendmail',
   BASE_PREMIUM: 99.98,

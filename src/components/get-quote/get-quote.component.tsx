@@ -1,24 +1,27 @@
-import React, { ReactElement, useState } from 'react';
+import React, { Fragment, ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-import { IGetQuoteModel } from '../../interfaces/get-quote.model';
-import MonthlyPriceComponent from '../monthly-price/monthly-price.component';
 import {
-  constants,
-  quoteValidationErrorMessages,
-  siteKey,
-  patterns,
-} from '../../constants';
-import { filterErrorMessage, useStyles } from '../../utils';
+  IGetQuoteModel,
+  IGetQuoteProps,
+} from '../../interfaces/get-quote.model';
+import MonthlyPriceComponent from '../monthly-price/monthly-price.component';
+import { constants, siteKey, patterns } from '../../constants';
+import { useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import '../../assets/scss/styles.scss';
 import './get-quote.component.scss';
 import bg from '../../assets/images/blue_blob_vector.svg';
 import info_icon from '../../assets/images/info_icon.png';
 import SelectBox from '../form-element/select-box';
+import TextBox from '../form-element/text-box';
+import MultiText from '../form-element/multi-text';
+import BrandingDetailContainer from '../container/branding-detail.container';
 
-const GetQuoteComponent: React.FC = (): ReactElement => {
+const GetQuoteComponent: React.FC<any> = (
+  props: IGetQuoteProps,
+): ReactElement => {
   const INITIAL_STATE: IGetQuoteModel = {
     name: '',
     lastname: '',
@@ -107,6 +110,7 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
 
   //handle company size change event
   const onChangeHandler = (event: React.FormEvent<EventTarget>) => {
+    console.log('test', event);
     const target = event.target as HTMLInputElement;
     companysize = target && target.value;
     setCompanySize(+companysize);
@@ -118,177 +122,157 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
   }
 
   const classes = useStyles();
+  const { fromPage, vimage } = props;
   return (
     <section className="get-quote-section">
       <div className="bg-image">
-        <img src={bg} alt="Quote bg vector" />
+        <img src={vimage ? vimage : bg} alt="Quote bg vector" />
       </div>
       <div className="form-container">
         <h1>Tell us about your company</h1>
         <h4>Personal Information</h4>
         <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
           <div className="personal-information">
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="e.g. John"
-                maxLength={50}
-                ref={register({
-                  required: filterErrorMessage(
-                    quoteValidationErrorMessages.name,
-                    'required',
-                  ),
-                })}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="lastname">Last Name</label>
-              <input
-                type="text"
-                name="lastname"
-                id="lastname"
-                placeholder="e.g. Doe"
-                maxLength={50}
-                ref={register({
-                  required: filterErrorMessage(
-                    quoteValidationErrorMessages.lastname,
-                    'required',
-                  ),
-                })}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">E-mail</label>
-              <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="e.g. johndoe@email.com"
-                maxLength={50}
-                ref={register({
-                  required: filterErrorMessage(
-                    quoteValidationErrorMessages.email,
-                    'required',
-                  ),
-                  pattern: {
-                    value: patterns.email,
-                    message: filterErrorMessage(
-                      quoteValidationErrorMessages.email,
-                      'pattern',
-                    ),
-                  },
-                })}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="phone">Phone Number</label>
-              <input
-                type="text"
-                name="phone"
-                id="phone"
-                placeholder="e.g. 123456789"
-                maxLength={15}
-                ref={register({
-                  required: filterErrorMessage(
-                    quoteValidationErrorMessages.phone,
-                    'required',
-                  ),
-                  pattern: {
-                    value: patterns.phone,
-                    message: filterErrorMessage(
-                      quoteValidationErrorMessages.phone,
-                      'pattern',
-                    ),
-                  },
-                })}
-              />
-            </div>
+            <TextBox
+              register={register}
+              name={'name'}
+              placeholder={'e.g. John'}
+              label_name={'Name'}
+              maxlength={50}
+            />
+
+            <TextBox
+              register={register}
+              name={'lastname'}
+              placeholder={'e.g. Doe'}
+              label_name={'Last Name'}
+              maxlength={50}
+            />
+
+            <TextBox
+              register={register}
+              name={'email'}
+              placeholder={'e.g. johndoe@email.com'}
+              label_name={'E-mail'}
+              maxlength={50}
+              pattern={patterns.email}
+            />
+
+            <TextBox
+              register={register}
+              name={'phone'}
+              placeholder={'e.g. 123456789'}
+              label_name={'Phone Number'}
+              maxlength={15}
+              pattern={patterns.phone}
+            />
           </div>
 
           <h4>Company Information</h4>
           <div className="company-information">
-            <div className="form-group">
-              <label htmlFor="company_name">Company Name</label>
-              <input
-                type="text"
-                name="company_name"
-                id="company_name"
-                placeholder="e.g. JohnDoe and co."
-                maxLength={70}
-                ref={register({
-                  required: filterErrorMessage(
-                    quoteValidationErrorMessages.company_name,
-                    'required',
-                  ),
-                })}
+            <TextBox
+              register={register}
+              name={'company_name'}
+              placeholder={'e.g. JohnDoe and co.'}
+              label_name={'Company Name'}
+              maxlength={70}
+            />
+
+            {fromPage === 'branding' ? (
+              <TextBox
+                register={register}
+                name={'slogan'}
+                placeholder={'e.g. Think different'}
+                label_name={'Slogan'}
+                type={'text'}
               />
-            </div>
-            <div className="form-group">
-              <label htmlFor="company_size">Company Size</label>
-              <input
-                type="number"
-                name="company_size"
-                id="company_size"
-                placeholder="0"
-                onChange={onChangeHandler}
-                ref={register({
-                  required: filterErrorMessage(
-                    quoteValidationErrorMessages.company_size,
-                    'required',
-                  ),
-                  min: {
-                    value: 1,
-                    message: filterErrorMessage(
-                      quoteValidationErrorMessages.company_size,
-                      'min',
-                    ),
-                  },
-                })}
-              />{' '}
-              <div
-                className="info-icon"
-                aria-label="EMPLOYEES/END USERS"
-                data-balloon-pos="up"
-              >
-                <img src={info_icon} width={20} height={20} alt="Info Icon" />
-              </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="position">Your position in company</label>
+            ) : (
+              <Fragment>
+                <TextBox
+                  register={register}
+                  name={'company_size'}
+                  placeholder={'0'}
+                  label_name={'Company Size'}
+                  type={'number'}
+                  onChangeHandler={onChangeHandler}
+                  min={1}
+                  info_icon={info_icon}
+                />
+              </Fragment>
+            )}
+
+            {fromPage === 'branding' ? (
               <SelectBox
                 position={position}
                 className={classes}
                 variant={'outlined'}
-                name={'position'}
-                id={'position'}
+                name={'industry'}
+                id={'industry'}
                 handleSelect={handleSelect}
+                label_name={'Industry'}
+                options={constants.INDUSTRIES}
+                placeholder={'e.g. Accounting'}
               ></SelectBox>
-            </div>
-            <div className="form-group">
-              <label htmlFor="website_url">Current website URL</label>
-              <input
-                type="text"
-                name="website_url"
-                id="website_url"
-                placeholder="e.g. https://www.company.com"
-                ref={register({
-                  required: filterErrorMessage(
-                    quoteValidationErrorMessages.website_url,
-                    'required',
-                  ),
-                  pattern: {
-                    value: patterns.website_url,
-                    message: filterErrorMessage(
-                      quoteValidationErrorMessages.website_url,
-                      'pattern',
-                    ),
-                  },
-                })}
+            ) : (
+              ''
+            )}
+
+            <SelectBox
+              position={position}
+              className={classes}
+              variant={'outlined'}
+              name={'position'}
+              id={'position'}
+              handleSelect={handleSelect}
+              label_name={'Your position in company'}
+              options={constants.POSITION}
+              placeholder={'e.g. Project Manager'}
+            ></SelectBox>
+
+            {fromPage !== 'branding' ? (
+              <TextBox
+                register={register}
+                name={'website_url'}
+                placeholder={'e.g. https://www.company.com'}
+                label_name={'Current website URL'}
+                pattern={patterns.website_url}
               />
-            </div>
+            ) : (
+              ''
+            )}
+
+            {fromPage === 'branding' && (
+              <MultiText
+                register={register}
+                name={'target_audience'}
+                placeholder={'e.g. Accounting'}
+                label_name={'What is your target audience'}
+                maxlength={500}
+                class_name={'branding-text-area'}
+              />
+            )}
+
+            {fromPage === 'branding' && (
+              <MultiText
+                register={register}
+                name={'about_company'}
+                placeholder={'e.g. Accounting'}
+                label_name={'Tell us about your company'}
+                maxlength={500}
+                class_name={'branding-text-area'}
+              />
+            )}
+
+            {fromPage === 'branding' && (
+              <MultiText
+                register={register}
+                name={'comment'}
+                placeholder={'e.g. comment'}
+                label_name={'Additional comment'}
+                maxlength={500}
+                class_name={'branding-text-area'}
+              />
+            )}
           </div>
           <div className="form-group recaptcha-container">
             <ReCAPTCHA
@@ -314,13 +298,17 @@ const GetQuoteComponent: React.FC = (): ReactElement => {
           </div>
         </form>
       </div>
-      <MonthlyPriceComponent
-        quoteState={quoteState}
-        size={size}
-        errors={errors}
-        handleSubmit={handleSubmit}
-        onSubmit={onSubmit}
-      />
+
+      {fromPage !== 'branding' && (
+        <MonthlyPriceComponent
+          quoteState={quoteState}
+          size={size}
+          errors={errors}
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
+        />
+      )}
+      {fromPage === 'branding' && <BrandingDetailContainer />}
     </section>
   );
 };

@@ -13,3 +13,8 @@ export interface IGetQuoteModel {
   isSendMailError?: boolean;
   monthly_cost: number;
 }
+
+export interface IGetQuoteProps {
+  fromPage: string;
+  vimage: string;
+}

@@ -1,0 +1,77 @@
+@import '../styles.scss';
+.hero-section {
+  @include respond-below(sm) {
+    .hero-title p:first-of-type {
+      padding-top: 0.25em;
+    }
+  }
+
+  @include respond-above(sm) {
+    .hero-title p:first-of-type {
+      padding-top: 1.25em;
+      font-family: 'MontFont';
+    }
+  }
+
+  .hero-title {
+    p:last-of-type {
+      padding-top: 1.56em;
+    }
+    h1 {
+      font-size: 60px;
+      font-style: normal;
+      font-weight: var(--font-weight900);
+      letter-spacing: -0.07em;
+      text-align: left;
+      font-family: 'MontFont';
+      margin: 25px 0px;
+    }
+
+    h3 {
+      font-size: 1.25em;
+    }
+  }
+
+  .hero-title p:last-of-type {
+    font-size: 1.25em;
+    font-weight: var(--font-weight700);
+    font-style: normal;
+  }
+  .blue-circle {
+    border-radius: 50%;
+    background-color: #42b9f8;
+    display: inline-block;
+    height: 1.25em;
+    width: 1.25em;
+  }
+
+  p {
+    font-family: 'OpenSansRegular';
+    font-size: 1em;
+    font-weight: var(--font-weight400);
+    font-style: normal;
+  }
+
+  .hero-description {
+    .hero-description-two {
+      padding-top: 25px;
+    }
+  }
+
+  .hero-subtitle-container {
+    display: flex;
+    h3 {
+      padding-left: 0.625em;
+    }
+    img {
+      padding-top: 0.625em;
+    }
+  }
+
+  .hero-image {
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
