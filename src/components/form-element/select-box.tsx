@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Select, MenuItem, FormControl } from '@material-ui/core';
 
 import { constants } from '../../constants';
@@ -11,37 +11,43 @@ const SelectBox: any = ({
   name,
   id,
   handleSelect,
-}) => {
+  label_name,
+  options,
+  placeholder,
+}): ReactElement => {
   return (
-    <FormControl variant={variant} className={className.root}>
-      <Select
-        value={position}
-        id={id}
-        displayEmpty
-        name={name}
-        onChange={handleSelect}
-        MenuProps={{
-          anchorOrigin: {
-            vertical: 'bottom',
-            horizontal: 'left',
-          },
-          getContentAnchorEl: null,
-        }}
-      >
-        <MenuItem value="" disabled className={className.placeholder}>
-          e.g. Project Manager
-        </MenuItem>
-        {constants.POSITION &&
-          constants.POSITION.length &&
-          constants.POSITION.map((role, idx) => {
-            return (
-              <MenuItem key={idx} value={role}>
-                {role}
-              </MenuItem>
-            );
-          })}
-      </Select>
-    </FormControl>
+    <div className="form-group">
+      <label htmlFor={name}>{label_name}</label>
+      <FormControl variant={variant} className={className.root}>
+        <Select
+          value={position}
+          id={id}
+          displayEmpty
+          name={name}
+          onChange={handleSelect}
+          MenuProps={{
+            anchorOrigin: {
+              vertical: 'bottom',
+              horizontal: 'left',
+            },
+            getContentAnchorEl: null,
+          }}
+        >
+          <MenuItem value="" disabled className={className.placeholder}>
+            {placeholder}
+          </MenuItem>
+          {options &&
+            options.length &&
+            options.map((option, idx) => {
+              return (
+                <MenuItem key={idx} value={option}>
+                  {option}
+                </MenuItem>
+              );
+            })}
+        </Select>
+      </FormControl>
+    </div>
   );
 };
 
