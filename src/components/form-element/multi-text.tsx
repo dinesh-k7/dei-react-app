@@ -5,7 +5,6 @@ import { quoteValidationErrorMessages } from '../../constants';
 import { filterErrorMessage } from '../../utils';
 
 const MultiText: any = ({
-  type,
   register,
   name,
   label_name,

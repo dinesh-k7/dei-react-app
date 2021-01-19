@@ -2,8 +2,6 @@
 import React, { ReactElement } from 'react';
 import { Select, MenuItem, FormControl } from '@material-ui/core';
 
-import { constants } from '../../constants';
-
 const SelectBox: any = ({
   position,
   className,
