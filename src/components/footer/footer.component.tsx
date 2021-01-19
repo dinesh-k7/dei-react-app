@@ -10,8 +10,8 @@ import './footer.component.scss';
 
 const Footer: React.FC = (): ReactElement => {
   const fb_url = isIOS
-    ? 'fb://IamMrNWO/102216145158646'
-    : 'https://www.facebook.com/IamMrNWO/?view_public_for=102216145158646';
+    ? 'fb://Xiiiusa-LLC/103154938413328'
+    : 'https://www.facebook.com/Xiiiusa-LLC-103154938413328';
   return (
     <footer className="footer-section">
       <div className="footer-content">
@@ -44,7 +44,7 @@ const Footer: React.FC = (): ReactElement => {
             <a
               rel="noreferrer"
               target="_top"
-              href="https://www.linkedin.com/company/humanityunite"
+              href="https://www.linkedin.com/company/xiii-llc"
             >
               <img src={linkedInIcon} alt="Footer linkedin Icon" />
             </a>
