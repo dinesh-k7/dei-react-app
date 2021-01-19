@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { isIOS, isAndroid } from 'react-device-detect';
+import { isIOS } from 'react-device-detect';
 
 import mailIcon from '../../assets/images/mail_icon.png';
 import phoneIcon from '../../assets/images/phone_icon.png';
@@ -9,9 +9,7 @@ import linkedInIcon from '../../assets/images/linkedin_icon.png';
 import './footer.component.scss';
 
 const Footer: React.FC = (): ReactElement => {
-  const fb_url = isAndroid
-    ? 'fb://facewebmodal/f?href=https://www.facebook.com/IamMrNWO/?view_public_for=102216145158646'
-    : isIOS
+  const fb_url = isIOS
     ? 'fb://IamMrNWO/102216145158646'
     : 'https://www.facebook.com/IamMrNWO/?view_public_for=102216145158646';
   return (
