@@ -59,7 +59,7 @@ strong {
   color: var(--font-color);
   text-align: left;
   letter-spacing: 0em;
-  font-family: 'OpenSansBold';
+  font-family: 'OpenSansBold', sans-serif;
 }
 
 h1 {
@@ -70,7 +70,7 @@ h1 {
   text-align: left;
 }
 h3 {
-  font-family: 'OpenSansBold';
+  font-family: 'OpenSansBold', sans-serif;
   font-size: var(--font-size3);
   font-style: normal;
   font-weight: 700;
@@ -78,7 +78,7 @@ h3 {
   padding-top: 10px;
 }
 h4 {
-  font-family: 'OpenSansBold';
+  font-family: 'OpenSansBold', sans-serif;
   font-weight: 700;
   color: var(--font-color);
   padding: 0px 0px !important;
@@ -95,7 +95,7 @@ h4 {
 
 li {
   list-style: none;
-  font-family: 'OpenSansRegular';
+  font-family: 'OpenSansRegular', sans-serif;
   font-size: 1em;
   font-weight: var(--font-weight400);
   color: #ff3f3f;
@@ -106,7 +106,7 @@ li {
 .MuiMenuItem-root {
   font-size: var(--font-size5) !important;
   font-weight: var(--font-weight400) !important;
-  font-family: 'OpenSansRegular' !important;
+  font-family: 'OpenSansRegular', sans-serif !important;
   color: var(--font-color) !important;
 }
 ::placeholder,
@@ -114,7 +114,7 @@ label {
   padding-bottom: 10px;
   font-size: var(--font-size5);
   font-weight: var(--font-weight400);
-  font-family: 'OpenSansRegular';
+  font-family: 'OpenSansRegular', sans-serif;
 }
 
 .rc-anchor-error-msg {

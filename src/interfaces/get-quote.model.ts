@@ -3,15 +3,15 @@ export interface IGetQuoteModel {
   lastname: string;
   email: string;
   phone: string;
-  company_size: number;
+  companySize: number;
   position: string;
-  website_url: string;
-  company_name: string;
+  websiteUrl: string;
+  companyName: string;
   captchaValue: string;
   isFormSubmitted: boolean;
   isLeadDataSent: boolean;
   isSendMailError?: boolean;
-  monthly_cost: number;
+  monthlyCost: number;
 }
 
 export interface IGetQuoteProps {
