@@ -28,7 +28,7 @@ export const sanitizeInput = (quoteData: IGetQuoteModel): any => {
   if (quoteData && Object.keys(quoteData).length) {
     const sanitizedData = Object.keys(quoteData).map((objKey) => {
       return {
-        [objKey]: DOMPurify.sanitize(quoteData.company_name),
+        [objKey]: DOMPurify.sanitize(quoteData.companyName),
       };
     });
     return sanitizedData;

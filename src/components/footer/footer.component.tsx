@@ -50,10 +50,10 @@ const Footer: React.FC = (): ReactElement => {
             </a>
           </li>
         </ul>
-        <p>xiii @ 2021</p>
+        <p>xiiiusa @ 2021</p>
         <p>
           <a
-            href="https://thenewworldorder.com/privacy-policy"
+            href="https://www.thedei.com/terms"
             target="_blank"
             rel="noreferrer"
           >

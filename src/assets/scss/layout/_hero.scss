@@ -9,13 +9,16 @@
   @include respond-above(sm) {
     .hero-title p:first-of-type {
       padding-top: 1.25em;
-      font-family: 'MontFont';
+      font-family: 'MontFont', sans-serif;
     }
   }
 
   .hero-title {
     p:last-of-type {
       padding-top: 1.56em;
+      font-size: 1.25em;
+      font-weight: var(--font-weight700);
+      font-style: normal;
     }
     h1 {
       font-size: 60px;
@@ -23,7 +26,7 @@
       font-weight: var(--font-weight900);
       letter-spacing: -0.07em;
       text-align: left;
-      font-family: 'MontFont';
+      font-family: 'MontFont', sans-serif;
       margin: 25px 0px;
     }
 
@@ -32,11 +35,6 @@
     }
   }
 
-  .hero-title p:last-of-type {
-    font-size: 1.25em;
-    font-weight: var(--font-weight700);
-    font-style: normal;
-  }
   .blue-circle {
     border-radius: 50%;
     background-color: #42b9f8;
@@ -46,7 +44,7 @@
   }
 
   p {
-    font-family: 'OpenSansRegular';
+    font-family: 'OpenSansRegular', sans-serif;
     font-size: 1em;
     font-weight: var(--font-weight400);
     font-style: normal;

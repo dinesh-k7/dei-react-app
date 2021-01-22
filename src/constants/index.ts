@@ -4,6 +4,7 @@ export const constants = {
   INDUSTRIES: ['Accounting', 'Finance', 'IT', 'Marketing'],
   MAIL_SERVICE_ENDPOINT:
     'https://dei-node-service.herokuapp.com/mail-service/sendmail',
+  // MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service/sendmail',
   BASE_PREMIUM: 99.98,
   CP_LIMIT_ONE: 30,
   CP_LIMIT_TWO: 75,
@@ -28,16 +29,16 @@ export const quoteValidationErrorMessages = {
     { type: 'required', message: '*Please enter phone' },
     { type: 'pattern', message: '*Please provide valid phone' },
   ],
-  company_size: [
+  companySize: [
     { type: 'required', message: '*Please enter company size' },
     { type: 'min', message: '*Company Size must be at least 1' },
   ],
   position: [{ type: 'required', message: '*Please select position' }],
-  website_url: [
+  websiteUrl: [
     { type: 'required', message: '*Please enter website url' },
     { type: 'pattern', message: '*Please provide valid website url' },
   ],
-  company_name: [{ type: 'required', message: '*Please enter company name' }],
+  companyName: [{ type: 'required', message: '*Please enter company name' }],
 };
 
 export const siteKey = '6Le4OhkaAAAAAHlSqTn2MuAN8vsgE9DUaZjPaa6n';

@@ -8,7 +8,7 @@ import {
 } from '../../interfaces/get-quote.model';
 import MonthlyPriceComponent from '../monthly-price/monthly-price.component';
 import { constants, siteKey, patterns } from '../../constants';
-import { useStyles } from '../../utils';
+import { calculateMonthlyAmount, useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import '../../assets/scss/styles.scss';
 import './get-quote.component.scss';
@@ -27,11 +27,11 @@ const GetQuoteComponent: React.FC<any> = (
     lastname: '',
     email: '',
     phone: '',
-    company_size: 0,
+    companySize: 0,
     position: '',
-    website_url: '',
-    company_name: '',
-    monthly_cost: 0,
+    websiteUrl: '',
+    companyName: '',
+    monthlyCost: 0,
     captchaValue: '',
     isFormSubmitted: false,
     isLeadDataSent: false,
@@ -78,8 +78,8 @@ const GetQuoteComponent: React.FC<any> = (
     if (!captchaValue) {
       return;
     } else {
-      quoteData.monthly_cost = size * constants.COMPANY_SIZE;
-      // quoteData = sanitizeInput(quoteData);
+      const monthlyPremium = calculateMonthlyAmount(size);
+      quoteData.monthlyCost = monthlyPremium && +monthlyPremium.toFixed(2);
       sendMail(quoteData).then(
         () => {
           setQuoteState((prevState) => {
@@ -110,7 +110,6 @@ const GetQuoteComponent: React.FC<any> = (
 
   //handle company size change event
   const onChangeHandler = (event: React.FormEvent<EventTarget>) => {
-    console.log('test', event);
     const target = event.target as HTMLInputElement;
     companysize = target && target.value;
     setCompanySize(+companysize);
@@ -172,7 +171,7 @@ const GetQuoteComponent: React.FC<any> = (
           <div className="company-information">
             <TextBox
               register={register}
-              name={'company_name'}
+              name={'companyName'}
               placeholder={'e.g. JohnDoe and co.'}
               label_name={'Company Name'}
               maxlength={70}
@@ -190,7 +189,7 @@ const GetQuoteComponent: React.FC<any> = (
               <Fragment>
                 <TextBox
                   register={register}
-                  name={'company_size'}
+                  name={'companySize'}
                   placeholder={'0'}
                   label_name={'Company Size'}
                   type={'number'}
@@ -232,7 +231,7 @@ const GetQuoteComponent: React.FC<any> = (
             {fromPage !== 'branding' ? (
               <TextBox
                 register={register}
-                name={'website_url'}
+                name={'websiteUrl'}
                 placeholder={'e.g. https://www.company.com'}
                 label_name={'Current website URL'}
                 pattern={patterns.website_url}

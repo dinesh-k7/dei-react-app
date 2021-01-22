@@ -18,28 +18,28 @@
     padding: 5px;
     cursor: pointer;
     border: none;
-    font-family: 'OpenSansBold';
+    font-family: 'OpenSansBold', sans-serif;
   }
   .lead_success {
     color: #49e59a;
-    font-family: 'OpenSansBold';
+    font-family: 'OpenSansBold', sans-serif;
     font-size: var(--font-size3);
     text-align: center;
   }
   .price {
-    font-family: 'MontFont';
+    font-family: 'MontFont', sans-serif;
     font-weight: var(--font-weight900);
     font-size: 6.25em;
   }
   .label {
     font-size: 1.875em;
     font-weight: var(--font-weight800);
-    font-family: 'OpenSansBold';
+    font-family: 'OpenSansBold', sans-serif;
   }
 
   p {
     color: #ff3f3f;
-    font-family: 'OpenSansRegular';
+    font-family: 'OpenSansRegular', sans-serif;
   }
   h4,
   div {
@@ -79,7 +79,7 @@
       margin-left: 10px;
     }
     .price {
-      font-family: 'MontFont';
+      font-family: 'MontFont', sans-serif;
       font-weight: var(--font-weight900);
       font-size: 2.5em;
     }
@@ -87,7 +87,7 @@
     .label {
       font-size: 1.75em;
       font-weight: var(--font-weight900);
-      font-family: 'OpenSansBold';
+      font-family: 'OpenSansBold', sans-serif;
     }
   }
 }

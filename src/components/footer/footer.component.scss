@@ -62,7 +62,7 @@
       }
     }
     p {
-      font-family: 'OpenSansRegular';
+      font-family: 'OpenSansRegular', sans-serif;
       font-size: var(--font-size2);
       font-weight: var(--font-weight400);
       text-align: right;
@@ -72,13 +72,13 @@
   .contactus-title {
     font-size: var(--font-size3);
     font-weight: var(--font-family900);
-    font-family: 'MontFont';
+    font-family: 'MontFont', sans-serif;
   }
 
   .contactus-container {
     span {
       font-weight: var(--font-family600);
-      font-family: 'OpenSansSemiBold';
+      font-family: 'OpenSansSemiBold', sans-serif;
       font-size: var(--font-size2);
     }
   }
