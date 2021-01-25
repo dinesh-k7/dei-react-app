@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from '../header/header.component';
 import Footer from '../footer/footer.component';
 import DataSecurityPage from '../../pages/data-security/data-security-page';
+import BrandingPage from '../../pages/branding/branding-page';
 import '../../assets/scss/styles.scss';
 
 const App: React.FC = () => {
@@ -13,6 +14,9 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path="/">
           <DataSecurityPage />
+        </Route>
+        <Route exact path="/branding">
+          <BrandingPage />
         </Route>
       </Switch>
       <Footer />
