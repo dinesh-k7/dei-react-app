@@ -4,6 +4,15 @@ import { constants } from '../../constants';
 import { IGetQuoteModel } from '../../interfaces/get-quote.model';
 
 // eslint-disable-next-line
-export const sendMail = (quoteData: IGetQuoteModel): Promise<any> => {
-  return axios.post(constants.MAIL_SERVICE_ENDPOINT, quoteData);
+export const sendMail = (
+  quoteData: IGetQuoteModel,
+  fromPage: string,
+): Promise<any> => {
+  let url;
+  if (fromPage === 'branding') {
+    url = `${constants.MAIL_SERVICE_ENDPOINT}/branding-quote/sendmail`;
+  } else {
+    url = `${constants.MAIL_SERVICE_ENDPOINT}/sendmail`;
+  }
+  return axios.post(url, quoteData);
 };

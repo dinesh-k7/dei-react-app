@@ -25,7 +25,7 @@ const TextBox: any = ({
         id={name}
         placeholder={placeholder}
         maxLength={maxlength ? maxlength : ''}
-        onChange={onChangeHandler}
+        onChange={info_icon && onChangeHandler}
         ref={register({
           required: filterErrorMessage(
             quoteValidationErrorMessages[name],

@@ -1,10 +1,6 @@
 import { makeStyles } from '@material-ui/core';
-import createDOMPurify from 'dompurify';
 
-import { IGetQuoteModel } from '../interfaces/get-quote.model';
 import { constants } from '../constants';
-
-const DOMPurify = createDOMPurify(window);
 
 interface IErrorMessageModel {
   type: string;
@@ -21,18 +17,6 @@ export const filterErrorMessage = (
     errorMessages.find((msg: IErrorMessageModel) => msg.type === vType);
 
   return filteredMessage ? filteredMessage.message : '';
-};
-
-// Function to sanitize user input to prevent XSS attack
-export const sanitizeInput = (quoteData: IGetQuoteModel): any => {
-  if (quoteData && Object.keys(quoteData).length) {
-    const sanitizedData = Object.keys(quoteData).map((objKey) => {
-      return {
-        [objKey]: DOMPurify.sanitize(quoteData.companyName),
-      };
-    });
-    return sanitizedData;
-  }
 };
 
 // React Material style

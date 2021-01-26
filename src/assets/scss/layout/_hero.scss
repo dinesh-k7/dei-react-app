@@ -1,8 +1,18 @@
 @import '../styles.scss';
 .hero-section {
   @include respond-below(sm) {
-    .hero-title p:first-of-type {
-      padding-top: 0.25em;
+    .hero-title {
+      p:first-of-type {
+        padding-top: 0.25em;
+      }
+      h1 {
+        font-size: 50px !important;
+      }
+      .hero-subtitle-container {
+        h3 {
+          font-size: var(--font-size4) !important;
+        }
+      }
     }
   }
 

@@ -99,7 +99,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    width: 95vw;
+    width: 97vw;
   }
   .logo {
     padding: 20px 0px 10px 15px;
@@ -130,7 +130,11 @@
     .personal-information,
     .company-information {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr !important;
+    }
+
+    .branding-text-area {
+      grid-column: 1/-1;
     }
 
     .form-container {
@@ -207,14 +211,11 @@
     display: grid;
     grid-template-columns: 1fr !important;
   }
+  .branding-text-area {
+    grid-column: 1/-1;
+  }
   .form-container .info-icon {
     margin-left: 45% !important;
     margin-top: 5% !important;
-  }
-}
-
-@include respond-below(md) {
-  .branding-container {
-    display: none !important;
   }
 }
