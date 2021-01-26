@@ -15,7 +15,7 @@ const App: React.FC = () => {
         <Route exact path="/">
           <DataSecurityPage />
         </Route>
-        <Route exact path="/branding">
+        <Route path="/branding">
           <BrandingPage />
         </Route>
       </Switch>
