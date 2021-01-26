@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 
-import heroImage from '../../../assets/images/branding.svg';
-import '../../../assets/scss/styles.scss';
+import heroImage from '../../../../assets/images/branding.svg';
+import '../../../../assets/scss/styles.scss';
 import './hero-container.scss';
-import serviceCoral from '../../../assets/images/service_coral.svg';
+import serviceCoral from '../../../../assets/images/service_coral.svg';
 
 const HeroContainer: React.FC = (): ReactElement => {
   return (

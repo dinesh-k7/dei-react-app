@@ -1,20 +1,9 @@
 import React, { ReactElement } from 'react';
-import { Backdrop, CircularProgress } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 
-import { messages } from '../../constants';
-import ErrorMessageContainer from '../container/error-message.container';
 import { calculateMonthlyAmount } from '../../utils';
 import './monthly-price.component.scss';
 import '../../assets/scss/styles.scss';
-
-// Back drop styles
-const useStyles = makeStyles((theme) => ({
-  backdrop: {
-    zIndex: theme.zIndex.drawer + 1,
-    color: '#fff',
-  },
-}));
+import GetQuoteButton from '../form-element/get-quote-button';
 
 // eslint-disable-next-line
 const MonthlyPriceComponent = ({
@@ -24,13 +13,6 @@ const MonthlyPriceComponent = ({
   errors,
   quoteState,
 }: any): ReactElement => {
-  const {
-    captchaValue,
-    isFormSubmitted,
-    isLeadDataSent,
-    isSendMailError,
-  } = quoteState;
-  const classes = useStyles();
   const monthlyPremium = calculateMonthlyAmount(size);
   return (
     <div className="monthly-price">
@@ -48,37 +30,12 @@ const MonthlyPriceComponent = ({
         </div>
       </div>
 
-      {!isLeadDataSent && (
-        <button
-          type="button"
-          className={`btn-data-security ${
-            isFormSubmitted && !isLeadDataSent && captchaValue ? 'btn-grey' : ''
-          } ${isLeadDataSent ? 'btn-green' : ''} `}
-          onClick={handleSubmit(onSubmit)}
-        >
-          {isLeadDataSent ? 'Start Over' : 'Get a Quote'}
-        </button>
-      )}
-      {isLeadDataSent && (
-        <button
-          type="button"
-          className="btn-data-security btn-green"
-          onClick={() => window.location.reload(false)}
-        >
-          Start Over
-        </button>
-      )}
-      {isFormSubmitted && !isLeadDataSent && captchaValue && (
-        <Backdrop className={classes.backdrop} open={true}>
-          <CircularProgress disableShrink />
-        </Backdrop>
-      )}
-      {errors && <ErrorMessageContainer {...errors} />}
-      {!captchaValue && isFormSubmitted && <p>{messages.captcha_error}</p>}
-      {isSendMailError && <p>{messages.mail_send_error}</p>}
-      {isLeadDataSent && (
-        <p className="lead_success">{messages.lead_success}</p>
-      )}
+      <GetQuoteButton
+        quoteState={quoteState}
+        handleSubmit={handleSubmit}
+        errors={errors}
+        onSubmit={onSubmit}
+      />
     </div>
   );
 };

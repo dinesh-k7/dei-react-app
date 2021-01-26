@@ -1,10 +1,15 @@
 import React, { ReactElement } from 'react';
+import { IBrandingQuoteModel } from '../../../interfaces/branding-quote.model';
 
-const BrandingDetailContainer = (): ReactElement => {
+import GetQuoteButton from '../../form-element/get-quote-button';
+import './branding-detail.container.scss';
+
+const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
+  const { handleSubmit, quoteState, errors, onSubmit } = props;
   return (
     <div className="branding-container">
       <div className="technical-info">
-        <h4>Technical info </h4>
+        <h4>Technical work </h4>
         <span>Pick words/adjectives that best describe your business</span>
         <div className="word-grid">
           <div className="box"> Word </div>
@@ -59,9 +64,12 @@ const BrandingDetailContainer = (): ReactElement => {
         <h4> Starting from</h4>
         <span className="price">$500</span>
         <div>
-          <button type="button" className="">
-            Get a Quote
-          </button>
+          <GetQuoteButton
+            quoteState={quoteState}
+            handleSubmit={handleSubmit}
+            errors={errors}
+            onSubmit={onSubmit}
+          />
         </div>
       </div>
     </div>

@@ -1,13 +1,10 @@
-import React, { Fragment, ReactElement, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-import {
-  IGetQuoteModel,
-  IGetQuoteProps,
-} from '../../interfaces/get-quote.model';
+import { IGetQuoteProps } from '../../interfaces/get-quote.model';
 import MonthlyPriceComponent from '../monthly-price/monthly-price.component';
-import { constants, siteKey, patterns } from '../../constants';
+import { constants, siteKey } from '../../constants';
 import { calculateMonthlyAmount, useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import '../../assets/scss/styles.scss';
@@ -17,27 +14,36 @@ import info_icon from '../../assets/images/info_icon.png';
 import SelectBox from '../form-element/select-box';
 import TextBox from '../form-element/text-box';
 import MultiText from '../form-element/multi-text';
-import BrandingDetailContainer from '../container/branding-detail.container';
+import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
 
 const GetQuoteComponent: React.FC<any> = (
   props: IGetQuoteProps,
 ): ReactElement => {
-  const INITIAL_STATE: IGetQuoteModel = {
-    name: '',
-    lastname: '',
-    email: '',
-    phone: '',
-    companySize: 0,
-    position: '',
-    websiteUrl: '',
-    companyName: '',
-    monthlyCost: 0,
+  let INITIAL_STATE: any = {
     captchaValue: '',
     isFormSubmitted: false,
     isLeadDataSent: false,
     isSendMailError: false,
   };
-  const { register, handleSubmit, errors } = useForm();
+  const { formFields } = props;
+  const state = {};
+
+  formFields &&
+    formFields.length &&
+    formFields.forEach((field) => {
+      if (
+        field.type === 'text' ||
+        field.type === 'select' ||
+        field.type === 'textarea'
+      ) {
+        state[field.name] = '';
+      } else if (field.type === 'number') {
+        state[field.name] = 0;
+      }
+    });
+  INITIAL_STATE = { ...state, ...INITIAL_STATE };
+
+  const { register, handleSubmit, errors, control } = useForm();
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
   const [size, setCompanySize] = useState(0);
   const [captcha, setCaptcha] = useState({});
@@ -53,22 +59,23 @@ const GetQuoteComponent: React.FC<any> = (
   };
 
   // Function to handle select callback
-  const handleSelect = (event: React.FormEvent<EventTarget>) => {
-    const target = event.target as HTMLInputElement;
-    setQuoteState((prevState) => {
-      return {
-        ...prevState,
-        position: target.value,
-      };
-    });
-  };
+  // const handleSelect = (event: React.FormEvent<EventTarget>) => {
+
+  //   const target = event.target as HTMLInputElement;
+  //   setQuoteState((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       position: target.value,
+  //     };
+  //   });
+  // };
 
   // handle get quote form onSubmit
-  const onSubmit = (quoteData: IGetQuoteModel) => {
+  const onSubmit = (quoteData: any) => {
     const { captchaValue } = quoteData;
-    const { position } = quoteState;
+
     quoteData.isFormSubmitted = true;
-    quoteData.position = position;
+
     setQuoteState((prevState) => {
       return {
         ...prevState,
@@ -80,7 +87,7 @@ const GetQuoteComponent: React.FC<any> = (
     } else {
       const monthlyPremium = calculateMonthlyAmount(size);
       quoteData.monthlyCost = monthlyPremium && +monthlyPremium.toFixed(2);
-      sendMail(quoteData).then(
+      sendMail(quoteData, fromPage).then(
         () => {
           setQuoteState((prevState) => {
             return {
@@ -114,7 +121,7 @@ const GetQuoteComponent: React.FC<any> = (
     companysize = target && target.value;
     setCompanySize(+companysize);
   };
-  const { captchaValue, position, isLeadDataSent } = quoteState;
+  const { captchaValue, isLeadDataSent } = quoteState;
 
   if (isLeadDataSent) {
     resetCaptcha();
@@ -132,146 +139,87 @@ const GetQuoteComponent: React.FC<any> = (
         <h4>Personal Information</h4>
         <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
           <div className="personal-information">
-            <TextBox
-              register={register}
-              name={'name'}
-              placeholder={'e.g. John'}
-              label_name={'Name'}
-              maxlength={50}
-            />
-
-            <TextBox
-              register={register}
-              name={'lastname'}
-              placeholder={'e.g. Doe'}
-              label_name={'Last Name'}
-              maxlength={50}
-            />
-
-            <TextBox
-              register={register}
-              name={'email'}
-              placeholder={'e.g. johndoe@email.com'}
-              label_name={'E-mail'}
-              maxlength={50}
-              pattern={patterns.email}
-            />
-
-            <TextBox
-              register={register}
-              name={'phone'}
-              placeholder={'e.g. 123456789'}
-              label_name={'Phone Number'}
-              maxlength={15}
-              pattern={patterns.phone}
-            />
+            {formFields &&
+              formFields.length &&
+              formFields.map((field, idx) => {
+                if (field.section === 'personal' && field.type === 'text') {
+                  return (
+                    <TextBox
+                      key={idx}
+                      register={register}
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      label_name={field.label}
+                      maxlength={50}
+                      required={field.required}
+                      pattern={field.pattern}
+                    />
+                  );
+                }
+              })}
           </div>
 
           <h4>Company Information</h4>
           <div className="company-information">
-            <TextBox
-              register={register}
-              name={'companyName'}
-              placeholder={'e.g. JohnDoe and co.'}
-              label_name={'Company Name'}
-              maxlength={70}
-            />
-
-            {fromPage === 'branding' ? (
-              <TextBox
-                register={register}
-                name={'slogan'}
-                placeholder={'e.g. Think different'}
-                label_name={'Slogan'}
-                type={'text'}
-              />
-            ) : (
-              <Fragment>
-                <TextBox
-                  register={register}
-                  name={'companySize'}
-                  placeholder={'0'}
-                  label_name={'Company Size'}
-                  type={'number'}
-                  onChangeHandler={onChangeHandler}
-                  min={1}
-                  info_icon={info_icon}
-                />
-              </Fragment>
-            )}
-
-            {fromPage === 'branding' ? (
-              <SelectBox
-                position={position}
-                className={classes}
-                variant={'outlined'}
-                name={'industry'}
-                id={'industry'}
-                handleSelect={handleSelect}
-                label_name={'Industry'}
-                options={constants.INDUSTRIES}
-                placeholder={'e.g. Accounting'}
-              ></SelectBox>
-            ) : (
-              ''
-            )}
-
-            <SelectBox
-              position={position}
-              className={classes}
-              variant={'outlined'}
-              name={'position'}
-              id={'position'}
-              handleSelect={handleSelect}
-              label_name={'Your position in company'}
-              options={constants.POSITION}
-              placeholder={'e.g. Project Manager'}
-            ></SelectBox>
-
-            {fromPage !== 'branding' ? (
-              <TextBox
-                register={register}
-                name={'websiteUrl'}
-                placeholder={'e.g. https://www.company.com'}
-                label_name={'Current website URL'}
-                pattern={patterns.website_url}
-              />
-            ) : (
-              ''
-            )}
-
-            {fromPage === 'branding' && (
-              <MultiText
-                register={register}
-                name={'target_audience'}
-                placeholder={'e.g. Accounting'}
-                label_name={'What is your target audience'}
-                maxlength={500}
-                class_name={'branding-text-area'}
-              />
-            )}
-
-            {fromPage === 'branding' && (
-              <MultiText
-                register={register}
-                name={'about_company'}
-                placeholder={'e.g. Accounting'}
-                label_name={'Tell us about your company'}
-                maxlength={500}
-                class_name={'branding-text-area'}
-              />
-            )}
-
-            {fromPage === 'branding' && (
-              <MultiText
-                register={register}
-                name={'comment'}
-                placeholder={'e.g. comment'}
-                label_name={'Additional comment'}
-                maxlength={500}
-                class_name={'branding-text-area'}
-              />
-            )}
+            {formFields &&
+              formFields.length &&
+              formFields.map((field, idx) => {
+                if (
+                  field.section === 'company' &&
+                  (field.type === 'text' || field.type === 'number')
+                ) {
+                  return (
+                    <TextBox
+                      key={idx}
+                      register={register}
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      label_name={field.label}
+                      maxlength={50}
+                      required={field.required}
+                      pattern={field.pattern}
+                      type={field.type}
+                      info_icon={field.name === 'companySize' ? info_icon : ''}
+                      onChangeHandler={onChangeHandler}
+                    />
+                  );
+                } else if (
+                  field.section === 'company' &&
+                  field.type === 'select'
+                ) {
+                  return (
+                    <SelectBox
+                      value={quoteState[field.name]}
+                      key={idx}
+                      className={classes}
+                      variant={'outlined'}
+                      name={field.name}
+                      id={field.name}
+                      // handleSelect={handleSelect}
+                      label_name={field.label}
+                      options={constants.INDUSTRIES}
+                      placeholder={field.placeholder}
+                      control={control}
+                      error={!!errors[quoteState[field.name]]}
+                    ></SelectBox>
+                  );
+                } else if (
+                  field.section === 'company' &&
+                  field.type === 'textarea'
+                ) {
+                  return (
+                    <MultiText
+                      key={idx}
+                      register={register}
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      label_name={field.label}
+                      maxlength={500}
+                      class_name={'branding-text-area'}
+                    />
+                  );
+                }
+              })}
           </div>
           <div className="form-group recaptcha-container">
             <ReCAPTCHA
@@ -307,7 +255,14 @@ const GetQuoteComponent: React.FC<any> = (
           onSubmit={onSubmit}
         />
       )}
-      {fromPage === 'branding' && <BrandingDetailContainer />}
+      {fromPage === 'branding' && (
+        <BrandingDetailContainer
+          handleSubmit={handleSubmit}
+          quoteState={quoteState}
+          errors={errors}
+          onSubmit={onSubmit}
+        />
+      )}
     </section>
   );
 };
