@@ -1,6 +1,9 @@
 @import '../../../assets/scss/styles.scss';
 
 .branding-container {
+  .sticky-content {
+    display: grid;
+  }
   .keyword-input {
     width: 100%;
     outline: none;
