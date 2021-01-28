@@ -1,6 +1,30 @@
 @import '../../../assets/scss/styles.scss';
 
 .branding-container {
+  .keyword-input {
+    width: 100%;
+    outline: none;
+    color: var(--font-color);
+    height: 40px;
+    font-family: 'OpenSansRegular', sans-serif;
+    padding-left: 0.625em;
+  }
+
+  .picker-border {
+    border: 2px solid #2c3e50;
+  }
+
+  .plus-icon {
+    position: absolute;
+    margin-left: 100px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  input[type='text']:focus {
+    border: 1px solid #42b9f8 !important;
+    box-shadow: 0 0 4px #42b9f8 !important;
+  }
   display: grid;
   margin: 75px 0px 0px 35px;
   .technical-info,
@@ -18,7 +42,7 @@
     grid-template-columns: 126px 126px 126px 126px;
     margin-top: 8px;
     grid-gap: 8px 8px;
-    div {
+    div.box {
       height: 40px;
       text-align: center;
       padding-top: 10px;
@@ -26,12 +50,13 @@
       font-weight: var(--font-weight400);
       font-family: 'OpenSansRegular', sans-serif;
       color: #2c3e50;
+      cursor: pointer;
     }
-    .box:nth-of-type(odd) {
+    .keyword-active {
       background: #ff7d7d;
     }
 
-    .box:nth-of-type(even) {
+    .keyword-inactive {
       background-color: #e3e3e3;
     }
   }
@@ -43,45 +68,55 @@
       grid-template-columns: repeat(5, 100px);
       grid-gap: 8px 8px;
       margin-top: 8px;
+      input {
+        position: absolute;
+        left: -99999px;
+      }
       div {
         width: 100px;
-        height: 100px;
+        cursor: pointer;
       }
-      .color-picker-image:nth-of-type(1) {
-        background-image: url('../../../assets/images/color_picker_one.svg');
+      .color-picker-image label {
+        cursor: pointer;
       }
-      .color-picker-image:nth-of-type(2) {
-        background-image: url('../../../assets/images/color_picker_two.svg');
+
+      .c-picker-a-img::after {
+        content: url('../../../assets/images/color_picker_one.svg');
       }
-      .color-picker-image:nth-of-type(3) {
-        background-image: url('../../../assets/images/color_picker_three.svg');
+
+      .c-picker-b-img::after {
+        content: url('../../../assets/images/color_picker_two.svg');
       }
-      .color-picker-image:nth-of-type(4) {
-        background-image: url('../../../assets/images/color_picker_four.svg');
+
+      .c-picker-c-img::after {
+        content: url('../../../assets/images/color_picker_three.svg');
       }
-      .color-picker-image:nth-of-type(5) {
-        background-image: url('../../../assets/images/color_picker_five.svg');
+      .c-picker-d-img::after {
+        content: url('../../../assets/images/color_picker_four.svg');
       }
-      .color-picker-image:nth-of-type(6) {
-        background-image: url('../../../assets/images/color_picker_six.svg');
+      .c-picker-e-img::after {
+        content: url('../../../assets/images/color_picker_five.svg');
       }
-      .color-picker-image:nth-of-type(7) {
-        background-image: url('../../../assets/images/color_picker_seven.svg');
+      .c-picker-f-img::after {
+        content: url('../../../assets/images/color_picker_six.svg');
       }
-      .color-picker-image:nth-of-type(8) {
-        background-image: url('../../../assets/images/color_picker_eight.svg');
+      .c-picker-g-img::after {
+        content: url('../../../assets/images/color_picker_seven.svg');
       }
-      .color-picker-image:nth-of-type(9) {
-        background-image: url('../../../assets/images/color_picker_nine.svg');
+      .c-picker-h-img::after {
+        content: url('../../../assets/images/color_picker_eight.svg');
       }
-      .color-picker-image:nth-of-type(10) {
-        background-image: url('../../../assets/images/color_picker_ten.svg');
+      .c-picker-i-img::after {
+        content: url('../../../assets/images/color_picker_nine.svg');
       }
-      .color-picker-image:nth-of-type(11) {
-        background-image: url('../../../assets/images/color_picker_eleven.svg');
+      .c-picker-j-img::after {
+        content: url('../../../assets/images/color_picker_ten.svg');
       }
-      .color-picker-image:nth-of-type(12) {
-        background-image: url('../../../assets/images/color_picker_design.svg');
+      .c-picker-k-img::after {
+        content: url('../../../assets/images/color_picker_eleven.svg');
+      }
+      .c-picker-l-img::after {
+        content: url('../../../assets/images/color_picker_design.svg');
       }
     }
   }
@@ -93,17 +128,20 @@
       grid-template-columns: repeat(5, 100px);
       grid-gap: 8px 8px;
       margin-top: 8px;
-      div {
-        width: 100px;
-        height: 100px;
+      input {
+        position: absolute;
+        left: -99999px;
       }
       div {
         width: 100px;
         height: 100px;
       }
-      .logo-picker {
-        background-image: url('../../../assets//images/pick-logo.svg');
-        background-repeat: no-repeat;
+
+      .logo-picker label {
+        cursor: pointer;
+      }
+      .logo-picker img::after {
+        content: url('../../../assets//images/pick-logo.svg');
       }
     }
   }
@@ -138,7 +176,24 @@
 
 @include respond-below(sm) {
   .branding-container {
-    margin: 40px 0px 0px 16px !important;
+    margin: 40px 0px 0px 0px !important;
+    .plus-icon {
+      margin-left: 42% !important;
+    }
+    .keyword-input {
+      height: 40px !important;
+      padding-left: 0px !important;
+    }
+    .technical-info,
+    .color-palette,
+    .pick-logo {
+      padding-left: 8px;
+    }
+    .sticky-content {
+      h4 {
+        justify-self: start !important;
+      }
+    }
   }
 }
 
@@ -172,11 +227,17 @@
 
 @include respond-below(xs) {
   .branding-container {
+    .plus-icon {
+      margin-left: 40% !important;
+    }
+    ::placeholder {
+      padding-left: 8px;
+    }
     .word-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      margin: 8px 8px 0px 0px;
-      grid-gap: 8px 8px;
+      margin: 10px 0px 0px 0px;
+      grid-gap: 10px 10px;
     }
 
     .color-palette {
@@ -201,6 +262,9 @@
 
 @include respond-between(sm, md) {
   .branding-container {
+    .plus-icon {
+      margin-left: 130px !important;
+    }
     .word-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;

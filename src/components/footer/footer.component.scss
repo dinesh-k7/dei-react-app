@@ -43,13 +43,18 @@
       .phone-icon {
         display: grid;
         grid-template-columns: 12vw 1fr;
-        padding-top: 12px;
+        padding-top: 16px;
       }
     }
     .footer-content {
       span:first-child {
         display: block;
         padding-top: var(--font-size2);
+      }
+    }
+    .footer-social-wrapper {
+      .copyright-text {
+        padding-left: 2px;
       }
     }
 

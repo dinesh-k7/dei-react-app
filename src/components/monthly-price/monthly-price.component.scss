@@ -42,37 +42,11 @@
       display: grid;
       grid-template-columns: 1fr;
     }
-    .sticky-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-row: 5/6;
-      background-color: #f8f8f8;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      height: 70px;
-      h4 {
-        align-self: center;
-        text-align: left;
-        font-size: var(--font-size1);
-        font-weight: var(--font-weight700);
-        padding-left: 8px !important;
-      }
-      div {
-        align-self: center;
-        justify-self: end;
-        padding-right: 0.938em;
-      }
-    }
+
     .btn-data-security {
       width: 95vw;
       margin-top: var(--font-size1);
       margin-left: 10px;
-    }
-    .price {
-      font-family: 'MontFont', sans-serif;
-      font-weight: var(--font-weight900);
-      font-size: 2.5em;
     }
 
     .label {

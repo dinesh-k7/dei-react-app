@@ -3,4 +3,7 @@ export interface IBrandingQuoteModel {
   quoteState: any;
   errors: any;
   onSubmit: any;
+  register: any;
+  handleBrandingState: any;
+  onError: any;
 }

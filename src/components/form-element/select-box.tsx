@@ -41,8 +41,8 @@ const SelectBox: any = ({
                 options.length &&
                 options.map((option, idx) => {
                   return (
-                    <MenuItem key={idx} value={option}>
-                      {option}
+                    <MenuItem key={idx} value={option.name}>
+                      {option.name}
                     </MenuItem>
                   );
                 })}
