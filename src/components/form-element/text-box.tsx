@@ -19,38 +19,63 @@ const TextBox: any = ({
   return (
     <div className="form-group">
       <label htmlFor={name}>{label_name}</label>
-      <input
-        type={type ? type : 'text'}
-        name={name}
-        id={name}
-        placeholder={placeholder}
-        maxLength={maxlength ? maxlength : ''}
-        onChange={info_icon && onChangeHandler}
-        ref={register({
-          required: filterErrorMessage(
-            quoteValidationErrorMessages[name],
-            'required',
-          ),
-          pattern: pattern
-            ? {
-                value: pattern,
-                message: filterErrorMessage(
-                  quoteValidationErrorMessages[name],
-                  'pattern',
-                ),
-              }
-            : '',
-          min: min
-            ? {
-                value: min,
-                message: filterErrorMessage(
-                  quoteValidationErrorMessages[name],
-                  'min',
-                ),
-              }
-            : '',
-        })}
-      />
+      {type === 'number' ? (
+        <input
+          type={'number'}
+          name={name}
+          id={name}
+          placeholder={placeholder}
+          maxLength={maxlength ? maxlength : ''}
+          onChange={onChangeHandler}
+          ref={register({
+            required: filterErrorMessage(
+              quoteValidationErrorMessages[name],
+              'required',
+            ),
+
+            min: {
+              value: 1,
+              message: filterErrorMessage(
+                quoteValidationErrorMessages[name],
+                'min',
+              ),
+            },
+          })}
+        />
+      ) : (
+        <input
+          type={'text'}
+          name={name}
+          id={name}
+          placeholder={placeholder}
+          maxLength={maxlength ? maxlength : ''}
+          ref={register({
+            required: filterErrorMessage(
+              quoteValidationErrorMessages[name],
+              'required',
+            ),
+            pattern: pattern
+              ? {
+                  value: pattern,
+                  message: filterErrorMessage(
+                    quoteValidationErrorMessages[name],
+                    'pattern',
+                  ),
+                }
+              : '',
+            min: min
+              ? {
+                  value: min,
+                  message: filterErrorMessage(
+                    quoteValidationErrorMessages[name],
+                    'min',
+                  ),
+                }
+              : '',
+          })}
+        />
+      )}
+
       {info_icon && (
         <div
           className="info-icon"

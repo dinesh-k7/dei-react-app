@@ -18,15 +18,20 @@ const GetQuoteButton: any = ({
   handleSubmit,
   onSubmit,
   errors,
+  brandingState,
+  onError,
+  fromPage,
 }): ReactElement => {
   const {
     captchaValue,
     isFormSubmitted,
     isLeadDataSent,
     isSendMailError,
+    isButtonSubmit,
   } = quoteState;
   const classes = useStyles();
 
+  const errorKeys = Object.keys(errors);
   return (
     <Fragment>
       {!isLeadDataSent && (
@@ -35,7 +40,7 @@ const GetQuoteButton: any = ({
           className={`btn-data-security ${
             isFormSubmitted && !isLeadDataSent && captchaValue ? 'btn-grey' : ''
           } ${isLeadDataSent ? 'btn-green' : ''} `}
-          onClick={handleSubmit(onSubmit)}
+          onClick={handleSubmit(onSubmit, onError)}
         >
           {isLeadDataSent ? 'Start Over' : 'Get a Quote'}
         </button>
@@ -55,6 +60,30 @@ const GetQuoteButton: any = ({
         </Backdrop>
       )}
       {errors && <ErrorMessageContainer {...errors} />}
+      {brandingState &&
+      !brandingState.colorPicker &&
+      fromPage === 'branding' &&
+      (isButtonSubmit || errorKeys.length) ? (
+        <p className="error_message">{messages.color_picker_error}</p>
+      ) : (
+        ''
+      )}
+      {brandingState &&
+      !brandingState.logoPicker.length &&
+      fromPage === 'branding' &&
+      (isButtonSubmit || errorKeys.length) ? (
+        <p className="error_message">{messages.logo_picker_error}</p>
+      ) : (
+        ''
+      )}
+      {brandingState &&
+      brandingState.keywords.length < 2 &&
+      fromPage === 'branding' &&
+      (isButtonSubmit || errorKeys.length) ? (
+        <p className="error_message">{messages.keywords_error}</p>
+      ) : (
+        ''
+      )}
       {!captchaValue && isFormSubmitted && (
         <p className="error_message">{messages.captcha_error}</p>
       )}

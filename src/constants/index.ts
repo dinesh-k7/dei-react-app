@@ -1,9 +1,13 @@
 export const constants = {
   COMPANY_SIZE: 4,
-  POSITION: ['CEO/Decision-maker', 'VP/Director', 'Manager/Inquirer'],
+  POSITION: [
+    { id: 1, name: 'CEO/Decision-maker' },
+    { id: 2, name: 'VP/Director' },
+    { id: 3, name: 'Manager/Inquirer' },
+  ],
   INDUSTRIES: ['Accounting', 'Finance', 'IT', 'Marketing'],
   MAIL_SERVICE_ENDPOINT: 'https://dei-node-service.herokuapp.com/mail-service',
-  // MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service',
+  //MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service',
   BASE_PREMIUM: 99.98,
   CP_LIMIT_ONE: 30,
   CP_LIMIT_TWO: 75,
@@ -51,7 +55,7 @@ export const quoteValidationErrorMessages = {
 export const siteKey = '6Le4OhkaAAAAAHlSqTn2MuAN8vsgE9DUaZjPaa6n';
 
 export const patterns = {
-  email: /^([\w.-]+)@(\[(\d{1,3}\.){3}|(?!hotmail|googlemail|yahoo|gmx|ymail|outlook|bluewin|protonmail|t\-online|web\.|online\.|aol\.|live\.)(([a-zA-Z\d-]+\.)+))([a-zA-Z]{2,4}|\d{1,3})(\]?)$/i,
+  email: /^([\w.-]+)@(\[(\d{1,3}\.){3}|(?!hotmail|gmail|googlemail|yahoo|gmx|ymail|outlook|bluewin|protonmail|t\-online|web\.|online\.|aol\.|live\.)(([a-zA-Z\d-]+\.)+))([a-zA-Z]{2,4}|\d{1,3})(\]?)$/i,
   website_url: /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/i,
   phone: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/i,
 };
@@ -60,6 +64,9 @@ export const messages = {
   lead_success: 'Your request is sent!',
   captcha_error: 'ReCAPTCHA Error',
   mail_send_error: 'Error in processing Get Quote. Please try later.',
+  color_picker_error: '*Please pick color',
+  logo_picker_error: '*Please select logo',
+  keywords_error: '*Please select atleast two keywords',
 };
 
 export const dataSecurityFormFields = [

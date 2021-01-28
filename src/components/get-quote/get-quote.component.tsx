@@ -15,6 +15,7 @@ import SelectBox from '../form-element/select-box';
 import TextBox from '../form-element/text-box';
 import MultiText from '../form-element/multi-text';
 import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
+import { apparel } from '../../constants/industry-option';
 
 const GetQuoteComponent: React.FC<any> = (
   props: IGetQuoteProps,
@@ -24,6 +25,8 @@ const GetQuoteComponent: React.FC<any> = (
     isFormSubmitted: false,
     isLeadDataSent: false,
     isSendMailError: false,
+    isBrandingDetailSubmitted: false,
+    isButtonSubmit: false,
   };
   const { formFields } = props;
   const state = {};
@@ -58,23 +61,56 @@ const GetQuoteComponent: React.FC<any> = (
     }
   };
 
-  // Function to handle select callback
-  // const handleSelect = (event: React.FormEvent<EventTarget>) => {
+  const handleBrandingState = (state) => {
+    const { keywords, logoPicker, colorPicker } = state;
+    if (
+      keywords &&
+      keywords.length >= 2 &&
+      logoPicker &&
+      logoPicker.length &&
+      colorPicker
+    ) {
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          ...state,
+          isBrandingDetailSubmitted: true,
+        };
+      });
+    }
+  };
 
-  //   const target = event.target as HTMLInputElement;
-  //   setQuoteState((prevState) => {
-  //     return {
-  //       ...prevState,
-  //       position: target.value,
-  //     };
-  //   });
-  // };
+  // handle button click for form submit
+  const onError = () => {
+    setQuoteState((prevState) => {
+      return {
+        ...prevState,
+        isButtonSubmit: true,
+      };
+    });
+  };
 
   // handle get quote form onSubmit
   const onSubmit = (quoteData: any) => {
     const { captchaValue } = quoteData;
+    const {
+      isBrandingDetailSubmitted,
+      keywords,
+      colorPicker,
+      logoPicker,
+    } = quoteState;
+    if (fromPage === 'branding' && !isBrandingDetailSubmitted) {
+      return;
+    }
 
     quoteData.isFormSubmitted = true;
+    quoteData.isButtonSubmit = false;
+    if (isBrandingDetailSubmitted) {
+      const values = keywords.map((keyword) => keyword.value);
+      quoteData.colorPicker = colorPicker;
+      quoteData.logoPicker = logoPicker.join(',');
+      quoteData.keywords = values && values.length && values.join(',');
+    }
 
     setQuoteState((prevState) => {
       return {
@@ -82,6 +118,7 @@ const GetQuoteComponent: React.FC<any> = (
         ...quoteData,
       };
     });
+
     if (!captchaValue) {
       return;
     } else {
@@ -197,7 +234,9 @@ const GetQuoteComponent: React.FC<any> = (
                       id={field.name}
                       // handleSelect={handleSelect}
                       label_name={field.label}
-                      options={constants.INDUSTRIES}
+                      options={
+                        field.name === 'industry' ? apparel : constants.POSITION
+                      }
                       placeholder={field.placeholder}
                       control={control}
                       error={!!errors[quoteState[field.name]]}
@@ -261,6 +300,9 @@ const GetQuoteComponent: React.FC<any> = (
           quoteState={quoteState}
           errors={errors}
           onSubmit={onSubmit}
+          register={register}
+          onError={onError}
+          handleBrandingState={handleBrandingState}
         />
       )}
     </section>

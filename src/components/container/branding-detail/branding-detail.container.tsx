@@ -1,74 +1,636 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { IBrandingQuoteModel } from '../../../interfaces/branding-quote.model';
 
 import GetQuoteButton from '../../form-element/get-quote-button';
 import './branding-detail.container.scss';
+import plusIcon from '../../../assets/images/plus_icon.svg';
+
+interface IntitialState {
+  keywords: { name: string; active: boolean }[];
+  colorPicker: string;
+  logoPicker: string[];
+  keyword: string;
+}
 
 const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
-  const { handleSubmit, quoteState, errors, onSubmit } = props;
+  const initialState: IntitialState = {
+    keywords: [],
+    colorPicker: '',
+    logoPicker: [],
+    keyword: '',
+  };
+  const {
+    handleSubmit,
+    quoteState,
+    errors,
+    onSubmit,
+    handleBrandingState,
+    onError,
+  } = props;
+  const [brandingState, setstate] = useState(initialState);
+  const { keyword, keywords, colorPicker, logoPicker } = brandingState;
+
+  // Handle text box, radio button and checkbox change event
+  const handleChange = ($event: React.FormEvent<EventTarget>) => {
+    const target = $event.target as HTMLInputElement;
+    const value = target.value;
+    if (target && target.name === 'keyword_picker') {
+      setstate((prevState) => {
+        return {
+          ...prevState,
+          keyword: value,
+        };
+      });
+    } else if (target && target.name === 'color_picker') {
+      setstate((prevState) => {
+        return {
+          ...prevState,
+          colorPicker: value,
+        };
+      });
+    } else if (target.type === 'checkbox') {
+      if (target.checked) {
+        logoPicker.push(value);
+      } else {
+        const findIndex =
+          logoPicker &&
+          logoPicker.length &&
+          logoPicker.findIndex((logo) => logo === value);
+
+        findIndex !== -1 && logoPicker.splice(findIndex, 1);
+      }
+      setstate((prevState) => {
+        return {
+          ...prevState,
+          logoPicker,
+        };
+      });
+    }
+    handleBrandingState(brandingState);
+  };
+
+  // Function to handle add keyword
+  const handleClick = () => {
+    if (keyword) {
+      keywords.push({
+        active: true,
+        name: keyword,
+      });
+
+      setstate((prevState) => {
+        return {
+          ...prevState,
+          keyword: '',
+          keywords,
+        };
+      });
+    }
+  };
+
+  //Function to set keyword active to false
+  const unSelectKeyword = (idx) => {
+    const filterKeyword = keywords.find((keyword, index) => index === idx);
+    if (filterKeyword) {
+      filterKeyword.active = !filterKeyword?.active;
+    }
+
+    setstate((prevState) => {
+      return {
+        ...prevState,
+        keywords,
+      };
+    });
+  };
+
+  //Function to check whether checkbox value is present in state or not
+  const isLogoExist = (name: string): boolean => {
+    return logoPicker.findIndex((logo) => logo === name) !== -1 ? true : false;
+  };
+
+  const keywordDisplay =
+    keywords && keywords.length
+      ? keywords.map((ky, idx) => {
+          return (
+            <div
+              className={ky.active ? 'keyword-active box' : 'box'}
+              key={idx}
+              onClick={() => unSelectKeyword(idx)}
+            >
+              {ky.name}
+            </div>
+          );
+        })
+      : '';
+
   return (
     <div className="branding-container">
       <div className="technical-info">
         <h4>Technical work </h4>
         <span>Pick words/adjectives that best describe your business</span>
         <div className="word-grid">
-          <div className="box"> Word </div>
-          <div className="box"> Word</div>
-          <div className="box"> Word</div>
-          <div className="box"> Word</div>
-          <div className="box"> Word </div>
-          <div className="box"> Word</div>
-          <div className="box"> Word</div>
-          <div className="box"> Word</div>
-          <div className="box"> Word </div>
-          <div className="box"> Word</div>
-          <div className="box"> Word</div>
-          <div className="box"> Word</div>
+          {keywordDisplay}
+          <div className="">
+            <img
+              className="plus-icon"
+              src={plusIcon}
+              alt="Add Icon"
+              onClick={handleClick}
+            />
+            <input
+              type="text"
+              name="keyword_picker"
+              id="keyword_picker"
+              className="keyword-input"
+              placeholder="Add your word"
+              onChange={handleChange}
+              maxLength={40}
+              value={keyword}
+            />
+          </div>
         </div>
       </div>
       <div className="color-palette">
         <span>Pick color palette </span>
         <div className="color-picker-grid">
-          <div className="color-picker-image"> </div>
-          <div className="color-picker-image"> </div>
-          <div className="color-picker-image"> </div>
-          <div className="color-picker-image"> </div>
-          <div className="color-picker-image"> </div>
-          <div className="color-picker-image"> </div>
-          <div className="color-picker-image"> </div>
-          <div className="color-picker-image"> </div>
-          <div className="color-picker-image"> </div>
-          <div className="color-picker-image"> </div>
-          <div className="color-picker-image"> </div>
-          <div className="color-picker-image"> </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_a"
+              id="color_picker_a"
+              onChange={handleChange}
+            />
+            <label className="c-picker-a" htmlFor="color_picker_a">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_a'
+                    ? 'picker-border c-picker-a-img'
+                    : 'c-picker-a-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_b"
+              id="color_picker_b"
+              onChange={handleChange}
+            />
+            <label className="c-picker-b" htmlFor="color_picker_b">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_b'
+                    ? 'picker-border c-picker-b-img'
+                    : 'c-picker-b-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_c"
+              id="color_picker_c"
+              onChange={handleChange}
+            />
+            <label className="c-picker-c" htmlFor="color_picker_c">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_c'
+                    ? 'picker-border c-picker-c-img'
+                    : 'c-picker-c-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_d"
+              id="color_picker_d"
+              onChange={handleChange}
+            />
+            <label className="c-picker-d" htmlFor="color_picker_d">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_d'
+                    ? 'picker-border c-picker-d-img'
+                    : 'c-picker-d-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_e"
+              id="color_picker_e"
+              onChange={handleChange}
+            />
+            <label className="c-picker-e" htmlFor="color_picker_e">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_e'
+                    ? 'picker-border c-picker-e-img'
+                    : 'c-picker-e-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_f"
+              id="color_picker_f"
+              onChange={handleChange}
+            />
+            <label className="c-picker-f" htmlFor="color_picker_f">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_f'
+                    ? 'picker-border c-picker-f-img'
+                    : 'c-picker-f-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_g"
+              id="color_picker_g"
+              onChange={handleChange}
+            />
+            <label className="c-picker-g" htmlFor="color_picker_g">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_g'
+                    ? 'picker-border c-picker-g-img'
+                    : 'c-picker-g-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_h"
+              id="color_picker_h"
+              onChange={handleChange}
+            />
+            <label className="c-picker-h" htmlFor="color_picker_h">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_h'
+                    ? 'picker-border c-picker-h-img'
+                    : 'c-picker-h-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_i"
+              id="color_picker_i"
+              onChange={handleChange}
+            />
+            <label className="c-picker-i" htmlFor="color_picker_i">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_i'
+                    ? 'picker-border c-picker-i-img'
+                    : 'c-picker-i-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_j"
+              id="color_picker_j"
+              onChange={handleChange}
+            />
+            <label className="c-picker-j" htmlFor="color_picker_j">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_j'
+                    ? 'picker-border c-picker-j-img'
+                    : 'c-picker-j-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_k"
+              id="color_picker_k"
+              onChange={handleChange}
+            />
+            <label className="c-picker-k" htmlFor="color_picker_k">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_k'
+                    ? 'picker-border c-picker-k-img'
+                    : 'c-picker-k-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="color-picker-image">
+            <input
+              type="radio"
+              name="color_picker"
+              value="color_picker_l"
+              id="color_picker_l"
+              onChange={handleChange}
+            />
+            <label className="c-picker-l" htmlFor="color_picker_l">
+              <img
+                src=""
+                className={
+                  colorPicker === 'color_picker_l'
+                    ? 'picker-border c-picker-l-img'
+                    : 'c-picker-l-img'
+                }
+              />
+            </label>
+          </div>
         </div>
       </div>
       <div className="pick-logo">
         <span>Pick logos</span>
         <div className="logo-grid">
-          <div className="logo-picker"> </div>
-          <div className="logo-picker"> </div>
-          <div className="logo-picker"> </div>
-          <div className="logo-picker"> </div>
-          <div className="logo-picker"> </div>
-          <div className="logo-picker"> </div>
-          <div className="logo-picker"> </div>
-          <div className="logo-picker"> </div>
-          <div className="logo-picker"> </div>
-          <div className="logo-picker"> </div>
-          <div className="logo-picker"> </div>
-          <div className="logo-picker"> </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_a"
+              value="logo_a"
+              id="logo_picker_a"
+              onChange={handleChange}
+            />
+            <label className="l-picker-a" htmlFor="logo_picker_a">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_a')
+                    ? 'picker-border l-picker-a-img'
+                    : 'l-picker-a-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_b"
+              value="logo_b"
+              id="logo_picker_b"
+              onChange={handleChange}
+            />
+            <label className="l-picker-b" htmlFor="logo_picker_b">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_b')
+                    ? 'picker-border l-picker-b-img'
+                    : 'l-picker-b-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_c"
+              value="logo_c"
+              id="logo_picker_c"
+              onChange={handleChange}
+            />
+            <label className="l-picker-c" htmlFor="logo_picker_c">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_c')
+                    ? 'picker-border l-picker-c-img'
+                    : 'l-picker-c-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_d"
+              value="logo_d"
+              id="logo_picker_d"
+              onChange={handleChange}
+            />
+            <label className="l-picker-d" htmlFor="logo_picker_d">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_d')
+                    ? 'picker-border l-picker-d-img'
+                    : 'l-picker-d-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_e"
+              value="logo_e"
+              id="logo_picker_e"
+              onChange={handleChange}
+            />
+            <label className="l-picker-e" htmlFor="logo_picker_e">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_e')
+                    ? 'picker-border l-picker-e-img'
+                    : 'l-picker-e-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_f"
+              value="logo_f"
+              id="logo_picker_f"
+              onChange={handleChange}
+            />
+            <label className="l-picker-f" htmlFor="logo_picker_f">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_f')
+                    ? 'picker-border l-picker-f-img'
+                    : 'l-picker-f-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_g"
+              value="logo_g"
+              id="logo_picker_g"
+              onChange={handleChange}
+            />
+            <label className="l-picker-g" htmlFor="logo_picker_g">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_g')
+                    ? 'picker-border l-picker-g-img'
+                    : 'l-picker-g-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_h"
+              value="logo_h"
+              id="logo_picker_h"
+              onChange={handleChange}
+            />
+            <label className="l-picker-h" htmlFor="logo_picker_h">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_h')
+                    ? 'picker-border l-picker-h-img'
+                    : 'l-picker-h-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_i"
+              value="logo_i"
+              id="logo_picker_i"
+              onChange={handleChange}
+            />
+            <label className="l-picker-i" htmlFor="logo_picker_i">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_i')
+                    ? 'picker-border l-picker-i-img'
+                    : 'l-picker-i-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_j"
+              value="logo_j"
+              id="logo_picker_j"
+              onChange={handleChange}
+            />
+            <label className="l-picker-j" htmlFor="logo_picker_j">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_j')
+                    ? 'picker-border l-picker-j-img'
+                    : 'l-picker-j-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_k"
+              value="logo_k"
+              id="logo_picker_k"
+              onChange={handleChange}
+            />
+            <label className="l-picker-k" htmlFor="logo_picker_k">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_k')
+                    ? 'picker-border l-picker-k-img'
+                    : 'l-picker-k-img'
+                }
+              />
+            </label>
+          </div>
+          <div className="logo-picker">
+            <input
+              type="checkbox"
+              name="logo_picker_l"
+              value="logo_l"
+              id="logo_picker_l"
+              onChange={handleChange}
+            />
+            <label className="l-picker-l" htmlFor="logo_picker_l">
+              <img
+                src=""
+                className={
+                  isLogoExist('logo_l')
+                    ? 'picker-border l-picker-l-img'
+                    : 'l-picker-l-img'
+                }
+              />
+            </label>
+          </div>
         </div>
       </div>
       <div className="price-container">
-        <h4> Starting from</h4>
-        <span className="price">$500</span>
+        <div className="sticky-content">
+          <h4> Starting from</h4>
+          <div className="price-container">
+            <span className="price">$500</span>
+          </div>
+        </div>
         <div>
           <GetQuoteButton
             quoteState={quoteState}
             handleSubmit={handleSubmit}
             errors={errors}
             onSubmit={onSubmit}
+            brandingState={brandingState}
+            onError={onError}
+            fromPage={`branding`}
           />
         </div>
       </div>
