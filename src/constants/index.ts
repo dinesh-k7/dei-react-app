@@ -7,6 +7,10 @@ export const constants = {
   ],
   INDUSTRIES: ['Accounting', 'Finance', 'IT', 'Marketing'],
   MAIL_SERVICE_ENDPOINT: 'https://dei-node-service.herokuapp.com/mail-service',
+  PAGES: [
+    { url: 'data-security', name: 'Data Security' },
+    { url: 'branding', name: 'Branding' },
+  ],
   //MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service',
   BASE_PREMIUM: 99.98,
   CP_LIMIT_ONE: 30,

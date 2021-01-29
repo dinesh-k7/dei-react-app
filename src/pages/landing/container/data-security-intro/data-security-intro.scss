@@ -1,0 +1,28 @@
+.data-security-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+  .hero-image img {
+    max-width: 500px !important;
+  }
+  //   .hero-subtitle-container h3 {
+  //     font-family: 'OpenSansRegular', sans-serif !important;
+  //   }
+  .btn-data-security {
+    margin-top: 64px;
+  }
+
+  .hero-content {
+    .hero-title {
+      h3 {
+        margin: 0px !important;
+      }
+    }
+  }
+  .hero-description {
+    margin-top: 48px;
+  }
+  .hero-image {
+    align-self: center;
+  }
+}

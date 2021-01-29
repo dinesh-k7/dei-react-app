@@ -20,7 +20,7 @@ const Footer: React.FC = (): ReactElement => {
           <div className="mail-icon">
             <img src={mailIcon} alt="Footer Mail Icon" />
             <span>
-              <a href="mailto:securus@xiiiusa.com">securus@xiiiusa.com</a>
+              <a href="mailto:securus@xiiiusa.com">notam@XiiiUSA.com</a>
             </span>
           </div>
           <div className="phone-icon">

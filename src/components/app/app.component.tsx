@@ -5,6 +5,7 @@ import Header from '../header/header.component';
 import Footer from '../footer/footer.component';
 import DataSecurityPage from '../../pages/data-security/data-security-page';
 import BrandingPage from '../../pages/branding/branding-page';
+import LandingPage from '../../pages/landing/landing-page';
 import '../../assets/scss/styles.scss';
 
 const App: React.FC = () => {
@@ -13,6 +14,9 @@ const App: React.FC = () => {
       <Header />
       <Switch>
         <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route path="/data-security">
           <DataSecurityPage />
         </Route>
         <Route path="/branding">

@@ -1,5 +1,7 @@
 @import '../styles.scss';
-.hero-section {
+.hero-section,
+.branding-intro,
+.data-security-intro {
   @include respond-below(sm) {
     .hero-title {
       p:first-of-type {
