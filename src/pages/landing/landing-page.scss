@@ -1,0 +1,44 @@
+@import '../../assets/scss/abstracts/mixins';
+.landing-page-grid {
+  display: grid;
+  grid-column: 2/-1;
+
+  section {
+    padding-top: 72px;
+  }
+}
+
+.landing-border {
+  border-bottom: 1px solid var(--font-color);
+  grid-column: 1/-1;
+  margin-top: 72px;
+}
+
+@include respond-between(sm, md) {
+  .hero-image {
+    img {
+      width: 100%;
+    }
+  }
+}
+
+@include respond-below(sm) {
+  .landing-page-grid {
+    grid-column: 1/-1;
+    padding: 0px 8px;
+    .data-security-intro,
+    .landing-intro,
+    .branding-intro {
+      grid-template-columns: 1fr;
+    }
+    .hero-image {
+      img {
+        width: 100%;
+      }
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

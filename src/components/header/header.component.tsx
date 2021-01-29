@@ -10,8 +10,10 @@ const Header: React.FC = (): ReactElement => {
     <header className="nav-container">
       <div className="logo">
         <img src={logo} alt="DEI Logo" />
+        <div className="hamburger-menu">
+          <PersistentDrawerLeft />
+        </div>
       </div>
-      <PersistentDrawerLeft />
     </header>
   );
 };

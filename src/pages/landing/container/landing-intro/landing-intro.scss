@@ -1,0 +1,15 @@
+.landing-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+  .intro-image {
+    img {
+      width: 250px;
+    }
+  }
+  .intro-text {
+    color: var(--font-color);
+    font-size: var(--font-size4);
+    font-family: 'OpenSansRegular', sans-serif;
+  }
+}

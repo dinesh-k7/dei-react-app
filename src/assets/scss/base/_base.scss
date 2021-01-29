@@ -136,3 +136,17 @@ label {
   font-size: var(--font-size3);
   text-align: center;
 }
+
+.btn-data-security,
+.btn-branding {
+  display: block;
+  background-color: #42b9f8;
+  height: 3.75rem;
+  font-weight: 700;
+  font-size: 1.375em;
+  width: 20rem;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+  font-family: 'OpenSansBold', sans-serif;
+}
