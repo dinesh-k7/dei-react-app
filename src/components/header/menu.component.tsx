@@ -22,7 +22,6 @@ const useStyles = makeStyles({
   },
   list: {
     width: 280,
-    borderLeft: '1px solid red',
   },
   fullList: {
     width: 'auto',
