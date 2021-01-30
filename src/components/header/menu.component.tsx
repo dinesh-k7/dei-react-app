@@ -58,7 +58,7 @@ export default function TemporaryDrawer() {
     right: false,
   });
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  const toggleDrawer = (anchor, open) => () => {
     setState({ ...state, [anchor]: open });
   };
 

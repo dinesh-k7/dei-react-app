@@ -69,7 +69,7 @@ export const messages = {
   captcha_error: 'ReCAPTCHA Error',
   mail_send_error: 'Error in processing Get Quote. Please try later.',
   color_picker_error: '*Please pick color',
-  logo_picker_error: '*Please select logo',
+  brand_error: '*Please select atleast two brand name',
   keywords_error: '*Please select atleast two keywords',
 };
 

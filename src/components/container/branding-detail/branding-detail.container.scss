@@ -1,5 +1,7 @@
 @import '../../../assets/scss/styles.scss';
-
+textarea::placeholder {
+  padding-top: 16px;
+}
 .branding-container {
   .sticky-content {
     display: grid;
@@ -11,10 +13,12 @@
     height: 40px;
     font-family: 'OpenSansRegular', sans-serif;
     padding-left: 0.625em;
+    padding-right: 24%;
   }
 
   .picker-border {
-    border: 2px solid #2c3e50;
+    outline: 2px solid #2c3e50;
+    outline-offset: -1px;
   }
 
   .plus-icon {
@@ -57,10 +61,16 @@
     }
     .keyword-active {
       background: #ff7d7d;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+      padding-left: 8px;
     }
 
     .keyword-inactive {
       background-color: #e3e3e3;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+      padding-left: 8px;
     }
   }
 
@@ -82,53 +92,13 @@
       .color-picker-image label {
         cursor: pointer;
       }
-
-      .c-picker-a-img::after {
-        content: url('../../../assets/images/color_picker_one.svg');
-      }
-
-      .c-picker-b-img::after {
-        content: url('../../../assets/images/color_picker_two.svg');
-      }
-
-      .c-picker-c-img::after {
-        content: url('../../../assets/images/color_picker_three.svg');
-      }
-      .c-picker-d-img::after {
-        content: url('../../../assets/images/color_picker_four.svg');
-      }
-      .c-picker-e-img::after {
-        content: url('../../../assets/images/color_picker_five.svg');
-      }
-      .c-picker-f-img::after {
-        content: url('../../../assets/images/color_picker_six.svg');
-      }
-      .c-picker-g-img::after {
-        content: url('../../../assets/images/color_picker_seven.svg');
-      }
-      .c-picker-h-img::after {
-        content: url('../../../assets/images/color_picker_eight.svg');
-      }
-      .c-picker-i-img::after {
-        content: url('../../../assets/images/color_picker_nine.svg');
-      }
-      .c-picker-j-img::after {
-        content: url('../../../assets/images/color_picker_ten.svg');
-      }
-      .c-picker-k-img::after {
-        content: url('../../../assets/images/color_picker_eleven.svg');
-      }
-      .c-picker-l-img::after {
-        content: url('../../../assets/images/color_picker_design.svg');
-      }
     }
   }
 
   .pick-logo {
-    padding-top: 24px;
     .logo-grid {
       display: grid;
-      grid-template-columns: repeat(5, 100px);
+      grid-template-columns: repeat(auto, 100px);
       grid-gap: 8px 8px;
       margin-top: 8px;
       input {
@@ -142,9 +112,6 @@
 
       .logo-picker label {
         cursor: pointer;
-      }
-      .logo-picker img::after {
-        content: url('../../../assets//images/pick-logo.svg');
       }
     }
   }
@@ -177,15 +144,36 @@
   }
 }
 
+@include respond-above(lg) {
+  .branding-container {
+    .plus-icon {
+      margin-left: 140px;
+    }
+    .word-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .color-picker-grid {
+      display: grid;
+      grid-template-columns: repeat(6, auto);
+    }
+  }
+}
+
 @include respond-below(sm) {
   .branding-container {
     margin: 40px 0px 0px 0px !important;
+    input[type='text'],
+    textarea {
+      padding-left: 8px !important;
+    }
     .plus-icon {
       margin-left: 42% !important;
     }
     .keyword-input {
       height: 40px !important;
       padding-left: 0px !important;
+      padding-right: 15%;
     }
     .technical-info,
     .color-palette,
@@ -196,6 +184,9 @@
       h4 {
         justify-self: start !important;
       }
+    }
+    .pick-logo {
+      padding-bottom: 48px;
     }
   }
 }
@@ -233,14 +224,15 @@
     .plus-icon {
       margin-left: 40% !important;
     }
-    ::placeholder {
-      padding-left: 8px;
+    .technical-info {
+      padding-left: 9px;
     }
+
     .word-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin: 10px 0px 0px 0px;
-      grid-gap: 10px 10px;
+      grid-gap: 12px 10px;
     }
 
     .color-palette {
@@ -254,6 +246,7 @@
 
     .pick-logo {
       padding-top: 24px;
+      padding-left: 9px;
       .logo-grid {
         display: grid;
         padding-top: 8px;
@@ -273,6 +266,11 @@
       grid-template-columns: 1fr 1fr;
       margin: 8px 8px 0px 0px;
       grid-gap: 8px 8px;
+    }
+    .pick-logo {
+      .word-grid {
+        margin: 10px 8px 0px 0px !important;
+      }
     }
 
     .color-palette {
