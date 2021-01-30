@@ -41,7 +41,7 @@ const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
     handleBrandingState,
     onError,
   } = props;
-  const [brandingState, setstate] = useState(initialState);
+  const [brandingState, setState] = useState(initialState);
   const { keyword, keywords, colorPicker, brands, brandName } = brandingState;
 
   // Handle text box, radio button and checkbox change event
@@ -49,21 +49,21 @@ const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
     const target = $event.target as HTMLInputElement;
     const value = target.value;
     if (target && target.name === 'keyword_picker') {
-      setstate((prevState) => {
+      setState((prevState) => {
         return {
           ...prevState,
           keyword: value,
         };
       });
     } else if (target && target.name === 'color_picker') {
-      setstate((prevState) => {
+      setState((prevState) => {
         return {
           ...prevState,
           colorPicker: value,
         };
       });
     } else if (target && target.name === 'logo_picker') {
-      setstate((prevState) => {
+      setState((prevState) => {
         return {
           ...prevState,
           brandName: value,
@@ -80,7 +80,7 @@ const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
         name: keyword,
       });
 
-      setstate((prevState) => {
+      setState((prevState) => {
         return {
           ...prevState,
           keyword: '',
@@ -93,7 +93,7 @@ const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
         name: brandName,
       });
 
-      setstate((prevState) => {
+      setState((prevState) => {
         return {
           ...prevState,
           brandName: '',
@@ -108,11 +108,12 @@ const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
   const unSelectKeyword = (idx: number, name: string) => {
     if (name === 'keyword') {
       const filterKeyword = keywords.find((keyword, index) => index === idx);
+
       if (filterKeyword) {
         filterKeyword.active = !filterKeyword?.active;
       }
 
-      setstate((prevState) => {
+      setState((prevState) => {
         return {
           ...prevState,
           keywords,
@@ -124,13 +125,14 @@ const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
         filterBrand.active = !filterBrand?.active;
       }
 
-      setstate((prevState) => {
+      setState((prevState) => {
         return {
           ...prevState,
           brands,
         };
       });
     }
+    handleBrandingState(brandingState);
   };
 
   const keywordDisplay =
