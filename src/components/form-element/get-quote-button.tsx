@@ -31,6 +31,15 @@ const GetQuoteButton: any = ({
   } = quoteState;
   const classes = useStyles();
 
+  let activeKeywords, activeBrands;
+  if (brandingState) {
+    const { keywords, brands } = brandingState;
+    activeKeywords = keywords.filter((keyword) => keyword.active);
+    activeBrands = brands.filter((brand) => brand.active);
+  } else {
+    activeBrands = [];
+    activeKeywords = [];
+  }
   const errorKeys = Object.keys(errors);
   return (
     <Fragment>
@@ -61,8 +70,8 @@ const GetQuoteButton: any = ({
       )}
       {errors && <ErrorMessageContainer {...errors} />}
 
-      {brandingState &&
-      brandingState.keywords.length < 2 &&
+      {activeKeywords &&
+      activeKeywords.length < 2 &&
       fromPage === 'branding' &&
       (isButtonSubmit || errorKeys.length) ? (
         <p className="error_message">{messages.keywords_error}</p>
@@ -79,8 +88,8 @@ const GetQuoteButton: any = ({
         ''
       )}
 
-      {brandingState &&
-      brandingState.brands.length < 2 &&
+      {activeBrands &&
+      activeBrands.length < 2 &&
       fromPage === 'branding' &&
       (isButtonSubmit || errorKeys.length) ? (
         <p className="error_message">{messages.brand_error}</p>

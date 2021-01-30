@@ -63,12 +63,16 @@ const GetQuoteComponent: React.FC<any> = (
 
   const handleBrandingState = (state) => {
     const { keywords, colorPicker, brands } = state;
+    const activeKeywords =
+      keywords && keywords.filter((keyword) => keyword.active);
+    const activeBrands = brands && brands.filter((brand) => brand.active);
+
     if (
-      keywords &&
-      keywords.length >= 2 &&
+      activeKeywords &&
+      activeKeywords.length >= 2 &&
       colorPicker &&
-      brands &&
-      brands.length >= 2
+      activeBrands &&
+      activeBrands.length >= 2
     ) {
       const values = keywords.map((keyword) => keyword.name);
       const brand = brands.map((brand) => brand.name);
@@ -80,6 +84,13 @@ const GetQuoteComponent: React.FC<any> = (
           brands: brand && brand.length && brand.join(','),
           colorPicker,
           isBrandingDetailSubmitted: true,
+        };
+      });
+    } else {
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          isBrandingDetailSubmitted: false,
         };
       });
     }
