@@ -60,22 +60,7 @@ const GetQuoteButton: any = ({
         </Backdrop>
       )}
       {errors && <ErrorMessageContainer {...errors} />}
-      {brandingState &&
-      !brandingState.colorPicker &&
-      fromPage === 'branding' &&
-      (isButtonSubmit || errorKeys.length) ? (
-        <p className="error_message">{messages.color_picker_error}</p>
-      ) : (
-        ''
-      )}
-      {brandingState &&
-      !brandingState.logoPicker.length &&
-      fromPage === 'branding' &&
-      (isButtonSubmit || errorKeys.length) ? (
-        <p className="error_message">{messages.logo_picker_error}</p>
-      ) : (
-        ''
-      )}
+
       {brandingState &&
       brandingState.keywords.length < 2 &&
       fromPage === 'branding' &&
@@ -84,6 +69,25 @@ const GetQuoteButton: any = ({
       ) : (
         ''
       )}
+
+      {brandingState &&
+      !brandingState.colorPicker &&
+      fromPage === 'branding' &&
+      (isButtonSubmit || errorKeys.length) ? (
+        <p className="error_message">{messages.color_picker_error}</p>
+      ) : (
+        ''
+      )}
+
+      {brandingState &&
+      brandingState.brands.length < 2 &&
+      fromPage === 'branding' &&
+      (isButtonSubmit || errorKeys.length) ? (
+        <p className="error_message">{messages.brand_error}</p>
+      ) : (
+        ''
+      )}
+
       {!captchaValue && isFormSubmitted && (
         <p className="error_message">{messages.captcha_error}</p>
       )}

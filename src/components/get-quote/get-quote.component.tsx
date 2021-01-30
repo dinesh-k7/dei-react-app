@@ -62,18 +62,23 @@ const GetQuoteComponent: React.FC<any> = (
   };
 
   const handleBrandingState = (state) => {
-    const { keywords, logoPicker, colorPicker } = state;
+    const { keywords, colorPicker, brands } = state;
     if (
       keywords &&
       keywords.length >= 2 &&
-      logoPicker &&
-      logoPicker.length &&
-      colorPicker
+      colorPicker &&
+      brands &&
+      brands.length >= 2
     ) {
+      const values = keywords.map((keyword) => keyword.name);
+      const brand = brands.map((brand) => brand.name);
+
       setQuoteState((prevState) => {
         return {
           ...prevState,
-          ...state,
+          keywords: values && values.length && values.join(','),
+          brands: brand && brand.length && brand.join(','),
+          colorPicker,
           isBrandingDetailSubmitted: true,
         };
       });
@@ -96,20 +101,21 @@ const GetQuoteComponent: React.FC<any> = (
     const {
       isBrandingDetailSubmitted,
       keywords,
+      brands,
       colorPicker,
-      logoPicker,
     } = quoteState;
+
     if (fromPage === 'branding' && !isBrandingDetailSubmitted) {
+      setQuoteState({ ...quoteState, isButtonSubmit: true });
       return;
     }
 
     quoteData.isFormSubmitted = true;
     quoteData.isButtonSubmit = false;
     if (isBrandingDetailSubmitted) {
-      const values = keywords.map((keyword) => keyword.value);
+      quoteData.keywords = keywords;
+      quoteData.brands = brands;
       quoteData.colorPicker = colorPicker;
-      quoteData.logoPicker = logoPicker.join(',');
-      quoteData.keywords = values && values.length && values.join(',');
     }
 
     setQuoteState((prevState) => {

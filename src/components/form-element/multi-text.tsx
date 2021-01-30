@@ -18,8 +18,9 @@ const MultiText: any = ({
       <textarea
         id={name}
         name={name}
-        rows={4}
+        rows={1}
         cols={50}
+        style={{ resize: 'none' }}
         placeholder={placeholder}
         maxLength={maxlength}
         ref={register({

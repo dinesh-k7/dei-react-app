@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 
 import deiImage from '../../../../assets/images/digital_enterprise_initiative.svg';
-import yellowVector from '../../../../assets/images/yellow_vector.svg';
+
 import './landing-intro.scss';
 
 const LandingIntroContainer: React.FC = (): ReactElement => {
