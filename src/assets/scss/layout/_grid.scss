@@ -3,7 +3,7 @@
 @include respond-above(sm) {
   #root {
     display: grid;
-    grid-template-columns: 11% 1fr 1fr;
+    grid-template-columns: 10% 1fr 1fr;
     grid-template-rows: 80px auto auto auto auto;
   }
 
@@ -26,7 +26,7 @@
     grid-row: 3/4;
     padding-bottom: 90px;
     display: grid;
-    grid-template-columns: 11% 1fr 1fr;
+    grid-template-columns: 10% 1fr 1fr;
 
     .bg-image img {
       width: 10vw;
@@ -91,6 +91,49 @@
 
   .MuiOutlinedInput-root {
     margin-right: 8px !important;
+  }
+
+  #combo-box-demo {
+    li {
+      display: none !important;
+    }
+  }
+  .MuiInputBase-root {
+    background-color: #fff;
+    height: 60px !important;
+    box-sizing: content-box;
+    color: var(--font-color) !important;
+    .MuiInputLabel-shrink {
+      display: none !important;
+    }
+    input[type='text'] {
+      height: 20px !important;
+      color: var(--font-color) !important;
+      border: none;
+      font-family: 'OpenSansRegular', sans-serif !important;
+      font-size: 12px;
+      padding: 0px !important;
+      font-weight: var(--font-weight400);
+    }
+
+    input::placeholder {
+      color: var(--font-color) !important;
+      font-size: 12px;
+
+      font-family: 'OpenSansRegular', sans-serif;
+    }
+
+    input[type='text']:focus {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    li {
+      display: none !important;
+    }
+    fieldset {
+      display: none !important;
+    }
   }
 }
 

@@ -2,118 +2,152 @@ export const apparel = [
   {
     id: 'OD4605',
     name: 'Athletic Shoe Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4958',
     name: 'Backpack & Courier Bag Manufacturing',
+    group: 'Apparel & Accessories',
   },
   {
-    id: 'OD4234 ',
+    id: 'OD4234',
     name: 'Beauty Supply Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD5952',
     name: 'Body Armor Manufacturing',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4222',
     name: 'Bridal Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD6077',
     name: 'Candle Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD5616',
     name: 'Clothing Boutiques',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD5325',
     name: 'Commercial Embroidery Services',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4235',
     name: 'Discount Department Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD5709',
     name: 'Eyeglasses Frames Manufacturing',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4223',
     name: 'Fitness & Athletic Clothing Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4960',
     name: 'Hat & Cap Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD6081',
     name: 'Jewelry Wholesaling',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4214',
     name: 'Leather Boot Manufacturing',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD5326',
     name: 'Licensed Sports Apparel Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4221',
     name: 'Lingerie Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4230',
     name: 'Luggage Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4233',
     name: 'Mall Carts & Kiosks',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4224',
     name: 'Maternity Wear Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4231',
     name: 'Perfume & Fragrance Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4216',
     name: 'Personal Protective Equipment Manufacturing',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4226',
     name: "Plus-Size Men's Clothing Stores",
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4225',
     name: "Plus-Size Women's Clothing Stores",
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD5324',
     name: 'Protective Sports Equipment Manufacturing',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4229',
     name: 'Sunglasses Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4228',
     name: 'Swim & Beachwear Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4601',
     name: 'Tactical & Service Clothing Manufacturing',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD5525',
     name: 'Thrift Stores',
+    group: 'Apparel & Accessories',
   },
   {
     id: 'OD4232',
     name: 'Wig & Hairpiece Stores',
+    group: 'Apparel & Accessories',
+  },
+  {
+    id: 'other',
+    name: 'Others',
+    group: 'Others',
   },
 ];
 

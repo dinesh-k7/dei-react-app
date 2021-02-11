@@ -17,22 +17,24 @@ const HeroContainer: React.FC = (): ReactElement => {
             <img src={serviceCoral} alt="Background image" />
             <h3>Logo design</h3>
           </div>
-          <h3>About Branding</h3>
+          <h3>About:</h3>
         </div>
         <div className="hero-description">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-            dignissimos quod sint iure labore dicta? Temporibus, porro. Placeat
-            quia sed iure maiores eum saepe? Perferendis ea ratione minima
-            corrupti dolorem?
+            Branding is an essential feature of any successful enterprise. The
+            DEI™ custom-makes original, stunning, and high-quality logos that
+            build credibility and that can enhance your brand&apos;s online
+            presence. As you take the time to describe your brand&apos;s
+            identity, be sure to list other brands that align with yours.
           </p>
           <div className="hero-description-two">
             <h3>What we offer:</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-              accusamus aliquid illo obcaecati veritatis, in quia quidem enim
-              cum blanditiis repellendus excepturi sed eveniet minima. Saepe
-              quibusdam in dolores praesentium.
+              Our team combines an extraordinary blend of talent and creativity
+              to ensure your logo not only grabs relevant attention but also
+              creates a memorable first impression that sets you apart from the
+              pack. We don&apos;t just design; we produce thrilling visuals that
+              foster excitement, inspire trust, and build brand loyalty.
             </p>
           </div>
         </div>

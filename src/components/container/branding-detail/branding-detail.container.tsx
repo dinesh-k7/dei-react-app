@@ -171,6 +171,7 @@ const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
   return (
     <div className="branding-container">
       <div className="technical-info">
+        <h1>Brand Identity factors</h1>
         <h4>Technical Information </h4>
         <span>Pick words/adjectives that best describe your business</span>
         <form
@@ -182,13 +183,7 @@ const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
         >
           <div className="word-grid">
             {keywordDisplay}
-            <div className="">
-              <img
-                className="plus-icon"
-                src={plusIcon}
-                alt="Add Icon"
-                onClick={() => handleClick('keyword')}
-              />
+            <div className="input-container">
               <input
                 type="text"
                 name="keyword_picker"
@@ -197,6 +192,12 @@ const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
                 placeholder="Add your word"
                 onChange={handleChange}
                 value={keyword}
+              />
+              <img
+                className="plus-icon"
+                src={plusIcon}
+                alt="Add Icon"
+                onClick={() => handleClick('keyword')}
               />
             </div>
           </div>
@@ -448,13 +449,7 @@ const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
 
           <div className="word-grid">
             {brandDisplay}
-            <div className="">
-              <img
-                className="plus-icon"
-                src={plusIcon}
-                alt="Add Icon"
-                onClick={() => handleClick('brandName')}
-              />
+            <div className="input-container">
               <input
                 type="text"
                 name="logo_picker"
@@ -463,6 +458,12 @@ const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
                 placeholder="Add your word"
                 onChange={handleChange}
                 value={brandName}
+              />
+              <img
+                className="plus-icon"
+                src={plusIcon}
+                alt="Add Icon"
+                onClick={() => handleClick('brandName')}
               />
             </div>
           </div>

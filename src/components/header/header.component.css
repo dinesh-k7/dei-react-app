@@ -1,0 +1,17 @@
+.nav-container .logo {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.nav-container .logo .hamburger-menu {
+  -ms-grid-column-align: end;
+      justify-self: end;
+}
+
+.nav-container .close-icon,
+.nav-container img {
+  cursor: pointer;
+}
+/*# sourceMappingURL=header.component.css.map */
