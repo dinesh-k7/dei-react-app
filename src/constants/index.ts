@@ -3,15 +3,17 @@ export const constants = {
   POSITION: [
     { id: 1, name: 'CEO/Decision-maker' },
     { id: 2, name: 'VP/Director' },
-    { id: 3, name: 'Manager/Inquirer' },
+    { id: 3, name: 'Project Manager/Inquirer' },
+    { id: 4, name: 'Others' },
   ],
   INDUSTRIES: ['Accounting', 'Finance', 'IT', 'Marketing'],
   MAIL_SERVICE_ENDPOINT: 'https://dei-node-service.herokuapp.com/mail-service',
+  //MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service',
   PAGES: [
     { url: 'data-security', name: 'Data Security' },
     { url: 'branding', name: 'Branding' },
   ],
-  //MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service',
+
   BASE_PREMIUM: 99.98,
   CP_LIMIT_ONE: 30,
   CP_LIMIT_TWO: 75,
@@ -197,7 +199,7 @@ export const brandingFormFields = [
   {
     name: 'industry',
     label: 'Industry',
-    type: 'select',
+    type: 'text',
     required: true,
     placeholder: 'e.g. Accounting',
     section: 'company',

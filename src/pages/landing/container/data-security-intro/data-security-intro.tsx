@@ -27,11 +27,13 @@ const DataSecurityIntro: React.FC = (): ReactElement => {
         </div>
         <div className="hero-description">
           <p>
-            In the Dark Web, a compromised credential sells for ~$1-$8. They
-            range from online services to corporate network user names and
-            passwords. Whether it is in blocks of 100,000 or 1, Dark Web Pirates
-            frequently purchase credentials. Then they index the data obtained
-            until it poses a direct threat to your business.
+            Monitoring and managing your digital security risks is a continuous
+            process that must be done regularly and should be a part of your
+            ongoing operational strategy. To learn more about additional
+            strategies and resources visit:{' '}
+            <a href="https://www.novusordoseclorum.org">
+              www.novusordoseclorum.org
+            </a>
           </p>
         </div>
         <div className="button-container">

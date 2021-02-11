@@ -16,6 +16,7 @@ import TextBox from '../form-element/text-box';
 import MultiText from '../form-element/multi-text';
 import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
 import { apparel } from '../../constants/industry-option';
+import ComboBox from '../form-element/auto-complete';
 
 const GetQuoteComponent: React.FC<any> = (
   props: IGetQuoteProps,
@@ -64,8 +65,9 @@ const GetQuoteComponent: React.FC<any> = (
   const handleBrandingState = (state) => {
     const { keywords, colorPicker, brands } = state;
     const activeKeywords =
-      keywords && keywords.filter((keyword) => keyword.active);
-    const activeBrands = brands && brands.filter((brand) => brand.active);
+      keywords && keywords.filter((keyword) => keyword.active === true);
+    const activeBrands =
+      brands && brands.filter((brand) => brand.active === true);
 
     if (
       activeKeywords &&
@@ -74,8 +76,8 @@ const GetQuoteComponent: React.FC<any> = (
       activeBrands &&
       activeBrands.length >= 2
     ) {
-      const values = keywords.map((keyword) => keyword.name);
-      const brand = brands.map((brand) => brand.name);
+      const values = activeKeywords.map((keyword) => keyword.name);
+      const brand = activeBrands.map((brand) => brand.name);
 
       setQuoteState((prevState) => {
         return {
@@ -249,7 +251,6 @@ const GetQuoteComponent: React.FC<any> = (
                       variant={'outlined'}
                       name={field.name}
                       id={field.name}
-                      // handleSelect={handleSelect}
                       label_name={field.label}
                       options={
                         field.name === 'industry' ? apparel : constants.POSITION

@@ -1,8 +1,18 @@
 @import '../../../assets/scss/styles.scss';
-textarea::placeholder {
-  padding-top: 16px;
+textarea {
+  padding: 16px;
 }
 .branding-container {
+  .input-container {
+    display: grid;
+    grid-template-columns: 1fr 1px;
+    .plus-icon {
+      margin-left: -30px;
+      position: relative;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  }
   .sticky-content {
     display: grid;
   }
@@ -21,19 +31,12 @@ textarea::placeholder {
     outline-offset: -1px;
   }
 
-  .plus-icon {
-    position: absolute;
-    margin-left: 100px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-
   input[type='text']:focus {
     border: 1px solid #42b9f8 !important;
     box-shadow: 0 0 4px #42b9f8 !important;
   }
   display: grid;
-  margin: 75px 0px 0px 35px;
+  margin: 0px 16px 0px 35px;
   .technical-info,
   .color-palette,
   .pick-logo {
@@ -64,6 +67,7 @@ textarea::placeholder {
       text-overflow: ellipsis;
       overflow-x: hidden;
       padding-left: 8px;
+      white-space: nowrap;
     }
 
     .keyword-inactive {
@@ -71,6 +75,7 @@ textarea::placeholder {
       text-overflow: ellipsis;
       overflow-x: hidden;
       padding-left: 8px;
+      white-space: nowrap;
     }
   }
 
@@ -144,22 +149,6 @@ textarea::placeholder {
   }
 }
 
-@include respond-above(lg) {
-  .branding-container {
-    .plus-icon {
-      margin-left: 140px;
-    }
-    .word-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .color-picker-grid {
-      display: grid;
-      grid-template-columns: repeat(6, auto);
-    }
-  }
-}
-
 @include respond-below(sm) {
   .branding-container {
     margin: 40px 0px 0px 0px !important;
@@ -167,9 +156,7 @@ textarea::placeholder {
     textarea {
       padding-left: 8px !important;
     }
-    .plus-icon {
-      margin-left: 42% !important;
-    }
+
     .keyword-input {
       height: 40px !important;
       padding-left: 0px !important;
@@ -221,9 +208,6 @@ textarea::placeholder {
 
 @include respond-below(xs) {
   .branding-container {
-    .plus-icon {
-      margin-left: 40% !important;
-    }
     .technical-info {
       padding-left: 9px;
     }
@@ -258,19 +242,11 @@ textarea::placeholder {
 
 @include respond-between(sm, md) {
   .branding-container {
-    .plus-icon {
-      margin-left: 130px !important;
-    }
     .word-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin: 8px 8px 0px 0px;
       grid-gap: 8px 8px;
-    }
-    .pick-logo {
-      .word-grid {
-        margin: 10px 8px 0px 0px !important;
-      }
     }
 
     .color-palette {
@@ -285,6 +261,9 @@ textarea::placeholder {
 
     .pick-logo {
       padding-top: 24px;
+      .word-grid {
+        margin: 10px 8px 0px 0px !important;
+      }
       .logo-grid {
         display: grid;
         padding-top: 8px;
@@ -320,6 +299,19 @@ textarea::placeholder {
         padding-top: 8px;
         grid-template-columns: repeat(5, auto);
       }
+    }
+  }
+}
+@include respond-above(lg) {
+  .branding-container {
+    margin-right: 15% !important;
+    .word-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .color-picker-grid {
+      display: grid;
+      grid-template-columns: repeat(6, auto) !important;
     }
   }
 }

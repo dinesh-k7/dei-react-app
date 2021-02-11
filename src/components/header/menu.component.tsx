@@ -50,7 +50,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer(): any {
   const classes = useStyles();
   const location = useLocation();
 
@@ -99,7 +99,10 @@ export default function TemporaryDrawer() {
   return (
     <div>
       <React.Fragment>
-        <Button onClick={toggleDrawer('right', true)}>
+        <Button
+          aria-label="Hamburger Menu"
+          onClick={toggleDrawer('right', true)}
+        >
           <img className={classes.hamburgerIcon} src={hamIcon} />
         </Button>
         <Drawer anchor={'right'} open={state['right']}>

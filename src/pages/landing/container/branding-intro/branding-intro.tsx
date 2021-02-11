@@ -30,12 +30,7 @@ const BrandingIntro: React.FC = (): ReactElement => {
           </div>
         </div>
         <div className="hero-description">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-            dignissimos quod sint iure labore dicta? Temporibus, porro. Placeat
-            quia sed iure maiores eum saepe? Perferendis ea ratione minima
-            corrupti dolorem?
-          </p>
+          <p>Enhance Your Brand&apos;s Identity with a Stunning Logo!</p>
         </div>
         <div className="button-container">
           <button
