@@ -1,0 +1,57 @@
+@import '../../../../assets/scss/abstracts/mixins';
+
+.data-security-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+  height: 100vh;
+  .hero-image img {
+    max-width: 500px !important;
+  }
+  .hero-mobile-image {
+    display: none;
+  }
+  .btn-data-security {
+    margin-top: 64px;
+  }
+
+  .hero-content {
+    .hero-title {
+      h3 {
+        margin: 0px !important;
+      }
+    }
+  }
+  .hero-description {
+    margin-top: 48px;
+  }
+  .hero-image {
+    align-self: center;
+  }
+}
+
+@include respond-between(sm, md) {
+  .data-security-intro {
+    height: auto;
+  }
+}
+
+@include respond-below(sm) {
+  .data-security-intro {
+    height: auto;
+    .hero-content {
+      display: grid;
+    }
+    .hero-image {
+      display: none !important;
+    }
+    .hero-mobile-image {
+      display: grid;
+      justify-self: center;
+      padding-top: 40px;
+      img {
+        max-width: 296px;
+      }
+    }
+  }
+}

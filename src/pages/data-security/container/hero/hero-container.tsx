@@ -12,10 +12,14 @@ const HeroContainer: React.FC = (): ReactElement => {
         <div className="hero-title">
           <h1>Data Security</h1>
           <div className="hero-subtitle-container">
-            <img src={serviceBlue} alt="Background image" />
-            <h3>Dark Web Monitoring</h3>
-            <img src={serviceBlue} alt="Background image" />
-            <h3>Email Solutions</h3>
+            <div className="features">
+              <img src={serviceBlue} alt="Background image" />
+              <h3>Dark Web Monitoring</h3>
+            </div>
+            <div className="features">
+              <img src={serviceBlue} alt="Background image" />
+              <h3>Email Solutions</h3>
+            </div>
           </div>
           <h3>The Dark Web Problem:</h3>
         </div>

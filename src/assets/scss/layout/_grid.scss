@@ -20,7 +20,9 @@
     }
   }
 
-  .get-quote-section {
+  .get-quote-section,
+  .consultation-quote-section,
+  .enterprise-quote-section {
     border-bottom: 1px solid var(--font-color);
     grid-column: 1/4;
     grid-row: 3/4;
@@ -188,7 +190,9 @@
     padding: 10px;
   }
 
-  .get-quote-section {
+  .get-quote-section,
+  .consultation-quote-section,
+  .enterprise-quote-section {
     border-bottom: 1px solid var(--font-color);
     padding-bottom: 90px;
     display: grid;

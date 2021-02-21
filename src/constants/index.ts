@@ -10,8 +10,36 @@ export const constants = {
   MAIL_SERVICE_ENDPOINT: 'https://dei-node-service.herokuapp.com/mail-service',
   //MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service',
   PAGES: [
-    { url: 'data-security', name: 'Data Security' },
-    { url: 'branding', name: 'Branding' },
+    {
+      url: 'smb',
+      name: 'SMB',
+      children: true,
+      submenu: [
+        {
+          url: 'data-security',
+          name: 'Data Security',
+        },
+        {
+          url: 'branding',
+          name: 'Branding',
+        },
+      ],
+    },
+    {
+      url: 'startup',
+      name: 'Start-ups',
+      // children: true,
+      // submenu: [
+      //   {
+      //     url: 'consultation',
+      //     name: 'Consultation',
+      //   },
+      // ],
+    },
+    {
+      url: 'enterprise',
+      name: 'Enterprise',
+    },
   ],
 
   BASE_PREMIUM: 99.98,

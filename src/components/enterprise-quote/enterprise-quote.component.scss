@@ -1,0 +1,12 @@
+.enterprise-quote-section {
+  display: grid;
+  grid-template-columns: 10% 1fr 1fr;
+  .button-container {
+    display: grid;
+    align-self: center;
+    justify-content: center;
+    .btn-branding {
+      background-color: #c6c6c6;
+    }
+  }
+}

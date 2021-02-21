@@ -1,7 +1,19 @@
 @import '../styles.scss';
 .hero-section,
 .branding-intro,
-.data-security-intro {
+.data-security-intro,
+.consultation-intro,
+.wd-intro,
+.seo-intro,
+.auditing-intro,
+.startup-intro {
+  .hero-subtitle-container {
+    flex-wrap: wrap;
+  }
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+  }
   @include respond-below(sm) {
     .hero-title {
       p:first-of-type {
@@ -15,6 +27,12 @@
           font-size: var(--font-size4) !important;
         }
       }
+    }
+    .button-container button {
+      font-size: 18px !important;
+      font-family: 'OpenSansRegular', sans-serif !important;
+      font-weight: 700 !important;
+      font-style: normal !important;
     }
   }
 
