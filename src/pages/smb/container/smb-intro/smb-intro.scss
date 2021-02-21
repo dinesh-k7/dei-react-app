@@ -1,0 +1,142 @@
+@import '../../../../assets/scss/abstracts/mixins';
+
+.smb-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+  height: 100vh;
+  .smb-mobile-title {
+    display: none;
+  }
+  .coral-blob {
+    width: 144px;
+    height: 136px;
+    margin-top: -16px;
+  }
+  .smb-container {
+    display: grid;
+  }
+  .smb-intro-image {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    height: 224px;
+  }
+
+  .smb-intro-text {
+    color: var(--font-color);
+    font-size: var(--font-size4);
+    font-family: 'OpenSansRegular', sans-serif;
+  }
+
+  .smb-services {
+    display: grid;
+    grid-template-columns: 1fr;
+    img {
+      width: 80px;
+      height: 80px;
+    }
+    .service-one,
+    .service-three {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .service-two {
+      display: grid;
+      justify-self: center;
+    }
+    span {
+      font-size: 30px;
+      font-family: 'MontFont', sans-serif;
+      font-weight: 900;
+      font-style: normal;
+    }
+    .branding-service,
+    .auditing-service {
+      justify-self: end;
+    }
+    .ds-service,
+    .branding-service,
+    .seo-service,
+    .wd-service,
+    .auditing-service {
+      display: grid;
+      grid-template-columns: 0px 1fr;
+      height: 80px;
+      span {
+        align-self: center;
+      }
+    }
+    .wd-service {
+      padding-left: 48px;
+    }
+  }
+}
+
+@include respond-between(md, lg) {
+  .smb-intro-image {
+    img {
+      width: 550px;
+    }
+  }
+}
+
+@include respond-between(sm, md) {
+  .smb-intro {
+    grid-template-columns: 1fr;
+    height: auto;
+    .smb-container {
+      grid-template-rows: 240px;
+    }
+    .smb-services {
+      grid-gap: 48px;
+    }
+  }
+  .smb-intro-image {
+    img {
+      width: 350px;
+    }
+  }
+}
+
+@include respond-above(lg) {
+  .smb-container {
+    grid-template-rows: 400px;
+  }
+}
+
+@include respond-below(sm) {
+  .smb-intro {
+    grid-template-columns: 1fr !important;
+    .smb-intro-image {
+      justify-items: end;
+      grid-template-columns: 1fr 80px !important;
+      height: 150px;
+      .smb-title {
+        display: none;
+      }
+      .coral-blob {
+        width: 64px;
+        height: 64px;
+      }
+      .smb-mobile-title {
+        display: block !important;
+      }
+    }
+    .smb-intro-text {
+      text-align: right;
+      padding-top: 32px;
+    }
+    .smb-services {
+      align-self: center;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+      span {
+        font-size: 16px !important;
+        align-self: flex-start !important;
+        padding-top: 8px;
+      }
+    }
+  }
+}

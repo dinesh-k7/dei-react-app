@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -12,8 +12,16 @@ import { useHistory, useLocation } from 'react-router-dom';
 import hamIcon from '../../assets/images/hamburger_icon.svg';
 
 import { constants } from '../../constants';
+import {
+  ChevronLeft,
+  ChevronRight,
+  ExpandLess,
+  ExpandMore,
+  StarBorder,
+} from '@material-ui/icons';
+import { Collapse, ListItemIcon } from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTypography-body1': {
       textAlign: 'right',
@@ -37,25 +45,41 @@ const useStyles = makeStyles({
   },
   menuList: {
     marginTop: '64px',
+    width: '100%',
+    maxWidth: 360,
   },
   menuText: {
     display: 'flex',
     justifyContent: 'flex-end',
     paddingRight: '16px',
-    paddingBottom: '32px',
+    paddingBottom: '16px',
+  },
+  chevronIcon: {
+    marginBottom: '16px !important',
   },
   menuActive: {
     fontColor: '#2C3E50',
     fontFamily: `${'OpenSansBold'}`,
   },
-});
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
+  collapseContainer: {
+    display: 'grid !important',
+    justifyContent: 'end',
+    padding: '0px 16px 16px 0px',
+  },
+}));
 
 export default function TemporaryDrawer(): any {
   const classes = useStyles();
   const location = useLocation();
 
+  const [smbMenuOpen, setSmbMenuOpen] = React.useState(false);
+
   const [state, setState] = React.useState({
     right: false,
+    open: true,
   });
 
   const toggleDrawer = (anchor, open) => () => {
@@ -64,9 +88,18 @@ export default function TemporaryDrawer(): any {
 
   const history = useHistory();
 
-  const routeChange = (url) => {
-    setState({ ...state, right: false });
-    history.push(url);
+  const routeChange = (menu, from?: string) => {
+    if (from === 'submenu') {
+      setState({ ...state, right: false });
+      history.push(menu.url);
+    } else {
+      if (menu.children) {
+        setSmbMenuOpen(!smbMenuOpen);
+      } else {
+        setState({ ...state, right: false });
+        history.push(menu.url);
+      }
+    }
   };
 
   const list = (anchor) => (
@@ -79,18 +112,50 @@ export default function TemporaryDrawer(): any {
       <div className={classes.closeIcon} onClick={toggleDrawer(anchor, false)}>
         <CloseIcon />
       </div>
-      <List className={classes.menuList}>
+      <List className={classes.menuList} component="nav">
         {constants.PAGES.map((page, index) => (
-          <ListItem button key={index} onClick={() => routeChange(page.url)}>
-            <ListItemText
-              primary={page.name}
-              className={
-                location.pathname.indexOf(page.url) > -1
-                  ? `${classes.menuText} ${classes.menuActive}`
-                  : `${classes.menuText}`
-              }
-            />
-          </ListItem>
+          <Fragment key={index}>
+            <ListItem button onClick={() => routeChange(page)}>
+              <ListItemText
+                primary={page.name}
+                className={
+                  location.pathname.indexOf(page.url) > -1
+                    ? `${classes.menuText} ${classes.menuActive}`
+                    : `${classes.menuText}`
+                }
+              />
+              {smbMenuOpen && page.children ? (
+                <ExpandLess className={classes.chevronIcon} />
+              ) : (
+                page.children && <ExpandMore className={classes.chevronIcon} />
+              )}
+            </ListItem>
+            {page.children && (
+              <Collapse
+                in={smbMenuOpen}
+                timeout="auto"
+                unmountOnExit
+                className={classes.collapseContainer}
+              >
+                <List component="div" disablePadding>
+                  {page.submenu &&
+                    page.submenu.length &&
+                    page.submenu.map((item, idx) => {
+                      return (
+                        <ListItem
+                          button
+                          className={classes.nested}
+                          key={idx}
+                          onClick={() => routeChange(item, 'submenu')}
+                        >
+                          <ListItemIcon>{item.name}</ListItemIcon>
+                        </ListItem>
+                      );
+                    })}
+                </List>
+              </Collapse>
+            )}
+          </Fragment>
         ))}
       </List>
     </div>

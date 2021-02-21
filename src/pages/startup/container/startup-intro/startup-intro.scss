@@ -1,0 +1,116 @@
+@import '../../../../assets/scss/abstracts/mixins';
+
+@import '../../../../assets/scss/layout/hero';
+
+.startup-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+  .title {
+    margin-top: 16px;
+  }
+  .green-blob {
+    width: 144px;
+    height: 136px;
+    margin-top: -16px;
+  }
+
+  .startup-container {
+    display: grid;
+  }
+  .startup-intro-image {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+  }
+  .startup-intro-text {
+    color: var(--font-color);
+    font-size: var(--font-size4);
+    font-family: 'OpenSansRegular', sans-serif;
+  }
+
+  .nwo-hub,
+  .consultation {
+    display: grid;
+    grid-template-columns: 5px 1fr;
+    height: 80px;
+
+    span {
+      align-self: center;
+      font-size: 30px;
+      font-family: 'MontFont', sans-serif;
+      font-weight: 900;
+      font-style: normal;
+    }
+  }
+  .consultation {
+    span {
+      width: min-content;
+      justify-self: end;
+    }
+    img {
+      padding-left: 104px;
+    }
+  }
+  .service-one,
+  .service-two {
+    display: grid;
+  }
+  .service-two {
+    justify-content: end;
+  }
+  .startup-services {
+    display: grid;
+    grid-gap: 48px;
+  }
+}
+
+@include respond-between(sm, md) {
+  .startup-intro {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@include respond-below(sm) {
+  .startup-intro {
+    grid-template-columns: 1fr !important;
+    .title {
+      width: 208px !important;
+    }
+    .green-blob {
+      width: 88px !important;
+      height: 88px !important;
+    }
+    .startup-intro-image {
+      justify-self: end;
+      padding-right: 8px;
+    }
+    .startup-intro-text {
+      justify-self: end;
+      text-align: right;
+    }
+    .startup-services {
+      grid-gap: 16px !important;
+      .nwo-hub span {
+        align-self: start !important;
+        margin-top: 16px;
+      }
+      .consultation {
+        grid-template-columns: 5px 100px;
+        padding-right: 24px;
+        img {
+          padding-left: 0px;
+        }
+        span {
+          justify-self: start;
+        }
+      }
+      img {
+        width: 45px;
+        height: 52px;
+      }
+      span {
+        font-size: 18px !important;
+      }
+    }
+  }
+}

@@ -8,7 +8,16 @@ import PersistentDrawerLeft from './menu.component';
 
 const Header: React.FC = (): ReactElement => {
   const history = useHistory();
+  console.log('historyhistory', history.location.pathname);
   const routeChange = (url) => {
+    const path = history.location.pathname;
+
+    if (
+      path.indexOf('data-security') !== -1 ||
+      path.indexOf('branding') !== -1
+    ) {
+      url = '/smb';
+    }
     history.push(url);
   };
 
