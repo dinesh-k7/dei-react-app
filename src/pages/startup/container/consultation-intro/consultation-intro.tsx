@@ -8,7 +8,7 @@ import heroMobileImage from '../../../../assets/images/consultation_mobile.svg';
 
 import './consultation-intro.scss';
 
-const ConsultationIntro: React.FC = (): ReactElement => {
+const ConsultationIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
   const history = useHistory();
 
   const routeChange = () => {
@@ -16,7 +16,7 @@ const ConsultationIntro: React.FC = (): ReactElement => {
   };
 
   return (
-    <section className="consultation-intro">
+    <section className="consultation-intro" ref={inputRef}>
       <div className="hero-content">
         <div className="hero-title">
           <h1>Start-up Consultation</h1>
@@ -51,7 +51,7 @@ const ConsultationIntro: React.FC = (): ReactElement => {
             className={`btn-branding`}
             onClick={() => routeChange()}
           >
-            Get Quote
+            Learn More
           </button>
         </div>
       </div>

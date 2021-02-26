@@ -43,6 +43,7 @@ export const useStyles = makeStyles(() => ({
     '& .MuiOutlinedInput-input': {
       paddingTop: '24px !important',
       display: 'grid !important',
+      whiteSpace: 'normal !important',
       height: '16px',
     },
   },

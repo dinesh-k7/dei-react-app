@@ -1,6 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { ReactElement } from 'react';
-import { Select, MenuItem, FormControl } from '@material-ui/core';
+import React, { Fragment, ReactElement } from 'react';
+import {
+  Select,
+  MenuItem,
+  FormControl,
+  ListSubheader,
+} from '@material-ui/core';
 import { Controller } from 'react-hook-form';
 import { filterErrorMessage } from '../../utils';
 import { quoteValidationErrorMessages } from '../../constants';
@@ -16,7 +21,9 @@ const SelectBox: any = ({
   options,
   placeholder,
   control,
+  grouping,
 }): ReactElement => {
+  const types: string[] = [];
   return (
     <div className="form-group">
       <label htmlFor={name}>{label_name}</label>
@@ -37,7 +44,24 @@ const SelectBox: any = ({
               <MenuItem value="" disabled className={className.placeholder}>
                 {placeholder}
               </MenuItem>
-              {options &&
+              {grouping &&
+                options &&
+                options.length &&
+                options.map((option, idx) => {
+                  types.push(option['type']);
+                  return [
+                    option.id === 1 || option.id === 7 ? (
+                      <ListSubheader key={idx}>{option.type}</ListSubheader>
+                    ) : (
+                      ''
+                    ),
+                    <MenuItem key={idx} value={option.name}>
+                      {option.name}
+                    </MenuItem>,
+                  ];
+                })}
+              {!grouping &&
+                options &&
                 options.length &&
                 options.map((option, idx) => {
                   return (

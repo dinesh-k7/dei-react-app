@@ -15,8 +15,7 @@ import SelectBox from '../form-element/select-box';
 import TextBox from '../form-element/text-box';
 import MultiText from '../form-element/multi-text';
 import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
-import { apparel } from '../../constants/industry-option';
-import ComboBox from '../form-element/auto-complete';
+import { industries } from '../../constants/industry-option';
 
 const GetQuoteComponent: React.FC<any> = (
   props: IGetQuoteProps,
@@ -253,7 +252,9 @@ const GetQuoteComponent: React.FC<any> = (
                       id={field.name}
                       label_name={field.label}
                       options={
-                        field.name === 'industry' ? apparel : constants.POSITION
+                        field.name === 'industry'
+                          ? industries
+                          : constants.POSITION
                       }
                       placeholder={field.placeholder}
                       control={control}

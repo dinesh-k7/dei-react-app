@@ -3,5 +3,12 @@
 .hero-subtitle-container {
   h3 {
     padding-right: var(--font-size7);
+    cursor: pointer;
+  }
+  .enterprise-services {
+    height: 44px;
+  }
+  span {
+    cursor: pointer;
   }
 }

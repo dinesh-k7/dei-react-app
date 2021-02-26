@@ -8,7 +8,7 @@ import heroMobileImage from '../../../../assets/images/wd_mobile.svg';
 
 import './wd-intro.scss';
 
-const WdIntro: React.FC = (): ReactElement => {
+const WdIntro: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
 
   const routeChange = () => {
@@ -16,7 +16,7 @@ const WdIntro: React.FC = (): ReactElement => {
   };
 
   return (
-    <section className="wd-intro">
+    <section className="wd-intro" ref={props.inputRef}>
       <div className="hero-content">
         <div className="hero-title">
           <h1>Website development</h1>

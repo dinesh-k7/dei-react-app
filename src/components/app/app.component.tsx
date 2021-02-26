@@ -1,6 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter,
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom';
 
+import ScrollToTop from './scroll-top.component';
 import Header from '../header/header.component';
 import Footer from '../footer/footer.component';
 import DataSecurityPage from '../../pages/data-security/data-security-page';
@@ -10,11 +16,16 @@ import SmbPage from '../../pages/smb/smb-page';
 import StartupPage from '../../pages/startup/startup-page';
 import ConsultationPage from '../../pages/consultation/consultation-page';
 import EnterprisePage from '../../pages/enterprise/enterprise-page';
+import SDWANServicePage from '../../pages/enterprise/sdwan-service/sdwan-service.page';
+import CableServicePage from '../../pages/enterprise/cable-service/cable-service.page';
+import CloudServicePage from '../../pages/enterprise/cloud-service/cloud-service.page';
+import CarrierServicePage from '../../pages/enterprise/carrier-service/carrier-service.page';
 import '../../assets/scss/styles.scss';
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <Switch>
         <Route exact path="/">
@@ -35,12 +46,24 @@ const App: React.FC = () => {
         <Route path="/consultation">
           <ConsultationPage />
         </Route>
-        <Route path="/enterprise">
+        <Route path="/enterprise" exact>
           <EnterprisePage />
+        </Route>
+        <Route path="/enterprise/sdwan-service">
+          <SDWANServicePage />
+        </Route>
+        <Route path="/enterprise/cloud-service">
+          <CloudServicePage />
+        </Route>
+        <Route path="/enterprise/cable-service">
+          <CableServicePage />
+        </Route>
+        <Route path="/enterprise/carrier-service">
+          <CarrierServicePage />
         </Route>
       </Switch>
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 };
 

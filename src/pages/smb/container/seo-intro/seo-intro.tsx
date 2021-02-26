@@ -8,7 +8,7 @@ import heroMobileImage from '../../../../assets/images/seo_mobile.svg';
 
 import './seo-intro.scss';
 
-const SeoIntro: React.FC = (): ReactElement => {
+const SeoIntro: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
 
   const routeChange = () => {
@@ -16,7 +16,7 @@ const SeoIntro: React.FC = (): ReactElement => {
   };
 
   return (
-    <section className="seo-intro">
+    <section className="seo-intro" ref={props.inputRef}>
       <div className="hero-image">
         <img src={heroImage} alt="SEO Marketing Image" />
       </div>
@@ -32,10 +32,10 @@ const SeoIntro: React.FC = (): ReactElement => {
               <img src={serviceYellow} alt="Background image" />
               <h3>Marketing</h3>
             </div>
-            <div className="features">
+            {/* <div className="features">
               <img src={serviceYellow} alt="Background image" />
               <h3>New World Security</h3>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="hero-mobile-image">

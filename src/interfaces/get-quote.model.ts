@@ -3,6 +3,7 @@ export interface IGetQuoteModel {
   isFormSubmitted: boolean;
   isLeadDataSent: boolean;
   isSendMailError?: boolean;
+  fromPage?: string;
 }
 
 export interface IGetQuoteProps {

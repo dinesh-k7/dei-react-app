@@ -1,5 +1,6 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useRef } from 'react';
 
+import { constants } from '../../../../constants';
 import smbImage from '../../../../assets/images/smb_title.svg';
 import smbBlobImage from '../../../../assets/images/smb_blob.svg';
 import dsBlobImage from '../../../../assets/images/ds_blob.svg';
@@ -11,7 +12,21 @@ import smbMobileImage from '../../../../assets/images/smb_title_mobile.svg';
 
 import './smb-intro.scss';
 
-const SmbIntroContainer: React.FC = (): ReactElement => {
+const SmbIntroContainer: React.FC<any> = ({
+  onClickHandler,
+}: any): ReactElement => {
+  const ref: any = useRef();
+
+  const onMouseOverHandler = (event: any) => {
+    // if (ref && ref.current) {
+    const { classList } = ref.current;
+    ref.current.classList.toggle('hover-text');
+
+    //}
+  };
+  const onMouseOutHandler = () => {
+    console.log('out', ref.current);
+  };
   return (
     <section className="smb-intro">
       <div className="smb-container">
@@ -38,27 +53,51 @@ const SmbIntroContainer: React.FC = (): ReactElement => {
         <div className="service-one">
           <div className="ds-service">
             <img src={dsBlobImage} />
-            <span>Data Security</span>
+            <span
+              // onMouseOver={(e) => onMouseOverHandler(e)}
+              // onMouseOut={onMouseOutHandler}
+              onClick={() => onClickHandler(constants.SMB.DS)}
+            >
+              Data Security
+            </span>
+            {/* <span
+              className="ds-features"
+              ref={ref}
+              onClick={() => onClickHandler(constants.SMB.DS)}
+            >
+              <ul>
+                <li>Test </li>
+                <li>Test b</li>
+              </ul>
+            </span> */}
           </div>
           <div className="branding-service">
             <img src={brandingBlobImage} />
-            <span>Branding</span>
+            <span onClick={() => onClickHandler(constants.SMB.BRANDING)}>
+              Branding
+            </span>
           </div>
         </div>
         <div className="service-two">
           <div className="wd-service">
             <img src={wdBlobImage} />
-            <span>Website Development</span>
+            <span onClick={() => onClickHandler(constants.SMB.WD)}>
+              Website Development
+            </span>
           </div>
         </div>
         <div className="service-three">
           <div className="seo-service">
             <img src={seoBlobImage} />
-            <span>SEO & Marketing</span>
+            <span onClick={() => onClickHandler(constants.SMB.SEO)}>
+              SEO & Marketing
+            </span>
           </div>
           <div className="auditing-service">
             <img src={auditBlobImage} />
-            <span>Auditing</span>
+            <span onClick={() => onClickHandler(constants.SMB.NWO)}>
+              NWOhub
+            </span>
           </div>
         </div>
       </div>
