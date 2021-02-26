@@ -6,6 +6,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
+  height: 100vh;
+  span {
+    cursor: pointer;
+  }
+
   .title {
     margin-top: 16px;
   }
@@ -70,9 +75,20 @@
   }
 }
 
+@include respond-above(sm) {
+  .startup-container {
+    grid-template-rows: 200px !important;
+  }
+  .startup-services {
+    grid-template-rows: 200px !important;
+    grid-gap: 0px !important;
+  }
+}
+
 @include respond-below(sm) {
   .startup-intro {
     grid-template-columns: 1fr !important;
+    height: auto !important;
     .title {
       width: 208px !important;
     }

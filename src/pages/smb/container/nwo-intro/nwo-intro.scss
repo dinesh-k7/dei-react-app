@@ -35,7 +35,11 @@
 
   .btn-branding {
     margin-top: 64px;
-    background-color: #e0e0e0;
+    background-color: #49e69a;
+    a {
+      text-decoration: none;
+      color: #2c3e50;
+    }
   }
 }
 

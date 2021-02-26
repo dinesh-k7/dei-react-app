@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import startupTitle from '../../../../assets/images/startup_title.svg';
 
@@ -7,7 +8,14 @@ import yellowBlob from '../../../../assets/images/startup_consult_blob.svg';
 
 import './startup-intro.scss';
 
-const StartupIntroContainer: React.FC = (): ReactElement => {
+const StartupIntroContainer: React.FC<any> = ({
+  onClickHandler,
+}: any): ReactElement => {
+  const history = useHistory();
+  const routeChange = (url) => {
+    history.push(url);
+  };
+
   return (
     <section className="startup-intro">
       <div className="startup-container">
@@ -25,13 +33,13 @@ const StartupIntroContainer: React.FC = (): ReactElement => {
         <div className="service-one">
           <div className="nwo-hub">
             <img src={greenBlob} width={80} height={80} />
-            <span>NWO Hub</span>
+            <span onClick={() => routeChange('/smb#NWO')}>NWOhub</span>
           </div>
         </div>
         <div className="service-two">
           <div className="consultation">
             <img src={yellowBlob} />
-            <span>Start-up Consultation</span>
+            <span onClick={onClickHandler}>Start-up Consultation</span>
           </div>
         </div>
       </div>

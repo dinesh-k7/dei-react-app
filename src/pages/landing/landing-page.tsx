@@ -7,7 +7,7 @@ import deiImage from '../../assets/images/dei.svg';
 import deiMobileImage from '../../assets/images/dei-mobile.svg';
 
 import greenVector from '../../assets/images/green_vector.svg';
-import greyVector from '../../assets/images/grey_vector.svg';
+import enterpriseVector from '../../assets/images/enterprise_vector.svg';
 import coralVector from '../../assets/images/coral_vector.svg';
 import blueVector from '../../assets/images/service_blue.svg';
 import yellowVector from '../../assets/images/yellow_vector.svg';
@@ -59,7 +59,7 @@ const LandingPage: React.FC = (): ReactElement => {
             <span onClick={() => routeChange('/startup')}>Start-up’s </span>
           </div>
           <div className="enterprise-blob">
-            <img src={greyVector} />
+            <img src={enterpriseVector} />
             <span onClick={() => routeChange('/enterprise')}> Enterprise </span>
           </div>
         </div>

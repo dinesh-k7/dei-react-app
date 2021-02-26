@@ -6,9 +6,9 @@ import '../../../../assets/scss/styles.scss';
 import heroImage from '../../../../assets/images/audit_service.svg';
 import heroMobileImage from '../../../../assets/images/auditing_mobile.svg';
 
-import './auditing-intro.scss';
+import './nwo-intro.scss';
 
-const AuditingIntro: React.FC = (): ReactElement => {
+const NWOIntro: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
 
   const routeChange = () => {
@@ -16,13 +16,32 @@ const AuditingIntro: React.FC = (): ReactElement => {
   };
 
   return (
-    <section className="auditing-intro">
+    <section className="auditing-intro" id="nwo-intro" ref={props.inputRef}>
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Auditing</h1>
+          <h1>NWOhub™</h1>
           <div className="hero-subtitle-container">
-            <img src={serviceGreen} alt="Background image" />
-            <h3>Website auditing</h3>
+            <div className="features">
+              <img src={serviceGreen} alt="Background image" />
+              <h3>Domains</h3>
+            </div>
+
+            <div className="features">
+              <img src={serviceGreen} alt="Background image" />
+              <h3>Websites</h3>
+            </div>
+          </div>
+
+          <div className="hero-subtitle-container">
+            <div className="features">
+              <img src={serviceGreen} alt="Background image" />
+              <h3>Hosting</h3>
+            </div>
+
+            <div className="features">
+              <img src={serviceGreen} alt="Background image" />
+              <h3>Email</h3>
+            </div>
           </div>
         </div>
         <div className="hero-mobile-image">
@@ -37,7 +56,9 @@ const AuditingIntro: React.FC = (): ReactElement => {
         </div>
         <div className="button-container">
           <button type="button" className={`btn-branding`}>
-            In Development
+            <a href="https://www.nwohub.com" rel="noreferrer" target="_blank">
+              Visit NWOhub.com{' '}
+            </a>
           </button>
         </div>
       </div>
@@ -48,4 +69,4 @@ const AuditingIntro: React.FC = (): ReactElement => {
   );
 };
 
-export default AuditingIntro;
+export default NWOIntro;

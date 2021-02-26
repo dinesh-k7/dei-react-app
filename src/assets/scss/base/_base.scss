@@ -109,6 +109,13 @@ li {
   font-family: 'OpenSansRegular', sans-serif !important;
   color: var(--font-color) !important;
 }
+
+.MuiListItemIcon-root,
+.MuiTypography-root {
+  font-weight: var(--font-weight400) !important;
+  font-family: 'OpenSansRegular', sans-serif !important;
+  color: var(--font-color) !important;
+}
 ::placeholder,
 label {
   padding-bottom: 10px;

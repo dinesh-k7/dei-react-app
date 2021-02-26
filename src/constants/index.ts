@@ -1,4 +1,9 @@
 export const constants = {
+  ES_CLOUD_SERVICE: 'ES_CLOUD_SERVICE',
+  ES_CABLE_SERVICE: 'ES_CABLE_SERVICE',
+  ES_CARRIER_SERVICE: 'ES_CARRIER_SERVICE',
+  ES_SDWAN_SERVICE: 'ES_SDWAN_SERVICE',
+  CONSULTATION_SERVICE: 'CONSULTATION_SERVICE',
   COMPANY_SIZE: 4,
   POSITION: [
     { id: 1, name: 'CEO/Decision-maker' },
@@ -7,6 +12,201 @@ export const constants = {
     { id: 4, name: 'Others' },
   ],
   INDUSTRIES: ['Accounting', 'Finance', 'IT', 'Marketing'],
+  PRIMARY: [
+    {
+      id: 1,
+      name: '35 Mbps or less',
+      type: 'Business Internet',
+    },
+    {
+      id: 2,
+      name: '36 Mbps - 99 Mbps',
+      type: 'Business Internet',
+    },
+    {
+      id: 3,
+      name: '100 Mbps - 299 Mbps',
+      type: 'Business Internet',
+    },
+    {
+      id: 4,
+      name: '300 Mbps - 499 Mbps',
+      type: 'Business Internet',
+    },
+    {
+      id: 5,
+      name: '599 Mbps - 1 Gbps',
+      type: 'Business Internet',
+    },
+    {
+      id: 6,
+      name: '1 Gbps',
+      type: 'Business Internet',
+    },
+
+    {
+      id: 7,
+      name: '10 Mbps or less',
+      type: 'Ethernet',
+    },
+    {
+      id: 8,
+      name: '10 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 9,
+      name: '20 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 10,
+      name: '50 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 11,
+      name: '100 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 12,
+      name: '200 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 13,
+      name: '500 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 14,
+      name: '1 Gbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 15,
+      name: '10 Gbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 16,
+      name: '100 Gbps',
+      type: 'Ethernet',
+    },
+  ],
+  SECONDARY: [
+    {
+      id: 1,
+      name: '35 Mbps or less',
+      type: 'Business Internet',
+    },
+    {
+      id: 2,
+      name: '36 Mbps - 99 Mbps',
+      type: 'Business Internet',
+    },
+    {
+      id: 3,
+      name: '100 Mbps - 299 Mbps',
+      type: 'Business Internet',
+    },
+    {
+      id: 4,
+      name: '300 Mbps - 499 Mbps',
+      type: 'Business Internet',
+    },
+    {
+      id: 5,
+      name: '599 Mbps - 1 Gbps',
+      type: 'Business Internet',
+    },
+    {
+      id: 6,
+      name: '1 Gbps',
+      type: 'Business Internet',
+    },
+
+    {
+      id: 7,
+      name: '10 Mbps or less',
+      type: 'Ethernet',
+    },
+    {
+      id: 8,
+      name: '10 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 9,
+      name: '20 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 10,
+      name: '50 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 11,
+      name: '100 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 12,
+      name: '200 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 13,
+      name: '500 Mbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 14,
+      name: '1 Gbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 15,
+      name: '10 Gbps',
+      type: 'Ethernet',
+    },
+    {
+      id: 16,
+      name: '100 Gbps',
+      type: 'Ethernet',
+    },
+  ],
+  SITETYPES: [
+    {
+      id: 1,
+      name: 'Data Centers',
+    },
+    {
+      id: 2,
+      name: 'Main site',
+    },
+    {
+      id: 3,
+      name: 'Large remote office / branch site (50+ employees)',
+    },
+    {
+      id: 4,
+      name: 'Medium remote office / branch site (11 to 50 employees)',
+    },
+    {
+      id: 5,
+      name: 'Small remote office / branch site (10 or less employees)',
+    },
+  ],
+  SMB: {
+    DS: 'DS',
+    BRANDING: 'BRANDING',
+    WD: 'WD',
+    NWO: 'NWO',
+    SEO: 'SEO',
+  },
   MAIL_SERVICE_ENDPOINT: 'https://dei-node-service.herokuapp.com/mail-service',
   //MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service',
   PAGES: [
@@ -84,6 +284,14 @@ export const quoteValidationErrorMessages = {
     { type: 'required', message: '*Please provide your company detail' },
   ],
   industry: [{ type: 'required', message: '*Please select Industry' }],
+  addressline1: [
+    { type: 'required', message: '*Please enter Business Address' },
+  ],
+  suite: [{ type: 'required', message: '*Please enter Business Suite Opt.' }],
+  secondary: [{ type: 'required', message: '*Please select Secondary' }],
+  primary: [{ type: 'required', message: '*Please select Primary' }],
+  sitetype: [{ type: 'required', message: '*Please select Site Type' }],
+  noofsites: [{ type: 'required', message: '*Please enter Number of Sites' }],
 };
 
 export const siteKey = '6Le4OhkaAAAAAHlSqTn2MuAN8vsgE9DUaZjPaa6n';
@@ -104,6 +312,75 @@ export const messages = {
 };
 
 export const dataSecurityFormFields = [
+  {
+    name: 'name',
+    label: 'Name',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. John',
+    section: 'personal',
+  },
+  {
+    name: 'lastname',
+    label: 'Last Name',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. Doe',
+    section: 'personal',
+  },
+  {
+    name: 'email',
+    label: 'E-mail',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. johndoe@email.com',
+    pattern: patterns.email,
+    section: 'personal',
+  },
+  {
+    name: 'phone',
+    label: 'Phone Number',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. 123456789',
+    section: 'personal',
+  },
+  {
+    name: 'companyName',
+    label: 'Company Name',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. JohnDoe and co.',
+    section: 'company',
+  },
+
+  {
+    name: 'companySize',
+    label: 'Company Size',
+    type: 'number',
+    required: true,
+    placeholder: '0',
+    section: 'company',
+  },
+  {
+    name: 'position',
+    label: 'Your position in company',
+    type: 'select',
+    required: true,
+    placeholder: 'e.g. Project Manager',
+    section: 'company',
+  },
+  {
+    name: 'websiteUrl',
+    label: 'Current website URL',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. https://www.company.com',
+    pattern: patterns.website_url,
+    section: 'company',
+  },
+];
+export const FormFields = [
   {
     name: 'name',
     label: 'Name',

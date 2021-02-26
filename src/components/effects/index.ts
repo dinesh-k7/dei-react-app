@@ -8,11 +8,27 @@ export const sendMail = (
   quoteData: IGetQuoteModel,
   fromPage: string,
 ): Promise<any> => {
+  quoteData.fromPage = fromPage;
   let url;
-  if (fromPage === 'branding') {
-    url = `${constants.MAIL_SERVICE_ENDPOINT}/branding-quote/sendmail`;
-  } else {
-    url = `${constants.MAIL_SERVICE_ENDPOINT}/sendmail`;
+  switch (fromPage) {
+    case 'branding':
+      url = `${constants.MAIL_SERVICE_ENDPOINT}/branding-quote/sendmail`;
+      break;
+    case constants.ES_CABLE_SERVICE:
+    case constants.ES_CARRIER_SERVICE:
+    case constants.ES_CLOUD_SERVICE:
+      url = `${constants.MAIL_SERVICE_ENDPOINT}/enterprise-service/sendmail`;
+      break;
+    case constants.ES_SDWAN_SERVICE:
+      url = `${constants.MAIL_SERVICE_ENDPOINT}/sdwan-service/sendmail`;
+      break;
+    case constants.CONSULTATION_SERVICE:
+      url = `${constants.MAIL_SERVICE_ENDPOINT}/consultation-service/sendmail`;
+      break;
+    default:
+      url = `${constants.MAIL_SERVICE_ENDPOINT}/sendmail`;
+      break;
   }
+
   return axios.post(url, quoteData);
 };

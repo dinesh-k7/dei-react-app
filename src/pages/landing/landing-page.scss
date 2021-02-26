@@ -61,6 +61,11 @@
 
 @include respond-below(sm) {
   .landing-page-grid {
+    .smb-blob {
+      span {
+        padding: 6% 0px !important;
+      }
+    }
     height: auto !important;
     .enterprise-blob {
       span {
@@ -179,11 +184,12 @@
       }
     }
     .startup-blob {
-      grid-template-columns: 60px 1fr;
+      grid-template-columns: 48px 1fr;
       align-content: center;
       height: 200px;
       span {
-        padding-top: 6%;
+        // padding-top: 6%;
+        align-self: center;
       }
     }
     .smb-blob {
@@ -192,6 +198,7 @@
       height: 200px;
       img {
         justify-self: end;
+        align-self: center;
       }
       span {
         justify-self: end;
@@ -208,8 +215,8 @@
       }
       span {
         position: absolute;
-        right: 1%;
-        margin-top: 2%;
+        right: 2%;
+        margin-top: 3%;
       }
       em {
         position: absolute;

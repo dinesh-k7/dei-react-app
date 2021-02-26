@@ -5,6 +5,18 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
   height: 100vh;
+  span {
+    cursor: pointer;
+  }
+  ul {
+    margin: 0px !important;
+    li {
+      padding-top: 0px !important;
+    }
+  }
+  .hover-text {
+    display: block !important;
+  }
   .smb-mobile-title {
     display: none;
   }
@@ -101,6 +113,15 @@
 @include respond-above(lg) {
   .smb-container {
     grid-template-rows: 400px;
+  }
+}
+
+@include respond-above(sm) {
+  // .ds-title {
+  //   display: none !important;
+  // }
+  .ds-features {
+    display: none !important;
   }
 }
 

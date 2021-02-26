@@ -8,7 +8,7 @@ import serviceCoral from '../../../../assets/images/service_coral.svg';
 
 import './branding-intro.scss';
 
-const BrandingIntro: React.FC = (): ReactElement => {
+const BrandingIntro: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
 
   const routeChange = () => {
@@ -16,7 +16,7 @@ const BrandingIntro: React.FC = (): ReactElement => {
   };
 
   return (
-    <section className="branding-intro">
+    <section className="branding-intro" ref={props.inputRef}>
       <div className="hero-image">
         <img src={heroImage} alt="Branding Image" />
       </div>

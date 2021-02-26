@@ -4,7 +4,7 @@ import React, { ReactElement } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-import { apparel } from '../../constants/industry-option';
+import { industries } from '../../constants/industry-option';
 import { FormControl, makeStyles } from '@material-ui/core';
 import { quoteValidationErrorMessages } from '../../constants';
 import { filterErrorMessage } from '../../utils';
@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const getOpObj = (option) => {
-  if (!option.id) option = apparel.find((op) => op.id === option.id);
+  if (!option.id) option = industries.find((op) => op.id === option.id);
   return option;
 };
 
@@ -42,9 +42,9 @@ const ComboBox: any = ({
           as={({ onChange, value }) => (
             <Autocomplete
               id="industry-combo-box"
-              options={apparel}
+              options={industries}
               getOptionLabel={(option) => option.name}
-              groupBy={(option) => String(option.group)}
+              //  groupBy={(option) => String(option.group)}
               classes={{
                 option: classes.option,
               }}

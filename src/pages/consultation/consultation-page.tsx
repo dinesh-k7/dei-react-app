@@ -1,15 +1,19 @@
 import React, { Fragment, ReactElement } from 'react';
 
 import ConsultationQuoteComponent from '../../components/consultation-quote/consultation-quote.component';
-import { dataSecurityFormFields } from '../../constants';
 import HeroContainer from './container/hero/hero-container';
 import './consultation-page.scss';
+import { consultationFormData } from '../../constants/form-data/consultation-service-form';
+import { constants } from '../../constants';
 
 const ConsultationPage: React.FC = (): ReactElement => {
   return (
     <Fragment>
       <HeroContainer />
-      <ConsultationQuoteComponent formFields={dataSecurityFormFields} />
+      <ConsultationQuoteComponent
+        fromPage={constants.CONSULTATION_SERVICE}
+        formFields={consultationFormData}
+      />
     </Fragment>
   );
 };
