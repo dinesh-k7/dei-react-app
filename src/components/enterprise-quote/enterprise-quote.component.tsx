@@ -13,7 +13,6 @@ import './enterprise-quote.component.scss';
 import { useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import ErrorMessageContainer from '../container/error-message.container';
-import { Backdrop, CircularProgress } from '@material-ui/core';
 import LoaderComponent from '../loader/loader.component';
 
 const EnterpriseQuoteComponent: React.FC<any> = (
@@ -26,10 +25,42 @@ const EnterpriseQuoteComponent: React.FC<any> = (
     isSendMailError: false,
     isBrandingDetailSubmitted: false,
     isButtonSubmit: false,
+    services: [
+      {
+        id: 1,
+        active: false,
+        name: 'SD-WAN',
+        title: 'ES_SDWAN_SERVICE',
+      },
+      {
+        id: 2,
+        active: false,
+        name: 'UCaaS',
+        title: 'UCAAS_SERVICE',
+      },
+      {
+        id: 3,
+        active: false,
+        name: 'Carrier',
+        title: 'ES_CARRIER_SERVICE',
+      },
+      {
+        id: 4,
+        active: false,
+        name: 'Cable',
+        title: 'ES_CABLE_SERVICE',
+      },
+      {
+        id: 5,
+        active: false,
+        name: 'Cloud',
+        title: 'ES_CLOUD_SERVICE',
+      },
+    ],
   };
   const { formFields, fromPage } = props;
   const state = {};
-  let companysize = '';
+  const companysize = '';
 
   let isLocationExist;
   formFields &&
@@ -65,8 +96,16 @@ const EnterpriseQuoteComponent: React.FC<any> = (
   // handle get quote form onSubmit
   const onSubmit = (quoteData: any) => {
     const { captchaValue } = quoteData;
+    const { services } = quoteState;
 
     quoteData.isFormSubmitted = true;
+    const selectedServices = services && services.filter((s) => s.active);
+    let preferedServices;
+    if (selectedServices && selectedServices.length) {
+      preferedServices = selectedServices.map((d) => d.name);
+    } else {
+      preferedServices = false;
+    }
 
     setQuoteState((prevState) => {
       return {
@@ -78,7 +117,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
     if (!captchaValue) {
       return;
     } else {
-      sendMail(quoteData, fromPage).then(
+      sendMail({ ...quoteData, services: preferedServices }, fromPage).then(
         () => {
           setQuoteState((prevState) => {
             return {
@@ -106,27 +145,41 @@ const EnterpriseQuoteComponent: React.FC<any> = (
     captcha['reset']();
   };
 
-  //handle company size change event
-  const onChangeHandler = (event: React.FormEvent<EventTarget>) => {
-    const target = event.target as HTMLInputElement;
-    companysize = target && target.value;
-    setCompanySize(+companysize);
-  };
-
   const {
     captchaValue,
     isLeadDataSent,
     isFormSubmitted,
     isSendMailError,
     name,
+    services,
   } = quoteState;
+
+  const unSelectService = (name: string) => {
+    const filterService = services.find((keyword) => keyword.name === name);
+
+    if (filterService) {
+      filterService.active = !filterService?.active;
+    }
+
+    setQuoteState((prevState) => {
+      return {
+        ...prevState,
+        services,
+      };
+    });
+  };
 
   if (isLeadDataSent) {
     resetCaptcha();
   }
 
   const classes = useStyles();
-
+  const applicableService =
+    services &&
+    services.length &&
+    services.filter((s) => {
+      return s.title && s.title.indexOf(fromPage);
+    });
   return (
     <section className="enterprise-quote-section">
       <div className="bg-image"></div>
@@ -238,7 +291,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
 
           {isLocationExist && (
             <Fragment>
-              <h3>Locations and Connectivity Requirements</h3>
+              <h4>Locations and Connectivity Requirements</h4>
               <div className="company-information">
                 {formFields &&
                   formFields.length &&
@@ -332,10 +385,19 @@ const EnterpriseQuoteComponent: React.FC<any> = (
         <div className="additional-services">
           <h4>Please select additional services that are of interest:</h4>
           <div className="enterprise-package">
-            <span>SD-WAN</span>
-            <span>UCaaS</span>
-            <span>Carrier</span>
-            <span>Cable</span>
+            {applicableService &&
+              applicableService.length &&
+              applicableService.map((service, idx) => (
+                <span
+                  className={
+                    service.active ? 'service-active' : 'service-inactive'
+                  }
+                  onClick={() => unSelectService(service.name)}
+                  key={service.id}
+                >
+                  {service.name}
+                </span>
+              ))}
           </div>
         </div>
         {!isLeadDataSent && (

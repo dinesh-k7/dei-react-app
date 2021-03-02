@@ -10,7 +10,7 @@
   height: 100vh;
 
   .hero-mobile-image {
-    display: none;
+    display: none !important;
   }
   .hero-subtitle-container {
     h3 {
@@ -42,6 +42,9 @@
 @include respond-between(sm, md) {
   .consultation-intro {
     height: auto !important;
+  }
+  .hero-mobile-image {
+    display: none !important;
   }
 }
 

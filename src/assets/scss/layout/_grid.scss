@@ -195,8 +195,8 @@
   .enterprise-quote-section {
     border-bottom: 1px solid var(--font-color);
     padding-bottom: 90px;
-    display: grid;
-    grid-template-columns: 1fr;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
     grid-row: 3/4;
 
     .bg-image img {
@@ -229,6 +229,13 @@
     input[type='number'],
     select {
       height: 60px;
+    }
+  }
+
+  .enterprise-package {
+    grid-template-columns: repeat(2, 1fr) !important;
+    span {
+      justify-self: center !important;
     }
   }
 

@@ -32,9 +32,9 @@ const HeroContainer: React.FC = (): ReactElement => {
             </div>
           </div>
         </div>
-        {/* <div className="hero-mobile-image">
+        <div className="hero-mobile-image">
           <img src={heroMobileImage} alt="consultation Image" />
-        </div> */}
+        </div>
         <div className="hero-description">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

@@ -84,6 +84,9 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
             <div className="hero-title">
               <h1>DEI-SDWAN Service</h1>
             </div>
+            <div className="hero-mobile-image">
+              <img src={heroMobileImage} alt="consultation Image" />
+            </div>
             <div className="hero-description">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -98,6 +101,9 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
           <Fragment>
             <div className="hero-title">
               <h1>DEI-Cloud Service</h1>
+            </div>
+            <div className="hero-mobile-image">
+              <img src={heroMobileImage} alt="consultation Image" />
             </div>
             <div className="hero-description">
               <p>
@@ -114,6 +120,9 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
             <div className="hero-title">
               <h1>DEI-Cable Service</h1>
             </div>
+            <div className="hero-mobile-image">
+              <img src={heroMobileImage} alt="consultation Image" />
+            </div>
             <div className="hero-description">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -129,6 +138,9 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
             <div className="hero-title">
               <h1>DEI-Carrier Service</h1>
             </div>
+            <div className="hero-mobile-image">
+              <img src={heroMobileImage} alt="consultation Image" />
+            </div>
             <div className="hero-description">
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -143,6 +155,9 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
           <Fragment>
             <div className="hero-title">
               <h1>DEI-UCaaS</h1>
+            </div>
+            <div className="hero-mobile-image">
+              <img src={heroMobileImage} alt="consultation Image" />
             </div>
             <div className="hero-description">
               <p>

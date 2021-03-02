@@ -120,11 +120,11 @@ export const constants = {
     },
     {
       id: 3,
-      name: 'Large remote office / branch site (50+ employees)',
+      name: 'Large remote office / branch site (51+ employees)',
     },
     {
       id: 4,
-      name: 'Medium remote office / branch site (11 to 50 employees)',
+      name: 'Medium remote office / branch site (11 to 51 employees)',
     },
     {
       id: 5,
