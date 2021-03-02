@@ -23,9 +23,7 @@ const LandingPage: React.FC = (): ReactElement => {
   };
 
   const onMouseOverHandler = (ref: any) => {
-    console.log('iinsssn');
     if (ref && ref.current) {
-      console.log('iinn');
       ref.current.classList.toggle('hover-intro-text');
     }
   };

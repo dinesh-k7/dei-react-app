@@ -175,5 +175,13 @@
         padding-top: 8px;
       }
     }
+
+    .ds-features,
+    .branding-features,
+    .wd-features,
+    .seo-features,
+    .audit-features {
+      display: none !important;
+    }
   }
 }

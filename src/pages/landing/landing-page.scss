@@ -66,6 +66,14 @@
   }
 }
 
+@include respond-below(sm) {
+  .startup-services,
+  .smb-services-landing,
+  .enterprise-services {
+    display: none !important;
+  }
+}
+
 @include respond-above(lg) {
   .startup-services {
     margin-top: 132px !important;

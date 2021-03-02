@@ -4,4 +4,24 @@
   h3 {
     padding-right: var(--font-size7);
   }
+  .hero-mobile-image {
+    display: none !important;
+  }
+}
+
+@include respond-below(sm) {
+  .hero-content {
+    display: grid;
+    .hero-mobile-image {
+      display: block !important;
+      justify-self: center;
+      padding-top: 40px;
+    }
+  }
+  .hero-image {
+    display: none !important;
+  }
+  .button-container {
+    padding: 8px !important;
+  }
 }

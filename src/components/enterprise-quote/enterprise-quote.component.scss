@@ -1,3 +1,5 @@
+@import '../../assets/scss/abstracts/mixins';
+
 .enterprise-quote-section {
   display: grid;
   grid-template-columns: 10% 1fr 1fr;
@@ -42,7 +44,26 @@
         border-radius: 8px;
         border: 1px solid var(--font-color);
         cursor: pointer;
+        min-width: 96px;
+        text-align: center;
+      }
+      .service-active {
+        border: 2px solid var(--font-color);
+      }
+      .service-inactive {
+        border: 1px solid var(--font-color);
       }
     }
+    .additional-services {
+      h4 {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@include respond-between(sm, md) {
+  .enterprise-package {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }

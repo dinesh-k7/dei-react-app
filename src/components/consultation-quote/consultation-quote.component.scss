@@ -1,3 +1,5 @@
+@import '../../assets/scss/abstracts/mixins';
+
 .consultation-quote-section {
   display: grid;
   grid-template-columns: 10% 1fr 1fr;
@@ -40,7 +42,16 @@
         border-radius: 8px;
         border: 1px solid var(--font-color);
         cursor: pointer;
+        text-align: center;
       }
+    }
+  }
+}
+
+@include respond-below(sm) {
+  .button-container {
+    .btn-branding {
+      justify-self: center;
     }
   }
 }
