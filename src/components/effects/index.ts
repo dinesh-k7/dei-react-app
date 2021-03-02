@@ -17,6 +17,7 @@ export const sendMail = (
     case constants.ES_CABLE_SERVICE:
     case constants.ES_CARRIER_SERVICE:
     case constants.ES_CLOUD_SERVICE:
+    case constants.UCAAS_SERVICE:
       url = `${constants.MAIL_SERVICE_ENDPOINT}/enterprise-service/sendmail`;
       break;
     case constants.ES_SDWAN_SERVICE:

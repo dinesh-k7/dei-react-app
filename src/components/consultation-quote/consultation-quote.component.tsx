@@ -313,13 +313,26 @@ const ConsultationQuoteComponent: React.FC<any> = (
 
       <div className="button-container">
         <div className="consultation-text">
-          <h4>How you can prepare for the DEI™ Discovery Consultation:</h4>
-          <p>Define your current infrastructure and business needs </p>
-          <p>Describe the needs of your Enterprise.</p>
-          <p>What you can expect from the DEI™ </p>
+          <h4>How to prepare:</h4>
+          <h4>Be able to:</h4>
           <ul>
-            <li>A detailed strategy designed for your needs.</li>
+            <li>Define your biggest weakness.</li>
+            <li>Define obstacles preventing Implementation.</li>
+            <li>Describe communications gap.</li>
+            <li>commit to attend consultations sessions as scheduled</li>
           </ul>
+          <h4>Expect:</h4>
+
+          <ul>
+            <li>A detailed discovery session.</li>
+            <li>A well defined solution to your communications gap.</li>
+            <li>A personal coaching session with Mr. NWO</li>
+          </ul>
+        </div>
+        <div className="consultation-package">
+          <span>Package A</span>
+          <span>Package B</span>
+          <span>Package C</span>
         </div>
         {!isLeadDataSent && (
           <button

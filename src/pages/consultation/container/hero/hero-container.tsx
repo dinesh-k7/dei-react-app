@@ -26,6 +26,10 @@ const HeroContainer: React.FC = (): ReactElement => {
               <img src={yellowBlob} alt="patent" />
               <h3>Patent</h3>
             </div>
+            <div className="features">
+              <img src={yellowBlob} alt="best practices " />
+              <h3>Best Practices</h3>
+            </div>
           </div>
         </div>
         {/* <div className="hero-mobile-image">

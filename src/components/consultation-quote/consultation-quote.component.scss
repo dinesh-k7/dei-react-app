@@ -29,5 +29,18 @@
     .btn-branding {
       background-color: #fdcf00 !important;
     }
+    .consultation-package {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 32px;
+      padding: 0px 0px 24px 0px;
+      span {
+        padding: 12px;
+        width: fit-content;
+        border-radius: 8px;
+        border: 1px solid var(--font-color);
+        cursor: pointer;
+      }
+    }
   }
 }

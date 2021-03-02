@@ -20,6 +20,7 @@ import SDWANServicePage from '../../pages/enterprise/sdwan-service/sdwan-service
 import CableServicePage from '../../pages/enterprise/cable-service/cable-service.page';
 import CloudServicePage from '../../pages/enterprise/cloud-service/cloud-service.page';
 import CarrierServicePage from '../../pages/enterprise/carrier-service/carrier-service.page';
+import UcaasServicePage from '../../pages/enterprise/ucaas-service/ucaas-service.page';
 import '../../assets/scss/styles.scss';
 
 const App: React.FC = () => {
@@ -60,6 +61,9 @@ const App: React.FC = () => {
         </Route>
         <Route path="/enterprise/carrier-service">
           <CarrierServicePage />
+        </Route>
+        <Route path="/enterprise/ucaas-service">
+          <UcaasServicePage />
         </Route>
       </Switch>
       <Footer />

@@ -5,18 +5,24 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
   height: 100vh;
-  span {
-    cursor: pointer;
+  .service-one {
+    img,
+    span {
+      cursor: pointer;
+    }
   }
+
   ul {
     margin: 0px !important;
     li {
-      padding-top: 0px !important;
+      padding-top: 8px !important;
+      color: var(--font-color) !important;
+      font-size: 16px;
+      font-family: 'MontFont', sans-serif;
+      list-style: outside;
     }
   }
-  .hover-text {
-    display: block !important;
-  }
+
   .smb-mobile-title {
     display: none;
   }
@@ -120,8 +126,18 @@
   // .ds-title {
   //   display: none !important;
   // }
-  .ds-features {
+  .ds-features,
+  .branding-features,
+  .wd-features,
+  .seo-features,
+  .audit-features {
     display: none !important;
+  }
+
+  .hover-text {
+    display: block !important;
+    position: absolute;
+    margin-top: 60px !important;
   }
 }
 

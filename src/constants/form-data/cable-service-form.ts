@@ -1,6 +1,6 @@
-import { constants, patterns } from '../';
+import { constants, patterns } from '..';
 import { industries } from '../industry-option';
-export const enterpriseFormData = [
+export const cableFormData = [
   {
     name: 'name',
     label: 'Name',
@@ -85,5 +85,14 @@ export const enterpriseFormData = [
     required: true,
     placeholder: 'e.g. Suite#1',
     section: 'company',
+  },
+  {
+    name: 'numberoftvs',
+    label: "Number of TV's",
+    type: 'number',
+    required: true,
+    placeholder: 'e.g. 1',
+    section: 'company',
+    min: 1,
   },
 ];

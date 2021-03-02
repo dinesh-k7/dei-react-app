@@ -52,14 +52,7 @@ export const consultationFormData = [
     pattern: patterns.website_url,
     section: 'company',
   },
-  {
-    name: 'companySize',
-    label: 'Company size',
-    type: 'number',
-    required: true,
-    placeholder: '0',
-    section: 'company',
-  },
+
   {
     name: 'industry',
     label: 'Industry',
@@ -70,19 +63,11 @@ export const consultationFormData = [
     options: industries,
   },
   {
-    name: 'addressline1',
-    label: 'Business Address',
+    name: 'zipcode',
+    label: 'Zip Code',
     type: 'text',
     required: true,
-    placeholder: 'e.g. Address line 1',
-    section: 'company',
-  },
-  {
-    name: 'suite',
-    label: 'Business Suite Opt.',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. Suite#1',
+    placeholder: 'e.g. 90001',
     section: 'company',
   },
 ];

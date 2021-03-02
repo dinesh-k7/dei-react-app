@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import '../../../../assets/scss/styles.scss';
@@ -27,92 +27,133 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
     <section className="hero-section">
       <div className="hero-content">
         {!fromPage && (
-          <div className="hero-title">
-            <h1>Enterprise</h1>
-            <div className="hero-subtitle-container enterprise-services">
-              <div className="features">
-                <img src={yellowBlob} alt="sdwan" />
-                <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
-                  DEI-SDWAN
-                </h3>
+          <Fragment>
+            <div className="hero-title">
+              <h1>Enterprise</h1>
+              <div className="hero-subtitle-container enterprise-service">
+                <div className="features">
+                  <img src={yellowBlob} alt="sdwan" />
+                  <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
+                    DEI-SD-WAN
+                  </h3>
+                </div>
+                <div className="features">
+                  <img src={yellowBlob} alt="cloud services" />
+                  <h3 onClick={() => routeChange('/enterprise/cloud-service')}>
+                    DEI-Cloud Services
+                  </h3>
+                </div>
               </div>
-              <div className="features">
-                <img src={yellowBlob} alt="cloud services" />
-                <h3 onClick={() => routeChange('/enterprise/cloud-service')}>
-                  DEI-Cloud Services
-                </h3>
+              <div className="hero-subtitle-container">
+                <div className="features">
+                  <img src={yellowBlob} alt="carrier services" />
+                  <h3
+                    onClick={() => routeChange('/enterprise/carrier-service')}
+                  >
+                    DEI-Carrier Services
+                  </h3>
+                </div>
+                <div className="features">
+                  <img src={yellowBlob} alt="ucaas services" />
+                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
+                    UCaaS Services
+                  </h3>
+                </div>
+              </div>
+              <div className="hero-subtitle-container">
+                <div className="features">
+                  <img src={yellowBlob} alt="cable services" />
+                  <h3 onClick={() => routeChange('/enterprise/cable-service')}>
+                    DEI-Cable Services
+                  </h3>
+                </div>
               </div>
             </div>
-            <div className="hero-subtitle-container">
-              <div className="features">
-                <img src={yellowBlob} alt="carrier services" />
-                <h3 onClick={() => routeChange('/enterprise/carrier-service')}>
-                  DEI-Carrier Services
-                </h3>
-              </div>
-              <div className="features">
-                <img src={yellowBlob} alt="cable services" />
-                <h3 onClick={() => routeChange('/enterprise/cable-service')}>
-                  DEI-Cable Services
-                </h3>
-              </div>
+            <div className="hero-description">
+              <p>
+                Until we provide it we will source the best providers for it!
+              </p>
             </div>
-          </div>
+          </Fragment>
         )}
         {/* <div className="hero-mobile-image">
           <img src={heroMobileImage} alt="consultation Image" />
         </div> */}
         {fromPage && fromPage === constants.ES_SDWAN_SERVICE && (
-          <div className="hero-title">
-            <h1>DEI-SDWAN Service</h1>
-            {/* <div className="hero-subtitle-container enterprise-services">
-              <div className="features">
-                <img src={yellowBlob} alt="sdwan" />
-                <h3>DEI-SDWANs</h3>
-              </div>
-            </div> */}
-          </div>
+          <Fragment>
+            <div className="hero-title">
+              <h1>DEI-SDWAN Service</h1>
+            </div>
+            <div className="hero-description">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Doloribus est cum inventore unde ad consequuntur facere
+                voluptatibus. Perferendis iusto magnam doloremque obcaecati a
+                non, veritatis rerum! Atque asperiores qui nostrum.
+              </p>
+            </div>
+          </Fragment>
         )}
         {fromPage && fromPage === constants.ES_CLOUD_SERVICE && (
-          <div className="hero-title">
-            <h1>DEI-Cloud Service</h1>
-            {/* <div className="hero-subtitle-container enterprise-services">
-              <img src={yellowBlob} alt="cloud services" />
-              <h3 onClick={() => routeChange('/enterprise/cloud-service')}>
-                DEI-Cloud Services
-              </h3>
-            </div> */}
-          </div>
+          <Fragment>
+            <div className="hero-title">
+              <h1>DEI-Cloud Service</h1>
+            </div>
+            <div className="hero-description">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Doloribus est cum inventore unde ad consequuntur facere
+                voluptatibus. Perferendis iusto magnam doloremque obcaecati a
+                non, veritatis rerum! Atque asperiores qui nostrum.
+              </p>
+            </div>
+          </Fragment>
         )}
         {fromPage && fromPage === constants.ES_CABLE_SERVICE && (
-          <div className="hero-title">
-            <h1>DEI-Cable Service</h1>
-            {/* <div className="hero-subtitle-container enterprise-services">
-              <img src={yellowBlob} alt="cable services" />
-              <h3 onClick={() => routeChange('/enterprise/cable-service')}>
-                DEI-Cable Services
-              </h3>
-            </div> */}
-          </div>
+          <Fragment>
+            <div className="hero-title">
+              <h1>DEI-Cable Service</h1>
+            </div>
+            <div className="hero-description">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Doloribus est cum inventore unde ad consequuntur facere
+                voluptatibus. Perferendis iusto magnam doloremque obcaecati a
+                non, veritatis rerum! Atque asperiores qui nostrum.
+              </p>
+            </div>
+          </Fragment>
         )}
         {fromPage && fromPage === constants.ES_CARRIER_SERVICE && (
-          <div className="hero-title">
-            <h1>DEI-Carrier Service</h1>
-            {/* <div className="hero-subtitle-container enterprise-services">
-              <img src={yellowBlob} alt="carrier services" />
-              <h3 onClick={() => routeChange('/enterprise/carrier-service')}>
-                DEI-Carrier Services
-              </h3>
-            </div> */}
-          </div>
+          <Fragment>
+            <div className="hero-title">
+              <h1>DEI-Carrier Service</h1>
+            </div>
+            <div className="hero-description">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Doloribus est cum inventore unde ad consequuntur facere
+                voluptatibus. Perferendis iusto magnam doloremque obcaecati a
+                non, veritatis rerum! Atque asperiores qui nostrum.
+              </p>
+            </div>
+          </Fragment>
         )}
-        <div className="hero-description">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          </p>
-        </div>
+        {fromPage && fromPage === constants.UCAAS_SERVICE && (
+          <Fragment>
+            <div className="hero-title">
+              <h1>DEI-UCaaS</h1>
+            </div>
+            <div className="hero-description">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Doloribus est cum inventore unde ad consequuntur facere
+                voluptatibus. Perferendis iusto magnam doloremque obcaecati a
+                non, veritatis rerum! Atque asperiores qui nostrum.
+              </p>
+            </div>
+          </Fragment>
+        )}
       </div>
       <div className="hero-image">
         <img src={heroImage} alt="Enterprise Image" />

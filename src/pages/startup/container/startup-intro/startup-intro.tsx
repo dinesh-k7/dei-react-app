@@ -29,16 +29,21 @@ const StartupIntroContainer: React.FC<any> = ({
           minim veniam, quis nostrud exercitation ullamco laboris
         </p>
       </div>
-      <div className="startup-services">
+      <div className="startup-service">
         <div className="service-one">
           <div className="nwo-hub">
-            <img src={greenBlob} width={80} height={80} />
+            <img
+              src={greenBlob}
+              width={80}
+              height={80}
+              onClick={() => routeChange('/smb#NWO')}
+            />
             <span onClick={() => routeChange('/smb#NWO')}>NWOhub</span>
           </div>
         </div>
         <div className="service-two">
           <div className="consultation">
-            <img src={yellowBlob} />
+            <img src={yellowBlob} onClick={onClickHandler} />
             <span onClick={onClickHandler}>Start-up Consultation</span>
           </div>
         </div>
