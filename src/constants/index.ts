@@ -4,6 +4,7 @@ export const constants = {
   ES_CARRIER_SERVICE: 'ES_CARRIER_SERVICE',
   ES_SDWAN_SERVICE: 'ES_SDWAN_SERVICE',
   CONSULTATION_SERVICE: 'CONSULTATION_SERVICE',
+  UCAAS_SERVICE: 'UCAAS_SERVICE',
   COMPANY_SIZE: 4,
   POSITION: [
     { id: 1, name: 'CEO/Decision-maker' },
@@ -15,166 +16,96 @@ export const constants = {
   PRIMARY: [
     {
       id: 1,
-      name: '35 Mbps or less',
+      name: '30 Mbps or less',
       type: 'Business Internet',
     },
     {
       id: 2,
-      name: '36 Mbps - 99 Mbps',
+      name: '31 Mbps - 100 Mbps',
       type: 'Business Internet',
     },
     {
       id: 3,
-      name: '100 Mbps - 299 Mbps',
+      name: '101 Mbps - 300 Mbps',
       type: 'Business Internet',
     },
     {
       id: 4,
-      name: '300 Mbps - 499 Mbps',
+      name: '301 Mbps - 500 Mbps',
       type: 'Business Internet',
     },
     {
       id: 5,
-      name: '599 Mbps - 1 Gbps',
+      name: '501 Mbps - 1 Gbps',
       type: 'Business Internet',
     },
     {
       id: 6,
-      name: '1 Gbps',
+      name: '+1 Gbps',
       type: 'Business Internet',
     },
 
     {
       id: 7,
-      name: '10 Mbps or less',
+      name: '25 Mbps',
       type: 'Ethernet',
     },
     {
       id: 8,
-      name: '10 Mbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 9,
-      name: '20 Mbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 10,
       name: '50 Mbps',
       type: 'Ethernet',
     },
     {
-      id: 11,
-      name: '100 Mbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 12,
-      name: '200 Mbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 13,
-      name: '500 Mbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 14,
-      name: '1 Gbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 15,
-      name: '10 Gbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 16,
-      name: '100 Gbps',
+      id: 9,
+      name: '250 Mbps',
       type: 'Ethernet',
     },
   ],
   SECONDARY: [
     {
       id: 1,
-      name: '35 Mbps or less',
+      name: '30 Mbps or less',
       type: 'Business Internet',
     },
     {
       id: 2,
-      name: '36 Mbps - 99 Mbps',
+      name: '31 Mbps - 100 Mbps',
       type: 'Business Internet',
     },
     {
       id: 3,
-      name: '100 Mbps - 299 Mbps',
+      name: '101 Mbps - 300 Mbps',
       type: 'Business Internet',
     },
     {
       id: 4,
-      name: '300 Mbps - 499 Mbps',
+      name: '301 Mbps - 500 Mbps',
       type: 'Business Internet',
     },
     {
       id: 5,
-      name: '599 Mbps - 1 Gbps',
+      name: '501 Mbps - 1 Gbps',
       type: 'Business Internet',
     },
     {
       id: 6,
-      name: '1 Gbps',
+      name: '+1 Gbps',
       type: 'Business Internet',
     },
 
     {
       id: 7,
-      name: '10 Mbps or less',
+      name: '25 Mbps',
       type: 'Ethernet',
     },
     {
       id: 8,
-      name: '10 Mbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 9,
-      name: '20 Mbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 10,
       name: '50 Mbps',
       type: 'Ethernet',
     },
     {
-      id: 11,
-      name: '100 Mbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 12,
-      name: '200 Mbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 13,
-      name: '500 Mbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 14,
-      name: '1 Gbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 15,
-      name: '10 Gbps',
-      type: 'Ethernet',
-    },
-    {
-      id: 16,
-      name: '100 Gbps',
+      id: 9,
+      name: '250 Mbps',
       type: 'Ethernet',
     },
   ],
@@ -291,7 +222,19 @@ export const quoteValidationErrorMessages = {
   secondary: [{ type: 'required', message: '*Please select Secondary' }],
   primary: [{ type: 'required', message: '*Please select Primary' }],
   sitetype: [{ type: 'required', message: '*Please select Site Type' }],
-  noofsites: [{ type: 'required', message: '*Please enter Number of Sites' }],
+  noofsites: [
+    { type: 'required', message: '*Please enter Number of Sites' },
+    { type: 'min', message: '*Number of Sites must be at least 1' },
+  ],
+  zipcode: [{ type: 'required', message: '*Please enter Zipcode' }],
+  numberoftvs: [
+    { type: 'required', message: "*Please enter Number of TV's" },
+    { type: 'min', message: "*Number of TV's must be at least 1" },
+  ],
+  numberofseats: [
+    { type: 'required', message: '*Please enter Number of seats' },
+    { type: 'min', message: '*Number of seats must be at least 1' },
+  ],
 };
 
 export const siteKey = '6Le4OhkaAAAAAHlSqTn2MuAN8vsgE9DUaZjPaa6n';

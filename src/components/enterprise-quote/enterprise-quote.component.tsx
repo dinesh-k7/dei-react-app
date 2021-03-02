@@ -313,13 +313,30 @@ const EnterpriseQuoteComponent: React.FC<any> = (
 
       <div className="button-container">
         <div className="consultation-text">
-          <h4>How you can prepare for the DEI™ Discovery Consultation:</h4>
-          <p>Define your current infrastructure and business needs </p>
-          <p>Describe the needs of your Enterprise.</p>
-          <p>What you can expect from the DEI™ </p>
+          <h4>How to prepare:</h4>
+          <h4>Be able to:</h4>
           <ul>
-            <li>A detailed strategy designed for your needs.</li>
+            <li>Define your current infrastructure.</li>
+            <li>Describe communications gap.</li>
+            <li>Define obstacles preventing implementation.</li>
           </ul>
+          <h4>Be able to:</h4>
+
+          <ul>
+            <li>A detailed discovery session.</li>
+            <li>A customized communications strategy.</li>
+            <li>A well defined solution to your communications gap.</li>
+            <li>Contact from a senior account executive within 48 hours.</li>
+          </ul>
+        </div>
+        <div className="additional-services">
+          <h4>Please select additional services that are of interest:</h4>
+          <div className="enterprise-package">
+            <span>SD-WAN</span>
+            <span>UCaaS</span>
+            <span>Carrier</span>
+            <span>Cable</span>
+          </div>
         </div>
         {!isLeadDataSent && (
           <button
@@ -327,7 +344,12 @@ const EnterpriseQuoteComponent: React.FC<any> = (
             className={`btn-branding`}
             onClick={handleSubmit(onSubmit)}
           >
-            Get Quote
+            {fromPage &&
+              fromPage === constants.ES_SDWAN_SERVICE &&
+              'Book a Discovery Consultation'}
+            {fromPage &&
+              fromPage !== constants.ES_SDWAN_SERVICE &&
+              'Request Service'}
           </button>
         )}
 

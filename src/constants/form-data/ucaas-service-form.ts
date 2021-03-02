@@ -1,6 +1,6 @@
-import { constants, patterns } from '../';
+import { constants, patterns } from '..';
 import { industries } from '../industry-option';
-export const enterpriseFormData = [
+export const ucaasFormData = [
   {
     name: 'name',
     label: 'Name',
@@ -85,5 +85,14 @@ export const enterpriseFormData = [
     required: true,
     placeholder: 'e.g. Suite#1',
     section: 'company',
+  },
+  {
+    name: 'numberofseats',
+    label: 'Number of Seats',
+    type: 'number',
+    required: true,
+    placeholder: 'e.g. 1',
+    section: 'company',
+    min: 1,
   },
 ];

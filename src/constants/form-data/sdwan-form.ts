@@ -60,6 +60,7 @@ export const SDWANFormData = [
     required: true,
     placeholder: '0',
     section: 'company',
+    min: 1,
   },
   {
     name: 'industry',
@@ -87,6 +88,7 @@ export const SDWANFormData = [
     placeholder: '0',
     options: [],
     section: 'location',
+    min: 1,
   },
   {
     name: 'primary',

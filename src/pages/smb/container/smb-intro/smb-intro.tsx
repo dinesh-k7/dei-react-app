@@ -15,17 +15,21 @@ import './smb-intro.scss';
 const SmbIntroContainer: React.FC<any> = ({
   onClickHandler,
 }: any): ReactElement => {
-  const ref: any = useRef();
+  const dsRef = useRef(null);
+  const brandingRef = useRef(null);
+  const wdRef = useRef(null);
+  const seoRef = useRef(null);
+  const NWORef = useRef(null);
 
-  const onMouseOverHandler = (event: any) => {
-    // if (ref && ref.current) {
-    const { classList } = ref.current;
-    ref.current.classList.toggle('hover-text');
-
-    //}
+  const onMouseOverHandler = (ref: any) => {
+    if (ref && ref.current) {
+      ref.current.classList.toggle('hover-text');
+    }
   };
-  const onMouseOutHandler = () => {
-    console.log('out', ref.current);
+  const onMouseOutHandler = (ref: any) => {
+    if (ref && ref.current) {
+      ref.current.classList.toggle('hover-text');
+    }
   };
   return (
     <section className="smb-intro">
@@ -44,59 +48,112 @@ const SmbIntroContainer: React.FC<any> = ({
           />
         </div>
         <p className="smb-intro-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris
+          Nearly all of the things that you need to become digitally optimized
+          are just a few clicks away.
         </p>
       </div>
       <div className="smb-services">
         <div className="service-one">
           <div className="ds-service">
-            <img src={dsBlobImage} />
+            <img
+              src={dsBlobImage}
+              onClick={() => onClickHandler(constants.SMB.DS)}
+            />
             <span
-              // onMouseOver={(e) => onMouseOverHandler(e)}
-              // onMouseOut={onMouseOutHandler}
+              onMouseOver={() => onMouseOverHandler(dsRef)}
+              onMouseOut={() => onMouseOutHandler(dsRef)}
               onClick={() => onClickHandler(constants.SMB.DS)}
             >
               Data Security
             </span>
-            {/* <span
-              className="ds-features"
-              ref={ref}
-              onClick={() => onClickHandler(constants.SMB.DS)}
-            >
+            <span className="ds-features" ref={dsRef}>
               <ul>
-                <li>Test </li>
-                <li>Test b</li>
+                <li>Dark Web Monitoring</li>
+                <li>Email Solutions</li>
               </ul>
-            </span> */}
+            </span>
           </div>
           <div className="branding-service">
-            <img src={brandingBlobImage} />
-            <span onClick={() => onClickHandler(constants.SMB.BRANDING)}>
+            <img
+              src={brandingBlobImage}
+              onClick={() => onClickHandler(constants.SMB.BRANDING)}
+            />
+            <span
+              onMouseOver={() => onMouseOverHandler(brandingRef)}
+              onMouseOut={() => onMouseOutHandler(brandingRef)}
+              onClick={() => onClickHandler(constants.SMB.BRANDING)}
+            >
               Branding
+            </span>
+            <span className="branding-features" ref={brandingRef}>
+              <ul>
+                <li>Graphic design</li>
+                <li>Logo design</li>
+              </ul>
             </span>
           </div>
         </div>
         <div className="service-two">
           <div className="wd-service">
-            <img src={wdBlobImage} />
-            <span onClick={() => onClickHandler(constants.SMB.WD)}>
+            <img
+              src={wdBlobImage}
+              onClick={() => onClickHandler(constants.SMB.WD)}
+            />
+            <span
+              onClick={() => onClickHandler(constants.SMB.WD)}
+              onMouseOver={() => onMouseOverHandler(wdRef)}
+              onMouseOut={() => onMouseOutHandler(wdRef)}
+            >
               Website Development
+            </span>
+            <span className="wd-features" ref={wdRef}>
+              <ul>
+                <li>UX/UI</li>
+                <li>Front-end</li>
+                <li>Back-end</li>
+              </ul>
             </span>
           </div>
         </div>
         <div className="service-three">
           <div className="seo-service">
-            <img src={seoBlobImage} />
-            <span onClick={() => onClickHandler(constants.SMB.SEO)}>
+            <img
+              src={seoBlobImage}
+              onClick={() => onClickHandler(constants.SMB.SEO)}
+            />
+            <span
+              onMouseOver={() => onMouseOverHandler(seoRef)}
+              onMouseOut={() => onMouseOutHandler(seoRef)}
+              onClick={() => onClickHandler(constants.SMB.SEO)}
+            >
               SEO & Marketing
+            </span>
+            <span className="seo-features" ref={seoRef}>
+              <ul>
+                <li>SEO</li>
+                <li>Marketing</li>
+              </ul>
             </span>
           </div>
           <div className="auditing-service">
-            <img src={auditBlobImage} />
-            <span onClick={() => onClickHandler(constants.SMB.NWO)}>
+            <img
+              src={auditBlobImage}
+              onClick={() => onClickHandler(constants.SMB.NWO)}
+            />
+            <span
+              onMouseOver={() => onMouseOverHandler(NWORef)}
+              onMouseOut={() => onMouseOutHandler(NWORef)}
+              onClick={() => onClickHandler(constants.SMB.NWO)}
+            >
               NWOhub
+            </span>
+            <span className="audit-features" ref={NWORef}>
+              <ul>
+                <li>Domains</li>
+                <li>Website</li>
+                <li>Hosting</li>
+                <li>Email</li>
+              </ul>
             </span>
           </div>
         </div>

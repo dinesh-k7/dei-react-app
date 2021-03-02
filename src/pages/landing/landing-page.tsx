@@ -11,11 +11,28 @@ import enterpriseVector from '../../assets/images/enterprise_vector.svg';
 import coralVector from '../../assets/images/coral_vector.svg';
 import blueVector from '../../assets/images/service_blue.svg';
 import yellowVector from '../../assets/images/yellow_vector.svg';
+import { useRef } from 'react';
 
 const LandingPage: React.FC = (): ReactElement => {
   const history = useHistory();
+  const smbRef = useRef(null);
+  const enterpriseRef = useRef(null);
+  const startupRef = useRef(null);
   const routeChange = (url) => {
     history.push(url);
+  };
+
+  const onMouseOverHandler = (ref: any) => {
+    console.log('iinsssn');
+    if (ref && ref.current) {
+      console.log('iinn');
+      ref.current.classList.toggle('hover-intro-text');
+    }
+  };
+  const onMouseOutHandler = (ref: any) => {
+    if (ref && ref.current) {
+      ref.current.classList.toggle('hover-intro-text');
+    }
   };
 
   return (
@@ -43,24 +60,71 @@ const LandingPage: React.FC = (): ReactElement => {
 
           <div className="intro-text">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              Finally, an easy-to-use interface. One single platform for nearly
+              all that is necessary to facilitate your business&apos; online
+              ambitions.
             </p>
           </div>
         </div>
         <div className="service-blob">
           <div className="smb-blob">
-            <span onClick={() => routeChange('/smb')}> SMB’s </span>
-            <img src={coralVector} />
+            <span className="smb-services-landing" ref={smbRef}>
+              <ul>
+                <li>Dark Web Security</li>
+                <li>Branding</li>
+                <li>SEO</li>
+              </ul>
+            </span>
+            <span
+              onClick={() => routeChange('/smb')}
+              onMouseOver={() => onMouseOverHandler(smbRef)}
+              onMouseOut={() => onMouseOutHandler(smbRef)}
+            >
+              SMB’s
+            </span>
+            <img onClick={() => routeChange('/smb')} src={coralVector} />
           </div>
           <div className="startup-blob">
-            <img src={greenVector} />
-            <span onClick={() => routeChange('/startup')}>Start-up’s </span>
+            <img src={greenVector} onClick={() => routeChange('/startup')} />
+            <span
+              onClick={() => routeChange('/startup')}
+              onMouseOver={() => onMouseOverHandler(startupRef)}
+              onMouseOut={() => onMouseOutHandler(startupRef)}
+            >
+              Start-up’s
+            </span>
+            <span className="startup-services" ref={startupRef}>
+              <ul>
+                <li>Industry tips and tricks</li>
+                <li>Get started with NWOhub™</li>
+              </ul>
+            </span>
           </div>
           <div className="enterprise-blob">
-            <img src={enterpriseVector} />
-            <span onClick={() => routeChange('/enterprise')}> Enterprise </span>
+            <img
+              src={enterpriseVector}
+              onClick={() => routeChange('/enterprise')}
+            />
+            <span
+              onClick={() => routeChange('/enterprise')}
+              onMouseOver={() => onMouseOverHandler(enterpriseRef)}
+              onMouseOut={() => onMouseOutHandler(enterpriseRef)}
+            >
+              Enterprise
+            </span>
+            <span
+              className="enterprise-services"
+              id="enterprise-services"
+              ref={enterpriseRef}
+            >
+              <ul>
+                <li>SD-WAN</li>
+                <li>Cloud</li>
+                <li>UCaaS</li>
+                <li>Carrier</li>
+                <li>Cable</li>
+              </ul>
+            </span>
           </div>
         </div>
       </div>

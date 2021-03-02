@@ -6,18 +6,18 @@ import { cableFormData } from '../../../constants/form-data/cable-service-form';
 import HeroContainer from '../container/hero/hero-container';
 import '../enterprise-page.scss';
 
-import './cable-service.page.scss';
+import './ucaas-service.page.scss';
 
-const CableServicePage: React.FC = (): ReactElement => {
+const UcaasServicePage: React.FC = (): ReactElement => {
   return (
     <Fragment>
-      <HeroContainer fromPage={constants.ES_CABLE_SERVICE} />
+      <HeroContainer fromPage={constants.UCAAS_SERVICE} />
       <EnterpriseQuoteComponent
-        fromPage={constants.ES_CABLE_SERVICE}
+        fromPage={constants.UCAAS_SERVICE}
         formFields={cableFormData}
       />
     </Fragment>
   );
 };
 
-export default CableServicePage;
+export default UcaasServicePage;

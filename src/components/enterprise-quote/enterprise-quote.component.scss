@@ -28,6 +28,21 @@
     padding: 0px 32px;
     .btn-branding {
       background-color: #c6c6c6;
+      min-height: 3.75rem !important;
+      height: auto !important;
+    }
+    .enterprise-package {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 32px;
+      padding: 0px 0px 24px 0px;
+      span {
+        padding: 12px;
+        width: fit-content;
+        border-radius: 8px;
+        border: 1px solid var(--font-color);
+        cursor: pointer;
+      }
     }
   }
 }
