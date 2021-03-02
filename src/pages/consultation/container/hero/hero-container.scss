@@ -4,9 +4,9 @@
   h3 {
     padding-right: var(--font-size7);
   }
-  .hero-mobile-image {
-    display: none !important;
-  }
+}
+.hero-mobile-image {
+  display: none !important;
 }
 
 @include respond-below(sm) {
