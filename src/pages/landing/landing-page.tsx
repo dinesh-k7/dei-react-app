@@ -29,7 +29,7 @@ const LandingPage: React.FC = (): ReactElement => {
   };
   const onMouseOutHandler = (ref: any) => {
     if (ref && ref.current) {
-      //ref.current.classList.toggle('hover-intro-text');
+      ref.current.classList.toggle('hover-intro-text');
     }
   };
 
