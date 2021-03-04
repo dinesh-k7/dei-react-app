@@ -16,25 +16,23 @@ const HeroContainer: React.FC = (): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={yellowBlob} alt="trademark" />
-              <h3>Trademark</h3>
+              <h3>Package A</h3>
             </div>
             <div className="features">
               <img src={yellowBlob} alt="copyright" />
-              <h3>Copyright</h3>
+              <h3>Package B</h3>
             </div>
             <div className="features">
               <img src={yellowBlob} alt="patent" />
-              <h3>Patent</h3>
+              <h3>Package C</h3>
             </div>
-            <div className="features">
+            {/* <div className="features">
               <img src={yellowBlob} alt="best practices " />
               <h3>Best Practices</h3>
-            </div>
+            </div> */}
           </div>
         </div>
-        <div className="hero-mobile-image">
-          <img src={heroMobileImage} alt="consultation Image" />
-        </div>
+
         <div className="hero-description">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -42,6 +40,9 @@ const HeroContainer: React.FC = (): ReactElement => {
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           </p>
         </div>
+      </div>
+      <div className="hero-mobile-image">
+        <img src={heroMobileImage} alt="consultation Image" />
       </div>
       <div className="hero-image">
         <img src={heroImage} alt="consultation Image" />

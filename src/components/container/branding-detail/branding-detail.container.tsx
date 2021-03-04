@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from 'react';
 import { IBrandingQuoteModel } from '../../../interfaces/branding-quote.model';
 
-import GetQuoteButton from '../../form-element/get-quote-button';
+import GetQuoteButton from '../../common/form-element/get-quote-button';
 import './branding-detail.container.scss';
 import plusIcon from '../../../assets/images/plus_icon.svg';
 import cPickerOne from '../../../assets/images/color_picker_one.svg';

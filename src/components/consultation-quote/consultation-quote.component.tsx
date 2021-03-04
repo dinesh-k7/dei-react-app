@@ -3,9 +3,9 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { constants, messages, siteKey } from '../../constants';
 import { IGetQuoteProps } from '../../interfaces/get-quote.model';
-import MultiText from '../form-element/multi-text';
-import SelectBox from '../form-element/select-box';
-import TextBox from '../form-element/text-box';
+import MultiText from '../common/form-element/multi-text';
+import SelectBox from '../common/form-element/select-box';
+import TextBox from '../common/form-element/text-box';
 
 import '../get-quote/get-quote.component.scss';
 import './consultation-quote.component.scss';
@@ -14,7 +14,7 @@ import { useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import ErrorMessageContainer from '../container/error-message.container';
 
-import LoaderComponent from '../loader/loader.component';
+import LoaderComponent from '../common/loader/loader.component';
 
 const ConsultationQuoteComponent: React.FC<any> = (
   props: IGetQuoteProps,
@@ -26,10 +26,26 @@ const ConsultationQuoteComponent: React.FC<any> = (
     isSendMailError: false,
     isBrandingDetailSubmitted: false,
     isButtonSubmit: false,
+    packages: [
+      {
+        id: 1,
+        active: false,
+        name: 'Package A',
+      },
+      {
+        id: 2,
+        active: false,
+        name: 'Package B',
+      },
+      {
+        id: 3,
+        active: false,
+        name: 'Package C',
+      },
+    ],
   };
   const { formFields, fromPage } = props;
   const state = {};
-  let companysize = '';
 
   let isLocationExist;
   formFields &&
@@ -51,7 +67,6 @@ const ConsultationQuoteComponent: React.FC<any> = (
 
   const { register, handleSubmit, errors, control } = useForm();
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
-  const [size, setCompanySize] = useState(0);
   const [captcha, setCaptcha] = useState({});
 
   // Set captcha reference
@@ -65,8 +80,16 @@ const ConsultationQuoteComponent: React.FC<any> = (
   // handle get quote form onSubmit
   const onSubmit = (quoteData: any) => {
     const { captchaValue } = quoteData;
+    const { packages } = quoteState;
 
     quoteData.isFormSubmitted = true;
+    const selectedPackages = packages && packages.filter((s) => s.active);
+    let preferedPackage;
+    if (selectedPackages && selectedPackages.length) {
+      preferedPackage = selectedPackages.map((d) => d.name);
+    } else {
+      preferedPackage = false;
+    }
 
     setQuoteState((prevState) => {
       return {
@@ -78,7 +101,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
     if (!captchaValue) {
       return;
     } else {
-      sendMail(quoteData, fromPage).then(
+      sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
         () => {
           setQuoteState((prevState) => {
             return {
@@ -106,24 +129,36 @@ const ConsultationQuoteComponent: React.FC<any> = (
     captcha['reset']();
   };
 
-  //handle company size change event
-  const onChangeHandler = (event: React.FormEvent<EventTarget>) => {
-    const target = event.target as HTMLInputElement;
-    companysize = target && target.value;
-    setCompanySize(+companysize);
-  };
-
   const {
     captchaValue,
     isLeadDataSent,
     isFormSubmitted,
     isSendMailError,
     name,
+    packages,
   } = quoteState;
 
   if (isLeadDataSent) {
     resetCaptcha();
   }
+
+  const unSelectPackage = (name: string) => {
+    const filterService = packages.map((keyword) => {
+      if (keyword.name === name) {
+        keyword.active = !keyword.active;
+      } else {
+        keyword.active = false;
+      }
+      return keyword;
+    });
+
+    setQuoteState((prevState) => {
+      return {
+        ...prevState,
+        filterService,
+      };
+    });
+  };
 
   const classes = useStyles();
 
@@ -330,9 +365,19 @@ const ConsultationQuoteComponent: React.FC<any> = (
           </ul>
         </div>
         <div className="consultation-package">
-          <span>Package A</span>
-          <span>Package B</span>
-          <span>Package C</span>
+          {packages &&
+            packages.length &&
+            packages.map((service) => (
+              <span
+                className={
+                  service.active ? 'package-active' : 'package-inactive'
+                }
+                onClick={() => unSelectPackage(service.name)}
+                key={service.id}
+              >
+                {service.name}
+              </span>
+            ))}
         </div>
         {!isLeadDataSent && (
           <button

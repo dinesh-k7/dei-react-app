@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 
 // Back drop styles
@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LoaderComponent = () => {
+const LoaderComponent = (): ReactElement => {
   const classes = useStyles();
   return (
     <Backdrop className={classes.backdrop} open={true}>

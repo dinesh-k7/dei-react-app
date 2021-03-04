@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 import { isIOS } from 'react-device-detect';
 
-import mailIcon from '../../assets/images/mail_icon.png';
-import phoneIcon from '../../assets/images/phone_icon.png';
-import fbIcon from '../../assets/images/fb_icon.png';
-import linkedInIcon from '../../assets/images/linkedin_icon.png';
+import mailIcon from '../../../assets/images/mail_icon.png';
+import phoneIcon from '../../../assets/images/phone_icon.png';
+import fbIcon from '../../../assets/images/fb_icon.png';
+import linkedInIcon from '../../../assets/images/linkedin_icon.png';
 
 import './footer.component.scss';
 

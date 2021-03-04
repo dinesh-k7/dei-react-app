@@ -58,9 +58,9 @@ const LandingPage: React.FC = (): ReactElement => {
 
           <div className="intro-text">
             <p>
-              Finally, an easy-to-use interface. One single platform for nearly
-              all that is necessary to facilitate your business&apos; online
-              ambitions.
+              Finally, one single platform to facilitate your business&apos;
+              online ambitions. If we don&apos;t provide it, we will source the
+              best providers for it.
             </p>
           </div>
         </div>
@@ -68,9 +68,8 @@ const LandingPage: React.FC = (): ReactElement => {
           <div className="smb-blob">
             <span className="smb-services-landing" ref={smbRef}>
               <ul>
-                <li>Dark Web Security</li>
+                <li>Data Security</li>
                 <li>Branding</li>
-                <li>SEO</li>
               </ul>
             </span>
             <span
@@ -116,11 +115,11 @@ const LandingPage: React.FC = (): ReactElement => {
               ref={enterpriseRef}
             >
               <ul>
-                <li>SD-WAN</li>
+                <li>Data Security</li>
                 <li>Cloud</li>
-                <li>UCaaS</li>
-                <li>Carrier</li>
-                <li>Cable</li>
+                <li>Connectivity</li>
+                <li>Voice</li>
+                <li>IOT</li>
               </ul>
             </span>
           </div>

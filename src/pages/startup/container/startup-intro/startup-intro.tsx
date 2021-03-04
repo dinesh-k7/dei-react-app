@@ -38,7 +38,7 @@ const StartupIntroContainer: React.FC<any> = ({
               height={80}
               onClick={() => routeChange('/smb#NWO')}
             />
-            <span onClick={() => routeChange('/smb#NWO')}>NWOhub</span>
+            <span onClick={() => routeChange('/smb#NWO')}>NWOhub™</span>
           </div>
         </div>
         <div className="service-two">

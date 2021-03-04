@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 import { calculateMonthlyAmount } from '../../utils';
 import './monthly-price.component.scss';
 import '../../assets/scss/styles.scss';
-import GetQuoteButton from '../form-element/get-quote-button';
+import GetQuoteButton from '../common/form-element/get-quote-button';
 
 // eslint-disable-next-line
 const MonthlyPriceComponent = ({

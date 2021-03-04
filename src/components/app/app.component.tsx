@@ -1,14 +1,9 @@
 import React from 'react';
-import {
-  BrowserRouter,
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import ScrollToTop from './scroll-top.component';
-import Header from '../header/header.component';
-import Footer from '../footer/footer.component';
+import ScrollToTop from '../common/scroll/scroll-top.component';
+import Header from '../common/header/header.component';
+import Footer from '../common/footer/footer.component';
 import DataSecurityPage from '../../pages/data-security/data-security-page';
 import BrandingPage from '../../pages/branding/branding-page';
 import LandingPage from '../../pages/landing/landing-page';
@@ -21,6 +16,7 @@ import CableServicePage from '../../pages/enterprise/cable-service/cable-service
 import CloudServicePage from '../../pages/enterprise/cloud-service/cloud-service.page';
 import CarrierServicePage from '../../pages/enterprise/carrier-service/carrier-service.page';
 import UcaasServicePage from '../../pages/enterprise/ucaas-service/ucaas-service.page';
+import CartPage from '../../pages/cart/cart-page';
 import '../../assets/scss/styles.scss';
 
 const App: React.FC = () => {
@@ -64,6 +60,9 @@ const App: React.FC = () => {
         </Route>
         <Route path="/enterprise/ucaas-service">
           <UcaasServicePage />
+        </Route>
+        <Route path="/cart-page">
+          <CartPage />
         </Route>
       </Switch>
       <Footer />

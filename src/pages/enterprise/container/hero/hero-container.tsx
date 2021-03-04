@@ -10,15 +10,6 @@ import heroMobileImage from '../../../../assets/images/consultation_mobile.svg';
 import { constants } from '../../../../constants';
 
 const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
-  let showTitle;
-  if (fromPage) {
-    showTitle =
-      (fromPage && fromPage.indexOf('sdwan') === -1) ||
-      fromPage.indexOf('cloud') === -1 ||
-      fromPage.indexOf('cable') === -1 ||
-      fromPage.indexOf('carrier') === -1;
-  }
-
   const history = useHistory();
   const routeChange = (url) => {
     history.push(url);
