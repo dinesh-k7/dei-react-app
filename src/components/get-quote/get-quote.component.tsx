@@ -11,9 +11,9 @@ import '../../assets/scss/styles.scss';
 import './get-quote.component.scss';
 import bg from '../../assets/images/blue_blob_vector.svg';
 import info_icon from '../../assets/images/info_icon.png';
-import SelectBox from '../form-element/select-box';
-import TextBox from '../form-element/text-box';
-import MultiText from '../form-element/multi-text';
+import SelectBox from '../common/form-element/select-box';
+import TextBox from '../common/form-element/text-box';
+import MultiText from '../common/form-element/multi-text';
 import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
 import { industries } from '../../constants/industry-option';
 

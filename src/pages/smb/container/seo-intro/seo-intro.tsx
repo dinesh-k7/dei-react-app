@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import serviceYellow from '../../../../assets/images/seo_mark_blob.svg';
 import '../../../../assets/scss/styles.scss';
@@ -9,12 +8,6 @@ import heroMobileImage from '../../../../assets/images/seo_mobile.svg';
 import './seo-intro.scss';
 
 const SeoIntro: React.FC<any> = (props: any): ReactElement => {
-  const history = useHistory();
-
-  const routeChange = () => {
-    history.push('branding');
-  };
-
   return (
     <section className="seo-intro" ref={props.inputRef}>
       <div className="hero-image">

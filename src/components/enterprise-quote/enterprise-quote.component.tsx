@@ -3,9 +3,9 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { constants, messages, siteKey } from '../../constants';
 import { IGetQuoteProps } from '../../interfaces/get-quote.model';
-import MultiText from '../form-element/multi-text';
-import SelectBox from '../form-element/select-box';
-import TextBox from '../form-element/text-box';
+import MultiText from '../common/form-element/multi-text';
+import SelectBox from '../common/form-element/select-box';
+import TextBox from '../common/form-element/text-box';
 
 import '../get-quote/get-quote.component.scss';
 import './enterprise-quote.component.scss';
@@ -13,7 +13,7 @@ import './enterprise-quote.component.scss';
 import { useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import ErrorMessageContainer from '../container/error-message.container';
-import LoaderComponent from '../loader/loader.component';
+import LoaderComponent from '../common/loader/loader.component';
 
 const EnterpriseQuoteComponent: React.FC<any> = (
   props: IGetQuoteProps,
@@ -60,7 +60,6 @@ const EnterpriseQuoteComponent: React.FC<any> = (
   };
   const { formFields, fromPage } = props;
   const state = {};
-  const companysize = '';
 
   let isLocationExist;
   formFields &&
@@ -82,7 +81,6 @@ const EnterpriseQuoteComponent: React.FC<any> = (
 
   const { register, handleSubmit, errors, control } = useForm();
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
-  const [size, setCompanySize] = useState(0);
   const [captcha, setCaptcha] = useState({});
 
   // Set captcha reference
@@ -387,7 +385,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
           <div className="enterprise-package">
             {applicableService &&
               applicableService.length &&
-              applicableService.map((service, idx) => (
+              applicableService.map((service) => (
                 <span
                   className={
                     service.active ? 'service-active' : 'service-inactive'

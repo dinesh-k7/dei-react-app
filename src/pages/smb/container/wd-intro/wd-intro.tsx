@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import serviceBlue from '../../../../assets/images/website_blob.svg';
 import '../../../../assets/scss/styles.scss';
@@ -9,12 +8,6 @@ import heroMobileImage from '../../../../assets/images/wd_mobile.svg';
 import './wd-intro.scss';
 
 const WdIntro: React.FC<any> = (props: any): ReactElement => {
-  const history = useHistory();
-
-  const routeChange = () => {
-    history.push('branding');
-  };
-
   return (
     <section className="wd-intro" ref={props.inputRef}>
       <div className="hero-content">

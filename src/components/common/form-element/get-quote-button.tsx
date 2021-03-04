@@ -2,8 +2,8 @@
 import React, { Fragment, ReactElement } from 'react';
 import { Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 
-import ErrorMessageContainer from '../container/error-message.container';
-import { messages } from '../../constants';
+import ErrorMessageContainer from '../../container/error-message.container';
+import { messages } from '../../../constants';
 
 // Back drop styles
 const useStyles = makeStyles((theme) => ({

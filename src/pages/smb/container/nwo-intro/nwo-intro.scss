@@ -25,6 +25,10 @@
   }
   .hero-description {
     margin-top: 48px;
+    span {
+      font-size: 12px !important;
+      font-family: 'OpenSansRegular', sans-serif !important;
+    }
   }
   .hero-image {
     justify-self: start;

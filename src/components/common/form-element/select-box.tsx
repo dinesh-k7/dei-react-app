@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { Fragment, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import {
   Select,
   MenuItem,
@@ -7,8 +7,8 @@ import {
   ListSubheader,
 } from '@material-ui/core';
 import { Controller } from 'react-hook-form';
-import { filterErrorMessage } from '../../utils';
-import { quoteValidationErrorMessages } from '../../constants';
+import { filterErrorMessage } from '../../../utils';
+import { quoteValidationErrorMessages } from '../../../constants';
 
 const SelectBox: any = ({
   value,

@@ -1,0 +1,29 @@
+@import '../../assets/scss/abstracts/mixins';
+@import '../../assets/scss/base/base';
+
+.cart-page-grid {
+  display: grid;
+  grid-column: 2/-1;
+  padding-right: 24px;
+  .cart-title {
+    justify-self: center;
+  }
+  .cart-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .cart-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .cart-items {
+      border: 1px solid gray;
+    }
+  }
+}
+
+@include respond-below(sm) {
+  .cart-container {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -4,10 +4,10 @@ import React, { ReactElement } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
-import { industries } from '../../constants/industry-option';
+import { industries } from '../../../constants/industry-option';
 import { FormControl, makeStyles } from '@material-ui/core';
-import { quoteValidationErrorMessages } from '../../constants';
-import { filterErrorMessage } from '../../utils';
+import { quoteValidationErrorMessages } from '../../../constants';
+import { filterErrorMessage } from '../../../utils';
 import { Controller } from 'react-hook-form';
 
 const useStyles = makeStyles(() => ({

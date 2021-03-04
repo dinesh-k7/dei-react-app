@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { ReactElement } from 'react';
 
-import { quoteValidationErrorMessages } from '../../constants';
-import { filterErrorMessage } from '../../utils';
+import { quoteValidationErrorMessages } from '../../../constants';
+import { filterErrorMessage } from '../../../utils';
 
 const MultiText: any = ({
   register,

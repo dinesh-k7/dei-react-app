@@ -9,16 +9,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import CloseIcon from '@material-ui/icons/Close';
 import { useHistory, useLocation } from 'react-router-dom';
 
-import hamIcon from '../../assets/images/hamburger_icon.svg';
+import hamIcon from '../../../assets/images/hamburger_icon.svg';
 
-import { constants } from '../../constants';
-import {
-  ChevronLeft,
-  ChevronRight,
-  ExpandLess,
-  ExpandMore,
-  StarBorder,
-} from '@material-ui/icons';
+import { constants } from '../../../constants';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import { Collapse, ListItemIcon } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
