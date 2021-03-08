@@ -1,12 +1,35 @@
 @import '../../../../assets/scss/layout/hero';
 
-.hero-subtitle-container {
-  h3 {
-    padding-right: var(--font-size7);
+.hero-section {
+  .hero-subtitle-container {
+    h3 {
+      padding-right: var(--font-size7);
+    }
   }
-}
-.hero-mobile-image {
-  display: none !important;
+  .hero-mobile-image {
+    display: none !important;
+  }
+
+  .packages {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    img {
+      align-self: center;
+      margin-top: 8px;
+    }
+    h3 {
+      padding-left: 16px;
+    }
+  }
+
+  .hero-title {
+    p {
+      font-family: 'OpenSansRegular', sans-serif;
+      font-size: 1em;
+      font-weight: var(--font-weight400);
+      font-style: normal;
+    }
+  }
 }
 
 @include respond-below(sm) {

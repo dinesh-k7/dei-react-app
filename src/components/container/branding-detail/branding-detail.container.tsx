@@ -25,7 +25,9 @@ interface IntitialState {
   brandName: string;
 }
 
-const BrandingDetailContainer = (props: IBrandingQuoteModel): ReactElement => {
+const BrandingDetailContainer: React.FC<any> = (
+  props: IBrandingQuoteModel,
+): ReactElement => {
   const initialState: IntitialState = {
     keywords: [],
     colorPicker: '',

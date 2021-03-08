@@ -1,23 +1,29 @@
 import React, { Fragment, ReactElement, useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { constants, messages, siteKey } from '../../constants';
-import { IGetQuoteProps } from '../../interfaces/get-quote.model';
+
+import ReCAPTCHA from 'react-google-recaptcha';
+
+import {
+  constants,
+  messages,
+  siteKey,
+  CONSULTATION_PACKAGES,
+} from '../../constants';
+
 import MultiText from '../common/form-element/multi-text';
 import SelectBox from '../common/form-element/select-box';
 import TextBox from '../common/form-element/text-box';
-
 import '../get-quote/get-quote.component.scss';
 import './consultation-quote.component.scss';
-
 import { useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import ErrorMessageContainer from '../container/error-message.container';
-
 import LoaderComponent from '../common/loader/loader.component';
+import { addToCart } from '../../actions/cart';
 
 const ConsultationQuoteComponent: React.FC<any> = (
-  props: IGetQuoteProps,
+  props: any,
 ): ReactElement => {
   let INITIAL_STATE: any = {
     captchaValue: '',
@@ -26,23 +32,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
     isSendMailError: false,
     isBrandingDetailSubmitted: false,
     isButtonSubmit: false,
-    packages: [
-      {
-        id: 1,
-        active: false,
-        name: 'Package A',
-      },
-      {
-        id: 2,
-        active: false,
-        name: 'Package B',
-      },
-      {
-        id: 3,
-        active: false,
-        name: 'Package C',
-      },
-    ],
+    packages: CONSULTATION_PACKAGES,
   };
   const { formFields, fromPage } = props;
   const state = {};
@@ -97,30 +87,32 @@ const ConsultationQuoteComponent: React.FC<any> = (
         ...quoteData,
       };
     });
+    const [product] = selectedPackages;
 
     if (!captchaValue) {
       return;
     } else {
-      sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
-        () => {
-          setQuoteState((prevState) => {
-            return {
-              ...prevState,
-              isLeadDataSent: true,
-              isSendMailError: false,
-            };
-          });
-        },
-        () => {
-          setQuoteState((prevState) => {
-            return {
-              ...prevState,
-              isSendMailError: true,
-              isFormSubmitted: false,
-            };
-          });
-        },
-      );
+      props.dispatch(addToCart(selectedPackages));
+      //   sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
+      //     () => {
+      //       setQuoteState((prevState) => {
+      //         return {
+      //           ...prevState,
+      //           isLeadDataSent: true,
+      //           isSendMailError: false,
+      //         };
+      //       });
+      //     },
+      //     () => {
+      //       setQuoteState((prevState) => {
+      //         return {
+      //           ...prevState,
+      //           isSendMailError: true,
+      //           isFormSubmitted: false,
+      //         };
+      //       });
+      //     },
+      //   );
     }
   };
 
@@ -142,14 +134,14 @@ const ConsultationQuoteComponent: React.FC<any> = (
     resetCaptcha();
   }
 
-  const unSelectPackage = (name: string) => {
-    const filterService = packages.map((keyword) => {
-      if (keyword.name === name) {
-        keyword.active = !keyword.active;
+  const unSelectPackage = (id: number) => {
+    const filterService = packages.map((pkg) => {
+      if (pkg.id === id) {
+        pkg.active = !pkg.active;
       } else {
-        keyword.active = false;
+        pkg.active = false;
       }
-      return keyword;
+      return pkg;
     });
 
     setQuoteState((prevState) => {
@@ -158,6 +150,8 @@ const ConsultationQuoteComponent: React.FC<any> = (
         filterService,
       };
     });
+    const selectedPackages = packages.filter((pk) => pk.id === id);
+    props.dispatch(addToCart(selectedPackages));
   };
 
   const classes = useStyles();
@@ -372,7 +366,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
                 className={
                   service.active ? 'package-active' : 'package-inactive'
                 }
-                onClick={() => unSelectPackage(service.name)}
+                onClick={() => unSelectPackage(service.id)}
                 key={service.id}
               >
                 {service.name}
@@ -415,4 +409,8 @@ const ConsultationQuoteComponent: React.FC<any> = (
   );
 };
 
-export default ConsultationQuoteComponent;
+const mapStateToProps = (state) => ({
+  products: addToCart(state),
+});
+
+export default connect(mapStateToProps)(ConsultationQuoteComponent);

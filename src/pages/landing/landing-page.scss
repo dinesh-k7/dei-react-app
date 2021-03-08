@@ -14,7 +14,9 @@
     padding-top: 72px;
   }
   .service-blob {
-    cursor: pointer;
+    img {
+      cursor: pointer;
+    }
   }
   ul {
     margin: 0px !important;
@@ -210,7 +212,7 @@
 .landing-page-grid {
   grid-template-columns: 1fr 1fr;
   margin: 0px 8px;
-  padding-top: 96px;
+  padding-top: 48px;
   margin-right: 72px;
   height: 100vh;
   .landing-intro {

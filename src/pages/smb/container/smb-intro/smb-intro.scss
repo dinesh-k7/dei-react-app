@@ -39,13 +39,16 @@
   .smb-intro-image {
     display: grid;
     grid-template-columns: 16px 1fr;
-    height: 224px;
+    height: 124px;
   }
 
   .smb-intro-text {
     color: var(--font-color);
-    font-size: var(--font-size4);
+    font-size: var(--font-size3);
     font-family: 'OpenSansRegular', sans-serif;
+    font-weight: normal !important;
+    font-style: normal;
+    margin-left: 16px;
   }
 
   .smb-services {

@@ -48,8 +48,8 @@ const SmbIntroContainer: React.FC<any> = ({
           />
         </div>
         <p className="smb-intro-text">
-          Nearly all of the things that you need to become digitally optimized
-          are just a few clicks away.
+          Nearly every thing you need to become digitally optimized are just a
+          few clicks away.
         </p>
       </div>
       <div className="smb-services">

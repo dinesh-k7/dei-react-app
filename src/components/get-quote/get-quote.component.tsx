@@ -1,6 +1,7 @@
 import React, { ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { connect } from 'react-redux';
 
 import { IGetQuoteProps } from '../../interfaces/get-quote.model';
 import MonthlyPriceComponent from '../monthly-price/monthly-price.component';
@@ -16,6 +17,7 @@ import TextBox from '../common/form-element/text-box';
 import MultiText from '../common/form-element/multi-text';
 import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
 import { industries } from '../../constants/industry-option';
+import { addToCart } from '../../actions/cart';
 
 const GetQuoteComponent: React.FC<any> = (
   props: IGetQuoteProps,
@@ -28,7 +30,7 @@ const GetQuoteComponent: React.FC<any> = (
     isBrandingDetailSubmitted: false,
     isButtonSubmit: false,
   };
-  const { formFields } = props;
+  const { formFields, fromPage, vimage, dispatch } = props;
   const state = {};
 
   formFields &&
@@ -52,6 +54,23 @@ const GetQuoteComponent: React.FC<any> = (
   const [captcha, setCaptcha] = useState({});
 
   let companysize = '';
+
+  //Add product to cart based on the frompage
+  const addProductToCart = (quoteData) => {
+    const { monthlyCost } = quoteData;
+    const product = {
+      name: fromPage === 'branding' ? 'Branding' : 'Data Security',
+      packageName:
+        fromPage === 'branding' ? 'Branding Package' : 'Data Security Package',
+      price: fromPage === 'branding' ? 500 : monthlyCost,
+      id: fromPage === 'branding' ? 801 : 701,
+      description:
+        fromPage === 'branding' ? 'Branding Package' : 'Data Security Package',
+      section: fromPage === 'branding' ? 'Branding' : 'Data Security',
+      quantity: 1,
+    };
+    dispatch(addToCart([product]));
+  };
 
   // Set captcha reference
 
@@ -142,6 +161,7 @@ const GetQuoteComponent: React.FC<any> = (
     } else {
       const monthlyPremium = calculateMonthlyAmount(size);
       quoteData.monthlyCost = monthlyPremium && +monthlyPremium.toFixed(2);
+      addProductToCart(quoteData);
       sendMail(quoteData, fromPage).then(
         () => {
           setQuoteState((prevState) => {
@@ -183,7 +203,7 @@ const GetQuoteComponent: React.FC<any> = (
   }
 
   const classes = useStyles();
-  const { fromPage, vimage } = props;
+
   return (
     <section className="get-quote-section">
       <div className="bg-image">
@@ -328,4 +348,8 @@ const GetQuoteComponent: React.FC<any> = (
   );
 };
 
-export default GetQuoteComponent;
+const mapStateToProps = (state) => ({
+  products: addToCart(state),
+});
+
+export default connect(mapStateToProps)(GetQuoteComponent);
