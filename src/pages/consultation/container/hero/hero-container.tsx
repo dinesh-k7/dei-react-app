@@ -13,27 +13,36 @@ const HeroContainer: React.FC = (): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <h1>Start-up Consultation</h1>
-          <div className="hero-subtitle-container">
-            <div className="features">
-              <img src={yellowBlob} alt="trademark" />
-              <h3>Package A</h3>
-            </div>
-            <div className="features">
-              <img src={yellowBlob} alt="copyright" />
-              <h3>Package B</h3>
-            </div>
-            <div className="features">
-              <img src={yellowBlob} alt="patent" />
-              <h3>Package C</h3>
-            </div>
-            {/* <div className="features">
-              <img src={yellowBlob} alt="best practices " />
-              <h3>Best Practices</h3>
-            </div> */}
+
+          <div className="packages">
+            <img src={yellowBlob} alt="trademark" />
+            <h3>Branding package and Intro to IP $999.00</h3>
+          </div>
+
+          <div className="packages">
+            <img src={yellowBlob} alt="copyright" />
+            <h3>Branding and Trademark/Servicemark $2500.00</h3>
+          </div>
+          <div className="packages">
+            <img src={yellowBlob} alt="patent" />
+            <h3>
+              Branding, Trademark/ServiceMark and Mr. NWO Coaching $5000.00
+            </h3>
           </div>
         </div>
 
         <div className="hero-description">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          </p>
+          <h1>Professional Coaching</h1>
+          <div className="hero-subtitle-container">
+            <div className="features">
+              <img src={yellowBlob} alt="trademark" />
+            </div>
+          </div>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim

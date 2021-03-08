@@ -44,7 +44,11 @@ const StartupIntroContainer: React.FC<any> = ({
         <div className="service-two">
           <div className="consultation">
             <img src={yellowBlob} onClick={onClickHandler} />
-            <span onClick={onClickHandler}>Start-up Consultation</span>
+            <span onClick={onClickHandler}>
+              Consultations <br />
+              <span id="break-word">&</span>
+              <br /> Professional Coaching
+            </span>
           </div>
         </div>
       </div>

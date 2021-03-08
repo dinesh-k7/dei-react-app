@@ -3,9 +3,9 @@ import { useHistory } from 'react-router-dom';
 
 import '../../../../assets/scss/styles.scss';
 import './hero-container.scss';
-import heroImage from '../../../../assets/images/consultation-service.svg';
+import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
-import yellowBlob from '../../../../assets/images/yellow-blob.svg';
+import blueBlob from '../../../../assets/images/service_blue.svg';
 import heroMobileImage from '../../../../assets/images/consultation_mobile.svg';
 import { constants } from '../../../../constants';
 
@@ -23,39 +23,37 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
               <h1>Enterprise</h1>
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
-                  <img src={yellowBlob} alt="sdwan" />
+                  <img src={blueBlob} alt="sdwan" />
                   <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
-                    DEI-SD-WAN
+                    Security
                   </h3>
                 </div>
                 <div className="features">
-                  <img src={yellowBlob} alt="cloud services" />
-                  <h3 onClick={() => routeChange('/enterprise/cloud-service')}>
-                    DEI-Cloud Services
-                  </h3>
-                </div>
-              </div>
-              <div className="hero-subtitle-container">
-                <div className="features">
-                  <img src={yellowBlob} alt="carrier services" />
-                  <h3
-                    onClick={() => routeChange('/enterprise/carrier-service')}
-                  >
-                    DEI-Carrier Services
-                  </h3>
-                </div>
-                <div className="features">
-                  <img src={yellowBlob} alt="ucaas services" />
+                  <img src={blueBlob} alt="cloud services" />
                   <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
-                    UCaaS Services
+                    Connectivity
                   </h3>
                 </div>
               </div>
               <div className="hero-subtitle-container">
                 <div className="features">
-                  <img src={yellowBlob} alt="cable services" />
+                  <img src={blueBlob} alt="carrier services" />
+                  <h3 onClick={() => routeChange('/enterprise/cloud-service')}>
+                    Cloud
+                  </h3>
+                </div>
+                <div className="features">
+                  <img src={blueBlob} alt="ucaas services" />
+                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
+                    Voice
+                  </h3>
+                </div>
+              </div>
+              <div className="hero-subtitle-container">
+                <div className="features">
+                  <img src={blueBlob} alt="cable services" />
                   <h3 onClick={() => routeChange('/enterprise/cable-service')}>
-                    DEI-Cable Services
+                    IOT
                   </h3>
                 </div>
               </div>

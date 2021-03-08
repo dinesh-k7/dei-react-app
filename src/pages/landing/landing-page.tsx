@@ -58,9 +58,9 @@ const LandingPage: React.FC = (): ReactElement => {
 
           <div className="intro-text">
             <p>
-              Finally, one single platform to facilitate your business&apos;
-              online ambitions. If we don&apos;t provide it, we will source the
-              best providers for it.
+              Finally, an easy-to-use platform to facilitate your business&apos;
+              online ambitions. If we don&apos;t provide it, <br /> we will
+              source the best providers for it.
             </p>
           </div>
         </div>
@@ -77,7 +77,7 @@ const LandingPage: React.FC = (): ReactElement => {
               onMouseOver={() => onMouseOverHandler(smbRef)}
               onMouseOut={() => onMouseOutHandler(smbRef)}
             >
-              SMB’s
+              SMBs
             </span>
             <img onClick={() => routeChange('/smb')} src={coralVector} />
           </div>

@@ -8,55 +8,6 @@
   .cart-title {
     justify-self: center;
   }
-  .cart-container {
-    display: grid;
-    grid-template-columns: 70% 20%;
-    .cart-items {
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-
-    .cart-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-left: 40px;
-      grid-gap: 24px;
-      margin-top: 16px;
-      background-color: #f8f8f8;
-    }
-    .cart-button-container {
-      align-self: center;
-      justify-self: center;
-      button {
-        background-color: #c6c6c6;
-        font-weight: 700;
-        font-size: 12px;
-
-        padding: 5px;
-        cursor: pointer;
-        border: none;
-        font-family: 'OpenSansBold', sans-serif;
-      }
-    }
-    .product-price,
-    .product-quantity {
-      font-family: 'OpenSansRegular', sans-serif !important;
-    }
-
-    .cart-total {
-      min-width: 0;
-      word-wrap: break-word;
-      background-color: #fff;
-      background-clip: border-box;
-      border: 1px solid rgba(0, 0, 0, 0.125);
-      margin: 16px 0px 0px 24px;
-      .cart-total-items,
-      .cart-total-amount {
-        padding: 16px;
-        font-family: 'OpenSansRegular', sans-serif !important;
-      }
-    }
-  }
 }
 
 @include respond-below(sm) {

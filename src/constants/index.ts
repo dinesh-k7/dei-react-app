@@ -489,3 +489,33 @@ export const brandingFormFields = [
     section: 'company',
   },
 ];
+
+export const CONSULTATION_PACKAGES = [
+  {
+    id: 990,
+    active: false,
+    name: 'Package A',
+    description: 'Branding package and Intro to IP',
+    price: 999.0,
+    service: 'Consultations & Coaching',
+    quantity: 1,
+  },
+  {
+    id: 991,
+    active: false,
+    name: 'Package B',
+    description: 'Branding and Trademark/Servicemark',
+    price: 2500.0,
+    service: 'Consultations & Coaching',
+    quantity: 1,
+  },
+  {
+    id: 992,
+    active: false,
+    name: 'Package C',
+    description: 'Branding, Trademark/ServiceMark and Mr. NWO Coaching',
+    price: 5000.0,
+    service: 'Consultations & Coaching',
+    quantity: 1,
+  },
+];

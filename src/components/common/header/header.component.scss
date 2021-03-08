@@ -10,7 +10,17 @@
   img {
     cursor: pointer;
   }
-  .test {
-    padding-bottom: -20px;
+  .menu-container {
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    .cart-icon {
+      justify-self: end;
+      cursor: pointer;
+      span {
+        position: absolute;
+        margin-top: 4px;
+        font-size: 1rem;
+      }
+    }
   }
 }

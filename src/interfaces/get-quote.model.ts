@@ -10,4 +10,5 @@ export interface IGetQuoteProps {
   fromPage: string;
   vimage: string;
   formFields: any;
+  dispatch: any;
 }
