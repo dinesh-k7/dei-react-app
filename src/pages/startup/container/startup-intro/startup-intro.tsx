@@ -24,9 +24,13 @@ const StartupIntroContainer: React.FC<any> = ({
           <img className="title" src={startupTitle} />
         </div>
         <p className="startup-intro-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris
+          Venturing into the digital world can be risky, especially without the
+          proper tools and know-how. The DEI™ provides the right tools and
+          resources to help you mitigate your risk and maximize your digital
+          potential.
+          <br /> <br />
+          Manifest digital destiny and optimize with the DEI™. Building the
+          tomorrow of your dreams starts with you!
         </p>
       </div>
       <div className="startup-service">

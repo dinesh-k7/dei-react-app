@@ -40,10 +40,10 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
           <p>
             Monitoring and managing your digital security risks is a continuous
             process that must be done regularly and should be a part of your
-            ongoing operational strategy. To learn more about additional
-            strategies and resources visit:{' '}
-            <a href="https://www.novusordoseclorum.org">
-              www.novusordoseclorum.org
+            ongoing operational strategy. To learn more about insider threats
+            and mitigation strategies click:{' '}
+            <a href="https://novusordoseclorum.org/understanding-insider-threats/">
+              Here
             </a>
           </p>
         </div>

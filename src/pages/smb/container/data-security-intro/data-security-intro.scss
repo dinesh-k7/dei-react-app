@@ -19,11 +19,19 @@
     .hero-title {
       h3 {
         margin: 0px !important;
+        a {
+          text-decoration: none;
+          color: var(--font-color);
+        }
       }
     }
   }
   .hero-description {
     margin-top: 48px;
+    a {
+      text-decoration: none;
+      color: var(--font-color);
+    }
   }
   .hero-image {
     justify-self: start;

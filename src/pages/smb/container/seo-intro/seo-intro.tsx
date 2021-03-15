@@ -19,11 +19,17 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceYellow} alt="Background image" />
-              <h3>SEO</h3>
+              <h3>
+                <a href="https://www.nwohub.com/products/seo">SEO</a>
+              </h3>
             </div>
             <div className="features">
               <img src={serviceYellow} alt="Background image" />
-              <h3>Marketing</h3>
+              <h3>
+                <a href="https://www.nwohub.com/products/email-marketing">
+                  Email Marketing
+                </a>
+              </h3>
             </div>
             {/* <div className="features">
               <img src={serviceYellow} alt="Background image" />
@@ -36,15 +42,10 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
         </div>
         <div className="hero-description">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            Our SEO tool analyzes your website and gives you step-by-step
+            instructions on how you can optimize for Google®, Yahoo® and Bing®.
+            All it takes a few clicks, and then you can get back to business.
           </p>
-        </div>
-        <div className="button-container">
-          <button type="button" className={`btn-branding`}>
-            In Development
-          </button>
         </div>
       </div>
     </section>

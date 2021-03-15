@@ -28,8 +28,7 @@ const HeroContainer: React.FC = (): ReactElement => {
             Branding is an essential feature of any successful enterprise. The
             DEI™ custom-makes original, stunning, and high-quality logos that
             build credibility and that can enhance your brand&apos;s online
-            presence. As you take the time to describe your brand&apos;s
-            identity, be sure to list other brands that align with yours.
+            presence.
           </p>
           <div className="hero-description-two">
             <h3>What we offer:</h3>

@@ -48,8 +48,7 @@ const SmbIntroContainer: React.FC<any> = ({
           />
         </div>
         <p className="smb-intro-text">
-          Nearly every thing you need to become digitally optimized are just a
-          few clicks away.
+          Digital optimization only a few clicks away
         </p>
       </div>
       <div className="smb-services">
@@ -108,9 +107,10 @@ const SmbIntroContainer: React.FC<any> = ({
             </span>
             <span className="wd-features" ref={wdRef}>
               <ul>
-                <li>UX/UI</li>
-                <li>Front-end</li>
-                <li>Back-end</li>
+                <li>Website-Builder</li>
+                <li>Wordpress</li>
+                <li>Shopping Cart</li>
+                <li>Custom</li>
               </ul>
             </span>
           </div>
@@ -138,21 +138,21 @@ const SmbIntroContainer: React.FC<any> = ({
           <div className="auditing-service">
             <img
               src={auditBlobImage}
-              onClick={() => onClickHandler(constants.SMB.NWO)}
+              onClick={() => onClickHandler(constants.SMB.SITE)}
             />
             <span
               onMouseOver={() => onMouseOverHandler(NWORef)}
               onMouseOut={() => onMouseOutHandler(NWORef)}
-              onClick={() => onClickHandler(constants.SMB.NWO)}
+              onClick={() => onClickHandler(constants.SMB.SITE)}
             >
-              NWOhub
+              Website Security
             </span>
             <span className="audit-features" ref={NWORef}>
               <ul>
-                <li>Domains</li>
-                <li>Website</li>
-                <li>Hosting</li>
-                <li>Email</li>
+                <li>Site Security</li>
+                <li>SSL</li>
+                <li>Managed SSL</li>
+                <li>Website Backup</li>
               </ul>
             </span>
           </div>
