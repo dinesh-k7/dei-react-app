@@ -16,15 +16,27 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>UX/UI</h3>
+              <h3>
+                <a href="https://www.nwohub.com/products/website-builder">
+                  Website Builder
+                </a>
+              </h3>
             </div>
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>Front-end</h3>
+              <h3>
+                <a href="https://www.nwohub.com/products/wordpress">
+                  WordPress
+                </a>
+              </h3>
             </div>
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>Back-end</h3>
+              <h3>
+                <a href="https://www.nwohub.com/products/shopping-cart">
+                  Shopping Cart
+                </a>
+              </h3>
             </div>
           </div>
         </div>
@@ -33,14 +45,14 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
         </div>
         <div className="hero-description">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            Build an amazing website in just under an hour with website Builder.
+            Take advantage of designs created just for your industry and then
+            customize them to reflect your one-of-a-kind idea.
           </p>
         </div>
         <div className="button-container">
           <button type="button" className={`btn-branding`}>
-            In Development
+            Custom Website
           </button>
         </div>
       </div>
