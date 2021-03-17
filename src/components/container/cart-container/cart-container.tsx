@@ -10,8 +10,6 @@ import { IProductDetails } from '../../../interfaces/cart-state.model';
 const sumPropsValue = (items, prop) => items.reduce((a, b) => a + b[prop], 0);
 
 const CartContainer: React.FC = (props: any): ReactElement => {
-  console.log('propsprops', props);
-
   useEffect(() => {
     props.fetchAllCartItems();
   }, []);

@@ -12,42 +12,27 @@ const HeroContainer: React.FC = (): ReactElement => {
     <section className="hero-section">
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Start-up Consultation</h1>
+          <h1>Start-Up Central</h1>
 
           <div className="packages">
             <img src={yellowBlob} alt="trademark" />
-            <h3>Branding package and Intro to IP $999.00</h3>
+            <h3>Comprehensive Trademark screening report - $499.00</h3>
           </div>
 
           <div className="packages">
-            <img src={yellowBlob} alt="copyright" />
-            <h3>Branding and Trademark/Servicemark $2500.00</h3>
-          </div>
-          <div className="packages">
-            <img src={yellowBlob} alt="patent" />
+            <img src={yellowBlob} alt="trademark" />
             <h3>
-              Branding, Trademark/ServiceMark and Mr. NWO Coaching $5000.00
+              Start-up Package A - Branding & Trademark registration - $1099.00
             </h3>
           </div>
-        </div>
-
-        <div className="hero-description">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          </p>
-          <h1>Professional Coaching</h1>
-          <div className="hero-subtitle-container">
-            <div className="features">
-              <img src={yellowBlob} alt="trademark" />
-            </div>
+          <div className="packages">
+            <img src={yellowBlob} alt="copyright" />
+            <h3>Copyright registration $149.00 + Federal Filing fee</h3>
           </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          </p>
+          <div className="packages">
+            <img src={yellowBlob} alt="business formation" />
+            <h3>Business formations, llc - $1500.00 coming soon</h3>
+          </div>
         </div>
       </div>
       <div className="hero-mobile-image">
