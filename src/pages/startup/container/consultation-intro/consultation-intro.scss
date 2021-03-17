@@ -9,6 +9,17 @@
   padding-bottom: 72px;
   height: 100vh;
 
+  ul {
+    margin: 0px !important;
+    li {
+      padding-top: 8px !important;
+      color: var(--font-color) !important;
+      font-size: 16px;
+      font-family: 'MontFont', sans-serif;
+      list-style: outside;
+    }
+  }
+
   .hero-mobile-image {
     display: none !important;
   }
@@ -28,9 +39,33 @@
     margin-top: 48px;
   }
   .hero-image {
+    display: grid;
+    grid-template-columns: 5px 1fr;
     justify-self: start;
     img {
       max-height: 450px;
+    }
+    .startup-central-features {
+      padding: 48px;
+      p {
+        font-family: 'MontFont', sans-serif;
+        font-style: normal;
+        font-weight: var(--font-weight900);
+        letter-spacing: -0.07em;
+        font-size: 24px;
+      }
+      ul li {
+        font-family: 'OpenSansRegular', sans-serif;
+        font-size: 1em;
+        font-weight: var(--font-weight400);
+        font-style: normal;
+      }
+      span {
+        font-family: 'OpenSansRegular', sans-serif;
+        font-size: 12px;
+        padding-top: 24px;
+        display: inline-block;
+      }
     }
   }
 

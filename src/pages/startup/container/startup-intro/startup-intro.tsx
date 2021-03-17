@@ -1,10 +1,11 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import startupTitle from '../../../../assets/images/startup_title.svg';
 
 import greenBlob from '../../../../assets/images/startup_blob.svg';
 import yellowBlob from '../../../../assets/images/startup_consult_blob.svg';
+import brandingBlobImage from '../../../../assets/images/branding_blob.svg';
 
 import './startup-intro.scss';
 
@@ -14,6 +15,21 @@ const StartupIntroContainer: React.FC<any> = ({
   const history = useHistory();
   const routeChange = (url) => {
     history.push(url);
+  };
+
+  const startUpRef = useRef(null);
+  const nwoRef = useRef(null);
+  const brandingRef = useRef(null);
+
+  const onMouseOverHandler = (ref: any) => {
+    if (ref && ref.current) {
+      ref.current.classList.toggle('show-features');
+    }
+  };
+  const onMouseOutHandler = (ref: any) => {
+    if (ref && ref.current) {
+      ref.current.classList.toggle('show-features');
+    }
   };
 
   return (
@@ -28,9 +44,6 @@ const StartupIntroContainer: React.FC<any> = ({
           proper tools and know-how. The DEI™ provides the right tools and
           resources to help you mitigate your risk and maximize your digital
           potential.
-          <br /> <br />
-          Manifest digital destiny and optimize with the DEI™. Building the
-          tomorrow of your dreams starts with you!
         </p>
       </div>
       <div className="startup-service">
@@ -42,16 +55,63 @@ const StartupIntroContainer: React.FC<any> = ({
               height={80}
               onClick={() => routeChange('/smb#NWO')}
             />
-            <span onClick={() => routeChange('/smb#NWO')}>NWOhub™</span>
+            <span
+              onClick={() => routeChange('/smb#NWO')}
+              onMouseOver={() => onMouseOverHandler(nwoRef)}
+              onMouseOut={() => onMouseOutHandler(nwoRef)}
+            >
+              NWOhub™
+            </span>
+            <span className="nwo-features" ref={nwoRef}>
+              <ul>
+                <li>Domain</li>
+                <li>Hosting</li>
+                <li>Website</li>
+                <li>Email</li>
+              </ul>
+            </span>
           </div>
         </div>
         <div className="service-two">
           <div className="consultation">
             <img src={yellowBlob} onClick={onClickHandler} />
-            <span onClick={onClickHandler}>
-              Consultations <br />
-              <span id="break-word">&</span>
-              <br /> Professional Coaching
+            <span
+              onClick={onClickHandler}
+              onMouseOver={() => onMouseOverHandler(startUpRef)}
+              onMouseOut={() => onMouseOutHandler(startUpRef)}
+            >
+              Start-Up Central
+            </span>
+            <span className="startup-features" ref={startUpRef}>
+              <ul>
+                <li>Copyright</li>
+                <li>Trademark</li>
+                <li>Patent</li>
+              </ul>
+            </span>
+          </div>
+        </div>
+
+        <div className="service-three">
+          <div className="branding">
+            <img
+              src={brandingBlobImage}
+              width={80}
+              height={80}
+              onClick={() => routeChange('/smb#NWO')}
+            />
+            <span
+              onClick={() => routeChange('/branding')}
+              onMouseOver={() => onMouseOverHandler(brandingRef)}
+              onMouseOut={() => onMouseOutHandler(brandingRef)}
+            >
+              Branding
+            </span>
+            <span className="branding-features" ref={brandingRef}>
+              <ul>
+                <li>Graphic design</li>
+                <li>Logo design</li>
+              </ul>
             </span>
           </div>
         </div>

@@ -19,7 +19,7 @@ const ConsultationIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
     <section className="consultation-intro" ref={inputRef}>
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Start-up Consultation</h1>
+          <h1>Start-Up Central</h1>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={yellowBlob} alt="trademark" />
@@ -33,10 +33,6 @@ const ConsultationIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
               <img src={yellowBlob} alt="patent" />
               <h3>Patent</h3>
             </div>
-            <div className="features">
-              <img src={yellowBlob} alt="best practices" />
-              <h3>Best Practices</h3>
-            </div>
           </div>
         </div>
         <div className="hero-mobile-image">
@@ -44,9 +40,7 @@ const ConsultationIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
         </div>
         <div className="hero-description">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            Manifest Digital Destiny Building a better tomorrow starts with you!
           </p>
         </div>
         <div className="button-container">
@@ -61,6 +55,23 @@ const ConsultationIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
       </div>
       <div className="hero-image">
         <img src={heroImage} alt="consultation Image" />
+        <div className="startup-central-features">
+          <p>DEI™ Essentials:</p>
+          <ul>
+            <li>Comprehensive Trademark screening $599.00</li>
+            <li>
+              {' '}
+              Start-up Package A Branding and trademarking of the brand.
+              $1099.00. Comprehensive Screening report included
+            </li>
+            <li>Copyright registration $149.00 + Fed. filing fee</li>
+            <li>REGISTRATION OF ENTITIES llc formations $1500 (COMING SOON)</li>
+          </ul>
+          <span>
+            Garuanteed registration d or your money back excluding the
+            registration
+          </span>
+        </div>
       </div>
     </section>
   );

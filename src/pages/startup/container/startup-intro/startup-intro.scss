@@ -13,6 +13,16 @@
   .break-word {
     text-align: center;
   }
+  ul {
+    margin: 0px !important;
+    li {
+      padding-top: 8px !important;
+      color: var(--font-color) !important;
+      font-size: 16px;
+      font-family: 'MontFont', sans-serif;
+      list-style: outside;
+    }
+  }
 
   .title {
     margin-top: 16px;
@@ -37,6 +47,7 @@
   }
 
   .nwo-hub,
+  .branding,
   .consultation {
     display: grid;
     grid-template-columns: 5px 1fr;
@@ -52,7 +63,6 @@
   }
   .consultation {
     span {
-      width: min-content;
       justify-self: end;
     }
     img {
@@ -60,7 +70,8 @@
     }
   }
   .service-one,
-  .service-two {
+  .service-two,
+  .service-three {
     display: grid;
   }
   .service-two {
@@ -86,12 +97,29 @@
     grid-template-rows: 200px !important;
   }
   .startup-service {
-    grid-template-rows: 200px !important;
+    grid-template-rows: repeat(3, 140px) !important;
     grid-gap: 0px !important;
+  }
+  .startup-features,
+  .nwo-features,
+  .branding-features {
+    display: none !important;
+    width: 100%;
+    min-width: 200px;
+  }
+  .show-features {
+    display: grid !important;
+    justify-self: start !important;
+    margin-top: -16px;
   }
 }
 
 @include respond-below(sm) {
+  .startup-features,
+  .nwo-features,
+  .branding-features {
+    display: none !important;
+  }
   .startup-intro {
     grid-template-columns: 1fr !important;
     height: auto !important;
@@ -112,7 +140,8 @@
     }
     .startup-service {
       grid-gap: 16px !important;
-      .nwo-hub span {
+      .nwo-hub span,
+      .branding span {
         align-self: start !important;
         margin-top: 16px;
       }

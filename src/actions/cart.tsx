@@ -39,7 +39,7 @@ export const addToCart = (product: IProductDetails[]) => (
     cartReducer: { products },
   } = getState();
   const productExist = products.find((prd) => prd.id === pd.id);
-  console.log('isProductExist', productExist);
+
   if (!productExist) {
     dispatch(addToCartAction(product));
   } else {
