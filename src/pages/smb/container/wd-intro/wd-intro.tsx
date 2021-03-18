@@ -21,7 +21,15 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
                   Website Builder
                 </a>
               </h3>
+              <p>
+                Build an amazing website in just under an hour with website
+                Builder. Take advantage of designs created just for your
+                industry and then customize them to reflect your one-of-a-kind
+                idea.
+              </p>
             </div>
+          </div>
+          <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3>
@@ -30,6 +38,13 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
                 </a>
               </h3>
             </div>
+            <p>
+              Our WordPress Hosting provides automatic setup, backups and
+              software updates paired with 24/7, award-winning support. Get
+              started in just a few clicks.
+            </p>
+          </div>
+          <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3>
@@ -38,21 +53,18 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
                 </a>
               </h3>
             </div>
+            <p>
+              Fully functioning professional business/ecommerce/shopping cart.
+            </p>
           </div>
         </div>
         <div className="hero-mobile-image">
           <img src={heroMobileImage} alt="Webiste development Image" />
         </div>
-        <div className="hero-description">
-          <p>
-            Build an amazing website in just under an hour with website Builder.
-            Take advantage of designs created just for your industry and then
-            customize them to reflect your one-of-a-kind idea.
-          </p>
-        </div>
+
         <div className="button-container">
           <button type="button" className={`btn-branding`}>
-            Custom Website
+            Custom Website (Coming Soon)
           </button>
         </div>
       </div>

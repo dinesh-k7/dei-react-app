@@ -80,7 +80,7 @@ const StartupIntroContainer: React.FC<any> = ({
               onMouseOver={() => onMouseOverHandler(startUpRef)}
               onMouseOut={() => onMouseOutHandler(startUpRef)}
             >
-              Start-Up Central
+              Start-Up <br /> Packages
             </span>
             <span className="startup-features" ref={startUpRef}>
               <ul>

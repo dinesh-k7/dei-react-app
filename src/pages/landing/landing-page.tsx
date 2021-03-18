@@ -59,8 +59,8 @@ const LandingPage: React.FC = (): ReactElement => {
           <div className="intro-text">
             <p>
               Finally, an easy-to-use platform to facilitate your business&apos;
-              online ambitions. If we don&apos;t provide it, <br /> we will
-              source the best providers for it.
+              online ambitions. If we don&apos;t provide it, we will source the
+              best providers for it.
             </p>
           </div>
         </div>
@@ -88,7 +88,8 @@ const LandingPage: React.FC = (): ReactElement => {
               onMouseOver={() => onMouseOverHandler(startupRef)}
               onMouseOut={() => onMouseOutHandler(startupRef)}
             >
-              Start-up’s
+              Start-Up <br />
+              Central
             </span>
             <span className="startup-services" ref={startupRef}>
               <ul>

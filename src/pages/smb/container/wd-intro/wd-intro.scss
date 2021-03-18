@@ -19,6 +19,14 @@
         color: var(--font-color);
       }
     }
+    display: grid !important;
+    p {
+      font-family: 'OpenSansRegular', sans-serif !important;
+      font-size: 1em !important;
+      font-weight: var(--font-weight400) !important;
+      font-style: normal !important;
+      padding: 0px !important;
+    }
   }
   .hero-content {
     .hero-title {
@@ -40,6 +48,7 @@
   .btn-branding {
     margin-top: 64px;
     background-color: #e0e0e0;
+    width: max-content;
   }
 }
 

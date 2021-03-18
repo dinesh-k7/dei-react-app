@@ -62,11 +62,12 @@
     }
   }
   .consultation {
+    padding-right: 56px;
+    .show-features {
+      margin-top: -5px !important;
+    }
     span {
       justify-self: end;
-    }
-    img {
-      padding-left: 104px;
     }
   }
   .service-one,
@@ -110,7 +111,7 @@
   .show-features {
     display: grid !important;
     justify-self: start !important;
-    margin-top: -16px;
+    margin-top: -20px;
   }
 }
 
@@ -148,6 +149,7 @@
       .consultation {
         grid-template-columns: 5px 100px;
         padding-right: 24px;
+
         img {
           padding-left: 0px;
         }
