@@ -27,41 +27,47 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               <img src={serviceBlue} alt="Background image" />
               <h3>Website Security</h3>
             </div>
+            <p>
+              Get peace of mind with daily malware scans and guaranteed malware
+              removal should any problems be detected.
+            </p>
+          </div>
+          <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3>SSL</h3>
             </div>
+
+            <p>
+              Speak the language of security with an SSL certificate. The little
+              green lock lets visitors know that you&apos;ll keep their data
+              safe.
+            </p>
+          </div>
+          <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3>Managed SSL Service</h3>
             </div>
+            <p>
+              We handle the install and maintenance of your SSL - saving you
+              time and energy.
+            </p>
+          </div>
+          <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3>Website Backup</h3>
             </div>
+            <p>
+              Keep your data safe while you grow your business online. Automatic
+              backups and one-click restore mean you&apos;re ready for anything
+              that comes your way.
+            </p>
           </div>
         </div>
         <div className="hero-mobile-image">
           <img src={heroMobileImage} alt="Data Security Image" />
-        </div>
-        <div className="hero-description">
-          <p>
-            Get peace of mind with daily malware scans and guaranteed malware
-            removal should any problems be detected.
-          </p>
-          <p>
-            Speak the language of security with an SSL certificate. The little
-            green lock lets visitors know that you&apos;ll keep their data safe.
-          </p>
-          <p>
-            We handle the install and maintenance of your SSL - saving you time
-            and energy.
-          </p>
-          <p>
-            Keep your data safe while you grow your business online. Automatic
-            backups and one-click restore mean you&apos;re ready for anything
-            that comes your way.
-          </p>
         </div>
       </div>
 

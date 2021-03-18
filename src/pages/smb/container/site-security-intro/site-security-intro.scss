@@ -5,6 +5,16 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
   height: 100vh;
+  .hero-subtitle-container {
+    display: grid !important;
+    p {
+      font-family: 'OpenSansRegular', sans-serif !important;
+      font-size: 1em !important;
+      font-weight: var(--font-weight400) !important;
+      font-style: normal !important;
+      padding: 0px !important;
+    }
+  }
   .hero-image img {
     max-width: 500px !important;
   }

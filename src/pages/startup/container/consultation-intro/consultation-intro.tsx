@@ -19,7 +19,7 @@ const ConsultationIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
     <section className="consultation-intro" ref={inputRef}>
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Start-Up Central</h1>
+          <h1>Start-Up Packages</h1>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={yellowBlob} alt="trademark" />
@@ -40,7 +40,8 @@ const ConsultationIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
         </div>
         <div className="hero-description">
           <p>
-            Manifest Digital Destiny Building a better tomorrow starts with you!
+            Manifest Digital Destiny! <br /> Building a better tomorrow starts
+            with you!
           </p>
         </div>
         <div className="button-container">
