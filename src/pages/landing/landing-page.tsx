@@ -88,8 +88,7 @@ const LandingPage: React.FC = (): ReactElement => {
               onMouseOver={() => onMouseOverHandler(startupRef)}
               onMouseOut={() => onMouseOutHandler(startupRef)}
             >
-              Start-Up <br />
-              Central
+              Start-Up
             </span>
             <span className="startup-services" ref={startupRef}>
               <ul>
