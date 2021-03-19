@@ -48,7 +48,9 @@ const GetQuoteButton: any = ({
           type="button"
           className={`btn-data-security ${
             isFormSubmitted && !isLeadDataSent && captchaValue ? 'btn-grey' : ''
-          } ${isLeadDataSent ? 'btn-green' : ''} `}
+          } ${isLeadDataSent ? 'btn-green' : ''} ${
+            fromPage === 'wd' ? 'btn-purple' : ''
+          } `}
           onClick={handleSubmit(onSubmit, onError)}
         >
           {isLeadDataSent ? 'Start Over' : 'Get a Quote'}

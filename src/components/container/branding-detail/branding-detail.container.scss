@@ -3,6 +3,19 @@ textarea {
   padding: 16px;
 }
 .branding-container {
+  .radio-section {
+    grid-template-columns: 1fr 1fr;
+    padding: 32px 24px 16px 0px !important;
+  }
+  .radio-active {
+    background-color: #49e59a;
+  }
+  .radio-inactive {
+    background-color: #ff7d7d;
+  }
+  .wd-technical-info {
+    padding-top: 48px !important;
+  }
   .input-container {
     display: grid;
     grid-template-columns: 1fr 1px;

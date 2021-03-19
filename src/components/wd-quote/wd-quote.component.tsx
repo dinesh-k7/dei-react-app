@@ -15,16 +15,15 @@ import MultiText from '../common/form-element/multi-text';
 import SelectBox from '../common/form-element/select-box';
 import TextBox from '../common/form-element/text-box';
 import '../get-quote/get-quote.component.scss';
-import './consultation-quote.component.scss';
+import './wd-quote.component.scss';
 import { useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
 import { addToCart } from '../../actions/cart';
+import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
 
-const ConsultationQuoteComponent: React.FC<any> = (
-  props: any,
-): ReactElement => {
+const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
   let INITIAL_STATE: any = {
     captchaValue: '',
     isFormSubmitted: false,
@@ -37,11 +36,9 @@ const ConsultationQuoteComponent: React.FC<any> = (
   const { formFields, fromPage } = props;
   const state = {};
 
-  let isLocationExist;
   formFields &&
     formFields.length &&
     formFields.forEach((field) => {
-      isLocationExist = field.section === 'location' ? true : false;
       if (
         field.type === 'text' ||
         field.type === 'select' ||
@@ -134,30 +131,56 @@ const ConsultationQuoteComponent: React.FC<any> = (
     resetCaptcha();
   }
 
-  const unSelectPackage = (id: number) => {
-    const filterService = packages.map((pkg) => {
-      if (pkg.id === id) {
-        pkg.active = !pkg.active;
-      } else {
-        pkg.active = false;
-      }
-      return pkg;
-    });
+  const handleBrandingState = (state) => {
+    const { keywords, colorPicker, brands } = state;
+    const activeKeywords =
+      keywords && keywords.filter((keyword) => keyword.active === true);
+    const activeBrands =
+      brands && brands.filter((brand) => brand.active === true);
 
+    if (
+      activeKeywords &&
+      activeKeywords.length >= 2 &&
+      colorPicker &&
+      activeBrands &&
+      activeBrands.length >= 2
+    ) {
+      const values = activeKeywords.map((keyword) => keyword.name);
+      const brand = activeBrands.map((brand) => brand.name);
+
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          keywords: values && values.length && values.join(','),
+          brands: brand && brand.length && brand.join(','),
+          colorPicker,
+          isBrandingDetailSubmitted: true,
+        };
+      });
+    } else {
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          isBrandingDetailSubmitted: false,
+        };
+      });
+    }
+  };
+
+  // handle button click for form submit
+  const onError = () => {
     setQuoteState((prevState) => {
       return {
         ...prevState,
-        filterService,
+        isButtonSubmit: true,
       };
     });
-    const selectedPackages = packages.filter((pk) => pk.id === id);
-    props.dispatch(addToCart(selectedPackages));
   };
 
   const classes = useStyles();
 
   return (
-    <section className="consultation-quote-section">
+    <section className="wd-quote-section">
       <div className="bg-image"></div>
       <div className="form-container">
         <h1>Tell us about your company</h1>
@@ -261,59 +284,22 @@ const ConsultationQuoteComponent: React.FC<any> = (
                       class_name={'text-area-container'}
                     />
                   );
+                } else if (
+                  field.section === 'company' &&
+                  field.type === 'radio'
+                ) {
+                  return (
+                    <div className="form-group radio-section">
+                      {field.label}
+                      <div className="radio-options">
+                        <span>YES</span>
+                        <span>NO</span>
+                      </div>
+                    </div>
+                  );
                 }
               })}
           </div>
-
-          {isLocationExist && (
-            <Fragment>
-              <h3>Ttes</h3>
-              <div className="company-information">
-                {formFields &&
-                  formFields.length &&
-                  formFields.map((field, idx) => {
-                    if (
-                      field.section === 'location' &&
-                      (field.type === 'text' || field.type === 'number')
-                    ) {
-                      return (
-                        <TextBox
-                          key={idx}
-                          register={register}
-                          name={field.name}
-                          placeholder={field.placeholder}
-                          label_name={field.label}
-                          maxlength={50}
-                          required={field.required}
-                          pattern={field.pattern}
-                          type={field.type}
-                        />
-                      );
-                    } else if (
-                      field.section === 'location' &&
-                      field.type === 'select'
-                    ) {
-                      return (
-                        <SelectBox
-                          value={quoteState[field.name]}
-                          key={idx}
-                          variant={'outlined'}
-                          name={field.name}
-                          className={classes}
-                          id={field.name}
-                          label_name={field.label}
-                          options={constants.POSITION}
-                          placeholder={field.placeholder}
-                          control={control}
-                          error={!!errors[quoteState[field.name]]}
-                          grouping={field.grouping}
-                        ></SelectBox>
-                      );
-                    }
-                  })}
-              </div>
-            </Fragment>
-          )}
 
           <div className="form-group recaptcha-container">
             <ReCAPTCHA
@@ -340,71 +326,16 @@ const ConsultationQuoteComponent: React.FC<any> = (
         </form>
       </div>
 
-      <div className="button-container">
-        <div className="consultation-text">
-          <h4>How to prepare:</h4>
-          <h4>Be able to:</h4>
-          <ul>
-            <li>Define your biggest weakness.</li>
-            <li>Define obstacles preventing Implementation.</li>
-            <li>Describe communications gap.</li>
-            <li>commit to attend consultations sessions as scheduled</li>
-          </ul>
-          <h4>Expect:</h4>
-
-          <ul>
-            <li>A detailed discovery session.</li>
-            <li>A well defined solution to your communications gap.</li>
-            <li>A personal coaching session with Mr. NWO</li>
-          </ul>
-        </div>
-        <div className="consultation-package">
-          {packages &&
-            packages.length &&
-            packages.map((service) => (
-              <span
-                className={
-                  service.active ? 'package-active' : 'package-inactive'
-                }
-                onClick={() => unSelectPackage(service.id)}
-                key={service.id}
-              >
-                {service.name}
-              </span>
-            ))}
-        </div>
-        {!isLeadDataSent && (
-          <button
-            type="button"
-            className={`btn-branding`}
-            onClick={handleSubmit(onSubmit)}
-          >
-            Schedule Consultation
-          </button>
-        )}
-
-        {isFormSubmitted && !isLeadDataSent && captchaValue && (
-          <LoaderComponent />
-        )}
-        {isLeadDataSent && (
-          <div className="confirmation-text">
-            <p>the DEI™ has received your information, {name}</p>
-            <p>
-              An account executive will call you within 2 – 3 business days to
-              discover more about your enterprise needs.
-            </p>
-          </div>
-        )}
-
-        {errors && <ErrorMessageContainer {...errors} />}
-
-        {!captchaValue && isFormSubmitted && (
-          <p className="error_message">{messages.captcha_error}</p>
-        )}
-        {isSendMailError && (
-          <p className="error_message">{messages.mail_send_error}</p>
-        )}
-      </div>
+      <BrandingDetailContainer
+        handleSubmit={handleSubmit}
+        quoteState={quoteState}
+        errors={errors}
+        onSubmit={onSubmit}
+        register={register}
+        onError={onError}
+        fromPage={'wd'}
+        handleBrandingState={handleBrandingState}
+      />
     </section>
   );
 };
@@ -413,4 +344,4 @@ const mapStateToProps = (state) => ({
   products: addToCart(state),
 });
 
-export default connect(mapStateToProps)(ConsultationQuoteComponent);
+export default connect(mapStateToProps)(WdQuoteComponent);

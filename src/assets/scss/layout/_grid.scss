@@ -22,6 +22,7 @@
 
   .get-quote-section,
   .consultation-quote-section,
+  .wd-quote-section,
   .enterprise-quote-section {
     border-bottom: 1px solid var(--font-color);
     grid-column: 1/4;
@@ -192,6 +193,7 @@
 
   .get-quote-section,
   .consultation-quote-section,
+  .wd-quote-section,
   .enterprise-quote-section {
     border-bottom: 1px solid var(--font-color);
     padding-bottom: 90px;
@@ -208,7 +210,7 @@
       grid-template-columns: 1fr !important;
     }
 
-    .branding-text-area {
+    .text-area-container {
       grid-column: 1/-1;
     }
 
@@ -293,7 +295,7 @@
     display: grid;
     grid-template-columns: 1fr !important;
   }
-  .branding-text-area {
+  .text-area-container {
     grid-column: 1/-1;
   }
   .form-container .info-icon {

@@ -170,12 +170,19 @@ const BrandingDetailContainer: React.FC<any> = (
           );
         })
       : '';
+  const { fromPage } = props;
   return (
     <div className="branding-container">
       <div className="technical-info">
-        <h1>Brand Identity factors</h1>
-        <h4>Technical Information </h4>
-        <span>Pick words/adjectives that best describe your business</span>
+        {fromPage ? <h1></h1> : <h1>Brand Identity factors</h1>}
+        <h4 className={fromPage ? 'wd-technical-info' : ''}>
+          Technical Information
+        </h4>
+        {fromPage ? (
+          <span>Type of pages included on the website</span>
+        ) : (
+          <span>Pick words/adjectives that best describe your business</span>
+        )}
         <form
           autoComplete="off"
           onSubmit={(e) => {
@@ -191,7 +198,7 @@ const BrandingDetailContainer: React.FC<any> = (
                 name="keyword_picker"
                 id="keyword_picker"
                 className="keyword-input"
-                placeholder="Add your word"
+                placeholder={fromPage ? 'Add Page' : 'Add your word'}
                 onChange={handleChange}
                 value={keyword}
               />
@@ -204,9 +211,33 @@ const BrandingDetailContainer: React.FC<any> = (
             </div>
           </div>
         </form>
+        {fromPage && (
+          <div className="form-group radio-section">
+            Do you plan on Selling items on your website?
+            <div className="radio-options">
+              <span>YES</span>
+              <span>NO</span>
+            </div>
+          </div>
+        )}
+
+        {fromPage && (
+          <div className="form-group radio-section">
+            Do you require strong SEO for your website?
+            <div className="radio-options">
+              <span>YES</span>
+              <span>NO</span>
+            </div>
+          </div>
+        )}
       </div>
+
       <div className="color-palette">
-        <span>Pick color palette </span>
+        {fromPage ? (
+          <span>Pick color palette to explore</span>
+        ) : (
+          <span>Pick color palette </span>
+        )}
         <div className="color-picker-grid">
           <div className="color-picker-image">
             <input
@@ -439,43 +470,49 @@ const BrandingDetailContainer: React.FC<any> = (
         </div>
       </div>
       {/* Logo section starts */}
-      <div className="pick-logo">
-        <form
-          autoComplete="off"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleClick('brandName');
-          }}
-        >
-          <span>Pick which brand identities you like the most</span>
+      {!fromPage && (
+        <div className="pick-logo">
+          <form
+            autoComplete="off"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleClick('brandName');
+            }}
+          >
+            <span>Pick which brand identities you like the most</span>
 
-          <div className="word-grid">
-            {brandDisplay}
-            <div className="input-container">
-              <input
-                type="text"
-                name="logo_picker"
-                id="keyword_picker"
-                className="keyword-input"
-                placeholder="Add your word"
-                onChange={handleChange}
-                value={brandName}
-              />
-              <img
-                className="plus-icon"
-                src={plusIcon}
-                alt="Add Icon"
-                onClick={() => handleClick('brandName')}
-              />
+            <div className="word-grid">
+              {brandDisplay}
+              <div className="input-container">
+                <input
+                  type="text"
+                  name="logo_picker"
+                  id="keyword_picker"
+                  className="keyword-input"
+                  placeholder="Add your word"
+                  onChange={handleChange}
+                  value={brandName}
+                />
+                <img
+                  className="plus-icon"
+                  src={plusIcon}
+                  alt="Add Icon"
+                  onClick={() => handleClick('brandName')}
+                />
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      )}
       <div className="price-container">
         <div className="sticky-content">
-          <h4> Starting from</h4>
+          {fromPage ? (
+            <h4>Approximate service cost</h4>
+          ) : (
+            <h4> Starting from</h4>
+          )}
           <div className="price-container">
-            <span className="price">$500</span>
+            <span className="price">{fromPage ? '$2998' : '$500'}</span>
           </div>
         </div>
         <div>
@@ -486,7 +523,7 @@ const BrandingDetailContainer: React.FC<any> = (
             onSubmit={onSubmit}
             brandingState={brandingState}
             onError={onError}
-            fromPage={`branding`}
+            fromPage={fromPage ? `wd` : `branding`}
           />
         </div>
       </div>

@@ -6,10 +6,21 @@ import heroImage from '../../../../assets/images/website_service.svg';
 import heroMobileImage from '../../../../assets/images/wd_mobile.svg';
 
 import './wd-intro.scss';
+import { useHistory } from 'react-router-dom';
 
 const WdIntro: React.FC<any> = (props: any): ReactElement => {
+  const history = useHistory();
+
+  const routeChange = () => {
+    history.push('website-development');
+  };
+
+  const { fromPage } = props;
   return (
-    <section className="wd-intro" ref={props.inputRef}>
+    <section
+      className={fromPage ? 'wd-intro wd-page' : 'wd-intro'}
+      ref={props.inputRef}
+    >
       <div className="hero-content">
         <div className="hero-title">
           <h1>Website development</h1>
@@ -61,12 +72,17 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
         <div className="hero-mobile-image">
           <img src={heroMobileImage} alt="Webiste development Image" />
         </div>
-
-        <div className="button-container">
-          <button type="button" className={`btn-branding`}>
-            Custom Website (Coming Soon)
-          </button>
-        </div>
+        {!fromPage && (
+          <div className="button-container">
+            <button
+              type="button"
+              className={`btn-branding`}
+              onClick={routeChange}
+            >
+              Custom Website
+            </button>
+          </div>
+        )}
       </div>
       <div className="hero-image">
         <img src={heroImage} alt="Webiste development Image" />

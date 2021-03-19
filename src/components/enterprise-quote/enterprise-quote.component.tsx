@@ -280,7 +280,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
                       placeholder={field.placeholder}
                       label_name={field.label}
                       maxlength={500}
-                      class_name={'branding-text-area'}
+                      class_name={'text-area-container'}
                     />
                   );
                 }
