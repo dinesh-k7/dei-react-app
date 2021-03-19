@@ -6,4 +6,5 @@ export interface IBrandingQuoteModel {
   register: any;
   handleBrandingState: any;
   onError: any;
+  fromPage: string;
 }
