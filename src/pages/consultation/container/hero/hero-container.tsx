@@ -12,7 +12,7 @@ const HeroContainer: React.FC = (): ReactElement => {
     <section className="hero-section">
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Start-Up Packages</h1>
+          <h1>Start-Up Kits</h1>
 
           <div className="packages">
             <img src={yellowBlob} alt="trademark" />

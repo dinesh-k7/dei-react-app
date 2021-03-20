@@ -13,6 +13,9 @@
       cursor: pointer;
     }
   }
+  .smb-services {
+    grid-template-rows: 160px;
+  }
 
   ul {
     margin: 0px !important;
@@ -147,6 +150,12 @@
     display: block !important;
     position: absolute;
     margin-top: 60px !important;
+  }
+  .smb-services {
+    img {
+      width: 120px !important;
+      height: 120px !important;
+    }
   }
 }
 

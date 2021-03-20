@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
+import heroImage from '../../../../assets/images/website_security.svg';
 import heroMobileImage from '../../../../assets/images/ds_mobile.svg';
 import serviceBlue from '../../../../assets/images/service_blue.svg';
 import './site-security-intro.scss';
@@ -19,6 +19,9 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
       id="site-security-intro"
       ref={props.inputRef}
     >
+      <div className="hero-image">
+        <img src={heroImage} alt="Data Security Image" />
+      </div>
       <div className="hero-content">
         <div className="hero-title">
           <h1>Site Security</h1>
@@ -69,10 +72,6 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
         <div className="hero-mobile-image">
           <img src={heroMobileImage} alt="Data Security Image" />
         </div>
-      </div>
-
-      <div className="hero-image">
-        <img src={heroImage} alt="Data Security Image" />
       </div>
     </section>
   );

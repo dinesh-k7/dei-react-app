@@ -76,11 +76,11 @@ const StartupIntroContainer: React.FC<any> = ({
           <div className="consultation">
             <img src={yellowBlob} onClick={onClickHandler} />
             <span
-              onClick={onClickHandler}
+              onClick={() => routeChange('/consultation')}
               onMouseOver={() => onMouseOverHandler(startUpRef)}
               onMouseOut={() => onMouseOutHandler(startUpRef)}
             >
-              Start-Up <br /> Packages
+              Start-Up <br /> Kits
             </span>
             <span className="startup-features" ref={startUpRef}>
               <ul>

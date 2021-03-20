@@ -12,7 +12,10 @@ const Header: React.FC = (props: any): ReactElement => {
   const history = useHistory();
 
   const routeChange = (url) => {
-    history.goBack();
+    const { location } = history;
+    if (location && location.key) {
+      history.goBack();
+    }
   };
 
   const { products } = props;
