@@ -64,6 +64,7 @@ const SmbIntroContainer: React.FC<any> = ({
               onMouseOver={() => onMouseOverHandler(dsRef)}
               onMouseOut={() => onMouseOutHandler(dsRef)}
               onClick={() => routeChange('/secure')}
+              className="service-title"
             >
               Secure
             </span>
@@ -82,6 +83,7 @@ const SmbIntroContainer: React.FC<any> = ({
               onClick={() => routeChange('/develop')}
               onMouseOver={() => onMouseOverHandler(wdRef)}
               onMouseOut={() => onMouseOutHandler(wdRef)}
+              className="service-title"
             >
               Develop
             </span>
