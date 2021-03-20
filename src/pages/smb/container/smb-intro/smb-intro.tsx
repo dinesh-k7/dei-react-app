@@ -11,6 +11,7 @@ import wdBlobImage from '../../../../assets/images/wd_blob.svg';
 import smbMobileImage from '../../../../assets/images/smb_title_mobile.svg';
 
 import './smb-intro.scss';
+import { useHistory } from 'react-router-dom';
 
 const SmbIntroContainer: React.FC<any> = ({
   onClickHandler,
@@ -20,6 +21,10 @@ const SmbIntroContainer: React.FC<any> = ({
   const wdRef = useRef(null);
   const seoRef = useRef(null);
   const NWORef = useRef(null);
+  const history = useHistory();
+  const routeChange = (url) => {
+    history.push(url);
+  };
 
   const onMouseOverHandler = (ref: any) => {
     if (ref && ref.current) {
@@ -54,105 +59,37 @@ const SmbIntroContainer: React.FC<any> = ({
       <div className="smb-services">
         <div className="service-one">
           <div className="ds-service">
-            <img
-              src={dsBlobImage}
-              onClick={() => onClickHandler(constants.SMB.DS)}
-            />
+            <img src={dsBlobImage} onClick={() => routeChange('/secure')} />
             <span
               onMouseOver={() => onMouseOverHandler(dsRef)}
               onMouseOut={() => onMouseOutHandler(dsRef)}
-              onClick={() => onClickHandler(constants.SMB.DS)}
+              onClick={() => routeChange('/secure')}
             >
-              Data Security
+              Secure
             </span>
             <span className="ds-features" ref={dsRef}>
               <ul>
-                <li>Dark Web Monitoring</li>
-                <li>Email Solutions</li>
-              </ul>
-            </span>
-          </div>
-          <div className="branding-service">
-            <img
-              src={brandingBlobImage}
-              onClick={() => onClickHandler(constants.SMB.BRANDING)}
-            />
-            <span
-              onMouseOver={() => onMouseOverHandler(brandingRef)}
-              onMouseOut={() => onMouseOutHandler(brandingRef)}
-              onClick={() => onClickHandler(constants.SMB.BRANDING)}
-            >
-              Branding
-            </span>
-            <span className="branding-features" ref={brandingRef}>
-              <ul>
-                <li>Graphic design</li>
-                <li>Logo design</li>
+                <li>Dark Security</li>
+                <li>Website Security</li>
               </ul>
             </span>
           </div>
         </div>
         <div className="service-two">
           <div className="wd-service">
-            <img
-              src={wdBlobImage}
-              onClick={() => onClickHandler(constants.SMB.WD)}
-            />
+            <img src={wdBlobImage} onClick={() => routeChange('/develop')} />
             <span
-              onClick={() => onClickHandler(constants.SMB.WD)}
+              onClick={() => routeChange('/develop')}
               onMouseOver={() => onMouseOverHandler(wdRef)}
               onMouseOut={() => onMouseOutHandler(wdRef)}
             >
-              Website Development
+              Develop
             </span>
             <span className="wd-features" ref={wdRef}>
               <ul>
-                <li>Website-Builder</li>
-                <li>Wordpress</li>
-                <li>Shopping Cart</li>
-                <li>Custom</li>
-              </ul>
-            </span>
-          </div>
-        </div>
-        <div className="service-three">
-          <div className="seo-service">
-            <img
-              src={seoBlobImage}
-              onClick={() => onClickHandler(constants.SMB.SEO)}
-            />
-            <span
-              onMouseOver={() => onMouseOverHandler(seoRef)}
-              onMouseOut={() => onMouseOutHandler(seoRef)}
-              onClick={() => onClickHandler(constants.SMB.SEO)}
-            >
-              SEO & Marketing
-            </span>
-            <span className="seo-features" ref={seoRef}>
-              <ul>
-                <li>SEO</li>
-                <li>Marketing</li>
-              </ul>
-            </span>
-          </div>
-          <div className="auditing-service">
-            <img
-              src={auditBlobImage}
-              onClick={() => onClickHandler(constants.SMB.SITE)}
-            />
-            <span
-              onMouseOver={() => onMouseOverHandler(NWORef)}
-              onMouseOut={() => onMouseOutHandler(NWORef)}
-              onClick={() => onClickHandler(constants.SMB.SITE)}
-            >
-              Website Security
-            </span>
-            <span className="audit-features" ref={NWORef}>
-              <ul>
-                <li>Site Security</li>
-                <li>SSL</li>
-                <li>Managed SSL</li>
-                <li>Website Backup</li>
+                <li>Branding</li>
+                <li>Website Development</li>
+                <li>SEO & Marketing</li>
               </ul>
             </span>
           </div>

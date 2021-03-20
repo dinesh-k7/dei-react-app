@@ -18,6 +18,9 @@ import CarrierServicePage from '../../pages/enterprise/carrier-service/carrier-s
 import UcaasServicePage from '../../pages/enterprise/ucaas-service/ucaas-service.page';
 import CartPage from '../../pages/cart/cart-page';
 import WebsiteDevelopmentPage from '../../pages/website-development/website-development-page';
+import SecurePage from '../../pages/smb/secure/secure-page';
+import DevelopPage from '../../pages/smb/develop/develop-page';
+
 import '../../assets/scss/styles.scss';
 
 const App: React.FC = () => {
@@ -67,6 +70,12 @@ const App: React.FC = () => {
         </Route>
         <Route path="/website-development">
           <WebsiteDevelopmentPage />
+        </Route>
+        <Route path="/develop">
+          <DevelopPage />
+        </Route>
+        <Route path="/secure">
+          <SecurePage />
         </Route>
       </Switch>
       <Footer />

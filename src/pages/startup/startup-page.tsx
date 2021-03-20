@@ -19,7 +19,7 @@ const StartUpPage: React.FC = (): ReactElement => {
     <Fragment>
       <div className="startup-page-grid">
         <StartupIntroContainer onClickHandler={onClickHandler} />
-        <ConsultationIntro inputRef={consultationRef} />
+        {/* <ConsultationIntro inputRef={consultationRef} /> */}
       </div>
       <div className="landing-border"></div>
     </Fragment>
