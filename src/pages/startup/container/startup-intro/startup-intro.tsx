@@ -48,6 +48,26 @@ const StartupIntroContainer: React.FC<any> = ({
       </div>
       <div className="startup-service">
         <div className="service-one">
+          <div className="startup-kit">
+            <img src={yellowBlob} onClick={onClickHandler} />
+            <span
+              onClick={() => routeChange('/consultation')}
+              onMouseOver={() => onMouseOverHandler(startUpRef)}
+              onMouseOut={() => onMouseOutHandler(startUpRef)}
+              style={{ width: 'fit-content' }}
+            >
+              Start-Up <br /> Kits
+            </span>
+            <span className="startup-features" ref={startUpRef}>
+              <ul>
+                <li>Copyright</li>
+                <li>Trademark</li>
+                <li>Patent</li>
+              </ul>
+            </span>
+          </div>
+        </div>
+        <div className="service-two">
           <div className="nwo-hub">
             <img
               src={greenBlob}
@@ -59,6 +79,7 @@ const StartupIntroContainer: React.FC<any> = ({
               onClick={() => routeChange('/smb#NWO')}
               onMouseOver={() => onMouseOverHandler(nwoRef)}
               onMouseOut={() => onMouseOutHandler(nwoRef)}
+              style={{ width: 'fit-content' }}
             >
               NWOhub™
             </span>
@@ -68,25 +89,6 @@ const StartupIntroContainer: React.FC<any> = ({
                 <li>Hosting</li>
                 <li>Website</li>
                 <li>Email</li>
-              </ul>
-            </span>
-          </div>
-        </div>
-        <div className="service-two">
-          <div className="consultation">
-            <img src={yellowBlob} onClick={onClickHandler} />
-            <span
-              onClick={() => routeChange('/consultation')}
-              onMouseOver={() => onMouseOverHandler(startUpRef)}
-              onMouseOut={() => onMouseOutHandler(startUpRef)}
-            >
-              Start-Up <br /> Kits
-            </span>
-            <span className="startup-features" ref={startUpRef}>
-              <ul>
-                <li>Copyright</li>
-                <li>Trademark</li>
-                <li>Patent</li>
               </ul>
             </span>
           </div>
@@ -104,6 +106,7 @@ const StartupIntroContainer: React.FC<any> = ({
               onClick={() => routeChange('/branding')}
               onMouseOver={() => onMouseOverHandler(brandingRef)}
               onMouseOut={() => onMouseOutHandler(brandingRef)}
+              style={{ width: 'fit-content' }}
             >
               Branding
             </span>
