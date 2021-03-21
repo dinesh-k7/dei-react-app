@@ -66,9 +66,9 @@ export const calculateMonthlyAmount: any = (totalUsers: number) => {
   } else if (totalUsers && totalUsers < 76) {
     return BASE_PREMIUM + (totalUsers - CP_LIMIT_ONE) * EU_75;
   } else if (totalUsers && totalUsers < 151) {
-    return 234.98 + (totalUsers - CP_LIMIT_TWO) * EU_150;
+    return 264.98 + (totalUsers - CP_LIMIT_TWO) * EU_150;
   } else if (totalUsers && totalUsers < 251) {
-    return 384.98 + (totalUsers - CP_LIMIT_THREE) * EU_250;
+    return 414.98 + (totalUsers - CP_LIMIT_THREE) * EU_250;
   } else {
     return 0;
   }

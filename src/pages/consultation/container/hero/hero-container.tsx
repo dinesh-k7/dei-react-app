@@ -40,6 +40,28 @@ const HeroContainer: React.FC = (): ReactElement => {
       </div>
       <div className="hero-image">
         <img src={heroImage} alt="consultation Image" />
+        <div className="startup-central-features">
+          <p>Secure:</p>
+          <ul>
+            <li>
+              Secure 1: $1249 &nbsp;&nbsp;&nbsp;&nbsp;
+              <span>Screening and Registering of Trademark/Servicemark.</span>
+            </li>
+            <li>
+              Secure 2: $1750 &nbsp;&nbsp;&nbsp;&nbsp;
+              <span>Business Formation (Coming Soon)</span>
+            </li>
+          </ul>
+          <p>Develop:</p>
+          <ul>
+            <li className="develop-feature">BPlanning.com</li>
+            <li>Develop 1:</li>
+            <li>
+              Develop 2: $4999 &nbsp;&nbsp;&nbsp;&nbsp;
+              <span>Branding and Custom Website/applications $3500</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
   );
