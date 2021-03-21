@@ -183,7 +183,7 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     <section className="wd-quote-section">
       <div className="bg-image"></div>
       <div className="form-container">
-        <h1>Tell us about your company</h1>
+        <h1>{`DEI™ Custom DevOps:`}</h1>
         <h4>Personal Information</h4>
         <form autoComplete="off">
           <div className="personal-information">

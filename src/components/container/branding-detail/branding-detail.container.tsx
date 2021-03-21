@@ -1,5 +1,6 @@
-import React, { ReactElement, useState } from 'react';
+import React, { Fragment, ReactElement, useState } from 'react';
 import { IBrandingQuoteModel } from '../../../interfaces/branding-quote.model';
+import { TEMPLATES } from '../../../constants';
 
 import GetQuoteButton from '../../common/form-element/get-quote-button';
 import './branding-detail.container.scss';
@@ -16,6 +17,8 @@ import cPickerNine from '../../../assets/images/color_picker_nine.svg';
 import cPickerTen from '../../../assets/images/color_picker_ten.svg';
 import cPickerEleven from '../../../assets/images/color_picker_eleven.svg';
 import cPickerTwelve from '../../../assets/images/color_picker_design.svg';
+import templateImage from '../../../assets/images/template_image.svg';
+import previewIcon from '../../../assets/images/preview_icon.svg';
 
 interface IntitialState {
   keywords: { name: string; active: boolean }[];
@@ -23,6 +26,7 @@ interface IntitialState {
   brands: { name: string; active: boolean }[];
   keyword: string;
   brandName: string;
+  isTemplate: boolean;
 }
 
 const BrandingDetailContainer: React.FC<any> = (
@@ -34,6 +38,7 @@ const BrandingDetailContainer: React.FC<any> = (
     brands: [],
     keyword: '',
     brandName: '',
+    isTemplate: false,
   };
   const {
     handleSubmit,
@@ -44,7 +49,14 @@ const BrandingDetailContainer: React.FC<any> = (
     onError,
   } = props;
   const [brandingState, setState] = useState(initialState);
-  const { keyword, keywords, colorPicker, brands, brandName } = brandingState;
+  const {
+    keyword,
+    keywords,
+    colorPicker,
+    brands,
+    brandName,
+    isTemplate,
+  } = brandingState;
 
   // Handle text box, radio button and checkbox change event
   const handleChange = ($event: React.FormEvent<EventTarget>) => {
@@ -171,6 +183,7 @@ const BrandingDetailContainer: React.FC<any> = (
         })
       : '';
   const { fromPage } = props;
+
   return (
     <div className="branding-container">
       <div className="technical-info">
@@ -179,39 +192,94 @@ const BrandingDetailContainer: React.FC<any> = (
           Technical Information
         </h4>
         {fromPage ? (
-          <span>Type of pages included on the website</span>
+          <Fragment>
+            <span>
+              Choose which option suits you better (Template option tends to
+              cost less than a custom tailored design)
+            </span>
+            <div className="website-option">
+              <span
+                onClick={() => {
+                  setState((prevState) => {
+                    return {
+                      ...prevState,
+                      isTemplate: true,
+                    };
+                  });
+                }}
+              >
+                <h4>Template</h4>
+              </span>
+              <span
+                onClick={() => {
+                  setState((prevState) => {
+                    return {
+                      ...prevState,
+                      isTemplate: false,
+                    };
+                  });
+                }}
+              >
+                <h4>Custom Design</h4>
+              </span>
+            </div>
+            {isTemplate && (
+              <Fragment>
+                <span>Choose a Template</span>
+                <div className="template-grid">
+                  {TEMPLATES &&
+                    TEMPLATES.length &&
+                    TEMPLATES.map((template, idx) => {
+                      return (
+                        <div className="template" key={idx}>
+                          <h4>{template.name}</h4>
+                          <img src={templateImage} />
+                          <button>
+                            <img src={previewIcon} />
+                            <span>Preview</span>
+                          </button>
+                        </div>
+                      );
+                    })}
+                </div>
+              </Fragment>
+            )}
+            {!isTemplate && <span>Type of pages included on the website</span>}
+          </Fragment>
         ) : (
           <span>Pick words/adjectives that best describe your business</span>
         )}
-        <form
-          autoComplete="off"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleClick('keyword');
-          }}
-        >
-          <div className="word-grid">
-            {keywordDisplay}
-            <div className="input-container">
-              <input
-                type="text"
-                name="keyword_picker"
-                id="keyword_picker"
-                className="keyword-input"
-                placeholder={fromPage ? 'Add Page' : 'Add your word'}
-                onChange={handleChange}
-                value={keyword}
-              />
-              <img
-                className="plus-icon"
-                src={plusIcon}
-                alt="Add Icon"
-                onClick={() => handleClick('keyword')}
-              />
+        {!isTemplate && (
+          <form
+            autoComplete="off"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleClick('keyword');
+            }}
+          >
+            <div className="word-grid">
+              {keywordDisplay}
+              <div className="input-container">
+                <input
+                  type="text"
+                  name="keyword_picker"
+                  id="keyword_picker"
+                  className="keyword-input"
+                  placeholder={fromPage ? 'Add Page' : 'Add your word'}
+                  onChange={handleChange}
+                  value={keyword}
+                />
+                <img
+                  className="plus-icon"
+                  src={plusIcon}
+                  alt="Add Icon"
+                  onClick={() => handleClick('keyword')}
+                />
+              </div>
             </div>
-          </div>
-        </form>
-        {fromPage && (
+          </form>
+        )}
+        {fromPage && !isTemplate && (
           <div className="form-group radio-section">
             Do you plan on Selling items on your website?
             <div className="radio-options">
@@ -221,7 +289,7 @@ const BrandingDetailContainer: React.FC<any> = (
           </div>
         )}
 
-        {fromPage && (
+        {fromPage && !isTemplate && (
           <div className="form-group radio-section">
             Do you require strong SEO for your website?
             <div className="radio-options">
@@ -232,245 +300,247 @@ const BrandingDetailContainer: React.FC<any> = (
         )}
       </div>
 
-      <div className="color-palette">
-        {fromPage ? (
-          <span>Pick color palette to explore</span>
-        ) : (
-          <span>Pick color palette </span>
-        )}
-        <div className="color-picker-grid">
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_a"
-              id="color_picker_a"
-              onChange={handleChange}
-            />
-            <label className="c-picker-a" htmlFor="color_picker_a">
-              <img
-                src={cPickerOne}
-                className={
-                  colorPicker === 'color_picker_a'
-                    ? 'picker-border c-picker-a-img'
-                    : 'c-picker-a-img'
-                }
+      {!isTemplate && (
+        <div className="color-palette">
+          {fromPage ? (
+            <span>Pick color palette to explore</span>
+          ) : (
+            <span>Pick color palette </span>
+          )}
+          <div className="color-picker-grid">
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_a"
+                id="color_picker_a"
+                onChange={handleChange}
               />
-            </label>
-          </div>
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_b"
-              id="color_picker_b"
-              onChange={handleChange}
-            />
-            <label className="c-picker-b" htmlFor="color_picker_b">
-              <img
-                src={cPickerTwo}
-                className={
-                  colorPicker === 'color_picker_b'
-                    ? 'picker-border c-picker-b-img'
-                    : 'c-picker-b-img'
-                }
+              <label className="c-picker-a" htmlFor="color_picker_a">
+                <img
+                  src={cPickerOne}
+                  className={
+                    colorPicker === 'color_picker_a'
+                      ? 'picker-border c-picker-a-img'
+                      : 'c-picker-a-img'
+                  }
+                />
+              </label>
+            </div>
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_b"
+                id="color_picker_b"
+                onChange={handleChange}
               />
-            </label>
-          </div>
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_c"
-              id="color_picker_c"
-              onChange={handleChange}
-            />
-            <label className="c-picker-c" htmlFor="color_picker_c">
-              <img
-                src={cPickerThree}
-                className={
-                  colorPicker === 'color_picker_c'
-                    ? 'picker-border c-picker-c-img'
-                    : 'c-picker-c-img'
-                }
+              <label className="c-picker-b" htmlFor="color_picker_b">
+                <img
+                  src={cPickerTwo}
+                  className={
+                    colorPicker === 'color_picker_b'
+                      ? 'picker-border c-picker-b-img'
+                      : 'c-picker-b-img'
+                  }
+                />
+              </label>
+            </div>
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_c"
+                id="color_picker_c"
+                onChange={handleChange}
               />
-            </label>
-          </div>
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_d"
-              id="color_picker_d"
-              onChange={handleChange}
-            />
-            <label className="c-picker-d" htmlFor="color_picker_d">
-              <img
-                src={cPickerFour}
-                className={
-                  colorPicker === 'color_picker_d'
-                    ? 'picker-border c-picker-d-img'
-                    : 'c-picker-d-img'
-                }
+              <label className="c-picker-c" htmlFor="color_picker_c">
+                <img
+                  src={cPickerThree}
+                  className={
+                    colorPicker === 'color_picker_c'
+                      ? 'picker-border c-picker-c-img'
+                      : 'c-picker-c-img'
+                  }
+                />
+              </label>
+            </div>
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_d"
+                id="color_picker_d"
+                onChange={handleChange}
               />
-            </label>
-          </div>
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_e"
-              id="color_picker_e"
-              onChange={handleChange}
-            />
-            <label className="c-picker-e" htmlFor="color_picker_e">
-              <img
-                src={cPickerFive}
-                className={
-                  colorPicker === 'color_picker_e'
-                    ? 'picker-border c-picker-e-img'
-                    : 'c-picker-e-img'
-                }
+              <label className="c-picker-d" htmlFor="color_picker_d">
+                <img
+                  src={cPickerFour}
+                  className={
+                    colorPicker === 'color_picker_d'
+                      ? 'picker-border c-picker-d-img'
+                      : 'c-picker-d-img'
+                  }
+                />
+              </label>
+            </div>
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_e"
+                id="color_picker_e"
+                onChange={handleChange}
               />
-            </label>
-          </div>
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_f"
-              id="color_picker_f"
-              onChange={handleChange}
-            />
-            <label className="c-picker-f" htmlFor="color_picker_f">
-              <img
-                src={cPickerSix}
-                className={
-                  colorPicker === 'color_picker_f'
-                    ? 'picker-border c-picker-f-img'
-                    : 'c-picker-f-img'
-                }
+              <label className="c-picker-e" htmlFor="color_picker_e">
+                <img
+                  src={cPickerFive}
+                  className={
+                    colorPicker === 'color_picker_e'
+                      ? 'picker-border c-picker-e-img'
+                      : 'c-picker-e-img'
+                  }
+                />
+              </label>
+            </div>
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_f"
+                id="color_picker_f"
+                onChange={handleChange}
               />
-            </label>
-          </div>
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_g"
-              id="color_picker_g"
-              onChange={handleChange}
-            />
-            <label className="c-picker-g" htmlFor="color_picker_g">
-              <img
-                src={cPickerSeven}
-                className={
-                  colorPicker === 'color_picker_g'
-                    ? 'picker-border c-picker-g-img'
-                    : 'c-picker-g-img'
-                }
+              <label className="c-picker-f" htmlFor="color_picker_f">
+                <img
+                  src={cPickerSix}
+                  className={
+                    colorPicker === 'color_picker_f'
+                      ? 'picker-border c-picker-f-img'
+                      : 'c-picker-f-img'
+                  }
+                />
+              </label>
+            </div>
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_g"
+                id="color_picker_g"
+                onChange={handleChange}
               />
-            </label>
-          </div>
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_h"
-              id="color_picker_h"
-              onChange={handleChange}
-            />
-            <label className="c-picker-h" htmlFor="color_picker_h">
-              <img
-                src={cPickerEight}
-                className={
-                  colorPicker === 'color_picker_h'
-                    ? 'picker-border c-picker-h-img'
-                    : 'c-picker-h-img'
-                }
+              <label className="c-picker-g" htmlFor="color_picker_g">
+                <img
+                  src={cPickerSeven}
+                  className={
+                    colorPicker === 'color_picker_g'
+                      ? 'picker-border c-picker-g-img'
+                      : 'c-picker-g-img'
+                  }
+                />
+              </label>
+            </div>
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_h"
+                id="color_picker_h"
+                onChange={handleChange}
               />
-            </label>
-          </div>
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_i"
-              id="color_picker_i"
-              onChange={handleChange}
-            />
-            <label className="c-picker-i" htmlFor="color_picker_i">
-              <img
-                src={cPickerNine}
-                className={
-                  colorPicker === 'color_picker_i'
-                    ? 'picker-border c-picker-i-img'
-                    : 'c-picker-i-img'
-                }
+              <label className="c-picker-h" htmlFor="color_picker_h">
+                <img
+                  src={cPickerEight}
+                  className={
+                    colorPicker === 'color_picker_h'
+                      ? 'picker-border c-picker-h-img'
+                      : 'c-picker-h-img'
+                  }
+                />
+              </label>
+            </div>
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_i"
+                id="color_picker_i"
+                onChange={handleChange}
               />
-            </label>
-          </div>
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_j"
-              id="color_picker_j"
-              onChange={handleChange}
-            />
-            <label className="c-picker-j" htmlFor="color_picker_j">
-              <img
-                src={cPickerTen}
-                className={
-                  colorPicker === 'color_picker_j'
-                    ? 'picker-border c-picker-j-img'
-                    : 'c-picker-j-img'
-                }
+              <label className="c-picker-i" htmlFor="color_picker_i">
+                <img
+                  src={cPickerNine}
+                  className={
+                    colorPicker === 'color_picker_i'
+                      ? 'picker-border c-picker-i-img'
+                      : 'c-picker-i-img'
+                  }
+                />
+              </label>
+            </div>
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_j"
+                id="color_picker_j"
+                onChange={handleChange}
               />
-            </label>
-          </div>
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_k"
-              id="color_picker_k"
-              onChange={handleChange}
-            />
-            <label className="c-picker-k" htmlFor="color_picker_k">
-              <img
-                src={cPickerEleven}
-                className={
-                  colorPicker === 'color_picker_k'
-                    ? 'picker-border c-picker-k-img'
-                    : 'c-picker-k-img'
-                }
+              <label className="c-picker-j" htmlFor="color_picker_j">
+                <img
+                  src={cPickerTen}
+                  className={
+                    colorPicker === 'color_picker_j'
+                      ? 'picker-border c-picker-j-img'
+                      : 'c-picker-j-img'
+                  }
+                />
+              </label>
+            </div>
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_k"
+                id="color_picker_k"
+                onChange={handleChange}
               />
-            </label>
-          </div>
-          <div className="color-picker-image">
-            <input
-              type="radio"
-              name="color_picker"
-              value="color_picker_l"
-              id="color_picker_l"
-              onChange={handleChange}
-            />
-            <label className="c-picker-l" htmlFor="color_picker_l">
-              <img
-                src={cPickerTwelve}
-                className={
-                  colorPicker === 'color_picker_l'
-                    ? 'picker-border c-picker-l-img'
-                    : 'c-picker-l-img'
-                }
+              <label className="c-picker-k" htmlFor="color_picker_k">
+                <img
+                  src={cPickerEleven}
+                  className={
+                    colorPicker === 'color_picker_k'
+                      ? 'picker-border c-picker-k-img'
+                      : 'c-picker-k-img'
+                  }
+                />
+              </label>
+            </div>
+            <div className="color-picker-image">
+              <input
+                type="radio"
+                name="color_picker"
+                value="color_picker_l"
+                id="color_picker_l"
+                onChange={handleChange}
               />
-            </label>
+              <label className="c-picker-l" htmlFor="color_picker_l">
+                <img
+                  src={cPickerTwelve}
+                  className={
+                    colorPicker === 'color_picker_l'
+                      ? 'picker-border c-picker-l-img'
+                      : 'c-picker-l-img'
+                  }
+                />
+              </label>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       {/* Logo section starts */}
-      {!fromPage && (
+      {!fromPage && !isTemplate && (
         <div className="pick-logo">
           <form
             autoComplete="off"
@@ -512,7 +582,10 @@ const BrandingDetailContainer: React.FC<any> = (
             <h4> Starting from</h4>
           )}
           <div className="price-container">
-            <span className="price">{fromPage ? '$2998' : '$500'}</span>
+            {!isTemplate && (
+              <span className="price">{fromPage ? '$2998' : '$500'}</span>
+            )}
+            {isTemplate && <span className="price">$799</span>}
           </div>
         </div>
         <div>

@@ -1,6 +1,49 @@
 @import '../../../../assets/scss/layout/hero';
 
 .hero-section {
+  ul {
+    margin: 0px !important;
+    li {
+      padding-top: 8px !important;
+      color: var(--font-color) !important;
+      font-size: 16px;
+      font-family: 'MontFont', sans-serif;
+      list-style: outside;
+    }
+  }
+  .develop-feature {
+    padding-bottom: 8px !important;
+  }
+  .hero-image {
+    display: grid;
+    grid-template-columns: 5px 1fr;
+    justify-self: start;
+    img {
+      max-height: 450px;
+    }
+    .startup-central-features {
+      padding: 48px;
+      p {
+        font-family: 'MontFont', sans-serif;
+        font-style: normal;
+        font-weight: var(--font-weight900);
+        letter-spacing: -0.07em;
+        font-size: 24px;
+      }
+      ul li {
+        font-family: 'OpenSansRegular', sans-serif;
+        font-size: 1em;
+        font-weight: var(--font-weight400);
+        font-style: normal;
+      }
+      span {
+        font-family: 'OpenSansRegular', sans-serif;
+        font-size: 12px;
+        padding-top: 24px;
+        display: inline-block;
+      }
+    }
+  }
   .hero-subtitle-container {
     h3 {
       padding-right: var(--font-size7);
@@ -24,7 +67,7 @@
 
   .hero-title {
     p {
-      font-family: 'OpenSansRegular', sans-serif;
+      font-family: 'OpenSansRegular', sans-serif !important;
       font-size: 1em;
       font-weight: var(--font-weight400);
       font-style: normal;

@@ -16,6 +16,37 @@ textarea {
   .wd-technical-info {
     padding-top: 48px !important;
   }
+  .template-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+    padding: 16px;
+    .template {
+      background-color: #fff;
+      display: grid;
+      h4 {
+        justify-self: center;
+      }
+      button {
+        background: #9c47ed;
+        height: 40px;
+        display: block;
+        border: 0;
+        width: 100px;
+        justify-self: end;
+        cursor: pointer;
+        margin-top: 16px;
+        img {
+          padding-right: 8px;
+          vertical-align: middle;
+          justify-self: center;
+        }
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
   .input-container {
     display: grid;
     grid-template-columns: 1fr 1px;
@@ -28,6 +59,25 @@ textarea {
   }
   .sticky-content {
     display: grid;
+  }
+  .website-option {
+    display: grid;
+    grid-template-columns: 150px 150px;
+    padding: 16px;
+    span {
+      height: 60px;
+      cursor: pointer;
+      display: inline-block;
+      h4 {
+        text-align: center;
+      }
+    }
+    span:nth-child(2) {
+      background-color: #9c47ed;
+      h4 {
+        color: #fff;
+      }
+    }
   }
   .keyword-input {
     width: 100%;
@@ -168,6 +218,9 @@ textarea {
     input[type='text'],
     textarea {
       padding-left: 8px !important;
+    }
+    .template-grid {
+      grid-template-columns: 1fr !important;
     }
 
     .keyword-input {

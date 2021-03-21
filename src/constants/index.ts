@@ -144,37 +144,30 @@ export const constants = {
   PAGES: [
     {
       url: 'smb',
-      name: 'SMB',
+      name: `SMB's`,
       children: true,
       submenu: [
         {
-          url: 'data-security',
-          name: 'Data Security',
+          url: 'secure',
+          name: 'Secure',
         },
         {
-          url: 'branding',
-          name: 'Branding',
+          url: 'develop',
+          name: 'Develop',
         },
       ],
     },
     {
       url: 'startup',
-      name: 'Start-ups',
-      // children: true,
-      // submenu: [
-      //   {
-      //     url: 'consultation',
-      //     name: 'Consultation',
-      //   },
-      // ],
+      name: 'Start-Up Central',
     },
     {
       url: 'enterprise',
-      name: 'Enterprise',
+      name: 'Enterprise Services',
     },
   ],
 
-  BASE_PREMIUM: 99.98,
+  BASE_PREMIUM: 129.98,
   CP_LIMIT_ONE: 30,
   CP_LIMIT_TWO: 75,
   CP_LIMIT_THREE: 150,
@@ -488,6 +481,25 @@ export const brandingFormFields = [
     placeholder: 'e.g. comment',
     maxlength: 1000,
     section: 'company',
+  },
+];
+
+export const TEMPLATES = [
+  {
+    id: 1,
+    name: 'Template A',
+  },
+  {
+    id: 2,
+    name: 'Template B',
+  },
+  {
+    id: 3,
+    name: 'Template C',
+  },
+  {
+    id: 4,
+    name: 'Template D',
   },
 ];
 
