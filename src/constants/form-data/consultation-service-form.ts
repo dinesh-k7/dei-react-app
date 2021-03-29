@@ -70,27 +70,27 @@ export const consultationFormData = [
     placeholder: 'e.g. 90001',
     section: 'company',
   },
-  {
-    name: 'package',
-    label: 'Select Package',
-    type: 'select',
-    required: true,
-    placeholder: 'e.g. ',
-    section: 'company',
-    options: [
-      {
-        id: 990,
-        name: 'Comprehensive Trademark screening report - $499.00',
-      },
-      {
-        id: 991,
-        name:
-          'Start-up Package A - Branding & Trademark registration - $1099.00',
-      },
-      {
-        id: 992,
-        name: 'Copyright registration + Federal Filing fee - $149.00',
-      },
-    ],
-  },
+  // {
+  //   name: 'package',
+  //   label: 'Select Package',
+  //   type: 'select',
+  //   required: true,
+  //   placeholder: 'e.g. ',
+  //   section: 'company',
+  //   options: [
+  //     {
+  //       id: 990,
+  //       name: 'Comprehensive Trademark screening report - $499.00',
+  //     },
+  //     {
+  //       id: 991,
+  //       name:
+  //         'Start-up Package A - Branding & Trademark registration - $1099.00',
+  //     },
+  //     {
+  //       id: 992,
+  //       name: 'Copyright registration + Federal Filing fee - $149.00',
+  //     },
+  //   ],
+  // },
 ];

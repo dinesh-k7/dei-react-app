@@ -139,6 +139,7 @@ export const constants = {
     SEO: 'SEO',
     SITE: 'SITE',
   },
+  STARTUP: 'STARTUP',
   MAIL_SERVICE_ENDPOINT: 'https://dei-node-service.herokuapp.com/mail-service',
   //MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service',
   PAGES: [

@@ -6,20 +6,40 @@ import '../../../../assets/scss/styles.scss';
 import yellowBlob from '../../../../assets/images/yellow-blob.svg';
 import heroMobileImage from '../../../../assets/images/consultation_mobile.svg';
 
-import './consultation-intro.scss';
+import './startup-kit-intro.scss';
 
-const ConsultationIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
+const StartupKitIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
   const history = useHistory();
 
   const routeChange = () => {
-    history.push('consultation');
+    history.push('startup-kit');
   };
 
   return (
-    <section className="consultation-intro" ref={inputRef}>
+    <section className="startup-intro" ref={inputRef}>
+      <div className="hero-image">
+        <img src={heroImage} alt="consultation Image" />
+        {/* <div className="startup-central-features">
+          <p>DEI™ Essentials:</p>
+          <ul>
+            <li>Comprehensive Trademark screening $599.00</li>
+            <li>
+              {' '}
+              Start-up Package A Branding and trademarking of the brand.
+              $1099.00. Comprehensive Screening report included
+            </li>
+            <li>Copyright registration $149.00 + Fed. filing fee</li>
+            <li>REGISTRATION OF ENTITIES llc formations $1500 (COMING SOON)</li>
+          </ul>
+          <span>
+            Garuanteed registration d or your money back excluding the
+            registration
+          </span>
+        </div> */}
+      </div>
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Start-Up Packages</h1>
+          <h1>Start-Up Kit</h1>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={yellowBlob} alt="trademark" />
@@ -54,28 +74,8 @@ const ConsultationIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
           </button>
         </div>
       </div>
-      <div className="hero-image">
-        <img src={heroImage} alt="consultation Image" />
-        <div className="startup-central-features">
-          <p>DEI™ Essentials:</p>
-          <ul>
-            <li>Comprehensive Trademark screening $599.00</li>
-            <li>
-              {' '}
-              Start-up Package A Branding and trademarking of the brand.
-              $1099.00. Comprehensive Screening report included
-            </li>
-            <li>Copyright registration $149.00 + Fed. filing fee</li>
-            <li>REGISTRATION OF ENTITIES llc formations $1500 (COMING SOON)</li>
-          </ul>
-          <span>
-            Garuanteed registration d or your money back excluding the
-            registration
-          </span>
-        </div>
-      </div>
     </section>
   );
 };
 
-export default ConsultationIntro;
+export default StartupKitIntro;

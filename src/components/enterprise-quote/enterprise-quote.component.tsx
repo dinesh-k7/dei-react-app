@@ -14,6 +14,7 @@ import { useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
+import SnackBarComponent from '../common/snackbar/snackbar.component';
 
 const EnterpriseQuoteComponent: React.FC<any> = (
   props: IGetQuoteProps,
@@ -172,6 +173,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
   }
 
   const classes = useStyles();
+  const errorKeys = Object.keys(errors);
   const applicableService =
     services &&
     services.length &&
@@ -180,6 +182,12 @@ const EnterpriseQuoteComponent: React.FC<any> = (
     });
   return (
     <section className="enterprise-quote-section">
+      {isLeadDataSent && <SnackBarComponent isOpen={true} isError={false} />}
+      {errorKeys && errorKeys.length ? (
+        <SnackBarComponent isOpen={true} isError={true} />
+      ) : (
+        ''
+      )}
       <div className="bg-image"></div>
       <div className="form-container">
         <h1>Tell us about your company</h1>
@@ -401,7 +409,11 @@ const EnterpriseQuoteComponent: React.FC<any> = (
         {!isLeadDataSent && (
           <button
             type="button"
-            className={`btn-branding`}
+            className={`btn-branding ${
+              isFormSubmitted && !isLeadDataSent && captchaValue
+                ? 'btn-grey'
+                : ''
+            } ${isLeadDataSent ? 'btn-green' : ''}`}
             onClick={handleSubmit(onSubmit)}
           >
             {fromPage &&
@@ -413,10 +425,20 @@ const EnterpriseQuoteComponent: React.FC<any> = (
           </button>
         )}
 
+        {isLeadDataSent && (
+          <button
+            type="button"
+            className="btn-branding btn-green"
+            onClick={() => window.location.reload(false)}
+          >
+            Start Over
+          </button>
+        )}
+
         {isFormSubmitted && !isLeadDataSent && captchaValue && (
           <LoaderComponent />
         )}
-        {isLeadDataSent && (
+        {/* {isLeadDataSent && (
           <div className="confirmation-text">
             <p>the DEI™ has received your information, {name}</p>
             <p>
@@ -424,7 +446,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
               discover more about your enterprise needs.
             </p>
           </div>
-        )}
+        )} */}
 
         {errors && <ErrorMessageContainer {...errors} />}
 
@@ -433,6 +455,10 @@ const EnterpriseQuoteComponent: React.FC<any> = (
         )}
         {isSendMailError && (
           <p className="error_message">{messages.mail_send_error}</p>
+        )}
+
+        {isLeadDataSent && (
+          <p className="lead_success">{messages.lead_success}</p>
         )}
       </div>
     </section>

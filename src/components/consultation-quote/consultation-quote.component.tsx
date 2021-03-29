@@ -21,6 +21,7 @@ import { sendMail } from '../effects';
 import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
 import { addToCart } from '../../actions/cart';
+import SnackBarComponent from '../common/snackbar/snackbar.component';
 
 const ConsultationQuoteComponent: React.FC<any> = (
   props: any,
@@ -92,27 +93,27 @@ const ConsultationQuoteComponent: React.FC<any> = (
     if (!captchaValue) {
       return;
     } else {
-      props.dispatch(addToCart(selectedPackages));
-      //   sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
-      //     () => {
-      //       setQuoteState((prevState) => {
-      //         return {
-      //           ...prevState,
-      //           isLeadDataSent: true,
-      //           isSendMailError: false,
-      //         };
-      //       });
-      //     },
-      //     () => {
-      //       setQuoteState((prevState) => {
-      //         return {
-      //           ...prevState,
-      //           isSendMailError: true,
-      //           isFormSubmitted: false,
-      //         };
-      //       });
-      //     },
-      //   );
+      //props.dispatch(addToCart(selectedPackages));
+      sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
+        () => {
+          setQuoteState((prevState) => {
+            return {
+              ...prevState,
+              isLeadDataSent: true,
+              isSendMailError: false,
+            };
+          });
+        },
+        () => {
+          setQuoteState((prevState) => {
+            return {
+              ...prevState,
+              isSendMailError: true,
+              isFormSubmitted: false,
+            };
+          });
+        },
+      );
     }
   };
 
@@ -155,9 +156,16 @@ const ConsultationQuoteComponent: React.FC<any> = (
   };
 
   const classes = useStyles();
+  const errorKeys = Object.keys(errors);
 
   return (
     <section className="consultation-quote-section">
+      {isLeadDataSent && <SnackBarComponent isOpen={true} isError={false} />}
+      {errorKeys && errorKeys.length ? (
+        <SnackBarComponent isOpen={true} isError={true} />
+      ) : (
+        ''
+      )}
       <div className="bg-image"></div>
       <div className="form-container">
         <h1>Tell us about your company</h1>
@@ -341,7 +349,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
       </div>
 
       <div className="button-container">
-        <div className="consultation-text">
+        {/* <div className="consultation-text">
           <h4>How to prepare:</h4>
           <h4>Be able to:</h4>
           <ul>
@@ -357,9 +365,9 @@ const ConsultationQuoteComponent: React.FC<any> = (
             <li>A well defined solution to your communications gap.</li>
             <li>A personal coaching session with Mr. NWO</li>
           </ul>
-        </div>
+        </div> */}
         <div className="consultation-package">
-          {packages &&
+          {/* {packages &&
             packages.length &&
             packages.map((service) => (
               <span
@@ -371,22 +379,36 @@ const ConsultationQuoteComponent: React.FC<any> = (
               >
                 {service.name}
               </span>
-            ))}
+            ))} */}
         </div>
         {!isLeadDataSent && (
           <button
             type="button"
-            className={`btn-branding`}
+            className={`btn-branding ${
+              isFormSubmitted && !isLeadDataSent && captchaValue
+                ? 'btn-grey'
+                : ''
+            } ${isLeadDataSent ? 'btn-green' : ''}`}
             onClick={handleSubmit(onSubmit)}
           >
             Schedule Consultation
           </button>
         )}
 
+        {isLeadDataSent && (
+          <button
+            type="button"
+            className="btn-branding btn-green"
+            onClick={() => window.location.reload(false)}
+          >
+            Start Over
+          </button>
+        )}
+
         {isFormSubmitted && !isLeadDataSent && captchaValue && (
           <LoaderComponent />
         )}
-        {isLeadDataSent && (
+        {/* {isLeadDataSent && (
           <div className="confirmation-text">
             <p>the DEI™ has received your information, {name}</p>
             <p>
@@ -394,7 +416,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
               discover more about your enterprise needs.
             </p>
           </div>
-        )}
+        )} */}
 
         {errors && <ErrorMessageContainer {...errors} />}
 
@@ -403,6 +425,9 @@ const ConsultationQuoteComponent: React.FC<any> = (
         )}
         {isSendMailError && (
           <p className="error_message">{messages.mail_send_error}</p>
+        )}
+        {isLeadDataSent && (
+          <p className="lead_success">{messages.lead_success}</p>
         )}
       </div>
     </section>

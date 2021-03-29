@@ -2,7 +2,7 @@
 
 .enterprise-quote-section {
   display: grid;
-  grid-template-columns: 10% 1fr 1fr;
+  grid-template-columns: 1px 1fr 1fr;
   background-color: #f8f8f8;
   .consultation-text,
   .confirmation-text {
@@ -26,7 +26,7 @@
   .button-container {
     display: grid;
     align-self: center;
-    justify-content: center;
+    justify-self: center;
     padding: 0px 32px;
     .btn-branding {
       background-color: #c6c6c6;

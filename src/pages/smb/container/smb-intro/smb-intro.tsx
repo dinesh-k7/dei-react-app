@@ -1,12 +1,8 @@
-import React, { ReactElement, useRef } from 'react';
+import React, { Fragment, ReactElement, useRef } from 'react';
 
-import { constants } from '../../../../constants';
 import smbImage from '../../../../assets/images/smb_title.svg';
 import smbBlobImage from '../../../../assets/images/smb_blob.svg';
 import dsBlobImage from '../../../../assets/images/ds_blob.svg';
-import brandingBlobImage from '../../../../assets/images/branding_blob.svg';
-import seoBlobImage from '../../../../assets/images/seo_blob.svg';
-import auditBlobImage from '../../../../assets/images/audit_blob.svg';
 import wdBlobImage from '../../../../assets/images/wd_blob.svg';
 import smbMobileImage from '../../../../assets/images/smb_title_mobile.svg';
 
@@ -37,24 +33,26 @@ const SmbIntroContainer: React.FC<any> = ({
     }
   };
   return (
-    <section className="smb-intro">
-      <div className="smb-container">
-        <div className="smb-intro-image">
-          <img className="coral-blob" src={smbBlobImage} alt="Coral vector" />
-          <img
-            src={smbImage}
-            className="smb-title"
-            alt="Small Medium sized business"
-          />
-          <img
-            src={smbMobileImage}
-            className="smb-mobile-title"
-            alt="Small Medium sized business"
-          />
+    <Fragment>
+      <div className="smb-intro">
+        <div className="smb-container">
+          <div className="smb-intro-image">
+            <img className="coral-blob" src={smbBlobImage} alt="Coral vector" />
+            <img
+              src={smbImage}
+              className="smb-title"
+              alt="Small Medium sized business"
+            />
+            <img
+              src={smbMobileImage}
+              className="smb-mobile-title"
+              alt="Small Medium sized business"
+            />
+          </div>
+          <p className="smb-intro-text">
+            Digital optimization only a few clicks away
+          </p>
         </div>
-        <p className="smb-intro-text">
-          Digital optimization only a few clicks away
-        </p>
       </div>
       <div className="smb-services">
         <div className="service-one">
@@ -97,7 +95,7 @@ const SmbIntroContainer: React.FC<any> = ({
           </div>
         </div>
       </div>
-    </section>
+    </Fragment>
   );
 };
 

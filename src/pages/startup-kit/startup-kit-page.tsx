@@ -2,11 +2,11 @@ import React, { Fragment, ReactElement } from 'react';
 
 import ConsultationQuoteComponent from '../../components/consultation-quote/consultation-quote.component';
 import HeroContainer from './container/hero/hero-container';
-import './consultation-page.scss';
+import './startup-kit-page.scss';
 import { consultationFormData } from '../../constants/form-data/consultation-service-form';
 import { constants } from '../../constants';
 
-const ConsultationPage: React.FC = (): ReactElement => {
+const StartupKitPage: React.FC = (): ReactElement => {
   return (
     <Fragment>
       <HeroContainer />
@@ -18,4 +18,4 @@ const ConsultationPage: React.FC = (): ReactElement => {
   );
 };
 
-export default ConsultationPage;
+export default StartupKitPage;

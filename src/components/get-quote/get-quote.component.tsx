@@ -18,6 +18,7 @@ import MultiText from '../common/form-element/multi-text';
 import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
 import { industries } from '../../constants/industry-option';
 import { addToCart } from '../../actions/cart';
+import SnackBarComponent from '../common/snackbar/snackbar.component';
 
 const GetQuoteComponent: React.FC<any> = (
   props: IGetQuoteProps,
@@ -203,9 +204,16 @@ const GetQuoteComponent: React.FC<any> = (
   }
 
   const classes = useStyles();
+  const errorKeys = Object.keys(errors);
 
   return (
     <section className="get-quote-section">
+      {isLeadDataSent && <SnackBarComponent isOpen={true} isError={false} />}
+      {errorKeys && errorKeys.length ? (
+        <SnackBarComponent isOpen={true} isError={true} />
+      ) : (
+        ''
+      )}
       <div className="bg-image">
         <img src={vimage ? vimage : bg} alt="Quote bg vector" />
       </div>

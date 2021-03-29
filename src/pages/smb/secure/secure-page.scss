@@ -1,20 +1,15 @@
 @import '../../../assets/scss/abstracts/mixins';
-.smb-page-grid {
+.secure-page-grid {
   display: grid;
-  grid-column: 2/-1;
   padding-right: 24px;
-  max-width: 1300px;
-  width: 100%;
-  margin: 0 auto;
-  section {
-    padding-top: 72px;
-  }
+  grid-column: 1/-1;
+  padding: 0px 104px;
 }
 
 .landing-border {
   border-bottom: 1px solid var(--font-color);
   grid-column: 1/-1;
-  margin-top: 72px;
+  // margin-top: 72px;
 }
 
 @include respond-between(sm, md) {
@@ -25,8 +20,14 @@
   }
 }
 
+@include respond-above(lg) {
+  .secure-page-grid {
+    padding: 0px 200px !important;
+  }
+}
+
 @include respond-below(sm) {
-  .smb-page-grid {
+  .secure-page-grid {
     grid-column: 1/-1;
     padding: 0px 8px;
     section {

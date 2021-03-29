@@ -1,14 +1,36 @@
 @import '../../../../assets/scss/layout/hero';
 
 .hero-section {
-  ul {
-    margin: 0px !important;
-    li {
-      padding-top: 8px !important;
-      color: var(--font-color) !important;
-      font-size: 16px;
-      font-family: 'MontFont', sans-serif;
-      list-style: outside;
+  .hero-title {
+    .consultation-text {
+      p {
+        font-family: 'OpenSansRegular', sans-serif !important;
+        font-size: 1em !important;
+        font-weight: var(--font-weight400) !important;
+        font-style: normal !important;
+      }
+      ul {
+        padding: 0px 0px 0px 32px !important;
+        list-style-type: square !important;
+        li {
+          list-style-type: square !important;
+          padding: 0px 0px 0px 16px !important;
+          color: var(--font-color) !important;
+        }
+      }
+      padding-bottom: 32px;
+    }
+  }
+  .startup-central-features {
+    ul {
+      margin: 0px !important;
+      li {
+        padding-top: 8px !important;
+        color: var(--font-color) !important;
+        font-size: 16px;
+        font-family: 'MontFont', sans-serif;
+        list-style: outside;
+      }
     }
   }
   .develop-feature {

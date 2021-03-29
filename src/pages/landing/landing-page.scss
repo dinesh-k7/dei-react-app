@@ -2,8 +2,10 @@
 @import '../../assets/scss/layout/hero';
 .landing-page-grid {
   display: grid;
-  grid-column: 2/-1;
+  grid-column: 1/-1;
   padding-right: 24px;
+  align-items: center;
+
   .smb-blob {
     .hover-intro-text {
       padding-right: 56px !important;
@@ -62,7 +64,7 @@
 .landing-border {
   border-bottom: 1px solid var(--font-color);
   grid-column: 1/-1;
-  margin-top: 72px;
+  // margin-top: 72px;
 }
 
 @include respond-above(sm) {
@@ -79,19 +81,31 @@
   .enterprise-services {
     display: none !important;
   }
+  .smb-blob,
+  .enterprise-blob {
+    padding-right: 0px !important;
+  }
 }
 
 @include respond-above(lg) {
-  .startup-services {
-    margin-top: 132px !important;
-  }
-  .smb-services-landing {
-    margin-top: -4px !important;
-    margin-right: 56px !important;
-  }
-  #enterprise-services {
-    margin-top: 124px !important;
-    margin-right: 80px !important;
+  .landing-page-grid {
+    padding: 0px 180px !important;
+    .startup-services {
+      margin-top: 132px !important;
+    }
+    .smb-services-landing {
+      margin-top: -4px !important;
+      margin-right: 160px !important;
+    }
+    #enterprise-services {
+      margin-top: 124px !important;
+      margin-right: 80px !important;
+    }
+    .enterprise-blob {
+      span {
+        right: 8% !important;
+      }
+    }
   }
 }
 
@@ -216,9 +230,7 @@
 
 .landing-page-grid {
   grid-template-columns: 1fr 1fr;
-  margin: 0px 8px;
-  padding-top: 48px;
-  margin-right: 72px;
+  padding: 0px 104px;
   height: 100vh;
   .landing-intro {
     background-image: url('../../assets/images/yellow_vector.svg');

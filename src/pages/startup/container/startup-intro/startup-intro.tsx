@@ -2,12 +2,12 @@ import React, { ReactElement, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import startupTitle from '../../../../assets/images/startup_title.svg';
-
 import greenBlob from '../../../../assets/images/startup_blob.svg';
 import yellowBlob from '../../../../assets/images/startup_consult_blob.svg';
 import brandingBlobImage from '../../../../assets/images/branding_blob.svg';
 
 import './startup-intro.scss';
+import { constants } from '../../../../constants';
 
 const StartupIntroContainer: React.FC<any> = ({
   onClickHandler,
@@ -23,12 +23,12 @@ const StartupIntroContainer: React.FC<any> = ({
 
   const onMouseOverHandler = (ref: any) => {
     if (ref && ref.current) {
-      ref.current.classList.toggle('show-features');
+      // ref.current.classList.toggle('show-features');
     }
   };
   const onMouseOutHandler = (ref: any) => {
     if (ref && ref.current) {
-      ref.current.classList.toggle('show-features');
+      // ref.current.classList.toggle('show-features');
     }
   };
 
@@ -49,14 +49,17 @@ const StartupIntroContainer: React.FC<any> = ({
       <div className="startup-service">
         <div className="service-one">
           <div className="startup-kit">
-            <img src={yellowBlob} onClick={onClickHandler} />
+            <img
+              src={yellowBlob}
+              onClick={() => onClickHandler(constants.STARTUP)}
+            />
             <span
-              onClick={() => routeChange('/consultation')}
+              onClick={() => onClickHandler(constants.STARTUP)}
               onMouseOver={() => onMouseOverHandler(startUpRef)}
               onMouseOut={() => onMouseOutHandler(startUpRef)}
-              style={{ width: 'fit-content' }}
+              className="startup-service-title"
             >
-              Start-Up <br /> Kits
+              Start-Up <br /> &nbsp; Kits
             </span>
             <span className="startup-features" ref={startUpRef}>
               <ul>
@@ -73,13 +76,13 @@ const StartupIntroContainer: React.FC<any> = ({
               src={greenBlob}
               width={80}
               height={80}
-              onClick={() => routeChange('/smb#NWO')}
+              onClick={() => onClickHandler(constants.SMB.NWO)}
             />
             <span
-              onClick={() => routeChange('/smb#NWO')}
+              onClick={() => onClickHandler(constants.SMB.NWO)}
               onMouseOver={() => onMouseOverHandler(nwoRef)}
               onMouseOut={() => onMouseOutHandler(nwoRef)}
-              style={{ width: 'fit-content' }}
+              className="startup-service-title"
             >
               NWOhub™
             </span>
@@ -100,13 +103,13 @@ const StartupIntroContainer: React.FC<any> = ({
               src={brandingBlobImage}
               width={80}
               height={80}
-              onClick={() => routeChange('/smb#NWO')}
+              onClick={() => onClickHandler(constants.SMB.BRANDING)}
             />
             <span
-              onClick={() => routeChange('/branding')}
+              onClick={() => onClickHandler(constants.SMB.BRANDING)}
               onMouseOver={() => onMouseOverHandler(brandingRef)}
               onMouseOut={() => onMouseOutHandler(brandingRef)}
-              style={{ width: 'fit-content' }}
+              className="startup-service-title"
             >
               Branding
             </span>
