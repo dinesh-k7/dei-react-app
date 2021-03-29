@@ -9,6 +9,7 @@
     display: block;
     padding-left: 0.625em;
   }
+  padding: 0px 104px;
   input[type='text'],
   input[type='number'],
   textarea,
@@ -66,5 +67,11 @@
     h1 {
       font-size: 22px !important;
     }
+  }
+}
+
+@include respond-above(lg) {
+  .form-container {
+    padding: 0px 200px !important;
   }
 }

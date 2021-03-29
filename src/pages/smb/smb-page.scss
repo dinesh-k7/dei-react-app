@@ -1,11 +1,11 @@
 @import '../../assets/scss/abstracts/mixins';
-.secure-page-grid {
+.smb-page-grid {
   display: grid;
-  grid-column: 2/-1;
-  padding-right: 24px;
-  max-width: 1300px;
-  width: 100%;
-  margin: 0 auto;
+  grid-column: 1/-1;
+  padding: 0px 104px;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  align-items: center;
   section {
     padding-top: 72px;
   }
@@ -14,23 +14,25 @@
 .landing-border {
   border-bottom: 1px solid var(--font-color);
   grid-column: 1/-1;
-  margin-top: 72px;
+  // margin-top: 72px;
+}
+
+@include respond-above(lg) {
+  .smb-page-grid {
+    padding: 0px 200px !important;
+  }
 }
 
 @include respond-below(sm) {
   .smb-page-grid {
     grid-column: 1/-1;
     padding: 0px 8px;
+    grid-template-columns: 1fr;
     section {
       padding-top: 0px;
     }
     .smb-intro {
       padding-top: 32px;
-    }
-    .data-security-intro,
-    .landing-intro,
-    .branding-intro {
-      grid-template-columns: 1fr;
     }
 
     .button-container {

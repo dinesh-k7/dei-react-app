@@ -2,7 +2,7 @@
 
 .wd-quote-section {
   display: grid;
-  grid-template-columns: 10% 1fr 1fr;
+  grid-template-columns: 1px 1fr 1fr;
   background-color: #f8f8f8;
   .radio-section {
     grid-column: 1/-1 !important;

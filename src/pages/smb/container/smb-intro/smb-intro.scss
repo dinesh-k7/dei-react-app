@@ -1,49 +1,23 @@
 @import '../../../../assets/scss/abstracts/mixins';
 
 .smb-intro {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 32px;
-  height: 100vh;
-
-  .service-one,
-  .service-two,
-  .service-three {
-    img,
-    span {
-      cursor: pointer;
-    }
-  }
-  .smb-services {
-    grid-template-rows: 160px;
-  }
-
-  ul {
-    margin: 0px !important;
-    li {
-      padding-top: 8px !important;
-      color: var(--font-color) !important;
-      font-size: 16px;
-      font-family: 'MontFont', sans-serif;
-      list-style: outside;
-    }
-  }
-
-  .smb-mobile-title {
-    display: none;
-  }
   .coral-blob {
     width: 144px;
     height: 136px;
     margin-top: -16px;
   }
+
+  .smb-mobile-title {
+    display: none;
+  }
+
   .smb-container {
     display: grid;
   }
   .smb-intro-image {
     display: grid;
     grid-template-columns: 16px 1fr;
-    height: 124px;
+    height: auto;
   }
 
   .smb-intro-text {
@@ -53,54 +27,7 @@
     font-weight: normal !important;
     font-style: normal;
     margin-left: 16px;
-  }
-
-  .smb-services {
-    display: grid;
-    grid-template-columns: 1fr;
-    img {
-      width: 80px;
-      height: 80px;
-    }
-    .service-one,
-    .service-three {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    .service-two {
-      display: grid;
-      justify-self: end;
-      padding-right: 72px;
-    }
-    span {
-      font-size: 24px;
-      font-family: 'MontFont', sans-serif;
-      font-weight: 900;
-      font-style: normal;
-    }
-    .branding-service,
-    .auditing-service {
-      justify-self: end;
-    }
-    .ds-service,
-    .branding-service,
-    .seo-service,
-    .wd-service,
-    .auditing-service {
-      display: grid;
-      grid-template-columns: 0px 1fr;
-      height: 80px;
-      span {
-        align-self: center;
-      }
-    }
-    .wd-service {
-      padding-left: 48px;
-      img,
-      span {
-        cursor: pointer;
-      }
-    }
+    padding-top: 32px;
   }
 }
 
@@ -108,6 +35,15 @@
   .smb-intro-image {
     img {
       width: 550px;
+    }
+  }
+  .smb-services {
+    img {
+      width: 120px !important;
+      height: 120px !important;
+    }
+    span {
+      font-size: 32px !important;
     }
   }
 }
@@ -131,8 +67,21 @@
 }
 
 @include respond-above(lg) {
-  .smb-container {
-    grid-template-rows: 360px;
+  // .smb-container {
+  //   grid-template-rows: 360px;
+  // }
+  .smb-services {
+    .hover-text {
+      margin-top: 132px !important;
+      margin-left: 16px;
+      li {
+        font-size: 24px;
+      }
+    }
+    img {
+      width: 205px;
+      height: 180px;
+    }
   }
 }
 
@@ -157,9 +106,56 @@
     margin-top: 80px !important;
   }
   .smb-services {
-    img {
-      width: 120px !important;
-      height: 120px !important;
+    display: grid;
+    padding-left: 56px !important;
+
+    .service-two {
+      justify-self: end;
+      padding-right: 24px;
+    }
+    .ds-service,
+    .wd-service {
+      display: grid;
+      grid-template-columns: 15px 1fr 1fr;
+      height: fit-content;
+      .service-title {
+        align-self: center;
+      }
+    }
+    ul {
+      margin: 0px !important;
+      li {
+        padding-top: 8px !important;
+        color: var(--font-color) !important;
+        font-size: 16px;
+        font-family: 'MontFont', sans-serif;
+        list-style: outside;
+      }
+    }
+
+    grid-template-rows: 224px;
+
+    .service-one,
+    .service-two {
+      width: min-content;
+      img,
+      span {
+        cursor: pointer;
+      }
+    }
+
+    grid-template-columns: 1fr;
+    .service-one,
+    .service-three {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    span {
+      font-size: 48px;
+      font-family: 'MontFont', sans-serif;
+      font-weight: 900;
+      font-style: normal;
     }
   }
 }
@@ -167,12 +163,6 @@
 @include respond-below(sm) {
   .smb-intro {
     grid-template-columns: 1fr !important;
-    .smb-services {
-      grid-template-rows: 96px !important;
-      .service-two {
-        padding-right: 16px !important;
-      }
-    }
 
     .smb-intro-image {
       justify-items: end;
@@ -193,25 +183,36 @@
       text-align: right;
       padding-top: 32px;
     }
-    .smb-services {
-      align-self: center;
-      img {
-        width: 40px;
-        height: 40px;
-      }
-      span {
-        font-size: 16px !important;
-        align-self: flex-start !important;
-        padding-top: 8px;
-      }
+  }
+  .smb-services {
+    align-self: center;
+    display: grid;
+    grid-template-rows: 96px !important;
+    .wd-service,
+    .ds-service {
+      display: grid;
+      grid-template-columns: 15px 1fr;
     }
-
+    .service-two {
+      padding-right: 16px !important;
+      justify-self: end;
+    }
     .ds-features,
     .branding-features,
     .wd-features,
     .seo-features,
     .audit-features {
       display: none !important;
+    }
+
+    img {
+      width: 80px;
+      height: 56px;
+    }
+    span {
+      font-size: 16px !important;
+      align-self: flex-start !important;
+      padding-top: 8px;
     }
   }
 }

@@ -9,7 +9,7 @@ import BrandingPage from '../../pages/branding/branding-page';
 import LandingPage from '../../pages/landing/landing-page';
 import SmbPage from '../../pages/smb/smb-page';
 import StartupPage from '../../pages/startup/startup-page';
-import ConsultationPage from '../../pages/consultation/consultation-page';
+import StartupKitPage from '../../pages/startup-kit/startup-kit-page';
 import EnterprisePage from '../../pages/enterprise/enterprise-page';
 import SDWANServicePage from '../../pages/enterprise/sdwan-service/sdwan-service.page';
 import CableServicePage from '../../pages/enterprise/cable-service/cable-service.page';
@@ -44,8 +44,8 @@ const App: React.FC = () => {
         <Route path="/startup">
           <StartupPage />
         </Route>
-        <Route path="/consultation">
-          <ConsultationPage />
+        <Route path="/startup-kit">
+          <StartupKitPage />
         </Route>
         <Route path="/enterprise" exact>
           <EnterprisePage />

@@ -1,12 +1,10 @@
 @import '../../../../assets/scss/styles.scss';
 @import '../../../../assets/scss/layout/hero';
 
-.consultation-intro {
+.startup-intro {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
-  margin-top: 96px;
-  padding-bottom: 72px;
   height: 100vh;
 
   ul {
@@ -29,6 +27,7 @@
     }
   }
   .hero-content {
+    justify-self: end;
     .hero-title {
       h3 {
         margin: 0px !important;
@@ -40,7 +39,6 @@
   }
   .hero-image {
     display: grid;
-    grid-template-columns: 5px 1fr;
     justify-self: start;
     img {
       max-height: 450px;
@@ -75,7 +73,7 @@
   }
 }
 @include respond-between(sm, md) {
-  .consultation-intro {
+  .startup-intro {
     height: auto !important;
   }
   .hero-mobile-image {
@@ -84,7 +82,7 @@
 }
 
 @include respond-below(sm) {
-  .consultation-intro {
+  .startup-intro {
     height: auto;
     margin-top: auto !important;
     grid-gap: 0px !important;

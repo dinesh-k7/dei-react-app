@@ -1,13 +1,7 @@
 import React, { Fragment, ReactElement, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import DataSecurityIntro from './container/data-security-intro/data-security-intro';
-import BrandingIntro from './container/branding-intro/branding-intro';
 import SmbIntroContainer from './container/smb-intro/smb-intro';
-import WdIntro from './container/wd-intro/wd-intro';
-import SeoIntro from './container/seo-intro/seo-intro';
-import NWOIntro from './container/nwo-intro/nwo-intro';
-import SiteSecurityIntro from './container/site-security-intro/site-security-intro';
 import './smb-page.scss';
 import { constants } from '../../constants';
 
@@ -60,12 +54,6 @@ const LandingPage: React.FC = (): ReactElement => {
     <Fragment>
       <div className="smb-page-grid">
         <SmbIntroContainer onClickHandler={onClickHandler} />
-        <DataSecurityIntro inputRef={dsRef} />
-        <SiteSecurityIntro inputRef={siteRef} />
-        <BrandingIntro inputRef={brandingRef} />
-        <WdIntro inputRef={wdRef} />
-        <SeoIntro inputRef={seoRef} />
-        <NWOIntro inputRef={NWORef} />
       </div>
       <div className="landing-border"></div>
     </Fragment>

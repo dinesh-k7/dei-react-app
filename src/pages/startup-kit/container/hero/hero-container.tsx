@@ -13,25 +13,22 @@ const HeroContainer: React.FC = (): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <h1>Start-Up Kits</h1>
+          <div className="consultation-text">
+            <h4>How to prepare:</h4>
+            <h4>Be able to:</h4>
+            <ul>
+              <li>Define your biggest weakness.</li>
+              <li>Define obstacles preventing Implementation.</li>
+              <li>Describe communications gap.</li>
+              <li>commit to attend consultations sessions as scheduled</li>
+            </ul>
+            <h4>Expect:</h4>
 
-          <div className="packages">
-            <img src={yellowBlob} alt="trademark" />
-            <h3>Comprehensive Trademark screening report - $499.00</h3>
-          </div>
-
-          <div className="packages">
-            <img src={yellowBlob} alt="trademark" />
-            <h3>
-              Start-up Package A - Branding & Trademark registration - $1099.00
-            </h3>
-          </div>
-          <div className="packages">
-            <img src={yellowBlob} alt="copyright" />
-            <h3>Copyright registration $149.00 + Federal Filing fee</h3>
-          </div>
-          <div className="packages">
-            <img src={yellowBlob} alt="business formation" />
-            <h3>Business formations, llc - $1500.00 coming soon</h3>
+            <ul>
+              <li>A detailed discovery session.</li>
+              <li>A well defined solution to your communications gap.</li>
+              <li>A personal coaching session with Mr. NWO</li>
+            </ul>
           </div>
         </div>
       </div>

@@ -2,8 +2,9 @@
 @import '../../../../assets/scss/layout/hero';
 
 .wd-page {
-  grid-column: 2/-1;
+  grid-column: 1/-1;
   height: auto !important;
+  padding: 0px 104px;
 }
 .wd-intro {
   display: grid;
@@ -46,7 +47,7 @@
     margin-top: 48px;
   }
   .hero-image {
-    justify-self: start;
+    justify-self: end;
     img {
       max-height: 450px;
     }
@@ -61,6 +62,12 @@
 @include respond-between(sm, md) {
   .wd-intro {
     height: auto;
+  }
+}
+
+@include respond-above(lg) {
+  .wd-page {
+    padding: 0px 200px !important;
   }
 }
 

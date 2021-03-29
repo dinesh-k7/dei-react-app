@@ -2,9 +2,8 @@
 
 .consultation-quote-section {
   display: grid;
-  grid-template-columns: 10% 1fr 1fr;
+  grid-template-columns: 1px 1fr 1fr;
   background-color: #f8f8f8;
-  .consultation-text,
   .confirmation-text {
     p {
       font-family: 'OpenSansRegular', sans-serif !important;
@@ -30,7 +29,7 @@
     padding: 0px 32px;
     .btn-branding,
     .package-active {
-      background-color: #fdcf00 !important;
+      background-color: #fdcf00;
     }
     .consultation-package {
       display: grid;
