@@ -25,6 +25,9 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <h1>Site Security</h1>
+          <div className="hero-mobile-image">
+            <img src={heroImage} alt="Site Security Image" />
+          </div>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
@@ -74,9 +77,6 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               Automatic backups and one-click restore. Worth every penny!
             </p>
           </div>
-        </div>
-        <div className="hero-mobile-image">
-          <img src={heroMobileImage} alt="Data Security Image" />
         </div>
       </div>
     </section>

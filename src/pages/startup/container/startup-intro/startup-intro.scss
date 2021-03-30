@@ -168,8 +168,10 @@
     display: none !important;
   }
   .startup-intro {
+    padding: 32px 0px 0px 0px;
     grid-template-columns: 1fr !important;
     height: auto !important;
+
     .title {
       width: 208px !important;
     }
@@ -179,22 +181,28 @@
     }
     .startup-intro-image {
       justify-self: end;
-      padding-right: 8px;
+      grid-template-columns: 40px 1fr;
+      padding-right: 20px;
     }
     .startup-intro-text {
       justify-self: end;
       text-align: right;
+      padding-right: 12px !important;
     }
     .startup-service {
       grid-gap: 16px !important;
+      padding: 32px;
       .startup-kit span,
       .branding span {
         align-self: start !important;
-        margin-top: 16px;
+        margin-top: 12px;
+      }
+      .startup-kit,
+      .branding {
+        grid-template-columns: 2px 1fr;
       }
       .nwo-hub {
-        grid-template-columns: 5px 100px;
-        padding-right: 24px;
+        grid-template-columns: 2px 100px;
 
         img {
           padding-left: 0px;
@@ -208,7 +216,7 @@
         height: 52px;
       }
       span {
-        font-size: 18px !important;
+        font-size: 16px !important;
       }
     }
   }

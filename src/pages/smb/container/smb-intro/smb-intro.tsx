@@ -13,10 +13,7 @@ const SmbIntroContainer: React.FC<any> = ({
   onClickHandler,
 }: any): ReactElement => {
   const dsRef = useRef(null);
-  const brandingRef = useRef(null);
   const wdRef = useRef(null);
-  const seoRef = useRef(null);
-  const NWORef = useRef(null);
   const history = useHistory();
   const routeChange = (url) => {
     history.push(url);
