@@ -26,14 +26,14 @@
 }
 
 @include respond-below(sm) {
-  .smb-page-grid {
+  .develop-page-grid {
     grid-column: 1/-1;
     padding: 0px 8px;
     section {
       padding-top: 0px;
     }
     .smb-intro {
-      padding-top: 32px;
+      // padding-top: 32px;
     }
     .data-security-intro,
     .landing-intro,

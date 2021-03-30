@@ -49,6 +49,8 @@
 @include respond-below(sm) {
   .branding-intro {
     height: auto;
+    margin-top: 32px;
+    grid-gap: 0px;
     .hero-content {
       display: grid;
     }

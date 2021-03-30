@@ -31,6 +31,12 @@
   }
 }
 
+.smb-services {
+  .service-title {
+    font-family: 'MontFont', sans-serif !important;
+  }
+}
+
 @include respond-between(md, lg) {
   .smb-intro-image {
     img {
@@ -188,13 +194,13 @@
     align-self: center;
     display: grid;
     grid-template-rows: 96px !important;
+    padding: 32px;
     .wd-service,
     .ds-service {
       display: grid;
       grid-template-columns: 15px 1fr;
     }
     .service-two {
-      padding-right: 16px !important;
       justify-self: end;
     }
     .ds-features,
@@ -212,7 +218,7 @@
     span {
       font-size: 16px !important;
       align-self: flex-start !important;
-      padding-top: 8px;
+      padding-top: 16px;
     }
   }
 }
