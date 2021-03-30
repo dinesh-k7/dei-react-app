@@ -38,10 +38,11 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
         </div>
         <div className="hero-description">
           <p>
-            Monitoring and managing your digital security risks is a continuous
-            process that must be done regularly and should be a part of your
-            ongoing operational strategy. To learn more about insider threats
-            and mitigation strategies click:{' '}
+            Modern advancements have made world-class cybersecurity products
+            affordable. The DEI™ Data Essentials stack combines dark web
+            monitoring and gold standard integrated email solutions at a price
+            that any business can afford, and every company should implement. To
+            learn more about insider threats and mitigation strategies click:{' '}
             <a href="https://novusordoseclorum.org/understanding-insider-threats/">
               Here
             </a>
