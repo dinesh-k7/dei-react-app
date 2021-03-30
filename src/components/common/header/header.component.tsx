@@ -24,7 +24,7 @@ const Header: React.FC = (props: any): ReactElement => {
       <div className="logo">
         <img src={logo} alt="DEI Logo" onClick={() => routeChange('/')} />
         <div className="menu-container">
-          <div className="cart-icon" onClick={() => routeChange('/cart-page')}>
+          <div className="cart-icon" onClick={() => history.push('/cart-page')}>
             <ShoppingCartIcon fontSize="large" />{' '}
             <span>({products && products.length}) </span>
           </div>

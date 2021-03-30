@@ -3,10 +3,16 @@
 
 .cart-page-grid {
   display: grid;
-  grid-column: 2/-1;
-  padding-right: 24px;
+  grid-column: 1/-1;
+  padding-bottom: 32px;
   .cart-title {
     justify-self: center;
+  }
+}
+
+@include respond-above(sm) {
+  .cart-page-grid {
+    justify-content: center;
   }
 }
 
