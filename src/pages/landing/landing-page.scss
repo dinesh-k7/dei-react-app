@@ -132,21 +132,6 @@
   }
 }
 
-@include respond-between(sm, md) {
-  .landing-page-grid {
-    grid-template-columns: 1fr !important;
-    height: auto !important;
-    padding-top: 64px;
-    margin: 0px 40px 0px 0px !important;
-    .enterprise-blob {
-      span {
-        right: 2% !important;
-        margin-top: 6% !important;
-      }
-    }
-  }
-}
-
 @include respond-below(sm) {
   .landing-page-grid {
     .smb-blob {
@@ -314,6 +299,32 @@
         font-weight: 600;
         font-size: 20px;
         font-family: 'OpenSansRegular', sans-serif;
+      }
+    }
+  }
+}
+
+@include respond-between(sm, md) {
+  .landing-page-grid {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    padding: 64px 64px 0px 64px;
+    align-items: center;
+    .service-blob {
+      img {
+        width: 160px;
+      }
+      span {
+        font-size: 40px !important;
+      }
+      .enterprise-blob {
+        img {
+          width: 184px !important;
+        }
+        span {
+          right: 4% !important;
+          margin-top: 8% !important;
+        }
       }
     }
   }

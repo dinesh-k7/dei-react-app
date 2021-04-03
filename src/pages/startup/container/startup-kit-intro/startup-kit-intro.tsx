@@ -16,7 +16,7 @@ const StartupKitIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
   };
 
   return (
-    <section className="startup-intro" ref={inputRef}>
+    <section className="startup-kit-intro" ref={inputRef}>
       <div className="hero-image">
         <img src={heroImage} alt="consultation Image" />
         {/* <div className="startup-central-features">

@@ -1,7 +1,7 @@
 @import '../../../../assets/scss/styles.scss';
 @import '../../../../assets/scss/layout/hero';
 
-.startup-intro {
+.startup-kit-intro {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
@@ -73,7 +73,7 @@
   }
 }
 @include respond-between(sm, md) {
-  .startup-intro {
+  .startup-kit-intro {
     height: auto !important;
   }
   .hero-mobile-image {
@@ -82,7 +82,7 @@
 }
 
 @include respond-below(sm) {
-  .startup-intro {
+  .startup-kit-intro {
     height: auto;
     margin-top: auto !important;
     grid-gap: 0px !important;

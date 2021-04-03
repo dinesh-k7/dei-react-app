@@ -11,14 +11,6 @@
   // margin-top: 72px;
 }
 
-@include respond-between(sm, md) {
-  .hero-image {
-    img {
-      width: 100%;
-    }
-  }
-}
-
 @include respond-above(lg) {
   .develop-page-grid {
     padding: 0px 200px !important;
@@ -32,9 +24,7 @@
     section {
       padding-top: 0px;
     }
-    .smb-intro {
-      // padding-top: 32px;
-    }
+
     .data-security-intro,
     .landing-intro,
     .branding-intro {
@@ -48,6 +38,17 @@
     .button-container {
       display: flex;
       justify-content: center;
+    }
+  }
+}
+
+@include respond-between(sm, md) {
+  .develop-page-grid {
+    padding: 0px 64px;
+    .hero-image {
+      img {
+        width: 100%;
+      }
     }
   }
 }

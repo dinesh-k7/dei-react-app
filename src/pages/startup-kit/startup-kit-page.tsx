@@ -9,7 +9,7 @@ import { constants } from '../../constants';
 const StartupKitPage: React.FC = (): ReactElement => {
   return (
     <Fragment>
-      <HeroContainer />
+      <HeroContainer fromPage={constants.STARTUPKIT} />
       <ConsultationQuoteComponent
         fromPage={constants.CONSULTATION_SERVICE}
         formFields={consultationFormData}

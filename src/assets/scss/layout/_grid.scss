@@ -140,6 +140,12 @@
   }
 }
 
+@include respond-between(sm, md) {
+  .hero-section {
+    padding: 24px 64px !important;
+  }
+}
+
 @include respond-below(sm) {
   #root {
     display: grid;

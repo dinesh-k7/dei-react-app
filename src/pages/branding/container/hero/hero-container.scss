@@ -1,7 +1,14 @@
 @import '../../../../assets/scss/layout/hero';
+@import '../../../../assets/scss/abstracts/mixins';
 
 .hero-subtitle-container {
   h3 {
     padding-right: var(--font-size7);
+  }
+}
+
+@include respond-between(sm, md) {
+  .hero-image {
+    grid-template-columns: auto !important;
   }
 }

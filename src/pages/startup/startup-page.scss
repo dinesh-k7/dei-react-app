@@ -12,9 +12,12 @@
 }
 
 @include respond-between(sm, md) {
-  .hero-image {
-    img {
-      width: 100%;
+  .startup-page-grid {
+    padding: 64px 64px 0px 64px;
+    .hero-image {
+      img {
+        width: 100%;
+      }
     }
   }
 }

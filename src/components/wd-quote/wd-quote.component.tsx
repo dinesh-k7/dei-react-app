@@ -22,6 +22,7 @@ import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
 import { addToCart } from '../../actions/cart';
 import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
+import SnackBarComponent from '../common/snackbar/snackbar.component';
 
 const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
   let INITIAL_STATE: any = {
@@ -178,9 +179,15 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
   };
 
   const classes = useStyles();
-
+  const errorKeys = Object.keys(errors);
   return (
     <section className="wd-quote-section">
+      {isLeadDataSent && <SnackBarComponent isOpen={true} isError={false} />}
+      {errorKeys && errorKeys.length ? (
+        <SnackBarComponent isOpen={true} isError={true} />
+      ) : (
+        ''
+      )}
       <div className="bg-image"></div>
       <div className="form-container">
         <h1>{`DEI™ Custom DevOps:`}</h1>
