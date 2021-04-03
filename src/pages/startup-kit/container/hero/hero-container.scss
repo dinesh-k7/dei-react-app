@@ -113,3 +113,10 @@
     padding: 8px !important;
   }
 }
+
+@include respond-between(sm, md) {
+  .startup-kit {
+    grid-template-columns: 12px 1fr !important;
+    align-self: center;
+  }
+}

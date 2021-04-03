@@ -95,6 +95,8 @@
 @include respond-between(sm, md) {
   .startup-intro {
     grid-template-columns: 1fr !important;
+    //height: auto;
+    padding-bottom: 96px;
   }
 }
 

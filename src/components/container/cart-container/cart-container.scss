@@ -69,3 +69,14 @@
     }
   }
 }
+
+.payment-success {
+  display: grid;
+  justify-items: center;
+  .success-description,
+  .order-number {
+    font-size: 18px;
+    font-family: 'OpenSansRegular', sans-serif !important;
+    font-weight: 400 !important;
+  }
+}

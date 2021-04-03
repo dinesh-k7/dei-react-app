@@ -68,8 +68,8 @@ const LandingPage: React.FC = (): ReactElement => {
           <div className="smb-blob">
             <span className="smb-services-landing" ref={smbRef}>
               <ul>
-                <li>Data Security</li>
-                <li>Branding</li>
+                <li>Secure</li>
+                <li>Develop</li>
               </ul>
             </span>
             <span
@@ -92,8 +92,9 @@ const LandingPage: React.FC = (): ReactElement => {
             </span>
             <span className="startup-services" ref={startupRef}>
               <ul>
-                <li>Industry tips and tricks</li>
-                <li>Get started with NWOhub™</li>
+                <li>Start-Up Kits</li>
+                <li>Branding</li>
+                <li>NWOhub™</li>
               </ul>
             </span>
           </div>

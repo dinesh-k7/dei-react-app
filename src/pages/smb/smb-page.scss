@@ -47,3 +47,10 @@
     }
   }
 }
+
+@include respond-between(sm, md) {
+  .smb-page-grid {
+    grid-template-columns: 1fr;
+    padding: 64px 64px 0px 64px;
+  }
+}

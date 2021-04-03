@@ -34,7 +34,11 @@
       }
     }
   }
-
+  @include respond-between(sm, md) {
+    .footer-content {
+      padding-left: 12%;
+    }
+  }
   @include respond-below(sm) {
     .contactus-container {
       span {

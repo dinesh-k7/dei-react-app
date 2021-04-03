@@ -21,18 +21,35 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
           <Fragment>
             <div className="hero-title">
               <h1>Enterprise</h1>
+              <div className="hero-mobile-image">
+                <img src={heroImage} alt="consultation Image" />
+              </div>
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
                   <img src={blueBlob} alt="sdwan" />
                   <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
                     Security
                   </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Modi, minus quae. Nisi laboriosam dolores rem obcaecati
+                    tempore pariatur? Molestias recusandae quis delectus
+                    perferendis assumenda deleniti soluta dignissimos. Veniam,
+                    in laudantium!
+                  </p>
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="cloud services" />
                   <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
                     Connectivity
                   </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Modi, minus quae. Nisi laboriosam dolores rem obcaecati
+                    tempore pariatur? Molestias recusandae quis delectus
+                    perferendis assumenda deleniti soluta dignissimos. Veniam,
+                    in laudantium!
+                  </p>
                 </div>
               </div>
               <div className="hero-subtitle-container">
@@ -41,12 +58,26 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                   <h3 onClick={() => routeChange('/enterprise/cloud-service')}>
                     Cloud
                   </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Modi, minus quae. Nisi laboriosam dolores rem obcaecati
+                    tempore pariatur? Molestias recusandae quis delectus
+                    perferendis assumenda deleniti soluta dignissimos. Veniam,
+                    in laudantium!
+                  </p>
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="ucaas services" />
                   <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
                     Voice
                   </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Modi, minus quae. Nisi laboriosam dolores rem obcaecati
+                    tempore pariatur? Molestias recusandae quis delectus
+                    perferendis assumenda deleniti soluta dignissimos. Veniam,
+                    in laudantium!
+                  </p>
                 </div>
               </div>
               <div className="hero-subtitle-container">
@@ -55,6 +86,13 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                   <h3 onClick={() => routeChange('/enterprise/cable-service')}>
                     IOT
                   </h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Modi, minus quae. Nisi laboriosam dolores rem obcaecati
+                    tempore pariatur? Molestias recusandae quis delectus
+                    perferendis assumenda deleniti soluta dignissimos. Veniam,
+                    in laudantium!
+                  </p>
                 </div>
               </div>
             </div>
@@ -74,7 +112,7 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
               <h1>DEI-SDWAN Service</h1>
             </div>
             <div className="hero-mobile-image">
-              <img src={heroMobileImage} alt="consultation Image" />
+              <img src={heroMobileImage} alt="enterprise Image" />
             </div>
             <div className="hero-description">
               <p>

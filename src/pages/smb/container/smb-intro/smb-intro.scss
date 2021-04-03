@@ -55,19 +55,22 @@
 }
 
 @include respond-between(sm, md) {
-  .smb-intro {
-    grid-template-columns: 1fr;
-    height: auto;
-    .smb-container {
-      grid-template-rows: 240px;
+  .smb-page-grid {
+    height: auto !important;
+    .smb-intro {
+      grid-template-columns: 1fr;
+      height: auto;
     }
     .smb-services {
       grid-gap: 48px;
-    }
-  }
-  .smb-intro-image {
-    img {
-      width: 350px;
+      grid-template-rows: 160px;
+      padding: 48px 0px 48px 32px !important;
+      img {
+        width: 160px;
+      }
+      span {
+        font-size: 40px;
+      }
     }
   }
 }

@@ -8,7 +8,7 @@
 
   .smb-blob {
     .hover-intro-text {
-      padding-right: 56px !important;
+      padding-right: 112px !important;
     }
   }
   .yellow-blob {
@@ -128,21 +128,6 @@
     .startup-blob,
     .enterprise-blob {
       height: 140px !important;
-    }
-  }
-}
-
-@include respond-between(sm, md) {
-  .landing-page-grid {
-    grid-template-columns: 1fr !important;
-    height: auto !important;
-    padding-top: 64px;
-    margin: 0px 40px 0px 0px !important;
-    .enterprise-blob {
-      span {
-        right: 2% !important;
-        margin-top: 6% !important;
-      }
     }
   }
 }
@@ -297,7 +282,7 @@
       grid-template-columns: 1fr 1px 1px;
       height: 200px;
       align-content: center;
-      padding-right: 56px;
+      padding-right: 30px;
       img {
         justify-self: end;
       }
@@ -314,6 +299,32 @@
         font-weight: 600;
         font-size: 20px;
         font-family: 'OpenSansRegular', sans-serif;
+      }
+    }
+  }
+}
+
+@include respond-between(sm, md) {
+  .landing-page-grid {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    padding: 64px 64px 0px 64px;
+    align-items: center;
+    .service-blob {
+      img {
+        width: 160px;
+      }
+      span {
+        font-size: 40px !important;
+      }
+      .enterprise-blob {
+        img {
+          width: 184px !important;
+        }
+        span {
+          right: 4% !important;
+          margin-top: 8% !important;
+        }
       }
     }
   }

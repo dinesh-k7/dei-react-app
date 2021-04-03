@@ -63,6 +63,13 @@
   .wd-intro {
     height: auto;
   }
+  .wd-page {
+    grid-template-columns: 1fr;
+    padding: 0px 64px;
+    .hero-image {
+      padding: 32px 0px;
+    }
+  }
 }
 
 @include respond-above(lg) {

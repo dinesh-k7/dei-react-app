@@ -75,3 +75,8 @@
     }
   }
 }
+@include respond-between(sm, md) {
+  .hero-image {
+    justify-self: auto !important;
+  }
+}

@@ -7,7 +7,8 @@ import heroImage from '../../../../assets/images/consultation-service.svg';
 import yellowBlob from '../../../../assets/images/yellow-blob.svg';
 import heroMobileImage from '../../../../assets/images/consultation_mobile.svg';
 
-const HeroContainer: React.FC = (): ReactElement => {
+const HeroContainer: React.FC<any> = (props: any): ReactElement => {
+  const { fromPage } = props;
   return (
     <section className="hero-section">
       <div className="hero-content">
@@ -35,7 +36,7 @@ const HeroContainer: React.FC = (): ReactElement => {
       <div className="hero-mobile-image">
         <img src={heroMobileImage} alt="consultation Image" />
       </div>
-      <div className="hero-image">
+      <div className={fromPage ? 'hero-image startup-kit' : 'hero-image'}>
         <img src={heroImage} alt="consultation Image" />
         <div className="startup-central-features">
           <p>Secure:</p>

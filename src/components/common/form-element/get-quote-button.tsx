@@ -53,7 +53,7 @@ const GetQuoteButton: any = ({
           } `}
           onClick={handleSubmit(onSubmit, onError)}
         >
-          {isLeadDataSent ? 'Start Over' : 'Get a Quote'}
+          {isLeadDataSent ? 'Start Over' : 'Add to Cart'}
         </button>
       )}
       {isLeadDataSent && (

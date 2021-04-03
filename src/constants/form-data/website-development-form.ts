@@ -26,7 +26,7 @@ export const websiteDevelopmentFormData = [
     section: 'personal',
   },
   {
-    name: 'name',
+    name: 'phone',
     label: 'Phone Number',
     type: 'text',
     required: true,
