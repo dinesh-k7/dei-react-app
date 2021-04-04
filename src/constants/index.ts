@@ -249,6 +249,7 @@ export const messages = {
   color_picker_error: '*Please pick color',
   brand_error: '*Please select atleast two brand name',
   keywords_error: '*Please select atleast two keywords',
+  package_error: '*Please select a package',
 };
 
 export const dataSecurityFormFields = [
@@ -512,7 +513,12 @@ export const CONSULTATION_PACKAGES = [
     active: false,
     name: 'Package A',
     description: 'Comprehensive Trademark screening report',
-    price: 499.0,
+    description_one:
+      'Lorem upsum dummy text dolor Lorem upsum dummy text dolor',
+    description_two: 'Lorem upsum dummy text dolor',
+    description_three: 'Lorem upsum dummy text dolor',
+    description_four: 'Lorem upsum dummy text dolor',
+    price: 399.99,
     service: 'Consultations & Coaching',
     quantity: 1,
   },
@@ -521,7 +527,12 @@ export const CONSULTATION_PACKAGES = [
     active: false,
     name: 'Package B',
     description: 'Start-up Package A - Branding & Trademark registration',
-    price: 1099.0,
+    description_one:
+      'Lorem upsum dummy text dolor Lorem upsum dummy text dolor',
+    description_two: 'Lorem upsum dummy text dolor',
+    description_three: 'Lorem upsum dummy text dolor',
+    description_four: 'Lorem upsum dummy text dolor',
+    price: 499.99,
     service: 'Consultations & Coaching',
     quantity: 1,
   },
@@ -530,7 +541,26 @@ export const CONSULTATION_PACKAGES = [
     active: false,
     name: 'Package C',
     description: 'Copyright registration + Federal Filing fee',
-    price: 149.0,
+    description_one:
+      'Lorem upsum dummy text dolor Lorem upsum dummy text dolor',
+    description_two: 'Lorem upsum dummy text dolor',
+    description_three: 'Lorem upsum dummy text dolor',
+    description_four: 'Lorem upsum dummy text dolor',
+    price: 599.99,
+    service: 'Consultations & Coaching',
+    quantity: 1,
+  },
+  {
+    id: 993,
+    active: false,
+    name: 'Package D',
+    description: 'Copyright registration + Federal Filing fee',
+    description_one:
+      'Lorem upsum dummy text dolor Lorem upsum dummy text dolor',
+    description_two: 'Lorem upsum dummy text dolor',
+    description_three: 'Lorem upsum dummy text dolor',
+    description_four: 'Lorem upsum dummy text dolor',
+    price: 699.99,
     service: 'Consultations & Coaching',
     quantity: 1,
   },

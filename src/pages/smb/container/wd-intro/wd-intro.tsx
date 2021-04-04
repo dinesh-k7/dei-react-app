@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import LaunchIcon from '@material-ui/icons/Launch';
 
 import serviceBlue from '../../../../assets/images/website_blob.svg';
 import '../../../../assets/scss/styles.scss';
@@ -24,15 +25,28 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <h1>Website development</h1>
+          <div className="hero-mobile-image">
+            <img src={heroMobileImage} alt="Webiste development Image" />
+          </div>
           <h3 className="wd-title">DIY:</h3>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>
+              <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/website-builder">
                   Website Builder
                 </a>
               </h3>
+              <a href="https://www.nwohub.com/products/website-builder">
+                <LaunchIcon
+                  style={{
+                    color: '#9c47ed',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
               <p>
                 Build an amazing website in just under an hour with website
                 Builder. Take advantage of designs created just for your
@@ -44,11 +58,21 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>
+              <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/wordpress">
                   WordPress
                 </a>
               </h3>
+              <a href="https://www.nwohub.com/products/wordpress">
+                <LaunchIcon
+                  style={{
+                    color: '#9c47ed',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
             <p>
               Our WordPress Hosting provides automatic setup, backups and
@@ -59,20 +83,28 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>
+              <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/shopping-cart">
                   Shopping Cart
                 </a>
               </h3>
+              <a href="https://www.nwohub.com/products/shopping-cart">
+                <LaunchIcon
+                  style={{
+                    color: '#9c47ed',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
             <p>
               Fully functioning professional business/ecommerce/shopping cart.
             </p>
           </div>
         </div>
-        <div className="hero-mobile-image">
-          <img src={heroMobileImage} alt="Webiste development Image" />
-        </div>
+
         {!fromPage && (
           <div className="button-container">
             <button

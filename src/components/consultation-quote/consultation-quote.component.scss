@@ -22,36 +22,82 @@
     }
     padding-bottom: 32px;
   }
-  .button-container {
+  .package-container {
     display: grid;
-    align-self: center;
-    justify-content: center;
-    padding: 0px 32px;
-    .btn-branding,
-    .package-active {
+
+    justify-self: center;
+    padding: 64px 32px 32px 32px;
+    .btn-branding {
       background-color: #fdcf00;
+      justify-self: center;
     }
-    .consultation-package {
+    .consultation-package-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       grid-gap: 32px;
       padding: 0px 0px 24px 0px;
-      span {
-        padding: 12px;
-        width: fit-content;
-        border-radius: 8px;
-        border: 1px solid var(--font-color);
+      .package-active {
+        background-color: #000000 !important;
+        outline: 3px solid #fff;
+        outline-offset: -3px;
+      }
+      .package-checkbox {
+        background-color: #fff;
+        padding: 0px 12px;
         cursor: pointer;
-        text-align: center;
+      }
+      .package-row {
+        .package-title {
+          display: grid;
+          grid-template-columns: 1fr 32px;
+          background-color: #fdcf00;
+          padding: 16px;
+          justify-items: center;
+          span:nth-child(1) {
+            font-family: 'MontFont', sans-serif !important;
+          }
+        }
+
+        background-color: #fff;
+        .package-description-four {
+          padding: 0px 16px;
+          span {
+            display: flex;
+            justify-content: center;
+          }
+        }
+        .package-description-one {
+          padding-bottom: 16px !important;
+        }
+        .package-description-one,
+        .package-description-two,
+        .package-description-three {
+          border-bottom: 2px solid #f8f8f8;
+          padding: 0px 16px;
+          span {
+            display: flex;
+            justify-content: center;
+          }
+        }
       }
     }
   }
 }
 
 @include respond-below(sm) {
-  .button-container {
+  .package-container {
+    padding-left: 8px;
+    .consultation-package-grid {
+      grid-template-columns: 1fr !important;
+    }
     .btn-branding {
       justify-self: center;
     }
+  }
+}
+
+@include respond-between(sm, md) {
+  .package-container {
+    padding: 64px 8px 32px 8px !important;
   }
 }

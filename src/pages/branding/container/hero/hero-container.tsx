@@ -11,6 +11,9 @@ const HeroContainer: React.FC = (): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <h1>Branding</h1>
+          <div className="hero-mobile-image">
+            <img src={heroImage} alt="Branding Image" />
+          </div>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceCoral} alt="Background image" />

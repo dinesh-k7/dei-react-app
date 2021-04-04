@@ -59,6 +59,15 @@ const ConsultationQuoteComponent: React.FC<any> = (
   const { register, handleSubmit, errors, control } = useForm();
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
   const [captcha, setCaptcha] = useState({});
+  const {
+    captchaValue,
+    isLeadDataSent,
+    isFormSubmitted,
+    isSendMailError,
+    name,
+    packages,
+  } = quoteState;
+  const selectedPackages = packages && packages.filter((s) => s.active);
 
   // Set captcha reference
 
@@ -71,10 +80,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
   // handle get quote form onSubmit
   const onSubmit = (quoteData: any) => {
     const { captchaValue } = quoteData;
-    const { packages } = quoteState;
-
     quoteData.isFormSubmitted = true;
-    const selectedPackages = packages && packages.filter((s) => s.active);
     let preferedPackage;
     if (selectedPackages && selectedPackages.length) {
       preferedPackage = selectedPackages.map((d) => d.name);
@@ -88,12 +94,13 @@ const ConsultationQuoteComponent: React.FC<any> = (
         ...quoteData,
       };
     });
-    const [product] = selectedPackages;
 
     if (!captchaValue) {
       return;
     } else {
-      //props.dispatch(addToCart(selectedPackages));
+      if (selectedPackages && selectedPackages.length) {
+        props.dispatch(addToCart(selectedPackages));
+      }
       sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
         () => {
           setQuoteState((prevState) => {
@@ -122,15 +129,6 @@ const ConsultationQuoteComponent: React.FC<any> = (
     captcha['reset']();
   };
 
-  const {
-    captchaValue,
-    isLeadDataSent,
-    isFormSubmitted,
-    isSendMailError,
-    name,
-    packages,
-  } = quoteState;
-
   if (isLeadDataSent) {
     resetCaptcha();
   }
@@ -151,8 +149,6 @@ const ConsultationQuoteComponent: React.FC<any> = (
         filterService,
       };
     });
-    const selectedPackages = packages.filter((pk) => pk.id === id);
-    props.dispatch(addToCart(selectedPackages));
   };
 
   const classes = useStyles();
@@ -348,7 +344,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
         </form>
       </div>
 
-      <div className="button-container">
+      <div className="package-container">
         {/* <div className="consultation-text">
           <h4>How to prepare:</h4>
           <h4>Be able to:</h4>
@@ -366,20 +362,38 @@ const ConsultationQuoteComponent: React.FC<any> = (
             <li>A personal coaching session with Mr. NWO</li>
           </ul>
         </div> */}
-        <div className="consultation-package">
-          {/* {packages &&
+        <h4>Choose a package</h4>
+        <div className="consultation-package-grid">
+          {packages &&
             packages.length &&
             packages.map((service) => (
-              <span
-                className={
-                  service.active ? 'package-active' : 'package-inactive'
-                }
-                onClick={() => unSelectPackage(service.id)}
-                key={service.id}
-              >
-                {service.name}
-              </span>
-            ))} */}
+              <div className={`package-row`} key={service.id}>
+                <div className="package-title">
+                  <span>{service.name}</span>
+                  <span
+                    className={
+                      service.active
+                        ? 'package-active package-checkbox'
+                        : 'package-checkbox'
+                    }
+                    onClick={() => unSelectPackage(service.id)}
+                  ></span>
+                </div>
+                <div className="package-description-one">
+                  <p className="para-normal">{service.description_one}</p>
+                  <span>${service.price.toFixed(2)}</span>
+                </div>
+                <div className="package-description-two">
+                  <p className="para-normal">{service.description_two}</p>
+                </div>
+                <div className="package-description-three">
+                  <p className="para-normal">{service.description_three}</p>
+                </div>
+                <div className="package-description-four">
+                  <p className="para-normal">{service.description_four}</p>
+                </div>
+              </div>
+            ))}
         </div>
         {!isLeadDataSent && (
           <button
@@ -419,6 +433,14 @@ const ConsultationQuoteComponent: React.FC<any> = (
         )} */}
 
         {errors && <ErrorMessageContainer {...errors} />}
+
+        {(isFormSubmitted || errorKeys.length) &&
+        selectedPackages &&
+        !selectedPackages.length ? (
+          <p className="error_message">{messages.package_error}</p>
+        ) : (
+          ''
+        )}
 
         {!captchaValue && isFormSubmitted && (
           <p className="error_message">{messages.captcha_error}</p>

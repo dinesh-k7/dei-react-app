@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
+import LaunchIcon from '@material-ui/icons/Launch';
 
 import heroImage from '../../../../assets/images/website_security.svg';
-import heroMobileImage from '../../../../assets/images/ds_mobile.svg';
 import serviceBlue from '../../../../assets/images/service_blue.svg';
 import './site-security-intro.scss';
 
@@ -31,20 +31,40 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>
+              <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/website-security">
                   Scan and Remove
                 </a>
               </h3>
+              <a href="https://www.nwohub.com/products/website-security">
+                <LaunchIcon
+                  style={{
+                    color: '#42b9f8',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
             <p>Daily malware scans and gauranteed malware removal.</p>
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>
+              <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/ssl">SSL</a>
               </h3>
+              <a href="https://www.nwohub.com/products/ssl">
+                <LaunchIcon
+                  style={{
+                    color: '#42b9f8',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
 
             <p>Lets visitors know that you&apos;ll keep their data safe.</p>
@@ -52,11 +72,21 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>
+              <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/ssl-managed">
                   Managed SSL Service
                 </a>
               </h3>
+              <a href="https://www.nwohub.com/products/ssl-managed">
+                <LaunchIcon
+                  style={{
+                    color: '#42b9f8',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
             <p>
               We handle the install and maintenance of your SSL - saving you
@@ -66,11 +96,21 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>
+              <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/website-backup">
                   Website Backup
                 </a>
               </h3>
+              <a href="https://www.nwohub.com/products/website-backup">
+                <LaunchIcon
+                  style={{
+                    color: '#42b9f8',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
             <p>
               Keep your website data safe while you grow your business online.

@@ -38,6 +38,7 @@
   }
   .hero-content {
     .hero-title {
+      display: grid;
       h3 {
         margin: 0px !important;
       }
@@ -97,7 +98,7 @@
     .hero-mobile-image {
       display: block;
       justify-self: center;
-      padding-top: 40px;
+      padding-top: 0px !important;
       img {
         max-width: 296px;
       }

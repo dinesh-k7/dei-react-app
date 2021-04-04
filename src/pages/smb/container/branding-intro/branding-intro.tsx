@@ -23,6 +23,9 @@ const BrandingIntro: React.FC<any> = (props: any): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <h1>Branding</h1>
+          <div className="hero-mobile-image">
+            <img src={heroMobileImage} alt="Branding Image" />
+          </div>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceCoral} alt="Background image" />
@@ -34,9 +37,7 @@ const BrandingIntro: React.FC<any> = (props: any): ReactElement => {
             </div>
           </div>
         </div>
-        <div className="hero-mobile-image">
-          <img src={heroMobileImage} alt="Branding Image" />
-        </div>
+
         <div className="hero-description">
           <p>Enhance Your Brand&apos;s Identity with a Stunning Logo!</p>
         </div>

@@ -18,6 +18,7 @@
 
   .hero-content {
     .hero-title {
+      display: grid;
       h3 {
         margin: 0px !important;
         a {
@@ -57,7 +58,6 @@
     .hero-mobile-image {
       display: grid;
       justify-self: center;
-      padding-top: 40px;
       img {
         max-width: 296px;
       }

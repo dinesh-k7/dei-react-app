@@ -1,14 +1,28 @@
 @import '../../../../assets/scss/layout/hero';
 @import '../../../../assets/scss/abstracts/mixins';
 
-.hero-subtitle-container {
-  h3 {
-    padding-right: var(--font-size7);
+.hero-section {
+  .hero-title {
+    display: grid;
+  }
+  .hero-subtitle-container {
+    h3 {
+      padding-right: var(--font-size7);
+    }
   }
 }
 
 @include respond-between(sm, md) {
   .hero-image {
     grid-template-columns: auto !important;
+  }
+}
+
+@include respond-below(sm) {
+  .hero-mobile-image {
+    padding-top: 0px !important;
+    img {
+      max-width: 296px;
+    }
   }
 }

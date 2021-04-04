@@ -22,6 +22,9 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <h1>Data Security</h1>
+          <div className="hero-mobile-image">
+            <img src={heroImage} alt="Data Security Image" />
+          </div>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
@@ -33,9 +36,7 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
             </div>
           </div>
         </div>
-        <div className="hero-mobile-image">
-          <img src={heroImage} alt="Data Security Image" />
-        </div>
+
         <div className="hero-description">
           <p>
             Modern advancements have made world-class cybersecurity products

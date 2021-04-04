@@ -31,8 +31,8 @@ const CartContainer: React.FC = (props: any): ReactElement => {
 
   //Update payment status in state
 
-  const updatePaymentStatus = (paymentDetail) => {
-    const { status, purchase_units, payer, id } = paymentDetail;
+  const updatePaymentStatus = (paymentDetail, orderId) => {
+    const { status, purchase_units, payer } = paymentDetail;
     if (status === constants.COMPLETED) {
       const name = payer && payer.name && payer.name.given_name;
       setPaymentState((prevState) => {
@@ -40,8 +40,8 @@ const CartContainer: React.FC = (props: any): ReactElement => {
           ...prevState,
           isPaymentSuccess: true,
           amount: 1.0,
-          name: 'dinesh',
-          paymentId: id,
+          name: name,
+          paymentId: orderId,
         };
       });
     }
@@ -96,7 +96,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                 onSuccess={(details, data) => {
                   console.log('details', details);
                   props.emptyCart();
-                  updatePaymentStatus(details);
+                  updatePaymentStatus(details, data.orderID);
 
                   // // OPTIONAL: Call your server to save the transaction
                   // return fetch('/paypal-transaction-complete', {
@@ -105,6 +105,10 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                   //     orderID: data.orderID,
                   //   }),
                   // });
+                }}
+                onError={(details, data) => {
+                  console.log('details', details);
+                  updatePaymentStatus(details, data.orderID);
                 }}
                 options={{
                   clientId: 'sb',
