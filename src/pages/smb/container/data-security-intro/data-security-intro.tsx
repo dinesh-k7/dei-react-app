@@ -30,7 +30,7 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               <img src={serviceBlue} alt="Background image" />
               <h3>Dark Web Monitoring</h3>
             </div>
-            <div className="features">
+            <div className="features email-solution">
               <img src={serviceBlue} alt="Background image" />
               <h3>Email Solutions</h3>
             </div>

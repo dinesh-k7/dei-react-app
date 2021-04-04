@@ -86,7 +86,7 @@
 
 @include respond-below(sm) {
   .package-container {
-    padding-left: 8px;
+    padding: 64px 8px !important;
     .consultation-package-grid {
       grid-template-columns: 1fr !important;
     }

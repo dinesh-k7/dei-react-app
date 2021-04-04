@@ -146,6 +146,12 @@
   }
 }
 
+@include respond-above(lg) {
+  .hero-section {
+    padding: 50px 200px !important;
+  }
+}
+
 @include respond-below(sm) {
   #root {
     display: grid;

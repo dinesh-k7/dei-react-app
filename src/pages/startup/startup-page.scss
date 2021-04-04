@@ -24,6 +24,8 @@
 
 @include respond-above(lg) {
   .startup-page-grid {
+    max-width: 1900px;
+    margin: 0px auto;
     padding: 0px 200px !important;
   }
 }

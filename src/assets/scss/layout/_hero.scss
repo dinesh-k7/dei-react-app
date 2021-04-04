@@ -17,6 +17,9 @@
     flex-wrap: wrap;
   }
   @include respond-below(sm) {
+    .hero-description {
+      margin-top: 24px !important;
+    }
     .hero-title {
       p:first-of-type {
         padding-top: 0.25em;

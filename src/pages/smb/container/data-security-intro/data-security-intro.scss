@@ -64,3 +64,11 @@
     }
   }
 }
+
+@include respond-above(sm) {
+  .hero-subtitle-container {
+    .email-solution {
+      padding-left: 32px;
+    }
+  }
+}
