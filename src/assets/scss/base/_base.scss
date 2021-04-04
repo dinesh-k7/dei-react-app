@@ -85,6 +85,18 @@ h4 {
   font-style: normal;
 }
 
+.feature-title {
+  padding-right: 8px;
+}
+
+.para-normal {
+  font-family: 'OpenSansRegular', sans-serif !important;
+  font-size: 14px;
+  font-weight: normal;
+  color: var(--font-color);
+  font-style: normal;
+}
+
 .btn-green {
   background-color: #49e59a !important;
 }

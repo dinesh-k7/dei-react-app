@@ -588,7 +588,11 @@ const BrandingDetailContainer: React.FC<any> = (
             {isTemplate && <span className="price">$799</span>}
           </div>
         </div>
-        <div>
+        <div
+          className={
+            fromPage ? `wd-button-container` : `branding-btn-container`
+          }
+        >
           <GetQuoteButton
             quoteState={quoteState}
             handleSubmit={handleSubmit}
