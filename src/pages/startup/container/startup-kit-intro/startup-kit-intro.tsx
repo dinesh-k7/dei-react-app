@@ -40,6 +40,9 @@ const StartupKitIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <h1>Start-Up Kit</h1>
+          <div className="hero-mobile-image">
+            <img src={heroMobileImage} alt="consultation Image" />
+          </div>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={yellowBlob} alt="trademark" />
@@ -55,9 +58,7 @@ const StartupKitIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
             </div>
           </div>
         </div>
-        <div className="hero-mobile-image">
-          <img src={heroMobileImage} alt="consultation Image" />
-        </div>
+
         <div className="hero-description">
           <p>
             Manifest Digital Destiny! <br /> Building a better tomorrow starts

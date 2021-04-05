@@ -14,6 +14,9 @@ const HeroContainer: React.FC<any> = (props: any): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <h1>Start-Up Kits</h1>
+          <div className="hero-mobile-image">
+            <img src={heroMobileImage} alt="consultation Image" />
+          </div>
           <div className="consultation-text">
             <h4>How to prepare:</h4>
             <h4>Be able to:</h4>
@@ -33,9 +36,7 @@ const HeroContainer: React.FC<any> = (props: any): ReactElement => {
           </div>
         </div>
       </div>
-      <div className="hero-mobile-image">
-        <img src={heroMobileImage} alt="consultation Image" />
-      </div>
+
       <div className={fromPage ? 'hero-image startup-kit' : 'hero-image'}>
         <img src={heroImage} alt="consultation Image" />
         <div className="startup-central-features">

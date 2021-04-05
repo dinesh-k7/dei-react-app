@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import LaunchIcon from '@material-ui/icons/Launch';
 
 import serviceYellow from '../../../../assets/images/seo_mark_blob.svg';
 import '../../../../assets/scss/styles.scss';
@@ -25,7 +26,26 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
               <h3>
                 <a href="https://www.nwohub.com/products/seo">SEO</a>
               </h3>
+              <a href="https://www.nwohub.com/products/seo">
+                <LaunchIcon
+                  style={{
+                    color: '#fdcf00',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
+
+            <p>
+              Our SEO tool analyzes your website and gives you step-by-step
+              instructions on how you can optimize for Google®, Yahoo® and
+              Bing®. All it takes a few clicks, and then you can get back to
+              business.
+            </p>
+          </div>
+          <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceYellow} alt="Background image" />
               <h3>
@@ -33,6 +53,16 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
                   Email Marketing
                 </a>
               </h3>
+              <a href="https://www.nwohub.com/products/email-marketing">
+                <LaunchIcon
+                  style={{
+                    color: '#fdcf00',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
             {/* <div className="features">
               <img src={serviceYellow} alt="Background image" />
@@ -41,13 +71,7 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
           </div>
         </div>
 
-        <div className="hero-description">
-          <p>
-            Our SEO tool analyzes your website and gives you step-by-step
-            instructions on how you can optimize for Google®, Yahoo® and Bing®.
-            All it takes a few clicks, and then you can get back to business.
-          </p>
-        </div>
+        <div className="hero-description"></div>
       </div>
     </section>
   );
