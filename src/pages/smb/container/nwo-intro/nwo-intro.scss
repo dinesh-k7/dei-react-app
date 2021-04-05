@@ -12,6 +12,7 @@
     display: none;
   }
   .hero-subtitle-container {
+    padding-bottom: 8px;
     h3 {
       padding-right: var(--font-size7);
     }
@@ -69,6 +70,7 @@
       display: block;
       justify-self: center;
       padding-top: 40px;
+      padding-bottom: 16px;
       img {
         max-width: 296px;
       }

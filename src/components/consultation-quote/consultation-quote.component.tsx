@@ -345,23 +345,6 @@ const ConsultationQuoteComponent: React.FC<any> = (
       </div>
 
       <div className="package-container">
-        {/* <div className="consultation-text">
-          <h4>How to prepare:</h4>
-          <h4>Be able to:</h4>
-          <ul>
-            <li>Define your biggest weakness.</li>
-            <li>Define obstacles preventing Implementation.</li>
-            <li>Describe communications gap.</li>
-            <li>commit to attend consultations sessions as scheduled</li>
-          </ul>
-          <h4>Expect:</h4>
-
-          <ul>
-            <li>A detailed discovery session.</li>
-            <li>A well defined solution to your communications gap.</li>
-            <li>A personal coaching session with Mr. NWO</li>
-          </ul>
-        </div> */}
         <h4>Choose a package</h4>
         <div className="consultation-package-grid">
           {packages &&

@@ -6,6 +6,11 @@
   grid-gap: 32px;
   height: 100vh;
   padding-top: 48px;
+  .hero-subtitle-container {
+    .features:nth-child(1) {
+      padding-bottom: 8px;
+    }
+  }
   .hero-image img {
     max-width: 500px !important;
   }
@@ -58,6 +63,7 @@
     .hero-mobile-image {
       display: grid;
       justify-self: center;
+      padding-bottom: 16px;
       img {
         max-width: 296px;
       }

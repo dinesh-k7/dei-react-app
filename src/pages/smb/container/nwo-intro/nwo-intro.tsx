@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import LaunchIcon from '@material-ui/icons/Launch';
 
 import serviceGreen from '../../../../assets/images/audit_service_blob.svg';
 import '../../../../assets/scss/styles.scss';
@@ -12,38 +13,81 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <h1>NWOhub™</h1>
+          <div className="hero-mobile-image">
+            <img
+              src={heroImage}
+              alt="Auditing service"
+              width={296}
+              height={200}
+            />
+          </div>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceGreen} alt="Background image" />
-              <h3>Domains</h3>
+              <h3>Buy a Domain</h3>
+              <a href="#">
+                <LaunchIcon
+                  style={{
+                    color: '#49e69a',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
-
+          </div>
+          <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceGreen} alt="Background image" />
-              <h3>Websites</h3>
+              <h3>Create a Website</h3>
+              <a href="#">
+                <LaunchIcon
+                  style={{
+                    color: '#49e69a',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
           </div>
 
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceGreen} alt="Background image" />
-              <h3>Hosting</h3>
+              <h3>Host a Website</h3>
+              <a href="#">
+                <LaunchIcon
+                  style={{
+                    color: '#49e69a',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
-
+          </div>
+          <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceGreen} alt="Background image" />
-              <h3>Email</h3>
+              <h3>Create a business email</h3>
+              <a href="#">
+                <LaunchIcon
+                  style={{
+                    color: '#49e69a',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
             </div>
           </div>
         </div>
-        <div className="hero-mobile-image">
-          <img
-            src={heroImage}
-            alt="Auditing service"
-            width={296}
-            height={200}
-          />
-        </div>
+
         <div className="hero-description">
           <p>
             All the help and resources you need to build your online business:
