@@ -11,7 +11,7 @@ const addToCartAction = (product: IProductDetails[]): any => ({
   product,
 });
 
-const updateCartAction = (product: IProductDetails[]): any => ({
+const updateCartAction = (product: IProductDetails): any => ({
   type: UPDATE_CART,
   product,
 });
@@ -46,6 +46,20 @@ export const addToCart = (product: IProductDetails[]) => (
     // const pd = Object.assign({}, productExist);
     // pd.quantity += pd.quantity;
     // dispatch(updateCartAction([pd]));
+  }
+};
+
+export const updateCartItems = (product: IProductDetails) => (
+  dispatch,
+  getState,
+): any => {
+  const {
+    cartReducer: { products },
+  } = getState();
+
+  const productExist = products.find((prd) => prd.id === product.id);
+  if (productExist) {
+    dispatch(updateCartAction(product));
   }
 };
 

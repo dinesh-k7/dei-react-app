@@ -6,6 +6,7 @@ export const constants = {
   CONSULTATION_SERVICE: 'CONSULTATION_SERVICE',
   UCAAS_SERVICE: 'UCAAS_SERVICE',
   COMPANY_SIZE: 4,
+  OFFER_PERCENTAGE: 0.12,
   POSITION: [
     { id: 1, name: 'CEO/Decision-maker' },
     { id: 2, name: 'VP/Director' },

@@ -20,9 +20,16 @@ const cartReducer = (state = initialState, action): InitialState => {
         products: [...state.products, ...action.product],
       };
     case UPDATE_CART:
+      const index = state.products.findIndex(
+        (product) => product.id === action.product.id,
+      );
+
+      const newArray = [...state.products];
+
+      newArray[index].price = action.product.price;
       return {
         ...state,
-        products: [...state.products, ...action.product],
+        products: newArray,
       };
     case EMPTY_CART:
       return {

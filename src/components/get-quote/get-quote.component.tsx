@@ -64,11 +64,16 @@ const GetQuoteComponent: React.FC<any> = (
       packageName:
         fromPage === 'branding' ? 'Branding Package' : 'Data Security Package',
       price: fromPage === 'branding' ? 500 : monthlyCost,
+      yearlyPrice:
+        fromPage !== 'branding'
+          ? (monthlyCost - constants.OFFER_PERCENTAGE * monthlyCost) * 12
+          : '',
       id: fromPage === 'branding' ? 801 : 701,
       description:
         fromPage === 'branding' ? 'Branding Package' : 'Data Security Package',
       section: fromPage === 'branding' ? 'Branding' : 'Data Security',
       quantity: 1,
+      monthlyPrice: fromPage !== 'branding' ? monthlyCost : '',
     };
     dispatch(addToCart([product]));
   };

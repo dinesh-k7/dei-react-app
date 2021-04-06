@@ -64,6 +64,11 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
                 />
               </a>
             </div>
+            <p>
+              Connect with your clients and increase customer retention with
+              Email Marketing. Marketing packages for beginners and
+              professionals.
+            </p>
             {/* <div className="features">
               <img src={serviceYellow} alt="Background image" />
               <h3>New World Security</h3>

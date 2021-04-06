@@ -5,6 +5,7 @@
   grid-column: 1/-1;
   height: auto !important;
   padding: 0px 104px;
+  grid-row: 2/3;
 }
 .wd-intro {
   display: grid;
@@ -12,6 +13,7 @@
   grid-gap: 32px;
   margin-top: 96px;
   padding-bottom: 72px;
+  grid-row: 2/3;
   height: 100vh;
   .hero-mobile-image {
     display: none;
