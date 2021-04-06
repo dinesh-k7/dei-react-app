@@ -4,7 +4,12 @@ import { connect } from 'react-redux';
 import { PayPalButton } from 'react-paypal-button-v2';
 
 import './cart-container.scss';
-import { removeFromCart, getCartItems, emptyCart } from '../../../actions/cart';
+import {
+  removeFromCart,
+  getCartItems,
+  emptyCart,
+  updateCartItems,
+} from '../../../actions/cart';
 import { IProductDetails } from '../../../interfaces/cart-state.model';
 import { constants } from '../../../constants';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -29,6 +34,17 @@ const CartContainer: React.FC = (props: any): ReactElement => {
     props.removeFromCart(product);
   };
 
+  const clickHandler = (e, product) => {
+    const obj = Object.assign({}, product);
+    if (e && e.target && e.target.checked) {
+      obj.price = parseInt(obj.yearlyPrice.toFixed(2));
+      props.updateCartItems(obj);
+    } else {
+      obj.price = parseInt(obj.monthlyPrice);
+      props.updateCartItems(obj);
+    }
+  };
+
   //Update payment status in state
 
   const updatePaymentStatus = (paymentDetail, orderId) => {
@@ -49,6 +65,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
 
   const { products } = props;
   const { isPaymentSuccess, paymentId, isPaymentFailed, name } = paymentState;
+
   return (
     <Fragment>
       {products && products.length ? (
@@ -66,6 +83,22 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                     <p className="product-price">
                       Price: ${product.price.toFixed(2)}
                     </p>
+                    {product.yearlyPrice ? (
+                      <div className="yearly-price">
+                        <input
+                          type="checkbox"
+                          onClick={(e) => clickHandler(e, product)}
+                        />
+                        <span>
+                          ${product.yearlyPrice.toFixed(2)} &nbsp;{' '}
+                          <span>
+                            Pay 12 months in advance for a 12% Discount
+                          </span>
+                        </span>
+                      </div>
+                    ) : (
+                      ''
+                    )}
                   </div>
                   <div className="cart-button-container">
                     <button onClick={() => removeItem(product)}>Remove</button>
@@ -94,7 +127,6 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                 amount="0.01"
                 // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
                 onSuccess={(details, data) => {
-                  console.log('details', details);
                   props.emptyCart();
                   updatePaymentStatus(details, data.orderID);
 
@@ -155,6 +187,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchAllCartItems: () => dispatch(getCartItems()),
     removeFromCart: (product) => dispatch(removeFromCart(product)),
     emptyCart: () => dispatch(emptyCart()),
+    updateCartItems: (product) => dispatch(updateCartItems(product)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);

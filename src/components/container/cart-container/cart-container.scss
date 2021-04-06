@@ -7,7 +7,7 @@
   .cart-items {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 170px;
+    max-height: 170px;
   }
 
   .cart-item {
@@ -32,7 +32,8 @@
     }
   }
   .product-price,
-  .product-quantity {
+  .product-quantity,
+  .yearly-price span {
     font-family: 'OpenSansRegular', sans-serif !important;
   }
 

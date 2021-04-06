@@ -1,4 +1,8 @@
+@import '../../../assets/scss/abstracts/mixins';
+
 .nav-container {
+  width: 100%;
+  border-bottom: 0px !important;
   .logo {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -22,6 +26,21 @@
         position: absolute;
         margin-top: 4px;
         font-size: 1rem;
+      }
+    }
+  }
+}
+
+@include respond-below(sm) {
+  .nav-container {
+    .menu-container {
+      grid-template-columns: 1fr 32px;
+      .cart-icon {
+        justify-self: center;
+        padding-left: 12px;
+      }
+      .hamburger-menu {
+        width: 48px;
       }
     }
   }
