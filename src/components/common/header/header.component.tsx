@@ -18,7 +18,7 @@ const Header: React.FC<any> = (props: any): ReactElement => {
 
   const HideOnScroll = (props: any) => {
     const { children } = props;
-    const trigger = useScrollTrigger();
+    const trigger = useScrollTrigger({ disableHysteresis: true });
 
     return (
       <Slide appear={false} direction="down" in={!trigger}>
