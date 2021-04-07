@@ -67,6 +67,7 @@
     grid-template-columns: 1fr !important;
     .cart-items {
       grid-template-rows: auto;
+      max-height: 270px;
     }
   }
 }
