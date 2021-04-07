@@ -40,9 +40,8 @@ const Header: React.FC<any> = (props: any): ReactElement => {
     <Fragment>
       <HideOnScroll {...props}>
         <AppBar
-          color="transparent"
-          position="fixed"
           style={{
+            backgroundColor: '#fff',
             boxShadow:
               '0px 1px 2px -1px rgb(0 0 0 / 20%), 0px 1px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)',
           }}
@@ -60,7 +59,10 @@ const Header: React.FC<any> = (props: any): ReactElement => {
                     className="cart-icon"
                     onClick={() => history.push('/cart-page')}
                   >
-                    <ShoppingCartIcon fontSize="large" />{' '}
+                    <ShoppingCartIcon
+                      style={{ color: '#000000' }}
+                      fontSize="large"
+                    />{' '}
                     <span>({products && products.length}) </span>
                   </div>
                   <div className="hamburger-menu">
