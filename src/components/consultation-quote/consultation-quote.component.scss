@@ -27,6 +27,16 @@
 
     justify-self: center;
     padding: 64px 32px 32px 32px;
+    ul {
+      margin: 0px !important;
+      li {
+        padding-top: 8px !important;
+        color: var(--font-color) !important;
+        font-size: 14px;
+        font-family: 'OpenSansRegular', sans-serif !important;
+        list-style: outside;
+      }
+    }
     .btn-branding {
       background-color: #fdcf00;
       justify-self: center;
@@ -99,5 +109,16 @@
 @include respond-between(sm, md) {
   .package-container {
     padding: 64px 8px 32px 8px !important;
+  }
+}
+
+@include respond-between(md, lg) {
+  .package-container {
+    padding: 64px 104px 32px 8px !important;
+  }
+}
+@include respond-above(lg) {
+  .package-container {
+    padding: 64px 200px 32px 8px !important;
   }
 }

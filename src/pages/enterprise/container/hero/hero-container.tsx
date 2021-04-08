@@ -1,5 +1,6 @@
 import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import '../../../../assets/scss/styles.scss';
 import './hero-container.scss';
@@ -30,6 +31,10 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                   <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
                     Security
                   </h3>
+                  <ChevronRightIcon
+                    onClick={() => routeChange('/enterprise/sdwan-service')}
+                    className="chevron-right"
+                  />
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Modi, minus quae. Nisi laboriosam dolores rem obcaecati
@@ -43,6 +48,10 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                   <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
                     Connectivity
                   </h3>
+                  <ChevronRightIcon
+                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    className="chevron-right"
+                  />
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Modi, minus quae. Nisi laboriosam dolores rem obcaecati
@@ -58,6 +67,10 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                   <h3 onClick={() => routeChange('/enterprise/cloud-service')}>
                     Cloud
                   </h3>
+                  <ChevronRightIcon
+                    onClick={() => routeChange('/enterprise/cloud-service')}
+                    className="chevron-right"
+                  />
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Modi, minus quae. Nisi laboriosam dolores rem obcaecati
@@ -71,6 +84,10 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                   <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
                     Voice
                   </h3>
+                  <ChevronRightIcon
+                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    className="chevron-right"
+                  />
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Modi, minus quae. Nisi laboriosam dolores rem obcaecati
@@ -86,6 +103,10 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                   <h3 onClick={() => routeChange('/enterprise/cable-service')}>
                     IOT
                   </h3>
+                  <ChevronRightIcon
+                    className="chevron-right"
+                    onClick={() => routeChange('/enterprise/cable-service')}
+                  />
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Modi, minus quae. Nisi laboriosam dolores rem obcaecati

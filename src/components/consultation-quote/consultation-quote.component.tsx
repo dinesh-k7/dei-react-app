@@ -366,15 +366,39 @@ const ConsultationQuoteComponent: React.FC<any> = (
                   <p className="para-normal">{service.description_one}</p>
                   <span>${service.price.toFixed(2)}</span>
                 </div>
-                <div className="package-description-two">
-                  <p className="para-normal">{service.description_two}</p>
-                </div>
-                <div className="package-description-three">
-                  <p className="para-normal">{service.description_three}</p>
-                </div>
-                <div className="package-description-four">
-                  <p className="para-normal">{service.description_four}</p>
-                </div>
+                {service.features && service.features.length ? (
+                  <div className="package-description-one">
+                    <p className="para-normal">Incuded:</p>
+                    <ul>
+                      {service.features.map((feature, idx) => {
+                        return <li key={idx}>{feature}</li>;
+                      })}
+                    </ul>
+                  </div>
+                ) : (
+                  ''
+                )}
+                {service.description_two ? (
+                  <div className="package-description-two">
+                    <p className="para-normal">{service.description_two}</p>
+                  </div>
+                ) : (
+                  ''
+                )}
+                {service.description_three ? (
+                  <div className="package-description-three">
+                    <p className="para-normal">{service.description_three}</p>
+                  </div>
+                ) : (
+                  ''
+                )}
+                {service.description_four ? (
+                  <div className="package-description-four">
+                    <p className="para-normal">{service.description_four}</p>
+                  </div>
+                ) : (
+                  ''
+                )}
               </div>
             ))}
         </div>
