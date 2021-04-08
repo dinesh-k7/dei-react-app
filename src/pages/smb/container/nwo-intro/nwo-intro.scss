@@ -8,13 +8,16 @@
   margin-top: 96px;
   padding-bottom: 72px;
   height: 100vh;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0px auto;
   .hero-mobile-image {
     display: none;
   }
   .hero-subtitle-container {
     padding-bottom: 8px;
     h3 {
-      padding-right: var(--font-size7);
+      padding-right: 8px;
     }
   }
   .hero-content {

@@ -18,7 +18,7 @@ const Header: React.FC<any> = (props: any): ReactElement => {
 
   const HideOnScroll = (props: any) => {
     const { children } = props;
-    const trigger = useScrollTrigger({ disableHysteresis: true });
+    const trigger = useScrollTrigger({ disableHysteresis: false });
 
     return (
       <Slide appear={false} direction="down" in={!trigger}>
@@ -31,6 +31,8 @@ const Header: React.FC<any> = (props: any): ReactElement => {
     const { location } = history;
     if (location && location.key) {
       history.goBack();
+    } else {
+      history.push('/');
     }
   };
 
@@ -42,8 +44,8 @@ const Header: React.FC<any> = (props: any): ReactElement => {
         <AppBar
           style={{
             backgroundColor: '#fff',
-            boxShadow:
-              '0px 1px 2px -1px rgb(0 0 0 / 20%), 0px 1px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)',
+            boxShadow: 'none',
+            borderBottom: '1px solid #2c3e50',
           }}
         >
           <Toolbar>

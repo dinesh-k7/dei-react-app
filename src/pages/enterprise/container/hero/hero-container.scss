@@ -6,7 +6,11 @@
   }
   .hero-subtitle-container {
     h3 {
-      padding-right: var(--font-size7);
+      padding-right: 8px !important;
+      cursor: pointer;
+    }
+    .chevron-right {
+      margin-top: 32px;
       cursor: pointer;
     }
     .enterprise-service {
@@ -30,5 +34,8 @@
 @include respond-below(sm) {
   .hero-mobile-image {
     display: block !important;
+  }
+  .chevron-right {
+    margin-top: 24px !important;
   }
 }
