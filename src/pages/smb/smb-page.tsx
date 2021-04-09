@@ -2,7 +2,7 @@ import React, { Fragment, ReactElement, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import SmbIntroContainer from './container/smb-intro/smb-intro';
-import SiteSecurityIntro from './container/site-security-intro/site-security-intro';
+import SecureIntro from './container/secure-intro/secure-intro';
 import './smb-page.scss';
 import { constants } from '../../constants';
 import WdIntro from './container/wd-intro/wd-intro';
@@ -56,6 +56,7 @@ const LandingPage: React.FC = (): ReactElement => {
     <Fragment>
       <div className="smb-page-grid">
         <SmbIntroContainer onClickHandler={onClickHandler} />
+        {/* <SecureIntro /> */}
       </div>
       <div className="landing-border"></div>
     </Fragment>

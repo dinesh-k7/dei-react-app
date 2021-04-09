@@ -24,7 +24,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
       </div>
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Site Security</h1>
+          <h1>Site Sentinels™️</h1>
           <div className="hero-mobile-image">
             <img src={heroImage} alt="Site Security Image" />
           </div>

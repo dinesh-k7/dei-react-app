@@ -21,7 +21,7 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
     >
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Data Security</h1>
+          <h1>Data Sentinels™️</h1>
           <div className="hero-mobile-image">
             <img src={heroImage} alt="Data Security Image" />
           </div>

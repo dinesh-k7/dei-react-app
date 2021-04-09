@@ -163,7 +163,11 @@ const CartContainer: React.FC = (props: any): ReactElement => {
           <CheckCircleIcon style={{ color: green[500], fontSize: 48 }} />
           <h3>Payment Complete</h3>
           <p className="success-description">
-            Your payment is received and we will contact you soon.
+            Thank you for your purchase! We are the common denominator! <br />
+            Sincerely, <br />
+            <br />
+            Mr. NWO <br />
+            Technology Cultural Ataché
           </p>
           <h4>Order Number</h4>
           <span className="order-number">{paymentId}</span>
