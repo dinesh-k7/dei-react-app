@@ -3,8 +3,6 @@
   display: grid;
   grid-column: 1/-1;
   padding: 0px 104px;
-  grid-template-columns: 1fr 1fr;
-  height: 100vh;
   grid-row: 2/3;
   section {
     padding-top: 72px;
@@ -23,12 +21,6 @@
   }
 }
 
-@include respond-above(sm) {
-  .smb-page-grid {
-    align-items: center !important;
-  }
-}
-
 @include respond-below(sm) {
   .smb-page-grid {
     grid-column: 1/-1;
@@ -39,6 +31,7 @@
       padding-top: 0px;
     }
     .smb-intro {
+      grid-template-columns: 1fr;
       padding-top: 32px;
     }
 

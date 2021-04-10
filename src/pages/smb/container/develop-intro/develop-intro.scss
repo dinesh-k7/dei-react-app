@@ -7,14 +7,14 @@
   padding: 0px 104px;
   grid-row: 2/3;
 }
-.wd-intro {
+.develop-intro {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
-  padding: 64px 0px;
-  grid-row: 2/3;
-  min-height: 100vh;
+  padding: 64px 0;
   align-items: center;
+  margin-top: 96px;
+  min-height: 100vh;
   .hero-mobile-image {
     display: none;
   }
@@ -63,7 +63,7 @@
 }
 
 @include respond-between(sm, md) {
-  .wd-intro {
+  .develop-intro {
     height: auto;
   }
   .wd-page {
@@ -86,7 +86,7 @@
     grid-column: 1/-1 !important;
     padding: 8px;
   }
-  .wd-intro {
+  .develop-intro {
     height: auto;
     margin-top: auto !important;
     grid-gap: 0px !important;

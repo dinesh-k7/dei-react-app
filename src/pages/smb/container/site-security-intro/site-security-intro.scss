@@ -5,7 +5,8 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
   height: 100vh;
-  padding: 48px 0px;
+  padding: 64px 0px;
+  align-items: center;
   .hero-subtitle-container {
     display: grid !important;
     padding-right: 8px !important;
@@ -59,6 +60,7 @@
 @include respond-below(sm) {
   .site-security-intro {
     height: auto;
+    grid-gap: 0px;
     .hero-content {
       display: grid;
     }

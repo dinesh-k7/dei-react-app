@@ -8,6 +8,7 @@ import smbMobileImage from '../../../../assets/images/smb_title_mobile.svg';
 
 import './smb-intro.scss';
 import { useHistory } from 'react-router-dom';
+import { constants } from '../../../../constants';
 
 const SmbIntroContainer: React.FC<any> = ({
   onClickHandler,
@@ -30,35 +31,37 @@ const SmbIntroContainer: React.FC<any> = ({
     }
   };
   return (
-    <Fragment>
-      <div className="smb-intro">
-        <div className="smb-container">
-          <div className="smb-intro-image">
-            <img className="coral-blob" src={smbBlobImage} alt="Coral vector" />
-            <img
-              src={smbImage}
-              className="smb-title"
-              alt="Small Medium sized business"
-            />
-            <img
-              src={smbMobileImage}
-              className="smb-mobile-title"
-              alt="Small Medium sized business"
-            />
-          </div>
-          <p className="smb-intro-text">
-            Digital optimization only a few clicks away
-          </p>
+    <section className="smb-intro">
+      <div className="smb-container">
+        <div className="smb-intro-image">
+          <img className="coral-blob" src={smbBlobImage} alt="Coral vector" />
+          <img
+            src={smbImage}
+            className="smb-title"
+            alt="Small Medium sized business"
+          />
+          <img
+            src={smbMobileImage}
+            className="smb-mobile-title"
+            alt="Small Medium sized business"
+          />
         </div>
+        <p className="smb-intro-text">
+          Digital optimization only a few clicks away
+        </p>
       </div>
+
       <div className="smb-services">
         <div className="service-one">
           <div className="ds-service">
-            <img src={dsBlobImage} onClick={() => routeChange('/secure')} />
+            <img
+              src={dsBlobImage}
+              onClick={() => onClickHandler(constants.SMB.SECURE)}
+            />
             <span
               onMouseOver={() => onMouseOverHandler(dsRef)}
               onMouseOut={() => onMouseOutHandler(dsRef)}
-              onClick={() => routeChange('/secure')}
+              onClick={() => onClickHandler(constants.SMB.SECURE)}
               className="service-title"
             >
               Secure
@@ -73,9 +76,12 @@ const SmbIntroContainer: React.FC<any> = ({
         </div>
         <div className="service-two">
           <div className="wd-service">
-            <img src={wdBlobImage} onClick={() => routeChange('/develop')} />
+            <img
+              src={wdBlobImage}
+              onClick={() => onClickHandler(constants.SMB.DEVELOP)}
+            />
             <span
-              onClick={() => routeChange('/develop')}
+              onClick={() => onClickHandler(constants.SMB.DEVELOP)}
               onMouseOver={() => onMouseOverHandler(wdRef)}
               onMouseOut={() => onMouseOutHandler(wdRef)}
               className="service-title"
@@ -92,7 +98,7 @@ const SmbIntroContainer: React.FC<any> = ({
           </div>
         </div>
       </div>
-    </Fragment>
+    </section>
   );
 };
 
