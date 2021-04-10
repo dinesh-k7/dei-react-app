@@ -139,6 +139,8 @@ export const constants = {
     NWO: 'NWO',
     SEO: 'SEO',
     SITE: 'SITE',
+    DEVELOP: 'DEVELOP',
+    SECURE: 'SECURE',
   },
   STARTUP: 'STARTUP',
   STARTUPKIT: 'STARTUPKIT',

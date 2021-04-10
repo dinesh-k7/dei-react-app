@@ -36,12 +36,12 @@ const StartUpPage: React.FC = (): ReactElement => {
   };
   return (
     <Fragment>
-      <div className="startup-page-grid">
+      <section className="startup-page-grid">
         <StartupIntroContainer onClickHandler={onClickHandler} />
         <StartupKitIntro inputRef={startupKitRef} />
         <NWOIntro inputRef={NWORef} />
         <BrandingIntro inputRef={brandingRef} />
-      </div>
+      </section>
       <div className="landing-border"></div>
     </Fragment>
   );

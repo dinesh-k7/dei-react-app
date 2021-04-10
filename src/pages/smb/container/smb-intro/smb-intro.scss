@@ -1,42 +1,47 @@
 @import '../../../../assets/scss/abstracts/mixins';
 
 .smb-intro {
-  .coral-blob {
-    width: 144px;
-    height: 136px;
-    margin-top: -16px;
-  }
-
-  .smb-mobile-title {
-    display: none;
-  }
-
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  grid-gap: 32px;
+  align-items: center;
+  grid-row: 2/-1;
   .smb-container {
     display: grid;
-  }
-  .smb-intro-image {
-    display: grid;
-    grid-template-columns: 16px 1fr;
-    height: auto;
+    .coral-blob {
+      width: 144px;
+      height: 136px;
+      margin-top: -16px;
+    }
+
+    .smb-mobile-title {
+      display: none;
+    }
+
+    .smb-intro-image {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      height: auto;
+    }
+
+    .smb-intro-text {
+      color: var(--font-color);
+      font-size: var(--font-size3);
+      font-family: 'OpenSansRegular', sans-serif;
+      font-weight: normal !important;
+      font-style: normal;
+      margin-left: 16px;
+      padding-top: 32px;
+    }
   }
 
-  .smb-intro-text {
-    color: var(--font-color);
-    font-size: var(--font-size3);
-    font-family: 'OpenSansRegular', sans-serif;
-    font-weight: normal !important;
-    font-style: normal;
-    margin-left: 16px;
-    padding-top: 32px;
+  .smb-services {
+    .service-title {
+      font-family: 'MontFont', sans-serif !important;
+    }
   }
 }
-
-.smb-services {
-  .service-title {
-    font-family: 'MontFont', sans-serif !important;
-  }
-}
-
 @include respond-between(md, lg) {
   .smb-intro-image {
     img {
@@ -57,7 +62,7 @@
 @include respond-between(sm, md) {
   .smb-page-grid {
     height: auto !important;
-    .smb-intro {
+    .smb-container {
       grid-template-columns: 1fr;
       height: auto;
     }
@@ -170,7 +175,7 @@
 }
 
 @include respond-below(sm) {
-  .smb-intro {
+  .smb-container {
     grid-template-columns: 1fr !important;
 
     .smb-intro-image {

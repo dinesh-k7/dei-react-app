@@ -5,7 +5,8 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
   height: 100vh;
-  padding-top: 48px;
+  align-items: center;
+  padding: 64px 0px;
   .hero-subtitle-container {
     .features:nth-child(1) {
       padding-bottom: 8px;
