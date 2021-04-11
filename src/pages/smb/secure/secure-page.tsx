@@ -9,7 +9,7 @@ const SecurePage: React.FC = (): ReactElement => {
   return (
     <Fragment>
       <div className="secure-page-grid">
-        <HeroContainer />
+        {/* <HeroContainer /> */}
         <DataSecurityIntro />
         <SiteSecurityIntro />
       </div>

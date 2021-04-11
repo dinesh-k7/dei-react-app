@@ -15,6 +15,9 @@ import { constants } from '../../../constants';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { green } from '@material-ui/core/colors';
 import LoaderComponent from '../../common/loader/loader.component';
+import CartSuccessImage from '../../../assets/images/cart_success_image.svg';
+import CartErrorImage from '../../../assets/images/cart_error_image.svg';
+import { useHistory } from 'react-router-dom';
 
 const sumPropsValue = (items, prop) => items.reduce((a, b) => a + b[prop], 0);
 
@@ -29,6 +32,8 @@ const CartContainer: React.FC = (props: any): ReactElement => {
   useEffect(() => {
     props.fetchAllCartItems();
   }, []);
+
+  const history = useHistory();
 
   const removeItem = (product: IProductDetails) => {
     props.removeFromCart(product);
@@ -70,19 +75,23 @@ const CartContainer: React.FC = (props: any): ReactElement => {
     <Fragment>
       {products && products.length ? (
         <div className="cart-container">
+          <div className="cart-title horizontal-line">
+            <h1>Shopping Cart</h1>
+          </div>
           <div className="cart-items">
+            <div className="cart-header">
+              <div>Name</div>
+              <div>Price</div>
+              <div>Quantity</div>
+              <div></div>
+            </div>
+
             {products.map((product, idx) => {
               return (
                 <div className="cart-item" key={idx}>
-                  <div className="cart-item-detail">
-                    {/* <p className="product-name">{product.section}</p> */}
-                    <p className="package-description">{product.description}</p>
-                    <p className="product-quantity">
-                      Quantity: {product.quantity}
-                    </p>
-                    <p className="product-price">
-                      Price: ${product.price.toFixed(2)}
-                    </p>
+                  <div className="item-name">
+                    {product.description}
+
                     {product.yearlyPrice ? (
                       <div className="yearly-price">
                         <input
@@ -100,32 +109,41 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                       ''
                     )}
                   </div>
-                  <div className="cart-button-container">
-                    <button onClick={() => removeItem(product)}>Remove</button>
+                  <div className="item-price">${product.price.toFixed(2)}</div>
+                  <div className="item-quantity">{product.quantity}</div>
+                  <div className="item-action">
+                    <span onClick={() => removeItem(product)}>X</span>
                   </div>
                 </div>
               );
             })}
+            <div style={{ borderBottom: '1px solid #000' }}></div>
           </div>
 
-          <div className="cart-total">
-            <div className="cart-total-items">
-              Total Items:
-              <p>
-                <b>{products.length}</b>
-              </p>
+          <div className="cart-summary">
+            <div className="cart-summary-header">
+              <div>Order Summary</div>
+              <div> {products.length} items</div>
             </div>
-            <div className="cart-total-amount">
-              Total Amount:
-              <p>
-                <b> ${sumPropsValue(products, 'price').toFixed(2)}</b>
-              </p>
+            {products.map((product, idx) => {
+              return (
+                <div className="cart-summary-item" key={product.id}>
+                  <div>{product.description}</div>
+                  <div>${product.price.toFixed(2)}</div>
+                </div>
+              );
+            })}
+            <div className="cart-summary-item">
+              <div className="cart-total">TOTAL</div>
+              <div>${sumPropsValue(products, 'price').toFixed(2)}</div>
             </div>
-            <br />
-            <div>
+            <div className="paypal-button">
               <PayPalButton
                 amount="0.01"
-                // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+                shippingPreference="NO_SHIPPING"
+                // onApprove={() => {
+                //   console.log('approve');
+                // }}
                 onSuccess={(details, data) => {
                   props.emptyCart();
                   updatePaymentStatus(details, data.orderID);
@@ -148,7 +166,6 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                 }}
               />
             </div>
-            <hr />
           </div>
         </div>
       ) : !isPaymentSuccess ? (
@@ -158,19 +175,58 @@ const CartContainer: React.FC = (props: any): ReactElement => {
       ) : (
         ''
       )}
+
       {isPaymentSuccess ? (
         <div className="payment-success">
-          <CheckCircleIcon style={{ color: green[500], fontSize: 48 }} />
-          <h3>Payment Complete</h3>
-          <p className="success-description">
-            Thank you for your purchase! We are the common denominator! <br />
-            Sincerely, <br />
-            <br />
-            Mr. NWO <br />
-            Technology Cultural Ataché
-          </p>
-          <h4>Order Number</h4>
-          <span className="order-number">{paymentId}</span>
+          <div>
+            <img src={CartSuccessImage} alt={`Payment success image`} />
+          </div>
+          <div className="payment-success-message">
+            <h3>Success</h3>
+            <span>Order Number: {paymentId} 12121212 </span>
+
+            <p className="success-description">
+              Thank you for your purchase! We are the common denominator! <br />
+              Sincerely, <br />
+              <br />
+              Mr. NWO <br />
+              Technology Cultural Ataché
+            </p>
+            <button
+              type="button"
+              className="btn-branding"
+              onClick={() => history.push('/')}
+            >
+              Back
+            </button>
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+
+      {isPaymentFailed ? (
+        <div className="payment-error">
+          <div>
+            <img src={CartErrorImage} alt={`Payment error image`} />
+          </div>
+          <div className="payment-error-message">
+            <h3>Something Went Wrong</h3>
+
+            <p className="error-description">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam
+              alias nisi doloribus. Quod ut tempore nesciunt beatae magni, atque
+              facere voluptates quaerat saepe laboriosam dolores. Harum, sit
+              eius? Fugiat, eos.
+            </p>
+            <button
+              type="button"
+              className="btn-branding"
+              onClick={() => history.push('/cart-page')}
+            >
+              Try Again
+            </button>
+          </div>
         </div>
       ) : (
         ''

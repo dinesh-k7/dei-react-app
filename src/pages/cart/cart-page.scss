@@ -5,14 +5,22 @@
   display: grid;
   grid-column: 1/-1;
   padding-bottom: 32px;
+
   .cart-title {
-    justify-self: center;
+    justify-self: start;
+    font-size: 24px !important;
+  }
+  .horizontal-line {
+    border-bottom: 1px solid #000;
+    grid-column: 1/-1;
   }
 }
 
 @include respond-above(md) {
   .cart-page-grid {
     padding: 0px 104px 104px 104px;
+    min-height: 100vh;
+    align-items: center;
   }
 }
 
@@ -25,8 +33,22 @@
 @include respond-below(sm) {
   .cart-page-grid {
     grid-column: 1/-1 !important;
+    .cart-title {
+      h1 {
+        margin-left: 8px;
+      }
+    }
     .cart-container {
       grid-template-columns: 1fr !important;
     }
+  }
+}
+
+@include respond-above(lg) {
+  .cart-page-grid {
+    max-width: 1400px;
+    width: 100%;
+    margin: auto;
+    padding: 0px;
   }
 }

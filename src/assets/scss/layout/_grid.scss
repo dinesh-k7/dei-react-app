@@ -157,7 +157,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    width: 97vw;
+    width: 100vw;
   }
   .sticky-content {
     display: grid;
@@ -228,7 +228,7 @@
     }
 
     .form-container {
-      padding: 0px !important;
+      padding: 0px 8px 0px 0px !important;
       h1,
       h4 {
         padding-left: 10px !important;
