@@ -10,7 +10,7 @@ const DevelopPage: React.FC = (): ReactElement => {
   return (
     <Fragment>
       <div className="develop-page-grid">
-        <HeroContainer />
+        {/* <HeroContainer /> */}
         <BrandingIntro />
         <WdIntro />
         <SeoIntro />
