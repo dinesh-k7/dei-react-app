@@ -364,7 +364,12 @@ const ConsultationQuoteComponent: React.FC<any> = (
                 </div>
                 <div className="package-description-one">
                   <p className="para-normal">{service.description_one}</p>
-                  <span>${service.price.toFixed(2)}</span>
+                  <span>
+                    $
+                    {typeof service.price === 'string'
+                      ? service.price
+                      : service.price.toFixed(2)}
+                  </span>
                 </div>
                 {service.features && service.features.length ? (
                   <div className="package-description-one">

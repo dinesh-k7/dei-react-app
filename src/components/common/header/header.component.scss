@@ -20,11 +20,13 @@
     grid-template-columns: 1fr 80px;
     align-items: center;
     .cart-icon {
+      display: flex;
+
       justify-self: end;
+
       cursor: pointer;
       span {
-        position: absolute;
-        margin-top: 4px;
+        align-self: center;
         font-size: 1rem;
       }
     }

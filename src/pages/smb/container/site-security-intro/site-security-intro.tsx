@@ -74,7 +74,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               <img src={serviceBlue} alt="Background image" />
               <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/ssl-managed">
-                  Managed SSL Service
+                  SSL Service
                 </a>
               </h3>
               <a href="https://www.nwohub.com/products/ssl-managed">
