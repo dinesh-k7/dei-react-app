@@ -137,10 +137,8 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
             </div>
             <div className="hero-description">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloribus est cum inventore unde ad consequuntur facere
-                voluptatibus. Perferendis iusto magnam doloremque obcaecati a
-                non, veritatis rerum! Atque asperiores qui nostrum.
+                DEI™ is leading provider of SD-WAN, We address your concerns
+                about security, redundancy, quality of experience, and more.
               </p>
             </div>
           </Fragment>

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import LaunchIcon from '@material-ui/icons/Launch';
 
@@ -24,7 +24,11 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
       </div>
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Site Sentinels™️</h1>
+          <Fragment>
+            <h1>
+              Site Sentinels<sup>™️</sup>
+            </h1>
+          </Fragment>
           <div className="hero-mobile-image">
             <img src={heroImage} alt="Site Security Image" />
           </div>
@@ -74,7 +78,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               <img src={serviceBlue} alt="Background image" />
               <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/ssl-managed">
-                  Managed SSL Service
+                  SSL Service
                 </a>
               </h3>
               <a href="https://www.nwohub.com/products/ssl-managed">

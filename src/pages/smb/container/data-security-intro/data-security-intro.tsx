@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
@@ -21,7 +21,11 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
     >
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Data Sentinels™️</h1>
+          <Fragment>
+            <h1>
+              Data Sentinels<sup>™️</sup>
+            </h1>
+          </Fragment>
           <div className="hero-mobile-image">
             <img src={heroImage} alt="Data Security Image" />
           </div>

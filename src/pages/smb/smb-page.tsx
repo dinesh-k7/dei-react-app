@@ -1,8 +1,8 @@
 import React, { Fragment, ReactElement, useRef } from 'react';
 
 import SmbIntroContainer from './container/smb-intro/smb-intro';
-import SecureIntro from './container/secure-intro/secure-intro';
-import DevelopIntro from './container/develop-intro/develop-intro';
+// import SecureIntro from './container/secure-intro/secure-intro';
+// import DevelopIntro from './container/develop-intro/develop-intro';
 import './smb-page.scss';
 import { constants } from '../../constants';
 
@@ -32,8 +32,8 @@ const LandingPage: React.FC = (): ReactElement => {
     <Fragment>
       <section className="smb-page-grid">
         <SmbIntroContainer onClickHandler={onClickHandler} />
-        <SecureIntro inputRef={secureRef} />
-        <DevelopIntro inputRef={developRef} />
+        {/* <SecureIntro inputRef={secureRef} />
+        <DevelopIntro inputRef={developRef} /> */}
       </section>
       <div className="landing-border"></div>
     </Fragment>

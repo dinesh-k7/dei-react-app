@@ -22,6 +22,7 @@ import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
 import { addToCart } from '../../actions/cart';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
+import { useHistory } from 'react-router-dom';
 
 const ConsultationQuoteComponent: React.FC<any> = (
   props: any,
@@ -59,6 +60,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
   const { register, handleSubmit, errors, control } = useForm();
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
   const [captcha, setCaptcha] = useState({});
+  const history = useHistory();
   const {
     captchaValue,
     isLeadDataSent,
@@ -110,6 +112,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
               isSendMailError: false,
             };
           });
+          history.push('cart-page');
         },
         () => {
           setQuoteState((prevState) => {
@@ -364,7 +367,12 @@ const ConsultationQuoteComponent: React.FC<any> = (
                 </div>
                 <div className="package-description-one">
                   <p className="para-normal">{service.description_one}</p>
-                  <span>${service.price.toFixed(2)}</span>
+                  <span>
+                    $
+                    {typeof service.price === 'string'
+                      ? service.price
+                      : service.price.toFixed(2)}
+                  </span>
                 </div>
                 {service.features && service.features.length ? (
                   <div className="package-description-one">

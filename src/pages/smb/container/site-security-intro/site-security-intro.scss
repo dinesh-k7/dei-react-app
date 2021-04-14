@@ -30,8 +30,14 @@
 
   .hero-content {
     .hero-title {
+      h1 {
+        sup {
+          font-size: 24px !important;
+        }
+      }
       h3 {
         margin: 0px !important;
+
         a {
           text-decoration: none;
           color: var(--font-color);
