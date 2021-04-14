@@ -19,6 +19,7 @@ import BrandingDetailContainer from '../container/branding-detail/branding-detai
 import { industries } from '../../constants/industry-option';
 import { addToCart } from '../../actions/cart';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
+import { useHistory } from 'react-router-dom';
 
 const GetQuoteComponent: React.FC<any> = (
   props: IGetQuoteProps,
@@ -53,7 +54,7 @@ const GetQuoteComponent: React.FC<any> = (
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
   const [size, setCompanySize] = useState(0);
   const [captcha, setCaptcha] = useState({});
-
+  const history = useHistory();
   let companysize = '';
 
   //Add product to cart based on the frompage
@@ -177,6 +178,8 @@ const GetQuoteComponent: React.FC<any> = (
               isSendMailError: false,
             };
           });
+
+          history.push('cart-page');
         },
         () => {
           setQuoteState((prevState) => {

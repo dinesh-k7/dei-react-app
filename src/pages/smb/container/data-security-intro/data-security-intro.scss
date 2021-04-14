@@ -25,6 +25,11 @@
   .hero-content {
     .hero-title {
       display: grid;
+      h1 {
+        sup {
+          font-size: 24px !important;
+        }
+      }
       h3 {
         margin: 0px !important;
         a {
