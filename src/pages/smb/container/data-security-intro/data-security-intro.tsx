@@ -2,7 +2,6 @@ import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
-import heroMobileImage from '../../../../assets/images/ds_mobile.svg';
 import serviceBlue from '../../../../assets/images/service_blue.svg';
 import './data-security-intro.scss';
 

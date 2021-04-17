@@ -1,3 +1,4 @@
+import { Dispatch } from 'redux';
 import { IProductDetails } from '../interfaces/cart-state.model';
 
 export const ADD_TO_CART = 'ADD_TO_CART';
@@ -5,7 +6,7 @@ export const GET_CART_ITEMS = 'GET_CART_ITEMS';
 export const UPDATE_CART = 'UPDATE_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const EMPTY_CART = 'EMPTY_CART';
-
+//eslint-disable react/explicit-module-boundary-types
 const addToCartAction = (product: IProductDetails[]): any => ({
   type: ADD_TO_CART,
   product,
@@ -31,8 +32,8 @@ export const getCartItems = (): any => ({
 });
 
 export const addToCart = (product: IProductDetails[]) => (
-  dispatch,
-  getState,
+  dispatch: Dispatch,
+  getState: any,
 ): any => {
   const [pd] = product;
   const {

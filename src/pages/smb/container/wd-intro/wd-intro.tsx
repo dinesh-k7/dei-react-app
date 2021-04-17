@@ -19,7 +19,7 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
   const { fromPage } = props;
   return (
     <section
-      className={fromPage ? 'wd-intro wd-page' : 'wd-intro'}
+      className={fromPage === 'wd' ? 'wd-intro wd-page' : 'wd-intro'}
       ref={props.inputRef}
     >
       <div className="hero-content">

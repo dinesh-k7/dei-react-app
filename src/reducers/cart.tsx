@@ -6,7 +6,7 @@ import {
   EMPTY_CART,
 } from '../actions/cart';
 import { InitialState } from '../interfaces/cart-state.model';
-
+//@typescript-eslint/explicit-module-boundary-types
 const initialState: InitialState = {
   products: [],
   quantity: 0,

@@ -12,9 +12,6 @@ import {
 } from '../../../actions/cart';
 import { IProductDetails } from '../../../interfaces/cart-state.model';
 import { constants } from '../../../constants';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import { green } from '@material-ui/core/colors';
-import LoaderComponent from '../../common/loader/loader.component';
 import CartSuccessImage from '../../../assets/images/cart_success_image.svg';
 import CartErrorImage from '../../../assets/images/cart_error_image.svg';
 import { useHistory } from 'react-router-dom';
@@ -53,7 +50,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
   //Update payment status in state
 
   const updatePaymentStatus = (paymentDetail, orderId) => {
-    const { status, purchase_units, payer } = paymentDetail;
+    const { status, payer } = paymentDetail;
     if (status === constants.COMPLETED) {
       const name = payer && payer.name && payer.name.given_name;
       setPaymentState((prevState) => {
@@ -69,7 +66,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
   };
 
   const { products } = props;
-  const { isPaymentSuccess, paymentId, isPaymentFailed, name } = paymentState;
+  const { isPaymentSuccess, paymentId, isPaymentFailed } = paymentState;
 
   return (
     <Fragment>
@@ -125,7 +122,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
               <div>Order Summary</div>
               <div> {products.length} items</div>
             </div>
-            {products.map((product, idx) => {
+            {products.map((product) => {
               return (
                 <div className="cart-summary-item" key={product.id}>
                   <div>{product.description}</div>
@@ -214,10 +211,10 @@ const CartContainer: React.FC = (props: any): ReactElement => {
             <h3>Something Went Wrong</h3>
 
             <p className="error-description">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aperiam
-              alias nisi doloribus. Quod ut tempore nesciunt beatae magni, atque
-              facere voluptates quaerat saepe laboriosam dolores. Harum, sit
-              eius? Fugiat, eos.
+              thank you for joining us in manifesting digital destiny. Oops wait
+              a minute somethings not quite right please resubmit your order.
+              <br />
+              Thank you!
             </p>
             <button
               type="button"

@@ -1,18 +1,11 @@
 import React, { Fragment, ReactElement } from 'react';
-import { useHistory } from 'react-router-dom';
 import LaunchIcon from '@material-ui/icons/Launch';
 
 import heroImage from '../../../../assets/images/website_security.svg';
-import serviceBlue from '../../../../assets/images/service_blue.svg';
+import serviceBlue from '../../../../assets/images/website_blob.svg';
 import './site-security-intro.scss';
 
 const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
-  const history = useHistory();
-
-  const routeChange = () => {
-    history.push('data-security');
-  };
-
   return (
     <section
       className="site-security-intro"
@@ -43,7 +36,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               <a href="https://www.nwohub.com/products/website-security">
                 <LaunchIcon
                   style={{
-                    color: '#42b9f8',
+                    color: '#9c47ed',
                     fontSize: 34,
                     paddingTop: 12,
                     cursor: 'pointer',
@@ -62,7 +55,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               <a href="https://www.nwohub.com/products/ssl">
                 <LaunchIcon
                   style={{
-                    color: '#42b9f8',
+                    color: '#9c47ed',
                     fontSize: 34,
                     paddingTop: 12,
                     cursor: 'pointer',
@@ -84,7 +77,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               <a href="https://www.nwohub.com/products/ssl-managed">
                 <LaunchIcon
                   style={{
-                    color: '#42b9f8',
+                    color: '#9c47ed',
                     fontSize: 34,
                     paddingTop: 12,
                     cursor: 'pointer',
@@ -108,7 +101,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               <a href="https://www.nwohub.com/products/website-backup">
                 <LaunchIcon
                   style={{
-                    color: '#42b9f8',
+                    color: '#9c47ed',
                     fontSize: 34,
                     paddingTop: 12,
                     cursor: 'pointer',

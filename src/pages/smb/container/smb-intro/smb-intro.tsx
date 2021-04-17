@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement, useRef } from 'react';
+import React, { ReactElement, useRef } from 'react';
 
 import smbImage from '../../../../assets/images/smb_title.svg';
 import smbBlobImage from '../../../../assets/images/smb_blob.svg';
@@ -7,7 +7,6 @@ import wdBlobImage from '../../../../assets/images/wd_blob.svg';
 import smbMobileImage from '../../../../assets/images/smb_title_mobile.svg';
 
 import './smb-intro.scss';
-import { useHistory } from 'react-router-dom';
 import { constants } from '../../../../constants';
 
 const SmbIntroContainer: React.FC<any> = ({
@@ -15,10 +14,6 @@ const SmbIntroContainer: React.FC<any> = ({
 }: any): ReactElement => {
   const dsRef = useRef(null);
   const wdRef = useRef(null);
-  const history = useHistory();
-  const routeChange = (url) => {
-    history.push(url);
-  };
 
   const onMouseOverHandler = (ref: any) => {
     if (ref && ref.current) {
@@ -61,7 +56,7 @@ const SmbIntroContainer: React.FC<any> = ({
             <span
               onMouseOver={() => onMouseOverHandler(dsRef)}
               onMouseOut={() => onMouseOutHandler(dsRef)}
-              onClick={() => routeChange('secure')}
+              onClick={() => onClickHandler(constants.SMB.SECURE)}
               className="service-title"
             >
               Secure
@@ -81,7 +76,7 @@ const SmbIntroContainer: React.FC<any> = ({
               onClick={() => onClickHandler(constants.SMB.DEVELOP)}
             />
             <span
-              onClick={() => routeChange('develop')}
+              onClick={() => onClickHandler(constants.SMB.DEVELOP)}
               onMouseOver={() => onMouseOverHandler(wdRef)}
               onMouseOut={() => onMouseOutHandler(wdRef)}
               className="service-title"

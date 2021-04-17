@@ -20,6 +20,12 @@ import CartPage from '../../pages/cart/cart-page';
 import WebsiteDevelopmentPage from '../../pages/website-development/website-development-page';
 import SecurePage from '../../pages/smb/secure/secure-page';
 import DevelopPage from '../../pages/smb/develop/develop-page';
+import SecurityIntro from '../../pages/enterprise/container/security-intro/security-intro';
+import DataConnectivityIntro from '../../pages/enterprise/container/data-connectivity-intro/data-connectivity-intro';
+import CloudIntro from '../../pages/enterprise/container/cloud-intro/cloud-intro';
+import IOTIntro from '../../pages/enterprise/container/iot-intro/iot-intro';
+import VoiceIntro from '../../pages/enterprise/container/voice-intro/voice-intro';
+import PSIntro from '../../pages/enterprise/container/ps-intro/ps-intro';
 
 import '../../assets/scss/styles.scss';
 
@@ -53,7 +59,7 @@ const App: React.FC = () => {
         <Route path="/enterprise/sdwan-service">
           <SDWANServicePage />
         </Route>
-        <Route path="/enterprise/cloud-service">
+        <Route path="/enterprise/cloud-quote">
           <CloudServicePage />
         </Route>
         <Route path="/enterprise/cable-service">
@@ -76,6 +82,24 @@ const App: React.FC = () => {
         </Route>
         <Route path="/secure">
           <SecurePage />
+        </Route>
+        <Route path="/enterprise/security-service">
+          <SecurityIntro />
+        </Route>
+        <Route path="/enterprise/data-connectivity-service">
+          <DataConnectivityIntro />
+        </Route>
+        <Route path="/enterprise/cloud-service">
+          <CloudIntro />
+        </Route>
+        <Route path="/enterprise/iot-service">
+          <IOTIntro />
+        </Route>
+        <Route path="/enterprise/voice-service">
+          <VoiceIntro />
+        </Route>
+        <Route path="/enterprise/professional-service">
+          <PSIntro />
         </Route>
       </Switch>
       <Footer />

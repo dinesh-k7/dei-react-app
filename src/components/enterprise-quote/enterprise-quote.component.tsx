@@ -149,24 +149,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
     isLeadDataSent,
     isFormSubmitted,
     isSendMailError,
-    name,
-    services,
   } = quoteState;
-
-  const unSelectService = (name: string) => {
-    const filterService = services.find((keyword) => keyword.name === name);
-
-    if (filterService) {
-      filterService.active = !filterService?.active;
-    }
-
-    setQuoteState((prevState) => {
-      return {
-        ...prevState,
-        services,
-      };
-    });
-  };
 
   if (isLeadDataSent) {
     resetCaptcha();
@@ -174,12 +157,6 @@ const EnterpriseQuoteComponent: React.FC<any> = (
 
   const classes = useStyles();
   const errorKeys = Object.keys(errors);
-  const applicableService =
-    services &&
-    services.length &&
-    services.filter((s) => {
-      return s.title && s.title.indexOf(fromPage);
-    });
   return (
     <section className="enterprise-quote-section">
       {isLeadDataSent && <SnackBarComponent isOpen={true} isError={false} />}
@@ -387,24 +364,6 @@ const EnterpriseQuoteComponent: React.FC<any> = (
             <li>A well defined solution to your communications gap.</li>
             <li>Contact from a senior account executive within 48 hours.</li>
           </ul>
-        </div>
-        <div className="additional-services">
-          <h4>Please select additional services that are of interest:</h4>
-          <div className="enterprise-package">
-            {applicableService &&
-              applicableService.length &&
-              applicableService.map((service) => (
-                <span
-                  className={
-                    service.active ? 'service-active' : 'service-inactive'
-                  }
-                  onClick={() => unSelectService(service.name)}
-                  key={service.id}
-                >
-                  {service.name}
-                </span>
-              ))}
-          </div>
         </div>
         {!isLeadDataSent && (
           <button

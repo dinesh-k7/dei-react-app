@@ -1,15 +1,10 @@
-import React, { Fragment, ReactElement, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
 import ReCAPTCHA from 'react-google-recaptcha';
 
-import {
-  constants,
-  messages,
-  siteKey,
-  CONSULTATION_PACKAGES,
-} from '../../constants';
+import { siteKey, CONSULTATION_PACKAGES } from '../../constants';
 
 import MultiText from '../common/form-element/multi-text';
 import SelectBox from '../common/form-element/select-box';
@@ -18,8 +13,8 @@ import '../get-quote/get-quote.component.scss';
 import './wd-quote.component.scss';
 import { useStyles } from '../../utils';
 import { sendMail } from '../effects';
-import ErrorMessageContainer from '../container/error-message.container';
-import LoaderComponent from '../common/loader/loader.component';
+// import ErrorMessageContainer from '../container/error-message.container';
+// import LoaderComponent from '../common/loader/loader.component';
 import { addToCart } from '../../actions/cart';
 import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
@@ -85,32 +80,31 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
         ...quoteData,
       };
     });
-    const [product] = selectedPackages;
 
     if (!captchaValue) {
       return;
     } else {
       props.dispatch(addToCart(selectedPackages));
-      //   sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
-      //     () => {
-      //       setQuoteState((prevState) => {
-      //         return {
-      //           ...prevState,
-      //           isLeadDataSent: true,
-      //           isSendMailError: false,
-      //         };
-      //       });
-      //     },
-      //     () => {
-      //       setQuoteState((prevState) => {
-      //         return {
-      //           ...prevState,
-      //           isSendMailError: true,
-      //           isFormSubmitted: false,
-      //         };
-      //       });
-      //     },
-      //   );
+      sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
+        () => {
+          setQuoteState((prevState) => {
+            return {
+              ...prevState,
+              isLeadDataSent: true,
+              isSendMailError: false,
+            };
+          });
+        },
+        () => {
+          setQuoteState((prevState) => {
+            return {
+              ...prevState,
+              isSendMailError: true,
+              isFormSubmitted: false,
+            };
+          });
+        },
+      );
     }
   };
 
@@ -119,14 +113,7 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     captcha['reset']();
   };
 
-  const {
-    captchaValue,
-    isLeadDataSent,
-    isFormSubmitted,
-    isSendMailError,
-    name,
-    packages,
-  } = quoteState;
+  const { captchaValue, isLeadDataSent } = quoteState;
 
   if (isLeadDataSent) {
     resetCaptcha();
