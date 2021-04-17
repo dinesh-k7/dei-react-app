@@ -1,5 +1,4 @@
 import React, { ReactElement, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import startupTitle from '../../../../assets/images/startup_title.svg';
 import greenBlob from '../../../../assets/images/startup_blob.svg';
@@ -12,11 +11,6 @@ import { constants } from '../../../../constants';
 const StartupIntroContainer: React.FC<any> = ({
   onClickHandler,
 }: any): ReactElement => {
-  const history = useHistory();
-  const routeChange = (url) => {
-    history.push(url);
-  };
-
   const startUpRef = useRef(null);
   const nwoRef = useRef(null);
   const brandingRef = useRef(null);

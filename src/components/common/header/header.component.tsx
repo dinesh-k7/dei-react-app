@@ -27,7 +27,7 @@ const Header: React.FC<any> = (props: any): ReactElement => {
     );
   };
 
-  const routeChange = (url) => {
+  const routeChange = () => {
     const { location } = history;
     if (location && location.key) {
       history.goBack();
@@ -51,11 +51,7 @@ const Header: React.FC<any> = (props: any): ReactElement => {
           <Toolbar>
             <header className="nav-container">
               <div className="logo">
-                <img
-                  src={logo}
-                  alt="DEI Logo"
-                  onClick={() => routeChange('/')}
-                />
+                <img src={logo} alt="DEI Logo" onClick={() => routeChange()} />
                 <div className="menu-container">
                   <div
                     className="cart-icon"

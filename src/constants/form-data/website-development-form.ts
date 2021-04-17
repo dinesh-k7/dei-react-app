@@ -1,4 +1,4 @@
-import { constants, patterns } from '..';
+import { constants } from '..';
 import { industries } from '../industry-option';
 export const websiteDevelopmentFormData = [
   {

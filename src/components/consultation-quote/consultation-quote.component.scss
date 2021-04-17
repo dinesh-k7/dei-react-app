@@ -92,6 +92,9 @@
         }
       }
     }
+    .single-package {
+      grid-template-columns: auto !important;
+    }
   }
 }
 

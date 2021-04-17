@@ -3,7 +3,6 @@ import React, { Fragment, ReactElement } from 'react';
 import SeoIntro from '../container/seo-intro/seo-intro';
 import BrandingIntro from '../container/branding-intro/branding-intro';
 import WdIntro from '../container/wd-intro/wd-intro';
-import HeroContainer from './container/hero/hero-container';
 import './develop-page.scss';
 
 const DevelopPage: React.FC = (): ReactElement => {

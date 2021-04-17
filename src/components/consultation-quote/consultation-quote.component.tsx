@@ -23,6 +23,7 @@ import LoaderComponent from '../common/loader/loader.component';
 import { addToCart } from '../../actions/cart';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
 import { useHistory } from 'react-router-dom';
+import { IPackageModel } from '../../interfaces/package.model';
 
 const ConsultationQuoteComponent: React.FC<any> = (
   props: any,
@@ -66,7 +67,6 @@ const ConsultationQuoteComponent: React.FC<any> = (
     isLeadDataSent,
     isFormSubmitted,
     isSendMailError,
-    name,
     packages,
   } = quoteState;
   const selectedPackages = packages && packages.filter((s) => s.active);
@@ -156,6 +156,18 @@ const ConsultationQuoteComponent: React.FC<any> = (
 
   const classes = useStyles();
   const errorKeys = Object.keys(errors);
+  const isQueryString =
+    history.location.search.indexOf('package') > -1 ? true : false;
+  let packageKits: IPackageModel[] = [];
+  if (isQueryString) {
+    packageKits = packages.filter(
+      (pk) => pk.id === constants.COACHING_PACKAGE_ID,
+    );
+  } else {
+    packageKits = packages.filter(
+      (pk) => pk.id !== constants.COACHING_PACKAGE_ID,
+    );
+  }
 
   return (
     <section className="consultation-quote-section">
@@ -349,10 +361,16 @@ const ConsultationQuoteComponent: React.FC<any> = (
 
       <div className="package-container">
         <h4>Choose a package</h4>
-        <div className="consultation-package-grid">
-          {packages &&
-            packages.length &&
-            packages.map((service) => (
+        <div
+          className={
+            isQueryString
+              ? `single-package consultation-package-grid`
+              : `consultation-package-grid`
+          }
+        >
+          {packageKits &&
+            packageKits.length &&
+            packageKits.map((service) => (
               <div className={`package-row`} key={service.id}>
                 <div className="package-title">
                   <span>{service.name}</span>
@@ -382,27 +400,6 @@ const ConsultationQuoteComponent: React.FC<any> = (
                         return <li key={idx}>{feature}</li>;
                       })}
                     </ul>
-                  </div>
-                ) : (
-                  ''
-                )}
-                {service.description_two ? (
-                  <div className="package-description-two">
-                    <p className="para-normal">{service.description_two}</p>
-                  </div>
-                ) : (
-                  ''
-                )}
-                {service.description_three ? (
-                  <div className="package-description-three">
-                    <p className="para-normal">{service.description_three}</p>
-                  </div>
-                ) : (
-                  ''
-                )}
-                {service.description_four ? (
-                  <div className="package-description-four">
-                    <p className="para-normal">{service.description_four}</p>
                   </div>
                 ) : (
                   ''

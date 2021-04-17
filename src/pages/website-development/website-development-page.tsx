@@ -1,6 +1,5 @@
 import React, { Fragment, ReactElement } from 'react';
 
-import GetQuoteComponent from '../../components/get-quote/get-quote.component';
 import WdQuoteComponent from '../../components/wd-quote/wd-quote.component';
 
 import redVector from '../../assets/images/red_vector.svg';

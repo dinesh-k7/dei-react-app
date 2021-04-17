@@ -28,37 +28,60 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
                   <img src={blueBlob} alt="sdwan" />
-                  <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
+                  <h3
+                    onClick={() => routeChange('/enterprise/security-service')}
+                  >
                     Security
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/sdwan-service')}
+                    onClick={() => routeChange('/enterprise/security-service')}
                     className="chevron-right"
                   />
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Modi, minus quae. Nisi laboriosam dolores rem obcaecati
-                    tempore pariatur? Molestias recusandae quis delectus
-                    perferendis assumenda deleniti soluta dignissimos. Veniam,
-                    in laudantium!
+                    The DEI Data and Site sentinel offer Experience, Knowledge,
+                    and Technical Understanding Of Cyber And Physical Security
+                    Solutions.
                   </p>
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="cloud services" />
-                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
-                    Connectivity
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/data-connectivity-service')
+                    }
+                  >
+                    Data Connectivity
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/data-connectivity-service')
+                    }
                     className="chevron-right"
                   />
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Modi, minus quae. Nisi laboriosam dolores rem obcaecati
-                    tempore pariatur? Molestias recusandae quis delectus
-                    perferendis assumenda deleniti soluta dignissimos. Veniam,
-                    in laudantium!
+                    Enable your employees to connect to critical data in
+                    real-time – anywhere in the world – securely. Leveraging
+                    that knowledge and experience we chose to work with
+                    providers who have a proven track record of delivering and
+                    supporting solutions long term.
                   </p>
+                  <p>
+                    Transitioning from traditional services to advanced unified
+                    communications can be intimidating. The <b>DEI™ </b>has vast
+                    experience working with various data network providers.
+                  </p>
+                  <div className="data-connectivity-description">
+                    <b> Our data connectivity portfolio includes:</b>
+                    <ul>
+                      <li>High Performance, Fast Efficient Internet Options</li>
+                      <li>Ethernet services – Metro, Wide-Area, and Global</li>
+                      <li>MPLS-VPN Connections</li>
+                      <li>
+                        SD/SD-WAN services – (Software-defined networking in a
+                        wide area network)
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               <div className="hero-subtitle-container">
@@ -72,47 +95,72 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Modi, minus quae. Nisi laboriosam dolores rem obcaecati
-                    tempore pariatur? Molestias recusandae quis delectus
-                    perferendis assumenda deleniti soluta dignissimos. Veniam,
-                    in laudantium!
+                    Real solutions that enable businesses everywhere to lower
+                    costs, backup their data, and increase efficiency.
+                  </p>
+                </div>
+                <div className="hero-subtitle-container">
+                  <div className="features">
+                    <img src={blueBlob} alt="cable services" />
+                    <h3 onClick={() => routeChange('/enterprise/iot-service')}>
+                      IOT
+                    </h3>
+                    <ChevronRightIcon
+                      className="chevron-right"
+                      onClick={() => routeChange('/enterprise/iot-service')}
+                    />
+
+                    <p>
+                      Our DEI™ Consultations offers customers ease and control
+                      of managing machine-to-machine or M2M connections for IoT
+                      solutions. Conduct your business simply and efficiently by
+                      integrating wireless backup failover solutions or using
+                      M2M technology to access remote devices using our managed
+                      data solutions.
+                    </p>
+                    <div className="feature-description">
+                      <b>Enhance Productivity With IoT Solutions </b>
+                      <ul>
+                        <li>Any Device</li>
+                        <li>Any Place</li>
+                        <li>Any Application</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="features">
+                  <img src={blueBlob} alt="ucaas services" />
+                  <h3 onClick={() => routeChange('/enterprise/voice-service')}>
+                    Voice
+                  </h3>
+                  <ChevronRightIcon
+                    onClick={() => routeChange('/enterprise/voice-service')}
+                    className="chevron-right"
+                  />
+                  <p>
+                    &ldquo;Separated by meters or by a continent the
+                    <b> DEI™</b> connects the communications of your
+                    business.&rdquo;
                   </p>
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="ucaas services" />
-                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
-                    Voice
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/professional-service')
+                    }
+                  >
+                    Professional Services
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/professional-service')
+                    }
                     className="chevron-right"
                   />
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Modi, minus quae. Nisi laboriosam dolores rem obcaecati
-                    tempore pariatur? Molestias recusandae quis delectus
-                    perferendis assumenda deleniti soluta dignissimos. Veniam,
-                    in laudantium!
-                  </p>
-                </div>
-              </div>
-              <div className="hero-subtitle-container">
-                <div className="features">
-                  <img src={blueBlob} alt="cable services" />
-                  <h3 onClick={() => routeChange('/enterprise/cable-service')}>
-                    IOT
-                  </h3>
-                  <ChevronRightIcon
-                    className="chevron-right"
-                    onClick={() => routeChange('/enterprise/cable-service')}
-                  />
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Modi, minus quae. Nisi laboriosam dolores rem obcaecati
-                    tempore pariatur? Molestias recusandae quis delectus
-                    perferendis assumenda deleniti soluta dignissimos. Veniam,
-                    in laudantium!
+                    OTG boasts the most robust portfolio of IT technology
+                    solutions in the channel to meet real-world customer needs.
                   </p>
                 </div>
               </div>

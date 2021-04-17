@@ -58,9 +58,10 @@ const LandingPage: React.FC = (): ReactElement => {
 
           <div className="intro-text">
             <p>
-              Finally, an easy-to-use platform to facilitate your business&apos;
-              online ambitions. If we don&apos;t provide it, we will source the
-              best providers for it.
+              Venturing into the digital world can be extremely risky,
+              especially without the proper tools and know-how. The DEI™
+              Start-Up Kits can help you mitigate your risk and maximize your
+              potential.
             </p>
           </div>
         </div>

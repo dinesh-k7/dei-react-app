@@ -8,17 +8,17 @@ import './develop-intro.scss';
 
 const DevelopIntro: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
+  const { fromPage } = props;
 
   const routeChange = () => {
     history.push('develop');
   };
 
-  const { fromPage } = props;
   return (
     <section className="develop-intro" ref={props.inputRef}>
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Website development</h1>
+          {fromPage === 'smb' ? <h1>Develop</h1> : <h1>Website development</h1>}
           <div className="hero-mobile-image">
             <img src={heroMobileImage} alt="Webiste development Image" />
           </div>
@@ -31,16 +31,20 @@ const DevelopIntro: React.FC<any> = (props: any): ReactElement => {
                   Website Builder
                 </a>
               </h3>
-              <a href="https://www.nwohub.com/products/website-builder">
-                <LaunchIcon
-                  style={{
-                    color: '#9c47ed',
-                    fontSize: 34,
-                    paddingTop: 12,
-                    cursor: 'pointer',
-                  }}
-                />
-              </a>
+              {fromPage !== 'smb' ? (
+                <a href="https://www.nwohub.com/products/website-builder">
+                  <LaunchIcon
+                    style={{
+                      color: '#9c47ed',
+                      fontSize: 34,
+                      paddingTop: 12,
+                      cursor: 'pointer',
+                    }}
+                  />
+                </a>
+              ) : (
+                ''
+              )}
               <p>
                 Build an amazing website in just under an hour with website
                 Builder. Take advantage of designs created just for your
@@ -57,16 +61,20 @@ const DevelopIntro: React.FC<any> = (props: any): ReactElement => {
                   WordPress
                 </a>
               </h3>
-              <a href="https://www.nwohub.com/products/wordpress">
-                <LaunchIcon
-                  style={{
-                    color: '#9c47ed',
-                    fontSize: 34,
-                    paddingTop: 12,
-                    cursor: 'pointer',
-                  }}
-                />
-              </a>
+              {fromPage !== 'smb' ? (
+                <a href="https://www.nwohub.com/products/wordpress">
+                  <LaunchIcon
+                    style={{
+                      color: '#9c47ed',
+                      fontSize: 34,
+                      paddingTop: 12,
+                      cursor: 'pointer',
+                    }}
+                  />
+                </a>
+              ) : (
+                ''
+              )}
             </div>
             <p>
               Our WordPress Hosting provides automatic setup, backups and
@@ -82,16 +90,20 @@ const DevelopIntro: React.FC<any> = (props: any): ReactElement => {
                   Shopping Cart
                 </a>
               </h3>
-              <a href="https://www.nwohub.com/products/shopping-cart">
-                <LaunchIcon
-                  style={{
-                    color: '#9c47ed',
-                    fontSize: 34,
-                    paddingTop: 12,
-                    cursor: 'pointer',
-                  }}
-                />
-              </a>
+              {fromPage !== 'smb' ? (
+                <a href="https://www.nwohub.com/products/shopping-cart">
+                  <LaunchIcon
+                    style={{
+                      color: '#9c47ed',
+                      fontSize: 34,
+                      paddingTop: 12,
+                      cursor: 'pointer',
+                    }}
+                  />
+                </a>
+              ) : (
+                ''
+              )}
             </div>
             <p>
               Fully functioning professional business/ecommerce/shopping cart.
@@ -99,7 +111,7 @@ const DevelopIntro: React.FC<any> = (props: any): ReactElement => {
           </div>
         </div>
 
-        {!fromPage && (
+        {fromPage === 'smb' || !fromPage ? (
           <div className="button-container">
             <button
               type="button"
@@ -109,6 +121,8 @@ const DevelopIntro: React.FC<any> = (props: any): ReactElement => {
               Custom Website
             </button>
           </div>
+        ) : (
+          ''
         )}
       </div>
       <div className="hero-image">

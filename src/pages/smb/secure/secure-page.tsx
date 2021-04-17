@@ -2,7 +2,6 @@ import React, { Fragment, ReactElement } from 'react';
 
 import DataSecurityIntro from '../container/data-security-intro/data-security-intro';
 import SiteSecurityIntro from '../container/site-security-intro/site-security-intro';
-import HeroContainer from './container/hero/hero-container';
 import './secure-page.scss';
 
 const SecurePage: React.FC = (): ReactElement => {
