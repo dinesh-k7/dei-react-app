@@ -1,5 +1,6 @@
 import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import '../../../../assets/scss/styles.scss';
@@ -7,10 +8,12 @@ import '../../../../assets/scss/styles.scss';
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
 import blueBlob from '../../../../assets/images/service_blue.svg';
+import { setServiceAction } from '../../../../actions/enterprise';
 
-const VoiceIntro: React.FC<any> = (): ReactElement => {
+const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
-  const routeChange = (url) => {
+  const routeChange = (url: string, serviceName: string) => {
+    props.setService(serviceName);
     history.push(url);
   };
   return (
@@ -26,11 +29,23 @@ const VoiceIntro: React.FC<any> = (): ReactElement => {
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
                   <img src={blueBlob} alt="sdwan" />
-                  <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/sdwan-service',
+                        'Unified Communications',
+                      )
+                    }
+                  >
                     Unified Communications
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/sdwan-service')}
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/sdwan-service',
+                        'Unified Communications',
+                      )
+                    }
                     className="chevron-right"
                   />
                   <div className="feature-description">
@@ -72,11 +87,17 @@ const VoiceIntro: React.FC<any> = (): ReactElement => {
 
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'Conferencing')
+                    }
+                  >
                     Conferencing
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'Conferencing')
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -96,11 +117,17 @@ const VoiceIntro: React.FC<any> = (): ReactElement => {
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'Contact Center')
+                    }
+                  >
                     Contact Center
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'Contact Center')
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -116,11 +143,17 @@ const VoiceIntro: React.FC<any> = (): ReactElement => {
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'SIP Trunks')
+                    }
+                  >
                     SIP Trunks
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'SIP Trunks')
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -140,11 +173,17 @@ const VoiceIntro: React.FC<any> = (): ReactElement => {
 
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'Hosted VOIP')
+                    }
+                  >
                     Hosted VOIP
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'Hosted VOIP')
+                    }
                     className="chevron-right"
                   />
                   <div className="feature-description">
@@ -182,11 +221,17 @@ const VoiceIntro: React.FC<any> = (): ReactElement => {
 
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'POTS')
+                    }
+                  >
                     POTS
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'POTS')
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -213,11 +258,17 @@ const VoiceIntro: React.FC<any> = (): ReactElement => {
 
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'PRI')
+                    }
+                  >
                     PRI
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'PRI')
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -256,4 +307,9 @@ const VoiceIntro: React.FC<any> = (): ReactElement => {
   );
 };
 
-export default VoiceIntro;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setService: (serviceName) => dispatch(setServiceAction(serviceName)),
+  };
+};
+export default connect(null, mapDispatchToProps)(VoiceIntro);

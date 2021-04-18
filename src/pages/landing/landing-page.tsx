@@ -108,6 +108,7 @@ const LandingPage: React.FC = (): ReactElement => {
               onClick={() => routeChange('/enterprise')}
               onMouseOver={() => onMouseOverHandler(enterpriseRef)}
               onMouseOut={() => onMouseOutHandler(enterpriseRef)}
+              className="service-title"
             >
               Enterprise
             </span>

@@ -42,11 +42,7 @@ const BrandingIntro: React.FC<any> = (props: any): ReactElement => {
           <p>Enhance Your Brand&apos;s Identity with a Stunning Logo!</p>
         </div>
         <div className="button-container">
-          <button
-            type="button"
-            className={`btn-branding`}
-            onClick={routeChange}
-          >
+          <button type="button" className={`btn-basic`} onClick={routeChange}>
             Get a Quote
           </button>
         </div>

@@ -13,6 +13,13 @@
 .startup-kit-intro {
   .hero-subtitle-container {
     flex-wrap: wrap;
+    display: flex;
+    h3 {
+      padding-left: 0.625em;
+    }
+    img {
+      padding-top: 0.625em;
+    }
   }
   .features {
     display: flex;
@@ -91,16 +98,6 @@
   .hero-description {
     .hero-description-two {
       padding-top: 25px;
-    }
-  }
-
-  .hero-subtitle-container {
-    display: flex;
-    h3 {
-      padding-left: 0.625em;
-    }
-    img {
-      padding-top: 0.625em;
     }
   }
 

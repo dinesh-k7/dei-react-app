@@ -191,7 +191,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
             </p>
             <button
               type="button"
-              className="btn-branding"
+              className="btn-basic"
               onClick={() => history.push('/')}
             >
               Back
@@ -218,7 +218,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
             </p>
             <button
               type="button"
-              className="btn-branding"
+              className="btn-basic"
               onClick={() => history.push('/cart-page')}
             >
               Try Again

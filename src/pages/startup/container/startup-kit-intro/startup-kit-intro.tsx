@@ -68,7 +68,7 @@ const StartupKitIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
         <div className="button-container">
           <button
             type="button"
-            className={`btn-branding`}
+            className={`btn-basic`}
             onClick={() => routeChange()}
           >
             Learn More

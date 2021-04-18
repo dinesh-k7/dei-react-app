@@ -1,5 +1,6 @@
 import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import '../../../../assets/scss/styles.scss';
@@ -7,10 +8,12 @@ import '../../../../assets/scss/styles.scss';
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
 import blueBlob from '../../../../assets/images/service_blue.svg';
+import { setServiceAction } from '../../../../actions/enterprise';
 
-const CloudIntro: React.FC<any> = (): ReactElement => {
+const CloudIntro: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
-  const routeChange = (url) => {
+  const routeChange = (url: string, serviceName: string) => {
+    props.setService(serviceName);
     history.push(url);
   };
   return (
@@ -26,33 +29,42 @@ const CloudIntro: React.FC<any> = (): ReactElement => {
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
                   <img src={blueBlob} alt="sdwan" />
-                  <h3 onClick={() => routeChange('/enterprise/cloud-quote')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/cloud-quote', 'Colocation')
+                    }
+                  >
                     Colocation
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/cloud-quote')}
+                    onClick={() =>
+                      routeChange('/enterprise/cloud-quote', 'Colocation')
+                    }
                     className="chevron-right"
                   />
                   <p>
-                    DEI™ networks with
-                    <a href="https://otg.upstack.com/">
-                      1400 carrier-neutral colocation facilities around the
-                      globe
-                    </a>
-                    (and growing), available for you to offer to your customers.
-                    Our exclusive data center locator tool is available for you
-                    to find the best data center to meet your customer’s needs.
+                    DEI™ networks with 1400 carrier-neutral colocation
+                    facilities around the globe (and growing), available for you
+                    to offer to your customers. Our exclusive data center
+                    locator tool is available for you to find the best data
+                    center to meet your customer’s needs.
                     <br />
                     <a href="https://otg.upstack.com/">Find Datacenter Now</a>
                   </p>
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/cloud-quote')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/cloud-quote', 'Public Cloud')
+                    }
+                  >
                     Public Cloud
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/cloud-quote')}
+                    onClick={() =>
+                      routeChange('/enterprise/cloud-quote', 'Public Cloud')
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -65,11 +77,23 @@ const CloudIntro: React.FC<any> = (): ReactElement => {
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/cloud-quote')}>
+                  <h3
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/cloud-quote',
+                        'Backup & Disaster Recovery Services',
+                      )
+                    }
+                  >
                     Backup & Disaster Recovery Services
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/cloud-quote')}
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/cloud-quote',
+                        'Backup & Disaster Recovery Services',
+                      )
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -86,11 +110,17 @@ const CloudIntro: React.FC<any> = (): ReactElement => {
 
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/cloud-quote')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/cloud-quote', 'Storage')
+                    }
+                  >
                     Storage
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/cloud-quote')}
+                    onClick={() =>
+                      routeChange('/enterprise/cloud-quote', 'Storage')
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -138,4 +168,9 @@ const CloudIntro: React.FC<any> = (): ReactElement => {
   );
 };
 
-export default CloudIntro;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setService: (serviceName) => dispatch(setServiceAction(serviceName)),
+  };
+};
+export default connect(null, mapDispatchToProps)(CloudIntro);

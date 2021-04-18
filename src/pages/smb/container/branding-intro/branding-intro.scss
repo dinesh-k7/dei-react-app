@@ -5,11 +5,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
-  margin-top: 96px;
+  // margin-top: 96px;
   height: 100vh;
-  max-width: 1400px;
-  width: 100%;
-  margin: 0px auto;
+
   align-items: center;
   padding: 64px 0;
   .hero-mobile-image {
@@ -38,7 +36,7 @@
     }
   }
 
-  .btn-branding {
+  .btn-basic {
     margin-top: 64px;
     background-color: #ff7d7d;
   }

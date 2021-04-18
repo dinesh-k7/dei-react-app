@@ -1,17 +1,16 @@
 import React, { Fragment, ReactElement } from 'react';
-
+import { connect } from 'react-redux';
 import EnterpriseQuoteComponent from '../../../components/enterprise-quote/enterprise-quote.component';
 import { constants } from '../../../constants';
 import { cableFormData } from '../../../constants/form-data/cable-service-form';
 import HeroContainer from '../container/hero/hero-container';
 import '../enterprise-page.scss';
 
-import './cable-service.page.scss';
-
-const CableServicePage: React.FC = (): ReactElement => {
+const CableServicePage: React.FC = (props: any): ReactElement => {
+  const { serviceName } = props;
   return (
     <Fragment>
-      <HeroContainer fromPage={constants.ES_CABLE_SERVICE} />
+      <HeroContainer fromPage={serviceName} />
       <EnterpriseQuoteComponent
         fromPage={constants.ES_CABLE_SERVICE}
         formFields={cableFormData}
@@ -20,4 +19,11 @@ const CableServicePage: React.FC = (): ReactElement => {
   );
 };
 
-export default CableServicePage;
+const mapStateToProps = (state) => {
+  const { enterpriseReducer } = state;
+  return {
+    serviceName: enterpriseReducer.serviceName,
+  };
+};
+
+export default connect(mapStateToProps)(CableServicePage);

@@ -98,7 +98,7 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
           </p>
         </div>
         <div className="button-container">
-          <button type="button" className={`btn-branding`}>
+          <button type="button" className={`btn-basic`}>
             <a href="https://www.nwohub.com" rel="noreferrer" target="_blank">
               Visit NWOhub.com{' '}
             </a>

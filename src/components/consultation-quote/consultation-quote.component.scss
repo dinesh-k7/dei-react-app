@@ -4,6 +4,9 @@
   display: grid;
   grid-template-columns: 1px 1fr 1fr;
   background-color: #f8f8f8;
+  .desktop-hide {
+    display: none;
+  }
   .confirmation-text {
     p {
       font-family: 'OpenSansRegular', sans-serif !important;
@@ -27,18 +30,20 @@
 
     justify-self: center;
     padding: 64px 32px 32px 32px;
-    ul {
-      margin: 0px !important;
-      padding-left: 24px;
-      li {
-        padding-top: 8px !important;
-        color: var(--font-color) !important;
-        font-size: 14px;
-        font-family: 'OpenSansRegular', sans-serif !important;
-        list-style: outside;
+    .package-description-one {
+      ul {
+        margin: 0px !important;
+        padding-left: 24px;
+        li {
+          padding-top: 8px !important;
+          color: var(--font-color) !important;
+          font-size: 14px;
+          font-family: 'OpenSansRegular', sans-serif !important;
+          list-style: outside;
+        }
       }
     }
-    .btn-branding {
+    .btn-basic {
       background-color: #fdcf00;
       justify-self: center;
     }
@@ -99,12 +104,27 @@
 }
 
 @include respond-below(sm) {
+  .desktop-hide {
+    display: block !important;
+    padding: 16px 0px 0px 16px;
+    button {
+      background-color: #fdcf00;
+    }
+  }
   .package-container {
-    padding: 64px 8px !important;
+    padding: 0px 8px 64px 8px !important;
+    grid-row: 1/-1;
+    .mobile-hide {
+      display: none;
+    }
+
+    h4 {
+      display: none;
+    }
     .consultation-package-grid {
       grid-template-columns: 1fr !important;
     }
-    .btn-branding {
+    .btn-basic {
       justify-self: center;
     }
   }

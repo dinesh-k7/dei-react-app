@@ -1,4 +1,5 @@
 import React, { Fragment, ReactElement } from 'react';
+import { connect } from 'react-redux';
 
 import EnterpriseQuoteComponent from '../../../components/enterprise-quote/enterprise-quote.component';
 import { constants } from '../../../constants';
@@ -6,12 +7,11 @@ import { enterpriseFormData } from '../../../constants/form-data/enterprise-serv
 import HeroContainer from '../container/hero/hero-container';
 import '../enterprise-page.scss';
 
-import './carrier-service.page.scss';
-
-const CarrierServicePage: React.FC = (): ReactElement => {
+const CarrierServicePage: React.FC = (props: any): ReactElement => {
+  const { serviceName } = props;
   return (
     <Fragment>
-      <HeroContainer fromPage={constants.ES_CARRIER_SERVICE} />
+      <HeroContainer fromPage={serviceName} />
       <EnterpriseQuoteComponent
         fromPage={constants.ES_CARRIER_SERVICE}
         formFields={enterpriseFormData}
@@ -20,4 +20,11 @@ const CarrierServicePage: React.FC = (): ReactElement => {
   );
 };
 
-export default CarrierServicePage;
+const mapStateToProps = (state) => {
+  const { enterpriseReducer } = state;
+  return {
+    serviceName: enterpriseReducer.serviceName,
+  };
+};
+
+export default connect(mapStateToProps)(CarrierServicePage);

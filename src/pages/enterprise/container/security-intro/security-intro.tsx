@@ -1,4 +1,5 @@
 import React, { Fragment, ReactElement } from 'react';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
@@ -7,10 +8,12 @@ import '../../../../assets/scss/styles.scss';
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
 import blueBlob from '../../../../assets/images/service_blue.svg';
+import { setServiceAction } from '../../../../actions/enterprise';
 
-const SecurityIntro: React.FC<any> = (): ReactElement => {
+const SecurityIntro: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
-  const routeChange = (url) => {
+  const routeChange = (url: string, serviceName: string) => {
+    props.setService(serviceName);
     history.push(url);
   };
   return (
@@ -26,11 +29,20 @@ const SecurityIntro: React.FC<any> = (): ReactElement => {
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
                   <img src={blueBlob} alt="sdwan" />
-                  <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
+                  <h3
+                    onClick={() => {
+                      routeChange(
+                        '/enterprise/sdwan-service',
+                        'Cyber Security',
+                      );
+                    }}
+                  >
                     Cyber Security
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/sdwan-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/sdwan-service', 'Cyber Security')
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -45,11 +57,23 @@ const SecurityIntro: React.FC<any> = (): ReactElement => {
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="cloud services" />
-                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/ucaas-service',
+                        'Physical Security',
+                      )
+                    }
+                  >
                     Physical Security
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/ucaas-service',
+                        'Physical Security',
+                      )
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -75,4 +99,9 @@ const SecurityIntro: React.FC<any> = (): ReactElement => {
   );
 };
 
-export default SecurityIntro;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setService: (serviceName) => dispatch(setServiceAction(serviceName)),
+  };
+};
+export default connect(null, mapDispatchToProps)(SecurityIntro);
