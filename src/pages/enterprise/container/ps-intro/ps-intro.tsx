@@ -1,5 +1,6 @@
 import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import '../../../../assets/scss/styles.scss';
@@ -7,10 +8,12 @@ import '../../../../assets/scss/styles.scss';
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
 import blueBlob from '../../../../assets/images/service_blue.svg';
+import { setServiceAction } from '../../../../actions/enterprise';
 
-const PSIntro: React.FC<any> = (): ReactElement => {
+const PSIntro: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
-  const routeChange = (url) => {
+  const routeChange = (url: string, serviceName: string) => {
+    props.setService(serviceName);
     history.push(url);
   };
   return (
@@ -26,11 +29,23 @@ const PSIntro: React.FC<any> = (): ReactElement => {
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
                   <img src={blueBlob} alt="sdwan" />
-                  <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/sdwan-service',
+                        'IT Consulting Services',
+                      )
+                    }
+                  >
                     IT Consulting Services
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/sdwan-service')}
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/sdwan-service',
+                        'IT Consulting Services',
+                      )
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -55,11 +70,17 @@ const PSIntro: React.FC<any> = (): ReactElement => {
 
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'IT Solutions')
+                    }
+                  >
                     IT Solutions
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/ucaas-service', 'IT Solutions')
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -73,11 +94,23 @@ const PSIntro: React.FC<any> = (): ReactElement => {
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/ucaas-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/ucaas-service',
+                        'Managed Hosting Services',
+                      )
+                    }
+                  >
                     Managed Hosting Services
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/ucaas-service')}
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/ucaas-service',
+                        'Managed Hosting Services',
+                      )
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -106,4 +139,9 @@ const PSIntro: React.FC<any> = (): ReactElement => {
   );
 };
 
-export default PSIntro;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setService: (serviceName) => dispatch(setServiceAction(serviceName)),
+  };
+};
+export default connect(null, mapDispatchToProps)(PSIntro);

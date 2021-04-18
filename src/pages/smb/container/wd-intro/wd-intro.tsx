@@ -28,7 +28,7 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
           <div className="hero-mobile-image">
             <img src={heroMobileImage} alt="Webiste development Image" />
           </div>
-          <h3 className="wd-title">DIY:</h3>
+
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
@@ -107,11 +107,7 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
 
         {!fromPage && (
           <div className="button-container">
-            <button
-              type="button"
-              className={`btn-branding`}
-              onClick={routeChange}
-            >
+            <button type="button" className={`btn-basic`} onClick={routeChange}>
               Custom Website
             </button>
           </div>

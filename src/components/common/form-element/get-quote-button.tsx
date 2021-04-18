@@ -70,43 +70,20 @@ const GetQuoteButton: any = ({
           <CircularProgress disableShrink />
         </Backdrop>
       )}
-      {errors && <ErrorMessageContainer {...errors} />}
-
-      {activeKeywords &&
-      activeKeywords.length < 2 &&
-      fromPage === 'branding' &&
-      (isButtonSubmit || errorKeys.length) ? (
-        <p className="error_message">{messages.keywords_error}</p>
-      ) : (
-        ''
-      )}
-
-      {brandingState &&
-      !brandingState.colorPicker &&
-      fromPage === 'branding' &&
-      (isButtonSubmit || errorKeys.length) ? (
-        <p className="error_message">{messages.color_picker_error}</p>
-      ) : (
-        ''
-      )}
-
-      {activeBrands &&
-      activeBrands.length < 2 &&
-      fromPage === 'branding' &&
-      (isButtonSubmit || errorKeys.length) ? (
-        <p className="error_message">{messages.brand_error}</p>
-      ) : (
-        ''
-      )}
-
-      {!captchaValue && isFormSubmitted && (
-        <p className="error_message">{messages.captcha_error}</p>
-      )}
-      {isSendMailError && (
-        <p className="error_message">{messages.mail_send_error}</p>
-      )}
-      {isLeadDataSent && (
-        <p className="lead_success">{messages.lead_success}</p>
+      {errors && (
+        <ErrorMessageContainer
+          errors={errors}
+          isFormSubmitted={isFormSubmitted}
+          errorKeys={errorKeys}
+          activeKeywords={activeKeywords}
+          captchaValue={captchaValue}
+          isSendMailError={isSendMailError}
+          fromPage={fromPage}
+          isButtonSubmit={isButtonSubmit}
+          isLeadDataSent={isLeadDataSent}
+          brandingState={brandingState}
+          activeBrands={activeBrands}
+        />
       )}
     </Fragment>
   );

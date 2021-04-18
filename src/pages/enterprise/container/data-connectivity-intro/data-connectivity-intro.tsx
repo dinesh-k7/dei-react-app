@@ -1,5 +1,6 @@
 import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import '../../../../assets/scss/styles.scss';
@@ -7,10 +8,12 @@ import '../../../../assets/scss/styles.scss';
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
 import blueBlob from '../../../../assets/images/service_blue.svg';
+import { setServiceAction } from '../../../../actions/enterprise';
 
-const DataConnectivityIntro: React.FC<any> = (): ReactElement => {
+const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
-  const routeChange = (url) => {
+  const routeChange = (url: string, serviceName: string) => {
+    props.setService(serviceName);
     history.push(url);
   };
   return (
@@ -26,11 +29,17 @@ const DataConnectivityIntro: React.FC<any> = (): ReactElement => {
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
                   <img src={blueBlob} alt="sdwan" />
-                  <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/sdwan-service', 'SD-WAN')
+                    }
+                  >
                     SD/SD-WAN
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/sdwan-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/sdwan-service', 'SD-WAN')
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -44,11 +53,23 @@ const DataConnectivityIntro: React.FC<any> = (): ReactElement => {
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/sdwan-service',
+                        'Point  To  Point',
+                      )
+                    }
+                  >
                     Point To Point
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/sdwan-service')}
+                    onClick={() =>
+                      routeChange(
+                        '/enterprise/sdwan-service',
+                        'Point  To  Point',
+                      )
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -63,11 +84,17 @@ const DataConnectivityIntro: React.FC<any> = (): ReactElement => {
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3 onClick={() => routeChange('/enterprise/sdwan-service')}>
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/sdwan-service', 'MPLS')
+                    }
+                  >
                     MPLS
                   </h3>
                   <ChevronRightIcon
-                    onClick={() => routeChange('/enterprise/sdwan-service')}
+                    onClick={() =>
+                      routeChange('/enterprise/sdwan-service', 'MPLS')
+                    }
                     className="chevron-right"
                   />
                   <p>
@@ -102,4 +129,9 @@ const DataConnectivityIntro: React.FC<any> = (): ReactElement => {
   );
 };
 
-export default DataConnectivityIntro;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setService: (serviceName) => dispatch(setServiceAction(serviceName)),
+  };
+};
+export default connect(null, mapDispatchToProps)(DataConnectivityIntro);

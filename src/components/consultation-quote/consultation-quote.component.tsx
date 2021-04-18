@@ -19,6 +19,7 @@ import './consultation-quote.component.scss';
 import { useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import ErrorMessageContainer from '../container/error-message.container';
+import ButtonContainer from '../container/button-container/button-container';
 import LoaderComponent from '../common/loader/loader.component';
 import { addToCart } from '../../actions/cart';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
@@ -357,6 +358,28 @@ const ConsultationQuoteComponent: React.FC<any> = (
             />
           </div>
         </form>
+        <div className="desktop-hide">
+          <ButtonContainer
+            isLeadDataSent={isLeadDataSent}
+            isFormSubmitted={isFormSubmitted}
+            captchaValue={captchaValue}
+            handleSubmit={handleSubmit(onSubmit)}
+            onSubmit={onSubmit}
+          />
+        </div>
+        <div className="desktop-hide">
+          {errors && (
+            <ErrorMessageContainer
+              errors={errors}
+              isFormSubmitted={isFormSubmitted}
+              errorKeys={errorKeys}
+              selectedPackages={selectedPackages}
+              captchaValue={captchaValue}
+              isSendMailError={isSendMailError}
+              isLeadDataSent={isLeadDataSent}
+            />
+          )}
+        </div>
       </div>
 
       <div className="package-container">
@@ -407,29 +430,15 @@ const ConsultationQuoteComponent: React.FC<any> = (
               </div>
             ))}
         </div>
-        {!isLeadDataSent && (
-          <button
-            type="button"
-            className={`btn-branding ${
-              isFormSubmitted && !isLeadDataSent && captchaValue
-                ? 'btn-grey'
-                : ''
-            } ${isLeadDataSent ? 'btn-green' : ''}`}
-            onClick={handleSubmit(onSubmit)}
-          >
-            Schedule Consultation
-          </button>
-        )}
-
-        {isLeadDataSent && (
-          <button
-            type="button"
-            className="btn-branding btn-green"
-            onClick={() => window.location.reload(false)}
-          >
-            Start Over
-          </button>
-        )}
+        <div className="mobile-hide">
+          <ButtonContainer
+            isLeadDataSent={isLeadDataSent}
+            isFormSubmitted={isFormSubmitted}
+            captchaValue={captchaValue}
+            handleSubmit={handleSubmit(onSubmit)}
+            onSubmit={onSubmit}
+          />
+        </div>
 
         {isFormSubmitted && !isLeadDataSent && captchaValue && (
           <LoaderComponent />
@@ -444,25 +453,19 @@ const ConsultationQuoteComponent: React.FC<any> = (
           </div>
         )} */}
 
-        {errors && <ErrorMessageContainer {...errors} />}
-
-        {(isFormSubmitted || errorKeys.length) &&
-        selectedPackages &&
-        !selectedPackages.length ? (
-          <p className="error_message">{messages.package_error}</p>
-        ) : (
-          ''
-        )}
-
-        {!captchaValue && isFormSubmitted && (
-          <p className="error_message">{messages.captcha_error}</p>
-        )}
-        {isSendMailError && (
-          <p className="error_message">{messages.mail_send_error}</p>
-        )}
-        {isLeadDataSent && (
-          <p className="lead_success">{messages.lead_success}</p>
-        )}
+        <div className="mobile-hide">
+          {errors && (
+            <ErrorMessageContainer
+              errors={errors}
+              isFormSubmitted={isFormSubmitted}
+              errorKeys={errorKeys}
+              selectedPackages={selectedPackages}
+              captchaValue={captchaValue}
+              isSendMailError={isSendMailError}
+              isLeadDataSent={isLeadDataSent}
+            />
+          )}
+        </div>
       </div>
     </section>
   );

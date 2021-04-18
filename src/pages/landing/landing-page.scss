@@ -84,6 +84,9 @@
   .smb-blob,
   .enterprise-blob {
     padding-right: 0px !important;
+    .service-title {
+      z-index: 999;
+    }
   }
 }
 

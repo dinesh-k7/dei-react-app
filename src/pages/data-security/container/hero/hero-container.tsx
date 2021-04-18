@@ -19,10 +19,6 @@ const HeroContainer: React.FC = (): ReactElement => {
               <img src={serviceBlue} alt="Background image" />
               <h3>Dark Web Monitoring</h3>
             </div>
-            <div className="features">
-              <img src={serviceBlue} alt="Background image" />
-              <h3>Email Solutions</h3>
-            </div>
           </div>
           <h3>The Dark Web Problem:</h3>
         </div>

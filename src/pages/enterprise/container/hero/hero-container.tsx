@@ -16,7 +16,7 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
     history.push(url);
   };
   return (
-    <section className="hero-section">
+    <section className={fromPage ? `hero-section pbtm` : `hero-section`}>
       <div className="hero-content">
         {!fromPage && (
           <Fragment>
@@ -175,91 +175,13 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
         {/* <div className="hero-mobile-image">
           <img src={heroMobileImage} alt="consultation Image" />
         </div> */}
-        {fromPage && fromPage === constants.ES_SDWAN_SERVICE && (
+        {fromPage && (
           <Fragment>
             <div className="hero-title">
-              <h1>DEI-SDWAN Service</h1>
+              <h1>{fromPage}</h1>
             </div>
             <div className="hero-mobile-image">
               <img src={heroMobileImage} alt="enterprise Image" />
-            </div>
-            <div className="hero-description">
-              <p>
-                DEI™ is leading provider of SD-WAN, We address your concerns
-                about security, redundancy, quality of experience, and more.
-              </p>
-            </div>
-          </Fragment>
-        )}
-        {fromPage && fromPage === constants.ES_CLOUD_SERVICE && (
-          <Fragment>
-            <div className="hero-title">
-              <h1>DEI-Cloud Service</h1>
-            </div>
-            <div className="hero-mobile-image">
-              <img src={heroMobileImage} alt="consultation Image" />
-            </div>
-            <div className="hero-description">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloribus est cum inventore unde ad consequuntur facere
-                voluptatibus. Perferendis iusto magnam doloremque obcaecati a
-                non, veritatis rerum! Atque asperiores qui nostrum.
-              </p>
-            </div>
-          </Fragment>
-        )}
-        {fromPage && fromPage === constants.ES_CABLE_SERVICE && (
-          <Fragment>
-            <div className="hero-title">
-              <h1>DEI-Cable Service</h1>
-            </div>
-            <div className="hero-mobile-image">
-              <img src={heroMobileImage} alt="consultation Image" />
-            </div>
-            <div className="hero-description">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloribus est cum inventore unde ad consequuntur facere
-                voluptatibus. Perferendis iusto magnam doloremque obcaecati a
-                non, veritatis rerum! Atque asperiores qui nostrum.
-              </p>
-            </div>
-          </Fragment>
-        )}
-        {fromPage && fromPage === constants.ES_CARRIER_SERVICE && (
-          <Fragment>
-            <div className="hero-title">
-              <h1>DEI-Carrier Service</h1>
-            </div>
-            <div className="hero-mobile-image">
-              <img src={heroMobileImage} alt="consultation Image" />
-            </div>
-            <div className="hero-description">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloribus est cum inventore unde ad consequuntur facere
-                voluptatibus. Perferendis iusto magnam doloremque obcaecati a
-                non, veritatis rerum! Atque asperiores qui nostrum.
-              </p>
-            </div>
-          </Fragment>
-        )}
-        {fromPage && fromPage === constants.UCAAS_SERVICE && (
-          <Fragment>
-            <div className="hero-title">
-              <h1>DEI-UCaaS</h1>
-            </div>
-            <div className="hero-mobile-image">
-              <img src={heroMobileImage} alt="consultation Image" />
-            </div>
-            <div className="hero-description">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Doloribus est cum inventore unde ad consequuntur facere
-                voluptatibus. Perferendis iusto magnam doloremque obcaecati a
-                non, veritatis rerum! Atque asperiores qui nostrum.
-              </p>
             </div>
           </Fragment>
         )}

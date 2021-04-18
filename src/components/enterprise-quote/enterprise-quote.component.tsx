@@ -368,7 +368,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
         {!isLeadDataSent && (
           <button
             type="button"
-            className={`btn-branding ${
+            className={`btn-basic ${
               isFormSubmitted && !isLeadDataSent && captchaValue
                 ? 'btn-grey'
                 : ''
@@ -387,7 +387,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
         {isLeadDataSent && (
           <button
             type="button"
-            className="btn-branding btn-green"
+            className="btn-basic btn-green"
             onClick={() => window.location.reload(false)}
           >
             Start Over
@@ -407,17 +407,14 @@ const EnterpriseQuoteComponent: React.FC<any> = (
           </div>
         )} */}
 
-        {errors && <ErrorMessageContainer {...errors} />}
-
-        {!captchaValue && isFormSubmitted && (
-          <p className="error_message">{messages.captcha_error}</p>
-        )}
-        {isSendMailError && (
-          <p className="error_message">{messages.mail_send_error}</p>
-        )}
-
-        {isLeadDataSent && (
-          <p className="lead_success">{messages.lead_success}</p>
+        {errors && (
+          <ErrorMessageContainer
+            errors={errors}
+            captchaValue={captchaValue}
+            isFormSubmitted={isFormSubmitted}
+            isSendMailError={isSendMailError}
+            isLeadDataSent={isLeadDataSent}
+          />
         )}
       </div>
     </section>

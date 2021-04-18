@@ -21,6 +21,7 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <Fragment>
+            <h3>The DEI™ Certification $1,000,000 warranty included:</h3>
             <h1>
               Data Sentinels<sup>™️</sup>
             </h1>
@@ -32,10 +33,6 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3>Dark Web Monitoring</h3>
-            </div>
-            <div className="features email-solution">
-              <img src={serviceBlue} alt="Background image" />
-              <h3>Email Solutions</h3>
             </div>
           </div>
         </div>
