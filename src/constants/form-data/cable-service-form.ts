@@ -87,8 +87,8 @@ export const cableFormData = [
     section: 'company',
   },
   {
-    name: 'numberoftvs',
-    label: "Number of TV's",
+    name: 'numberofseats',
+    label: 'Number of seats',
     type: 'number',
     required: true,
     placeholder: 'e.g. 1',
