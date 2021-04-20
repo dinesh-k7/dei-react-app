@@ -146,8 +146,8 @@ export const constants = {
   STARTUP: 'STARTUP',
   STARTUPKIT: 'STARTUPKIT',
   COMPLETED: 'COMPLETED',
-  MAIL_SERVICE_ENDPOINT: 'https://dei-node-service.herokuapp.com/mail-service',
-  //MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service',
+  //  MAIL_SERVICE_ENDPOINT: 'https://dei-node-service.herokuapp.com/mail-service',
+  MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service',
   PAGES: [
     {
       url: 'smb',

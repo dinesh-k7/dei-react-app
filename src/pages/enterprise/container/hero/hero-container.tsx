@@ -50,7 +50,7 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                       routeChange('/enterprise/data-connectivity-service')
                     }
                   >
-                    Data Connectivity
+                    Data Plexus
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
