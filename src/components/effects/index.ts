@@ -14,13 +14,14 @@ export const sendMail = (
     case 'branding':
       url = `${constants.MAIL_SERVICE_ENDPOINT}/branding-quote/sendmail`;
       break;
-    case constants.ES_CABLE_SERVICE:
-    case constants.ES_CARRIER_SERVICE:
+    case constants.ES_DATA_SERVICE:
+    case constants.ES_PROFESSIONAL_SERVICE:
     case constants.ES_CLOUD_SERVICE:
-    case constants.UCAAS_SERVICE:
+    case constants.ES_IOT_SERVICE:
+    case constants.ES_VOICE_SERVICE:
       url = `${constants.MAIL_SERVICE_ENDPOINT}/enterprise-service/sendmail`;
       break;
-    case constants.ES_SDWAN_SERVICE:
+    case constants.ES_SECURITY_SERVICE:
       url = `${constants.MAIL_SERVICE_ENDPOINT}/sdwan-service/sendmail`;
       break;
     case constants.CONSULTATION_SERVICE:

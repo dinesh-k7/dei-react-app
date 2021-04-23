@@ -8,6 +8,14 @@ import { websiteDevelopmentFormData } from '../../constants/form-data/website-de
 
 const WebsiteDevelopmentPage: React.FC = (): ReactElement => {
   const fromPage = 'wd';
+  // Google page event track
+  window['dataLayer'].push({
+    event: 'pageview',
+    page: {
+      url: window.location.href,
+      title: 'Website development Quote Page',
+    },
+  });
   return (
     <Fragment>
       {/* <WdIntro fromPage={'wd'} /> */}

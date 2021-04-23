@@ -22,6 +22,15 @@ const LandingPage: React.FC = (): ReactElement => {
     history.push(url);
   };
 
+  // Google page event track
+  window['dataLayer'].push({
+    event: 'pageview',
+    page: {
+      url: window.location.href,
+      title: 'Landing Page',
+    },
+  });
+
   const onMouseOverHandler = (ref: any) => {
     if (ref && ref.current) {
       ref.current.classList.toggle('hover-intro-text');

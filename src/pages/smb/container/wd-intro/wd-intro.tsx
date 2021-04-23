@@ -115,7 +115,7 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
         {!fromPage && (
           <div className="button-container">
             <button type="button" className={`btn-basic`} onClick={routeChange}>
-              Custom Website
+              Custom Site
             </button>
           </div>
         )}

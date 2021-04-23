@@ -28,6 +28,7 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     isBrandingDetailSubmitted: false,
     isButtonSubmit: false,
     packages: CONSULTATION_PACKAGES,
+    isContent: '',
   };
   const { formFields, fromPage } = props;
   const state = {};
@@ -113,7 +114,7 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     captcha['reset']();
   };
 
-  const { captchaValue, isLeadDataSent } = quoteState;
+  const { captchaValue, isLeadDataSent, isContent } = quoteState;
 
   if (isLeadDataSent) {
     resetCaptcha();
@@ -167,6 +168,7 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
 
   const classes = useStyles();
   const errorKeys = Object.keys(errors);
+
   return (
     <section className="wd-quote-section">
       {isLeadDataSent && <SnackBarComponent isOpen={true} isError={false} />}
@@ -183,11 +185,11 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
           <div className="personal-information">
             {formFields &&
               formFields.length &&
-              formFields.map((field, idx) => {
+              formFields.map((field) => {
                 if (field.section === 'personal' && field.type === 'text') {
                   return (
                     <TextBox
-                      key={idx}
+                      key={field.name}
                       register={register}
                       name={field.name}
                       placeholder={field.placeholder}
@@ -204,7 +206,7 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
                   return (
                     <SelectBox
                       value={quoteState[field.name]}
-                      key={idx}
+                      key={field.name}
                       variant={'outlined'}
                       name={field.name}
                       className={classes}
@@ -225,14 +227,14 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
           <div className="company-information">
             {formFields &&
               formFields.length &&
-              formFields.map((field, idx) => {
+              formFields.map((field) => {
                 if (
                   field.section === 'company' &&
                   (field.type === 'text' || field.type === 'number')
                 ) {
                   return (
                     <TextBox
-                      key={idx}
+                      key={field.name}
                       register={register}
                       name={field.name}
                       placeholder={field.placeholder}
@@ -250,7 +252,7 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
                   return (
                     <SelectBox
                       value={quoteState[field.name]}
-                      key={idx}
+                      key={field.name}
                       variant={'outlined'}
                       name={field.name}
                       className={classes}
@@ -269,7 +271,7 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
                 ) {
                   return (
                     <MultiText
-                      key={idx}
+                      key={field.name}
                       register={register}
                       name={field.name}
                       placeholder={field.placeholder}
@@ -286,8 +288,34 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
                     <div className="form-group radio-section">
                       {field.label}
                       <div className="radio-options">
-                        <span>YES</span>
-                        <span>NO</span>
+                        <span
+                          className={isContent ? 'green-bg' : 'white-bg'}
+                          onClick={() => {
+                            setQuoteState((prevState) => {
+                              return {
+                                ...prevState,
+                                isContent: true,
+                              };
+                            });
+                          }}
+                        >
+                          YES
+                        </span>
+                        <span
+                          className={
+                            isContent === false ? 'red-bg' : 'white-bg'
+                          }
+                          onClick={() => {
+                            setQuoteState((prevState) => {
+                              return {
+                                ...prevState,
+                                isContent: false,
+                              };
+                            });
+                          }}
+                        >
+                          NO
+                        </span>
                       </div>
                     </div>
                   );

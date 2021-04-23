@@ -14,7 +14,7 @@ const HeroContainer: React.FC<any> = (props: any): ReactElement => {
           {/* <div className="hero-mobile-image">
             <img src={heroMobileImage} alt="consultation Image" />
           </div> */}
-          <div className="consultation-text hide">
+          {/* <div className="consultation-text hide">
             <h4>How to prepare:</h4>
             <h4>Be able to:</h4>
             <ul>
@@ -30,13 +30,13 @@ const HeroContainer: React.FC<any> = (props: any): ReactElement => {
               <li>A well defined solution to your communications gap.</li>
               <li>A personal coaching session with Mr. NWO</li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
 
-      <div className={fromPage ? 'hero-image startup-kit' : 'hero-image'}>
+      {/* <div className={fromPage ? 'hero-image startup-kit' : 'hero-image'}>
         <img src={heroImage} alt="consultation Image" />
-      </div>
+      </div> */}
     </section>
   );
 };

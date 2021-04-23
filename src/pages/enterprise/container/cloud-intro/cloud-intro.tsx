@@ -11,6 +11,15 @@ import blueBlob from '../../../../assets/images/service_blue.svg';
 import { setServiceAction } from '../../../../actions/enterprise';
 
 const CloudIntro: React.FC<any> = (props: any): ReactElement => {
+  // Google page event track
+  window['dataLayer'].push({
+    event: 'pageview',
+    page: {
+      url: window.location.href,
+      title: 'Enterprise Cloud Service Page',
+    },
+  });
+
   const history = useHistory();
   const routeChange = (url: string, serviceName: string) => {
     props.setService(serviceName);

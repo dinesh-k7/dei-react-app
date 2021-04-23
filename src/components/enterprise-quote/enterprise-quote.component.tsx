@@ -118,6 +118,16 @@ const EnterpriseQuoteComponent: React.FC<any> = (
     } else {
       sendMail({ ...quoteData, services: preferedServices }, fromPage).then(
         () => {
+          // Google Event tracking
+          window['dataLayer'].push({
+            event: 'event',
+            eventProps: {
+              category: 'Enterprise',
+              action: 'click',
+              label: 'Enterprise Form submit',
+              value: { ...quoteData, services: preferedServices },
+            },
+          });
           setQuoteState((prevState) => {
             return {
               ...prevState,
@@ -376,10 +386,10 @@ const EnterpriseQuoteComponent: React.FC<any> = (
             onClick={handleSubmit(onSubmit)}
           >
             {fromPage &&
-              fromPage === constants.ES_SDWAN_SERVICE &&
+              fromPage === constants.ES_SECURITY_SERVICE &&
               'Book a Discovery Consultation'}
             {fromPage &&
-              fromPage !== constants.ES_SDWAN_SERVICE &&
+              fromPage !== constants.ES_SECURITY_SERVICE &&
               'Request Service'}
           </button>
         )}

@@ -87,7 +87,7 @@ const GetQuoteComponent: React.FC<any> = (
     }
   };
 
-  const handleBrandingState = (state) => {
+  const handleState = (state) => {
     const { keywords, colorPicker, brands } = state;
     const activeKeywords =
       keywords && keywords.filter((keyword) => keyword.active === true);
@@ -171,6 +171,19 @@ const GetQuoteComponent: React.FC<any> = (
       addProductToCart(quoteData);
       sendMail(quoteData, fromPage).then(
         () => {
+          // Google Event tracking
+          window['dataLayer'].push({
+            event: 'event',
+            eventProps: {
+              category: fromPage === 'branding' ? 'Branding' : 'Data Security',
+              action: 'click',
+              label:
+                fromPage === 'branding'
+                  ? 'Branding Form submit'
+                  : 'Data Security Form submit',
+              value: quoteData,
+            },
+          });
           setQuoteState((prevState) => {
             return {
               ...prevState,
@@ -357,7 +370,7 @@ const GetQuoteComponent: React.FC<any> = (
           onSubmit={onSubmit}
           register={register}
           onError={onError}
-          handleBrandingState={handleBrandingState}
+          handleState={handleState}
         />
       )}
     </section>

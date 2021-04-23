@@ -63,8 +63,8 @@ const SmbIntroContainer: React.FC<any> = ({
             </span>
             <span className="ds-features" ref={dsRef}>
               <ul>
-                <li>Dark Security</li>
-                <li>Website Security</li>
+                <li>Data Sentinels</li>
+                <li>Site Sentinels</li>
               </ul>
             </span>
           </div>

@@ -4,6 +4,15 @@
   display: grid;
   grid-template-columns: 1px 1fr 1fr;
   background-color: #f8f8f8;
+  .red-bg {
+    background-color: #ff7d7d !important;
+  }
+  .green-bg {
+    background-color: #49e59a !important;
+  }
+  .white-bg {
+    background-color: #ffffff !important;
+  }
   .radio-section {
     grid-column: 1/-1 !important;
     font-size: var(--font-size5) !important;
@@ -17,14 +26,15 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-column-gap: 16px;
+      padding-top: 8px;
       span {
-        height: 40px;
+        height: 50px;
         text-align: center;
         background-color: #fff;
         font-weight: var(--font-weight400) !important;
         font-family: 'OpenSansRegular', sans-serif !important;
         color: #2c3e50 !important;
-        padding-top: 10px;
+        padding-top: 15px;
         cursor: pointer;
       }
     }

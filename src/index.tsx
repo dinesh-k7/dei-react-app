@@ -2,11 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import TagManager from 'react-gtm-module';
 
 import App from './components/app/app.component';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import { store, persistor } from './store';
+
+const tagManagerArgs = {
+  gtmId: 'GTM-N8Q4LH9',
+};
+
+TagManager.initialize(tagManagerArgs);
 
 ReactDOM.render(
   <Provider store={store}>
