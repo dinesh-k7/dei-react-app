@@ -8,6 +8,7 @@ export const websiteDevelopmentFormData = [
     required: true,
     placeholder: 'e.g. John',
     section: 'personal',
+    id: 'wd-1',
   },
   {
     name: 'lastname',
@@ -16,6 +17,7 @@ export const websiteDevelopmentFormData = [
     required: true,
     placeholder: 'e.g. Doe',
     section: 'personal',
+    id: 'wd-2',
   },
   {
     name: 'email',
@@ -24,6 +26,7 @@ export const websiteDevelopmentFormData = [
     required: true,
     placeholder: 'e.g. johndoe@email.com',
     section: 'personal',
+    id: 'wd-3',
   },
   {
     name: 'phone',
@@ -32,6 +35,7 @@ export const websiteDevelopmentFormData = [
     required: true,
     placeholder: 'e.g. 123456789',
     section: 'personal',
+    id: 'wd-4',
   },
   {
     name: 'companyName',
@@ -40,6 +44,7 @@ export const websiteDevelopmentFormData = [
     required: true,
     placeholder: 'e.g. JohnDoe and co.',
     section: 'company',
+    id: 'wd-4',
   },
   {
     name: 'industry',
@@ -49,6 +54,7 @@ export const websiteDevelopmentFormData = [
     placeholder: 'e.g. Apparel',
     section: 'company',
     options: industries,
+    id: 'wd-5',
   },
   {
     name: 'position',
@@ -58,6 +64,7 @@ export const websiteDevelopmentFormData = [
     placeholder: 'e.g. Project Manager',
     section: 'company',
     options: constants.POSITION,
+    id: 'wd-6',
   },
   {
     name: 'aboutCompany',
@@ -67,6 +74,7 @@ export const websiteDevelopmentFormData = [
     placeholder: 'e.g. Accounting',
     maxlength: 1000,
     section: 'company',
+    id: 'wd-7',
   },
   {
     name: 'targetAudience',
@@ -76,6 +84,7 @@ export const websiteDevelopmentFormData = [
     placeholder: 'e.g. Accounting',
     maxlength: 1000,
     section: 'company',
+    id: 'wd-8',
   },
   {
     name: 'isContent',
@@ -83,6 +92,7 @@ export const websiteDevelopmentFormData = [
     type: 'radio',
     required: true,
     section: 'company',
+    id: 'wd-9',
   },
   {
     name: 'comment',
@@ -92,5 +102,6 @@ export const websiteDevelopmentFormData = [
     placeholder: 'e.g. comment',
     maxlength: 1000,
     section: 'company',
+    id: 'wd-10',
   },
 ];

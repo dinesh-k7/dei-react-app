@@ -11,6 +11,17 @@ const scrollToRef = (ref: any) => {
   if (element) window.scrollTo(0, element);
 };
 
+// Google page event track
+window &&
+  window['dataLayer'] &&
+  window['dataLayer'].push({
+    event: 'pageview',
+    page: {
+      url: window.location.href,
+      title: 'SMB Page',
+    },
+  });
+
 const LandingPage: React.FC = (): ReactElement => {
   const developRef = useRef(null);
   const secureRef = useRef(null);

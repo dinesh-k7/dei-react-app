@@ -15,6 +15,14 @@ const scrollToRef = (ref: any) => {
 };
 
 const StartUpPage: React.FC = (): ReactElement => {
+  // Google page event track
+  window['dataLayer'].push({
+    event: 'pageview',
+    page: {
+      url: window.location.href,
+      title: 'Startup Page',
+    },
+  });
   const startupKitRef = useRef(null);
   const brandingRef = useRef(null);
   const NWORef = useRef(null);

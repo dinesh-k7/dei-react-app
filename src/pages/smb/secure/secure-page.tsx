@@ -5,6 +5,15 @@ import SiteSecurityIntro from '../container/site-security-intro/site-security-in
 import './secure-page.scss';
 
 const SecurePage: React.FC = (): ReactElement => {
+  // Google page event track
+  window['dataLayer'].push({
+    event: 'pageview',
+    page: {
+      url: window.location.href,
+      title: 'Secure Page',
+    },
+  });
+
   return (
     <Fragment>
       <div className="secure-page-grid">

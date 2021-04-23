@@ -11,6 +11,15 @@ import blueBlob from '../../../../assets/images/service_blue.svg';
 import { setServiceAction } from '../../../../actions/enterprise';
 
 const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
+  // Google page event track
+  window['dataLayer'].push({
+    event: 'pageview',
+    page: {
+      url: window.location.href,
+      title: 'Enterprise Data Connectivity Service Page',
+    },
+  });
+
   const history = useHistory();
   const routeChange = (url: string, serviceName: string) => {
     props.setService(serviceName);
@@ -55,10 +64,7 @@ const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
                   <img src={blueBlob} alt="blue blob" />
                   <h3
                     onClick={() =>
-                      routeChange(
-                        '/enterprise/sdwan-service',
-                        'Point  To  Point',
-                      )
+                      routeChange('/enterprise/sdwan-service', 'Point To Point')
                     }
                   >
                     Point To Point

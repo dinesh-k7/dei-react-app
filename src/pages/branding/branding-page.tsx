@@ -7,6 +7,14 @@ import { brandingFormFields } from '../../constants';
 
 const BrandingPage: React.FC = (): ReactElement => {
   const fromPage = 'branding';
+  // Google page event track
+  window['dataLayer'].push({
+    event: 'pageview',
+    page: {
+      url: window.location.href,
+      title: 'Branding Quote Page',
+    },
+  });
   return (
     <Fragment>
       <HeroContainer />

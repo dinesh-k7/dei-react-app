@@ -27,6 +27,8 @@ interface IntitialState {
   keyword: string;
   brandName: string;
   isTemplate: boolean;
+  isSelling: any;
+  isSEO: any;
 }
 
 const BrandingDetailContainer: React.FC<any> = (
@@ -39,16 +41,18 @@ const BrandingDetailContainer: React.FC<any> = (
     keyword: '',
     brandName: '',
     isTemplate: false,
+    isSelling: '',
+    isSEO: '',
   };
   const {
     handleSubmit,
     quoteState,
     errors,
     onSubmit,
-    handleBrandingState,
+    handleState,
     onError,
   } = props;
-  const [brandingState, setState] = useState(initialState);
+  const [state, setState] = useState(initialState);
   const {
     keyword,
     keywords,
@@ -56,7 +60,9 @@ const BrandingDetailContainer: React.FC<any> = (
     brands,
     brandName,
     isTemplate,
-  } = brandingState;
+    isSEO,
+    isSelling,
+  } = state;
 
   // Handle text box, radio button and checkbox change event
   const handleChange = ($event: React.FormEvent<EventTarget>) => {
@@ -115,7 +121,7 @@ const BrandingDetailContainer: React.FC<any> = (
         };
       });
     }
-    handleBrandingState(brandingState);
+    handleState(state);
   };
 
   //Function to set keyword active to false
@@ -146,7 +152,7 @@ const BrandingDetailContainer: React.FC<any> = (
         };
       });
     }
-    handleBrandingState(brandingState);
+    handleState(state);
   };
 
   const keywordDisplay =
@@ -199,6 +205,7 @@ const BrandingDetailContainer: React.FC<any> = (
             </span>
             <div className="website-option">
               <span
+                className={`template-option`}
                 onClick={() => {
                   setState((prevState) => {
                     return {
@@ -208,7 +215,7 @@ const BrandingDetailContainer: React.FC<any> = (
                   });
                 }}
               >
-                <h4>Template</h4>
+                <h4>NWOcoin</h4>
               </span>
               <span
                 onClick={() => {
@@ -225,9 +232,15 @@ const BrandingDetailContainer: React.FC<any> = (
             </div>
             {isTemplate && (
               <Fragment>
-                <span>Choose a Template</span>
+                {/* <span>Choose a Template</span> */}
                 <div className="template-grid">
-                  {TEMPLATES &&
+                  <span>
+                    Soon we will offer paid vocational training on website
+                    development. NWOcoin™ will revolutionize the planet,
+                    providing universal income and employment. This is one
+                    facet.
+                  </span>
+                  {/* {TEMPLATES &&
                     TEMPLATES.length &&
                     TEMPLATES.map((template, idx) => {
                       return (
@@ -240,7 +253,7 @@ const BrandingDetailContainer: React.FC<any> = (
                           </button>
                         </div>
                       );
-                    })}
+                    })} */}
                 </div>
               </Fragment>
             )}
@@ -283,8 +296,32 @@ const BrandingDetailContainer: React.FC<any> = (
           <div className="form-group radio-section">
             Do you plan on Selling items on your website?
             <div className="radio-options">
-              <span>YES</span>
-              <span>NO</span>
+              <span
+                className={isSelling ? 'green-bg' : 'white-bg'}
+                onClick={() => {
+                  setState((prevState) => {
+                    return {
+                      ...prevState,
+                      isSelling: true,
+                    };
+                  });
+                }}
+              >
+                YES
+              </span>
+              <span
+                className={isSelling === false ? 'red-bg' : 'white-bg'}
+                onClick={() => {
+                  setState((prevState) => {
+                    return {
+                      ...prevState,
+                      isSelling: false,
+                    };
+                  });
+                }}
+              >
+                NO
+              </span>
             </div>
           </div>
         )}
@@ -293,8 +330,32 @@ const BrandingDetailContainer: React.FC<any> = (
           <div className="form-group radio-section">
             Do you require strong SEO for your website?
             <div className="radio-options">
-              <span>YES</span>
-              <span>NO</span>
+              <span
+                className={isSEO ? 'green-bg' : 'white-bg'}
+                onClick={() => {
+                  setState((prevState) => {
+                    return {
+                      ...prevState,
+                      isSEO: true,
+                    };
+                  });
+                }}
+              >
+                YES
+              </span>
+              <span
+                className={isSEO === false ? 'red-bg' : 'white-bg'}
+                onClick={() => {
+                  setState((prevState) => {
+                    return {
+                      ...prevState,
+                      isSEO: false,
+                    };
+                  });
+                }}
+              >
+                NO
+              </span>
             </div>
           </div>
         )}
@@ -598,7 +659,7 @@ const BrandingDetailContainer: React.FC<any> = (
             handleSubmit={handleSubmit}
             errors={errors}
             onSubmit={onSubmit}
-            brandingState={brandingState}
+            state={state}
             onError={onError}
             fromPage={fromPage ? `wd` : `branding`}
           />

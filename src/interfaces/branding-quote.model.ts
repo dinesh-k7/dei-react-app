@@ -4,7 +4,7 @@ export interface IBrandingQuoteModel {
   errors: any;
   onSubmit: any;
   register: any;
-  handleBrandingState: any;
+  handleState: any;
   onError: any;
   fromPage: string;
 }

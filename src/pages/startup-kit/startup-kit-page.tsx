@@ -7,6 +7,15 @@ import { consultationFormData } from '../../constants/form-data/consultation-ser
 import { constants } from '../../constants';
 
 const StartupKitPage: React.FC = (): ReactElement => {
+  // Google page event track
+  window['dataLayer'].push({
+    event: 'pageview',
+    page: {
+      url: window.location.href,
+      title: 'Startup kit Quote Page',
+    },
+  });
+
   return (
     <Fragment>
       <HeroContainer fromPage={constants.STARTUPKIT} />

@@ -9,11 +9,35 @@ import '../enterprise-page.scss';
 
 const SDWANServicePage: React.FC = (props: any): ReactElement => {
   const { serviceName } = props;
+  let fromPage;
+  switch (serviceName) {
+    case constants.CYBER_SECURITY:
+      fromPage = constants.ES_SECURITY_SERVICE;
+      break;
+    case constants.SDWAN:
+    case constants.POINT_TO_POINT:
+    case constants.MPLS:
+      fromPage = constants.ES_DATA_SERVICE;
+      break;
+    case constants.WIRELESS_BACKUP:
+      fromPage = constants.ES_IOT_SERVICE;
+      break;
+    case constants.UNIFIED_COMM:
+      fromPage = constants.ES_VOICE_SERVICE;
+      break;
+    case constants.IT_CONSULTING:
+      fromPage = constants.ES_PROFESSIONAL_SERVICE;
+      break;
+    default:
+      fromPage = constants.ES_SECURITY_SERVICE;
+      break;
+  }
+
   return (
     <Fragment>
       <HeroContainer fromPage={serviceName} />
       <EnterpriseQuoteComponent
-        fromPage={constants.ES_SDWAN_SERVICE}
+        fromPage={fromPage}
         formFields={SDWANFormData}
       />
     </Fragment>

@@ -12,7 +12,7 @@ const CableServicePage: React.FC = (props: any): ReactElement => {
     <Fragment>
       <HeroContainer fromPage={serviceName} />
       <EnterpriseQuoteComponent
-        fromPage={constants.ES_CABLE_SERVICE}
+        fromPage={constants.ES_IOT_SERVICE}
         formFields={cableFormData}
       />
     </Fragment>

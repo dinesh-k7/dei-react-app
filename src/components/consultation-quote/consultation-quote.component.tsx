@@ -106,6 +106,16 @@ const ConsultationQuoteComponent: React.FC<any> = (
       }
       sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
         () => {
+          // Google Event tracking
+          window['dataLayer'].push({
+            event: 'event',
+            eventProps: {
+              category: 'startup',
+              action: 'click',
+              label: 'Startup kit Form submit',
+              value: { ...quoteData, packages: preferedPackage },
+            },
+          });
           setQuoteState((prevState) => {
             return {
               ...prevState,
@@ -180,7 +190,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
       )}
       <div className="bg-image"></div>
       <div className="form-container">
-        <h1>Tell us about your company</h1>
+        <h1>Tell us about your project</h1>
         <h4>Personal Information</h4>
         <form autoComplete="off">
           <div className="personal-information">
@@ -224,7 +234,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
               })}
           </div>
 
-          <h4>Company Information</h4>
+          <h4>Additional details</h4>
           <div className="company-information">
             {formFields &&
               formFields.length &&
