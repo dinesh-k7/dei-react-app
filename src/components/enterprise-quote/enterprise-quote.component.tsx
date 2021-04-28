@@ -92,12 +92,23 @@ const EnterpriseQuoteComponent: React.FC<any> = (
     }
   };
 
+  // handle button click for form submit
+  const onError = () => {
+    setQuoteState((prevState) => {
+      return {
+        ...prevState,
+        isButtonSubmit: true,
+      };
+    });
+  };
+
   // handle get quote form onSubmit
   const onSubmit = (quoteData: any) => {
     const { captchaValue } = quoteData;
     const { services } = quoteState;
 
     quoteData.isFormSubmitted = true;
+    quoteData.isButtonSubmit = false;
     const selectedServices = services && services.filter((s) => s.active);
     let preferedServices;
     if (selectedServices && selectedServices.length) {
@@ -159,6 +170,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
     isLeadDataSent,
     isFormSubmitted,
     isSendMailError,
+    isButtonSubmit,
   } = quoteState;
 
   if (isLeadDataSent) {
@@ -383,7 +395,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
                 ? 'btn-grey'
                 : ''
             } ${isLeadDataSent ? 'btn-green' : ''}`}
-            onClick={handleSubmit(onSubmit)}
+            onClick={handleSubmit(onSubmit, onError)}
           >
             {fromPage &&
               fromPage === constants.ES_SECURITY_SERVICE &&
@@ -424,6 +436,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
             isFormSubmitted={isFormSubmitted}
             isSendMailError={isSendMailError}
             isLeadDataSent={isLeadDataSent}
+            isButtonSubmit={isButtonSubmit}
           />
         )}
       </div>

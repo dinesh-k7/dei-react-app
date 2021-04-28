@@ -39,10 +39,10 @@ const CartContainer: React.FC = (props: any): ReactElement => {
   const clickHandler = (e, product) => {
     const obj = Object.assign({}, product);
     if (e && e.target && e.target.checked) {
-      obj.price = parseInt(obj.yearlyPrice.toFixed(2));
+      obj.price = parseFloat(obj.yearlyPrice);
       props.updateCartItems(obj);
     } else {
-      obj.price = parseInt(obj.monthlyPrice);
+      obj.price = parseFloat(obj.monthlyPrice);
       props.updateCartItems(obj);
     }
   };
@@ -96,10 +96,9 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                           onClick={(e) => clickHandler(e, product)}
                         />
                         <span>
-                          ${product.yearlyPrice.toFixed(2)} &nbsp;{' '}
-                          <span>
-                            Pay 12 months in advance for a 12% Discount
-                          </span>
+                          Billed ${product.yearlyPrice.toFixed(2)} &nbsp;every
+                          12 months <br />
+                          <span>At 12% Discount</span>
                         </span>
                       </div>
                     ) : (
@@ -109,7 +108,12 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                   <div className="item-price">${product.price.toFixed(2)}</div>
                   <div className="item-quantity">{product.quantity}</div>
                   <div className="item-action">
-                    <span onClick={() => removeItem(product)}>X</span>
+                    <span
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => removeItem(product)}
+                    >
+                      X
+                    </span>
                   </div>
                 </div>
               );

@@ -21,9 +21,8 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <Fragment>
-            <h3>The DEI™ Certification $1,000,000 warranty included:</h3>
             <h1>
-              Data Sentinels<sup>™️</sup>
+              Data Sentries<sup>™️</sup>
             </h1>
           </Fragment>
           <div className="hero-mobile-image">
@@ -32,19 +31,25 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>Dark Web Monitoring</h3>
+              <h3>Dark Web Sentry:</h3>
+              <p>
+                <b>The DEI™ Dark Web Monitors </b> stand guard to detect and
+                notify you of compromised credentials so you can take proactive
+                measures in protecting your data.
+              </p>
+            </div>
+            <div className="features">
+              <img src={serviceBlue} alt="Background image" />
+              <h3>Email Sentry:</h3>
+              <p>
+                <b>The DEI™ Email Hunters.</b> You will be the first to know if
+                a potentially malicious email gets lucky enough to slip through
+                our world-class Integrated Email Security Solution.
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="hero-description">
-          <p>
-            Modern advancements have made world-class cybersecurity products
-            affordable. The DEI™ Data Essentials stack combines dark web
-            monitoring and gold standard integrated email solutions at a price
-            that any business can afford, and every company should implement.
-          </p>
-        </div>
         <div className="button-container">
           <button
             type="button"

@@ -1,6 +1,5 @@
-import React, { Fragment, ReactElement, useState } from 'react';
+import React, { Fragment, ReactElement, useEffect, useState } from 'react';
 import { IBrandingQuoteModel } from '../../../interfaces/branding-quote.model';
-import { TEMPLATES } from '../../../constants';
 
 import GetQuoteButton from '../../common/form-element/get-quote-button';
 import './branding-detail.container.scss';
@@ -17,8 +16,6 @@ import cPickerNine from '../../../assets/images/color_picker_nine.svg';
 import cPickerTen from '../../../assets/images/color_picker_ten.svg';
 import cPickerEleven from '../../../assets/images/color_picker_eleven.svg';
 import cPickerTwelve from '../../../assets/images/color_picker_design.svg';
-import templateImage from '../../../assets/images/template_image.svg';
-import previewIcon from '../../../assets/images/preview_icon.svg';
 
 interface IntitialState {
   keywords: { name: string; active: boolean }[];
@@ -53,6 +50,12 @@ const BrandingDetailContainer: React.FC<any> = (
     onError,
   } = props;
   const [state, setState] = useState(initialState);
+  useEffect(() => {
+    const { colorPicker } = state;
+    if (colorPicker) {
+      handleState(state);
+    }
+  }, [state]);
   const {
     keyword,
     keywords,
@@ -121,6 +124,7 @@ const BrandingDetailContainer: React.FC<any> = (
         };
       });
     }
+
     handleState(state);
   };
 
@@ -297,12 +301,12 @@ const BrandingDetailContainer: React.FC<any> = (
             Do you plan on Selling items on your website?
             <div className="radio-options">
               <span
-                className={isSelling ? 'green-bg' : 'white-bg'}
+                className={isSelling === 'Yes' ? 'green-bg' : 'white-bg'}
                 onClick={() => {
                   setState((prevState) => {
                     return {
                       ...prevState,
-                      isSelling: true,
+                      isSelling: 'Yes',
                     };
                   });
                 }}
@@ -310,12 +314,12 @@ const BrandingDetailContainer: React.FC<any> = (
                 YES
               </span>
               <span
-                className={isSelling === false ? 'red-bg' : 'white-bg'}
+                className={isSelling === 'No' ? 'red-bg' : 'white-bg'}
                 onClick={() => {
                   setState((prevState) => {
                     return {
                       ...prevState,
-                      isSelling: false,
+                      isSelling: 'No',
                     };
                   });
                 }}
@@ -331,12 +335,12 @@ const BrandingDetailContainer: React.FC<any> = (
             Do you require strong SEO for your website?
             <div className="radio-options">
               <span
-                className={isSEO ? 'green-bg' : 'white-bg'}
+                className={isSEO === 'Yes' ? 'green-bg' : 'white-bg'}
                 onClick={() => {
                   setState((prevState) => {
                     return {
                       ...prevState,
-                      isSEO: true,
+                      isSEO: 'Yes',
                     };
                   });
                 }}
@@ -344,12 +348,12 @@ const BrandingDetailContainer: React.FC<any> = (
                 YES
               </span>
               <span
-                className={isSEO === false ? 'red-bg' : 'white-bg'}
+                className={isSEO === 'No' ? 'red-bg' : 'white-bg'}
                 onClick={() => {
                   setState((prevState) => {
                     return {
                       ...prevState,
-                      isSEO: false,
+                      isSEO: 'No',
                     };
                   });
                 }}

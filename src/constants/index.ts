@@ -6,6 +6,9 @@ export const constants = {
   ES_VOICE_SERVICE: 'ES_VOICE_SERVICE',
   ES_IOT_SERVICE: 'ES_IOT_SERVICE',
   ES_PROFESSIONAL_SERVICE: 'ES_PROFESSIONAL_SERVICE',
+  WD: 'wd',
+  BRANDING: 'branding',
+  RECONNECT: 'RECONNECT',
   COMPANY_SIZE: 4,
   OFFER_PERCENTAGE: 0.12,
   COACHING_PACKAGE_ID: 994,
@@ -271,7 +274,7 @@ export const patterns = {
 
 export const messages = {
   lead_success: 'Your request is sent!',
-  captcha_error: 'ReCAPTCHA Error',
+  captcha_error: '*ReCAPTCHA Error',
   mail_send_error: 'Error in processing Get Quote. Please try later.',
   color_picker_error: '*Please pick color',
   brand_error: '*Please select atleast two brand name',

@@ -69,6 +69,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
     isFormSubmitted,
     isSendMailError,
     packages,
+    isButtonSubmit,
   } = quoteState;
   const selectedPackages = packages && packages.filter((s) => s.active);
 
@@ -80,6 +81,16 @@ const ConsultationQuoteComponent: React.FC<any> = (
     }
   };
 
+  // handle button click for form submit
+  const onError = () => {
+    setQuoteState((prevState) => {
+      return {
+        ...prevState,
+        isButtonSubmit: true,
+      };
+    });
+  };
+
   // handle get quote form onSubmit
   const onSubmit = (quoteData: any) => {
     const { captchaValue } = quoteData;
@@ -89,12 +100,21 @@ const ConsultationQuoteComponent: React.FC<any> = (
       preferedPackage = selectedPackages.map((d) => d.name);
     } else {
       preferedPackage = false;
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          ...quoteData,
+          isButtonSubmit: true,
+        };
+      });
+      return;
     }
 
     setQuoteState((prevState) => {
       return {
         ...prevState,
         ...quoteData,
+        isButtonSubmit: false,
       };
     });
 
@@ -103,38 +123,39 @@ const ConsultationQuoteComponent: React.FC<any> = (
     } else {
       if (selectedPackages && selectedPackages.length) {
         props.dispatch(addToCart(selectedPackages));
+
+        sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
+          () => {
+            // Google Event tracking
+            window['dataLayer'].push({
+              event: 'event',
+              eventProps: {
+                category: 'startup',
+                action: 'click',
+                label: 'Startup kit Form submit',
+                value: { ...quoteData, packages: preferedPackage },
+              },
+            });
+            setQuoteState((prevState) => {
+              return {
+                ...prevState,
+                isLeadDataSent: true,
+                isSendMailError: false,
+              };
+            });
+            history.push('cart-page');
+          },
+          () => {
+            setQuoteState((prevState) => {
+              return {
+                ...prevState,
+                isSendMailError: true,
+                isFormSubmitted: false,
+              };
+            });
+          },
+        );
       }
-      sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
-        () => {
-          // Google Event tracking
-          window['dataLayer'].push({
-            event: 'event',
-            eventProps: {
-              category: 'startup',
-              action: 'click',
-              label: 'Startup kit Form submit',
-              value: { ...quoteData, packages: preferedPackage },
-            },
-          });
-          setQuoteState((prevState) => {
-            return {
-              ...prevState,
-              isLeadDataSent: true,
-              isSendMailError: false,
-            };
-          });
-          history.push('cart-page');
-        },
-        () => {
-          setQuoteState((prevState) => {
-            return {
-              ...prevState,
-              isSendMailError: true,
-              isFormSubmitted: false,
-            };
-          });
-        },
-      );
     }
   };
 
@@ -148,6 +169,12 @@ const ConsultationQuoteComponent: React.FC<any> = (
   }
 
   const unSelectPackage = (id: number) => {
+    setQuoteState((prevState) => {
+      return {
+        ...prevState,
+        isFormSubmitted: false,
+      };
+    });
     const filterService = packages.map((pkg) => {
       if (pkg.id === id) {
         pkg.active = !pkg.active;
@@ -387,6 +414,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
               captchaValue={captchaValue}
               isSendMailError={isSendMailError}
               isLeadDataSent={isLeadDataSent}
+              isButtonSubmit={isButtonSubmit}
             />
           )}
         </div>
@@ -445,13 +473,21 @@ const ConsultationQuoteComponent: React.FC<any> = (
             isLeadDataSent={isLeadDataSent}
             isFormSubmitted={isFormSubmitted}
             captchaValue={captchaValue}
-            handleSubmit={handleSubmit(onSubmit)}
+            handleSubmit={handleSubmit(onSubmit, onError)}
             onSubmit={onSubmit}
+            selectedPackage={selectedPackages}
+            fromPage={'startup-kit'}
           />
         </div>
 
-        {isFormSubmitted && !isLeadDataSent && captchaValue && (
+        {isFormSubmitted &&
+        !isLeadDataSent &&
+        captchaValue &&
+        selectedPackages &&
+        selectedPackages.length ? (
           <LoaderComponent />
+        ) : (
+          ''
         )}
         {/* {isLeadDataSent && (
           <div className="confirmation-text">
@@ -473,6 +509,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
               captchaValue={captchaValue}
               isSendMailError={isSendMailError}
               isLeadDataSent={isLeadDataSent}
+              isButtonSubmit={isButtonSubmit}
             />
           )}
         </div>

@@ -241,7 +241,7 @@ const GetQuoteComponent: React.FC<any> = (
       <div className="form-container">
         <h1>Tell us about your company</h1>
         <h4>Personal Information</h4>
-        <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+        <form autoComplete="off">
           <div className="personal-information">
             {formFields &&
               formFields.length &&
@@ -360,6 +360,7 @@ const GetQuoteComponent: React.FC<any> = (
           errors={errors}
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
+          onError={onError}
         />
       )}
       {fromPage === 'branding' && (

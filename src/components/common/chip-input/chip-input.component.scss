@@ -1,0 +1,117 @@
+@import '../../../assets/scss/styles.scss';
+.word-grid {
+  display: grid;
+  grid-template-columns: 126px 126px 126px 126px;
+  margin-top: 8px;
+  grid-gap: 8px 8px;
+
+  .keyword-input {
+    width: 100%;
+    outline: none;
+    color: var(--font-color);
+    height: 40px;
+    font-family: 'OpenSansRegular', sans-serif;
+    padding-left: 0.625em;
+    padding-right: 24%;
+  }
+
+  .input-container {
+    display: grid;
+    grid-template-columns: 1fr 1px;
+    .plus-icon {
+      margin-left: -30px;
+      position: relative;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  }
+  .keyword-active {
+    background: #ff7d7d;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    padding-left: 8px;
+    white-space: nowrap;
+  }
+
+  .keyword-inactive {
+    background-color: #e3e3e3;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    padding-left: 8px;
+    white-space: nowrap;
+  }
+  div.box {
+    height: 40px;
+    text-align: center;
+    padding-top: 10px;
+    font-size: var(--font-size5);
+    font-weight: var(--font-weight400);
+    font-family: 'OpenSansRegular', sans-serif;
+    color: #2c3e50;
+    cursor: pointer;
+  }
+  .keyword-active {
+    background: #ff7d7d;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    padding-left: 8px;
+    white-space: nowrap;
+  }
+
+  .keyword-inactive {
+    background-color: #e3e3e3;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    padding-left: 8px;
+    white-space: nowrap;
+  }
+}
+
+@include respond-below(md) {
+  .word-grid {
+    display: grid;
+    grid-template-columns: 135px 135px 135px;
+    margin-top: 8px;
+    grid-gap: 8px 8px;
+  }
+}
+
+@include respond-below(sm) {
+  .keyword-input {
+    height: 40px !important;
+    padding-left: 8px !important;
+    padding-right: 15%;
+  }
+}
+@include respond-below(xs) {
+  .word-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 10px 0px 0px 0px;
+    grid-gap: 12px 10px;
+  }
+}
+
+@include respond-between(sm, md) {
+  .word-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 8px 8px 0px 0px;
+    grid-gap: 8px 8px;
+  }
+}
+
+@include respond-between(xs, sm) {
+  .word-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 8px 8px 0px 0px;
+    grid-gap: 8px 8px;
+  }
+}
+@include respond-above(lg) {
+  .word-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

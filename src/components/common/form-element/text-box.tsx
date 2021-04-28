@@ -15,6 +15,7 @@ const TextBox: any = ({
   min,
   onChangeHandler,
   info_icon,
+  required,
 }): ReactElement => {
   return (
     <div className="form-group">
@@ -50,10 +51,12 @@ const TextBox: any = ({
           placeholder={placeholder}
           maxLength={maxlength ? maxlength : ''}
           ref={register({
-            required: filterErrorMessage(
-              quoteValidationErrorMessages[name],
-              'required',
-            ),
+            required: required
+              ? filterErrorMessage(
+                  quoteValidationErrorMessages[name],
+                  'required',
+                )
+              : false,
             pattern: pattern
               ? {
                   value: pattern,

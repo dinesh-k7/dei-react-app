@@ -26,6 +26,7 @@ import CloudIntro from '../../pages/enterprise/container/cloud-intro/cloud-intro
 import IOTIntro from '../../pages/enterprise/container/iot-intro/iot-intro';
 import VoiceIntro from '../../pages/enterprise/container/voice-intro/voice-intro';
 import PSIntro from '../../pages/enterprise/container/ps-intro/ps-intro';
+import ReconnectPage from '../../pages/reconnect/reconnect-page';
 
 import '../../assets/scss/styles.scss';
 
@@ -100,6 +101,9 @@ const App: React.FC = () => {
         </Route>
         <Route path="/enterprise/professional-service">
           <PSIntro />
+        </Route>
+        <Route path="/reconnect">
+          <ReconnectPage />
         </Route>
       </Switch>
       <Footer />

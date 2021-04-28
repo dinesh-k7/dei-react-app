@@ -18,7 +18,7 @@ const GetQuoteButton: any = ({
   handleSubmit,
   onSubmit,
   errors,
-  brandingState,
+  state,
   onError,
   fromPage,
 }): ReactElement => {
@@ -32,8 +32,9 @@ const GetQuoteButton: any = ({
   const classes = useStyles();
 
   let activeKeywords, activeBrands;
-  if (brandingState) {
-    const { keywords, brands } = brandingState;
+
+  if (state) {
+    const { keywords, brands } = state;
     activeKeywords = keywords.filter((keyword) => keyword.active);
     activeBrands = brands.filter((brand) => brand.active);
   } else {
@@ -85,7 +86,7 @@ const GetQuoteButton: any = ({
           fromPage={fromPage}
           isButtonSubmit={isButtonSubmit}
           isLeadDataSent={isLeadDataSent}
-          brandingState={brandingState}
+          state={state}
           activeBrands={activeBrands}
         />
       )}

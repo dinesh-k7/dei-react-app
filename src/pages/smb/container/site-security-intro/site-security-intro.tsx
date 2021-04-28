@@ -19,7 +19,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
         <div className="hero-title">
           <Fragment>
             <h1>
-              Site Sentinels<sup>™️</sup>
+              Site Sentries<sup>™️</sup>
             </h1>
           </Fragment>
           <div className="hero-mobile-image">
@@ -95,31 +95,6 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3 className="feature-title">
-                <a href="#">Phishing Hunters - Integrated Email Solutions</a>
-              </h3>
-              <a href="#">
-                <LaunchIcon
-                  style={{
-                    color: '#9c47ed',
-                    fontSize: 34,
-                    paddingTop: 12,
-                    cursor: 'pointer',
-                  }}
-                />
-              </a>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores,
-              odit consequatur consequuntur placeat minus, magnam eveniet
-              repellat inventore explicabo delectus porro optio nulla, beatae
-              quis facere neque praesentium. Asperiores, ea!
-            </p>
-          </div>
-
-          <div className="hero-subtitle-container">
-            <div className="features">
-              <img src={serviceBlue} alt="Background image" />
-              <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/website-backup">
                   Website Backup
                 </a>
@@ -145,9 +120,11 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3 className="feature-title">
-                <a href="#">Subscription to Security Briefings</a>
+                <a href="https://novusordoseclorum.org/newsletter/ ">
+                  Security Now Newsletter
+                </a>
               </h3>
-              <a href="#">
+              <a href="https://novusordoseclorum.org/newsletter/ ">
                 <LaunchIcon
                   style={{
                     color: '#9c47ed',
@@ -158,12 +135,6 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
                 />
               </a>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
-              quo repellat dolor quod quos quasi voluptatem non est voluptatibus
-              quaerat reiciendis delectus enim ipsum, sapiente molestiae
-              inventore dolorem earum expedita?
-            </p>
           </div>
         </div>
       </div>

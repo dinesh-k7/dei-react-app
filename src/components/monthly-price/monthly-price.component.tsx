@@ -12,6 +12,7 @@ const MonthlyPriceComponent = ({
   onSubmit,
   errors,
   quoteState,
+  onError,
 }: any): ReactElement => {
   const monthlyPremium = calculateMonthlyAmount(size);
   return (
@@ -35,6 +36,7 @@ const MonthlyPriceComponent = ({
         handleSubmit={handleSubmit}
         errors={errors}
         onSubmit={onSubmit}
+        onError={onError}
       />
     </div>
   );
