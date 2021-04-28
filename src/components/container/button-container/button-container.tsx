@@ -5,14 +5,35 @@ const ButtonContainer: any = ({
   captchaValue,
   isLeadDataSent,
   handleSubmit,
+  fromPage,
+  selectedPackages,
+  name,
 }: any): ReactElement => {
   return (
     <Fragment>
-      {!isLeadDataSent && (
+      {!isLeadDataSent && !fromPage && (
         <button
           type="button"
           className={`btn-basic ${
             isFormSubmitted && !isLeadDataSent && captchaValue ? 'btn-grey' : ''
+          } ${isLeadDataSent ? 'btn-green' : ''}`}
+          onClick={() => handleSubmit()}
+        >
+          {name ? name : 'Schedule Consultation'}
+        </button>
+      )}
+
+      {!isLeadDataSent && fromPage && (
+        <button
+          type="button"
+          className={`btn-basic ${
+            isFormSubmitted &&
+            !isLeadDataSent &&
+            captchaValue &&
+            selectedPackages &&
+            selectedPackages.length
+              ? 'btn-grey'
+              : ''
           } ${isLeadDataSent ? 'btn-green' : ''}`}
           onClick={() => handleSubmit()}
         >

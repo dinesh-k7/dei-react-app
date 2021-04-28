@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import ReCAPTCHA from 'react-google-recaptcha';
 
-import { siteKey, CONSULTATION_PACKAGES } from '../../constants';
+import { siteKey } from '../../constants';
 
 import MultiText from '../common/form-element/multi-text';
 import SelectBox from '../common/form-element/select-box';
@@ -27,8 +27,9 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     isSendMailError: false,
     isBrandingDetailSubmitted: false,
     isButtonSubmit: false,
-    packages: CONSULTATION_PACKAGES,
     isContent: '',
+    isSelling: '',
+    isSEO: '',
   };
   const { formFields, fromPage } = props;
   const state = {};
@@ -64,15 +65,33 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
   // handle get quote form onSubmit
   const onSubmit = (quoteData: any) => {
     const { captchaValue } = quoteData;
-    const { packages } = quoteState;
 
     quoteData.isFormSubmitted = true;
-    const selectedPackages = packages && packages.filter((s) => s.active);
-    let preferedPackage;
-    if (selectedPackages && selectedPackages.length) {
-      preferedPackage = selectedPackages.map((d) => d.name);
-    } else {
-      preferedPackage = false;
+
+    const {
+      isBrandingDetailSubmitted,
+      keywords,
+      brands,
+      colorPicker,
+      isSelling,
+      isSEO,
+      isContent,
+    } = quoteState;
+
+    if (fromPage === 'wd' && !isBrandingDetailSubmitted) {
+      setQuoteState({ ...quoteState, isButtonSubmit: true });
+      return;
+    }
+
+    quoteData.isFormSubmitted = true;
+    quoteData.isButtonSubmit = false;
+    if (isBrandingDetailSubmitted) {
+      quoteData.keywords = keywords;
+      quoteData.brands = brands;
+      quoteData.colorPicker = colorPicker;
+      quoteData.isSelling = isSelling;
+      quoteData.isSEO = isSEO;
+      quoteData.isContent = isContent;
     }
 
     setQuoteState((prevState) => {
@@ -85,8 +104,8 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     if (!captchaValue) {
       return;
     } else {
-      props.dispatch(addToCart(selectedPackages));
-      sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
+      //props.dispatch(addToCart(selectedPackages));
+      sendMail({ ...quoteData }, fromPage).then(
         () => {
           setQuoteState((prevState) => {
             return {
@@ -120,28 +139,20 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     resetCaptcha();
   }
 
-  const handleBrandingState = (state) => {
-    const { keywords, colorPicker, brands } = state;
+  const handleState = (state) => {
+    const { keywords, colorPicker, isSelling, isSEO } = state;
     const activeKeywords =
       keywords && keywords.filter((keyword) => keyword.active === true);
-    const activeBrands =
-      brands && brands.filter((brand) => brand.active === true);
 
-    if (
-      activeKeywords &&
-      activeKeywords.length >= 2 &&
-      colorPicker &&
-      activeBrands &&
-      activeBrands.length >= 2
-    ) {
+    if (activeKeywords && activeKeywords.length >= 2 && colorPicker) {
       const values = activeKeywords.map((keyword) => keyword.name);
-      const brand = activeBrands.map((brand) => brand.name);
 
       setQuoteState((prevState) => {
         return {
           ...prevState,
           keywords: values && values.length && values.join(','),
-          brands: brand && brand.length && brand.join(','),
+          isSelling,
+          isSEO,
           colorPicker,
           isBrandingDetailSubmitted: true,
         };
@@ -289,12 +300,14 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
                       {field.label}
                       <div className="radio-options">
                         <span
-                          className={isContent ? 'green-bg' : 'white-bg'}
+                          className={
+                            isContent === 'Yes' ? 'green-bg' : 'white-bg'
+                          }
                           onClick={() => {
                             setQuoteState((prevState) => {
                               return {
                                 ...prevState,
-                                isContent: true,
+                                isContent: 'Yes',
                               };
                             });
                           }}
@@ -302,14 +315,12 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
                           YES
                         </span>
                         <span
-                          className={
-                            isContent === false ? 'red-bg' : 'white-bg'
-                          }
+                          className={isContent === 'No' ? 'red-bg' : 'white-bg'}
                           onClick={() => {
                             setQuoteState((prevState) => {
                               return {
                                 ...prevState,
-                                isContent: false,
+                                isContent: 'No',
                               };
                             });
                           }}
@@ -356,7 +367,7 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
         register={register}
         onError={onError}
         fromPage={'wd'}
-        handleBrandingState={handleBrandingState}
+        handleState={handleState}
       />
     </section>
   );

@@ -11,7 +11,7 @@ const ErrorMessageContainer: any = ({
   activeKeywords,
   fromPage,
   isButtonSubmit,
-  brandingState,
+  state,
   activeBrands,
 }: any): ReactElement => {
   const errorKeys = Object.keys(errors);
@@ -30,7 +30,7 @@ const ErrorMessageContainer: any = ({
             : ''}
         </ul>
       </div>
-      {(isFormSubmitted || errorKeys.length) &&
+      {(isFormSubmitted || errorKeys.length || isButtonSubmit) &&
       selectedPackages &&
       !selectedPackages.length ? (
         <p className="error_message">{messages.package_error}</p>
@@ -40,16 +40,16 @@ const ErrorMessageContainer: any = ({
 
       {activeKeywords &&
       activeKeywords.length < 2 &&
-      fromPage === 'branding' &&
+      (fromPage === 'branding' || fromPage === 'wd') &&
       (isButtonSubmit || errorKeys.length) ? (
         <p className="error_message">{messages.keywords_error}</p>
       ) : (
         ''
       )}
 
-      {brandingState &&
-      !brandingState.colorPicker &&
-      fromPage === 'branding' &&
+      {state &&
+      !state.colorPicker &&
+      (fromPage === 'branding' || fromPage === 'wd') &&
       (isButtonSubmit || errorKeys.length) ? (
         <p className="error_message">{messages.color_picker_error}</p>
       ) : (
@@ -65,7 +65,7 @@ const ErrorMessageContainer: any = ({
         ''
       )}
 
-      {!captchaValue && isFormSubmitted && (
+      {!captchaValue && (isFormSubmitted || isButtonSubmit) && (
         <p className="error_message">{messages.captcha_error}</p>
       )}
       {isSendMailError && (

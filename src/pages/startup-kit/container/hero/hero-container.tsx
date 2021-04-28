@@ -2,10 +2,9 @@ import React, { ReactElement } from 'react';
 
 import '../../../../assets/scss/styles.scss';
 import './hero-container.scss';
-import heroImage from '../../../../assets/images/consultation-service.svg';
+//import heroImage from '../../../../assets/images/consultation-service.svg';
 
 const HeroContainer: React.FC<any> = (props: any): ReactElement => {
-  const { fromPage } = props;
   return (
     <section className="hero-section">
       <div className="hero-content">

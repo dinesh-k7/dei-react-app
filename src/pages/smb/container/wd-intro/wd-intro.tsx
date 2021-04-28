@@ -104,11 +104,17 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
               Fully functioning professional business/ecommerce/shopping cart.
             </p>
           </div>
+
           <div className="hero-subtitle-container">
             <div className="features">
               <h3>or</h3>
             </div>
-            <p>Custom Design and Build</p>
+          </div>
+          <div className="hero-subtitle-container">
+            <div className="features">
+              <img src={serviceBlue} alt="Background image" />
+              <h3 className="feature-title">Custom Design and Build</h3>
+            </div>
           </div>
         </div>
 

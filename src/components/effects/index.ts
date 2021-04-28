@@ -11,8 +11,14 @@ export const sendMail = (
   quoteData.fromPage = fromPage;
   let url;
   switch (fromPage) {
-    case 'branding':
+    case constants.BRANDING:
       url = `${constants.MAIL_SERVICE_ENDPOINT}/branding-quote/sendmail`;
+      break;
+    case constants.WD:
+      url = `${constants.MAIL_SERVICE_ENDPOINT}/wd-quote/sendmail`;
+      break;
+    case constants.RECONNECT:
+      url = `${constants.MAIL_SERVICE_ENDPOINT}/reconnect/sendmail`;
       break;
     case constants.ES_DATA_SERVICE:
     case constants.ES_PROFESSIONAL_SERVICE:

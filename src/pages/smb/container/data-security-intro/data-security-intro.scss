@@ -11,6 +11,13 @@
     .features:nth-child(1) {
       padding-bottom: 8px;
     }
+    p {
+      font-family: 'OpenSansRegular', sans-serif !important;
+      font-size: 1em !important;
+      font-weight: var(--font-weight400) !important;
+      font-style: normal !important;
+      padding: 0px !important;
+    }
   }
   .hero-image img {
     max-width: 500px !important;
