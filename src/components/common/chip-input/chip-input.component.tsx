@@ -11,6 +11,7 @@ const ChipInput: any = ({
   updateState,
   name,
   list,
+  limit,
 }: any): ReactElement => {
   // Function to handle add keyword
   const handleClick = () => {
@@ -53,6 +54,7 @@ const ChipInput: any = ({
           );
         })
       : '';
+
   return (
     <form
       autoComplete="off"
@@ -63,18 +65,38 @@ const ChipInput: any = ({
     >
       <div className="word-grid">
         {keywordDisplay}
-        <div className="input-container">
-          <input
-            type="text"
-            name={name}
-            id="keyword_picker"
-            className="keyword-input"
-            placeholder={placeholder}
-            onChange={handleChange}
-            value={keyword}
-          />
-          <img className="plus-icon" src={plusIcon} alt="Add Icon" />
-        </div>
+        {!limit ? (
+          <div className="input-container">
+            <input
+              type="text"
+              name={name}
+              id="keyword_picker"
+              className="keyword-input"
+              placeholder={placeholder}
+              onChange={handleChange}
+              value={keyword}
+            />
+            <img className="plus-icon" src={plusIcon} alt="Add Icon" />
+          </div>
+        ) : (
+          ''
+        )}
+        {limit && limit > keywords.length ? (
+          <div className="input-container">
+            <input
+              type="text"
+              name={name}
+              id="keyword_picker"
+              className="keyword-input"
+              placeholder={placeholder}
+              onChange={handleChange}
+              value={keyword}
+            />
+            <img className="plus-icon" src={plusIcon} alt="Add Icon" />
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </form>
   );

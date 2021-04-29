@@ -255,6 +255,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
           list={'beliefs'}
         />
         <h4>Additional beliefs of interest</h4>
+
         <ChipInput
           placeholder={'Add keyword'}
           handleChange={handleChange}
@@ -263,6 +264,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
           keywords={additional_beliefs}
           name={'additional_belief'}
           list={'additional_beliefs'}
+          limit={10}
         />
         <div className="button-container">
           <ButtonContainer

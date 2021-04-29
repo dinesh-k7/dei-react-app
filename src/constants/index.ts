@@ -605,7 +605,7 @@ export const CONSULTATION_PACKAGES = [
       'Password policies',
       'Network Firewall',
       '95% success rate',
-      'Patches',
+      'Initial patch management assessment',
     ],
   },
   {

@@ -255,6 +255,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
                       control={control}
                       error={!!errors[quoteState[field.name]]}
                       grouping={field.grouping}
+                      required={field.required}
                     ></SelectBox>
                   );
                 }
@@ -314,7 +315,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={500}
+                      maxlength={field.maxlength}
                       class_name={'text-area-container'}
                     />
                   );
@@ -445,7 +446,9 @@ const ConsultationQuoteComponent: React.FC<any> = (
                   ></span>
                 </div>
                 <div className="package-description-one">
-                  <p className="para-normal">{service.description_one}</p>
+                  <p className="para-normal para-description">
+                    {service.description_one}
+                  </p>
                   <span>
                     $
                     {typeof service.price === 'string'

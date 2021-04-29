@@ -31,7 +31,7 @@ const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
         <div className="hero-content">
           <Fragment>
             <div className="hero-title">
-              <h1>Data Connectivity</h1>
+              <h1>Data Plexus</h1>
               <div className="hero-mobile-image">
                 <img src={heroImage} alt="consultation Image" />
               </div>
@@ -43,7 +43,7 @@ const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
                       routeChange('/enterprise/sdwan-service', 'SD-WAN')
                     }
                   >
-                    SD/SD-WAN
+                    SD-WAN
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>

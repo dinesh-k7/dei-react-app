@@ -22,6 +22,7 @@ const SelectBox: any = ({
   placeholder,
   control,
   grouping,
+  required,
 }): ReactElement => {
   const types: string[] = [];
   return (
@@ -77,10 +78,12 @@ const SelectBox: any = ({
           defaultValue={value}
           onChange={handleSelect}
           rules={{
-            required: filterErrorMessage(
-              quoteValidationErrorMessages[name],
-              'required',
-            ),
+            required: required
+              ? filterErrorMessage(
+                  quoteValidationErrorMessages[name],
+                  'required',
+                )
+              : '',
           }}
         />
       </FormControl>

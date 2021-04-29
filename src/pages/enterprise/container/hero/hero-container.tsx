@@ -138,9 +138,8 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    &ldquo;Separated by meters or by a continent the
-                    <b> DEI™</b> connects the communications of your
-                    business.&rdquo;
+                    Separated by meters or by a continent the
+                    <b> DEI™</b> connects the communications of your business.
                   </p>
                 </div>
                 <div className="features">
@@ -159,16 +158,11 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    OTG boasts the most robust portfolio of IT technology
-                    solutions in the channel to meet real-world customer needs.
+                    Until we provide it we will source the best providers for
+                    it!
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="hero-description">
-              <p>
-                Until we provide it we will source the best providers for it!
-              </p>
             </div>
           </Fragment>
         )}
