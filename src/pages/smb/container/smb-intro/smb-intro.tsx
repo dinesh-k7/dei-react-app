@@ -42,7 +42,8 @@ const SmbIntroContainer: React.FC<any> = ({
           />
         </div>
         <p className="smb-intro-text">
-          Digital optimization only a few clicks away
+          Secure and Develop your business with the DEI™. Digital optimization
+          is only a few clicks away.
         </p>
       </div>
 

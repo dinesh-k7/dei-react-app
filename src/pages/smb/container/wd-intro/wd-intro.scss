@@ -78,6 +78,13 @@
   }
 }
 
+@include respond-above(sm) {
+  .hero-sub-title {
+    font-size: 32px !important;
+    font-style: italic;
+  }
+}
+
 @include respond-above(lg) {
   .wd-page {
     padding: 0px 200px !important;

@@ -25,7 +25,7 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
       <div className="hero-content">
         <div className="hero-title">
           <h1>Website development</h1>
-          <h3 className="hero-sub-title">Do-It-Yourself:</h3>
+          <h3 className="hero-sub-title">DIY:</h3>
           <div className="hero-mobile-image">
             <img src={heroMobileImage} alt="Webiste development Image" />
           </div>
@@ -105,16 +105,8 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
             </p>
           </div>
 
-          <div className="hero-subtitle-container">
-            <div className="features">
-              <h3>or</h3>
-            </div>
-          </div>
-          <div className="hero-subtitle-container">
-            <div className="features">
-              <img src={serviceBlue} alt="Background image" />
-              <h3 className="feature-title">Custom Design and Build</h3>
-            </div>
+          <div>
+            <h3 className="hero-sub-title">DEI™:</h3>
           </div>
         </div>
 

@@ -10,6 +10,9 @@
   .mobile-hide {
     justify-self: center;
   }
+  .text-area-container {
+    padding-right: 8px;
+  }
   .confirmation-text {
     p {
       font-family: 'OpenSansRegular', sans-serif !important;
@@ -34,6 +37,10 @@
     justify-self: center;
     padding: 64px 32px 32px 32px;
     .package-description-one {
+      .para-description {
+        text-align: center;
+        font-weight: 700 !important;
+      }
       ul {
         margin: 0px !important;
         padding-left: 24px;

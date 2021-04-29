@@ -151,8 +151,19 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
-                  <h3>Virtual Servers</h3>
-                  <ChevronRightIcon className="chevron-right" />
+                  <h3
+                    onClick={() =>
+                      routeChange('/enterprise/cloud-quote', 'Virtual Servers')
+                    }
+                  >
+                    Virtual Servers
+                  </h3>
+                  <ChevronRightIcon
+                    className="chevron-right"
+                    onClick={() =>
+                      routeChange('/enterprise/cloud-quote', 'Virtual Servers')
+                    }
+                  />
                   <p>
                     Linux, Windows Server, SQL Server, Oracle, IBM, and SAP, Our
                     selection of Virtual Machines gives you the flexibility of
