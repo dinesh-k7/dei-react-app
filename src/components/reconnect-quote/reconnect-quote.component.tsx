@@ -2,21 +2,34 @@ import React, { ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import ReCAPTCHA from 'react-google-recaptcha';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Rating from '@material-ui/lab/Rating';
 
 import { constants, siteKey } from '../../constants';
-
-import plusIcon from '../../assets/images/plus_icon.svg';
 import TextBox from '../common/form-element/text-box';
 import '../get-quote/get-quote.component.scss';
 import './reconnect-quote.component.scss';
-import { useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import ChipInput from '../common/chip-input/chip-input.component';
-
 import SnackBarComponent from '../common/snackbar/snackbar.component';
 import ButtonContainer from '../container/button-container/button-container';
 import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
+import { makeStyles } from '@material-ui/core/styles';
+
+const labels = {
+  0.5: 'Useless',
+  1: 'Useless+',
+  1.5: 'Poor',
+  2: 'Poor+',
+  2.5: 'Ok',
+  3: 'Ok+',
+  3.5: 'Good',
+  4: 'Good+',
+  4.5: 'Excellent',
+  5: 'Excellent+',
+};
 
 interface IntitialState {
   beliefs: { name: string; active: boolean }[];
@@ -28,6 +41,14 @@ interface IntitialState {
   isFormSubmitted: boolean;
   isSendMailError: boolean;
 }
+
+const useStyles = makeStyles({
+  root: {
+    width: 200,
+    display: 'flex',
+    alignItems: 'center',
+  },
+});
 
 const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
   let INITIAL_STATE: IntitialState = {
@@ -62,6 +83,9 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
   const { register, errors, handleSubmit } = useForm();
   const [state, setState] = useState(INITIAL_STATE);
   const [captcha, setCaptcha] = useState({});
+  const [value, setValue] = useState(4);
+  const [hover, setHover] = useState(-1);
+
   const {
     additional_beliefs,
     additional_belief,
@@ -165,14 +189,14 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
   };
 
   // handle button click for form submit
-  const onError = () => {
-    setState((prevState) => {
-      return {
-        ...prevState,
-        isButtonSubmit: true,
-      };
-    });
-  };
+  // const onError = () => {
+  //   setState((prevState) => {
+  //     return {
+  //       ...prevState,
+  //       isButtonSubmit: true,
+  //     };
+  //   });
+  // };
 
   const updateState = (obj) => {
     setState((prevState) => {
@@ -253,6 +277,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
           keywords={beliefs}
           name={'belief'}
           list={'beliefs'}
+          limit={1}
         />
         <h4>Additional beliefs of interest</h4>
 
@@ -266,6 +291,43 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
           list={'additional_beliefs'}
           limit={10}
         />
+
+        <div className="rating-container">
+          <Box
+            component="fieldset"
+            mb={3}
+            borderColor="transparent"
+            style={{ padding: '0px !important' }}
+          >
+            <Typography component="legend">10 stars</Typography>
+            <Rating
+              name="customized-10"
+              defaultValue={2}
+              max={10}
+              onChange={(event, newValue) => {
+                console.log('newvalue', newValue);
+              }}
+            />
+          </Box>
+        </div>
+
+        <div className={classes.root}>
+          <Rating
+            name="hover-feedback"
+            value={value}
+            precision={0.5}
+            onChange={(event, newValue: any) => {
+              setValue(newValue);
+            }}
+            onChangeActive={(event, newHover) => {
+              setHover(newHover);
+            }}
+          />
+          {value !== null && (
+            <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
+          )}
+        </div>
+
         <div className="button-container">
           <ButtonContainer
             isLeadDataSent={isLeadDataSent}
