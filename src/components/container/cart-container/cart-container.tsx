@@ -50,6 +50,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
   //Update payment status in state
 
   const updatePaymentStatus = (paymentDetail, orderId) => {
+    console.log('paymentDetail', paymentDetail);
     const { status, payer } = paymentDetail;
     if (status === constants.COMPLETED) {
       const name = payer && payer.name && payer.name.given_name;
@@ -140,11 +141,10 @@ const CartContainer: React.FC = (props: any): ReactElement => {
             </div>
             <div className="paypal-button">
               <PayPalButton
-                amount="0.01"
                 shippingPreference="NO_SHIPPING"
-                // onApprove={() => {
-                //   console.log('approve');
-                // }}
+                onApprove={(details) => {
+                  console.log('approve', details);
+                }}
                 onSuccess={(details, data) => {
                   props.emptyCart();
                   updatePaymentStatus(details, data.orderID);
@@ -156,6 +156,37 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                   //     orderID: data.orderID,
                   //   }),
                   // });
+                }}
+                createOrder={(data, actions) => {
+                  return actions.order.create({
+                    purchase_units: [
+                      {
+                        amount: {
+                          currency_code: 'USD',
+                          value: '0.03',
+                        },
+                        item: [
+                          {
+                            name: 'Data Security',
+                            unit_amount: {
+                              currency_code: 'USD',
+                              value: '0.04',
+                            },
+                          },
+                          {
+                            name: 'Branding',
+                            unit_amount: {
+                              currency_code: 'USD',
+                              value: '0.02',
+                            },
+                          },
+                        ],
+                      },
+                    ],
+                    // application_context: {
+                    //   shipping_preference: "NO_SHIPPING" // default is "GET_FROM_FILE"
+                    // }
+                  });
                 }}
                 onError={(details, data) => {
                   console.log('details', details);
@@ -184,14 +215,14 @@ const CartContainer: React.FC = (props: any): ReactElement => {
           </div>
           <div className="payment-success-message">
             <h3>Success</h3>
-            <span>Order Number: {paymentId} 12121212 </span>
+            <span>Order Number: {paymentId} </span>
 
             <p className="success-description">
               Thank you for your purchase! We are the common denominator! <br />
               Sincerely, <br />
               <br />
               Mr. NWO <br />
-              Technology Cultural Ataché
+              Technology Cultural Attach
             </p>
             <button
               type="button"
