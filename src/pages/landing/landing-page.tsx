@@ -67,9 +67,9 @@ const LandingPage: React.FC = (): ReactElement => {
 
           <div className="intro-text">
             <p>
-              Facilitate your digital enterprise ambitions with the DEI™. A
-              broad scope single-source provider. If we don&apos;t provide it,
-              we will source the best providers for it.
+              A broad scope single-source provider to facilitate your digital
+              enterprise ambitions. If we don&apos;t provide it, we will source
+              the best providers for it.
             </p>
           </div>
         </div>

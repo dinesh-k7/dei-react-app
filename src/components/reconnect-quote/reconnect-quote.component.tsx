@@ -2,7 +2,7 @@ import React, { ReactElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import ReCAPTCHA from 'react-google-recaptcha';
-import Typography from '@material-ui/core/Typography';
+
 import Box from '@material-ui/core/Box';
 import Rating from '@material-ui/lab/Rating';
 
@@ -19,8 +19,8 @@ import LoaderComponent from '../common/loader/loader.component';
 import { makeStyles } from '@material-ui/core/styles';
 
 const labels = {
-  0.5: 'Useless',
-  1: 'Useless+',
+  0.5: 'Oppressed',
+  1: 'Oppressed',
   1.5: 'Poor',
   2: 'Poor+',
   2.5: 'Ok',
@@ -29,6 +29,8 @@ const labels = {
   4: 'Good+',
   4.5: 'Excellent',
   5: 'Excellent+',
+  5.5: '1%',
+  6: '1%+',
 };
 
 interface IntitialState {
@@ -40,6 +42,7 @@ interface IntitialState {
   isLeadDataSent: boolean;
   isFormSubmitted: boolean;
   isSendMailError: boolean;
+  isButtonSubmit: boolean;
 }
 
 const useStyles = makeStyles({
@@ -60,6 +63,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     isLeadDataSent: false,
     isFormSubmitted: false,
     isSendMailError: false,
+    isButtonSubmit: false,
   };
   const { formFields, fromPage } = props;
   const stateData = {};
@@ -83,7 +87,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
   const { register, errors, handleSubmit } = useForm();
   const [state, setState] = useState(INITIAL_STATE);
   const [captcha, setCaptcha] = useState({});
-  const [value, setValue] = useState(4);
+  const [value, setValue] = useState(3);
   const [hover, setHover] = useState(-1);
 
   const {
@@ -95,6 +99,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     captchaValue,
     isLeadDataSent,
     isSendMailError,
+    isButtonSubmit,
   } = state;
 
   // Set captcha reference
@@ -110,6 +115,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     const { captchaValue } = quoteData;
 
     quoteData.isFormSubmitted = true;
+    quoteData.isButtonSubmit = false;
     const activeA =
       beliefs && beliefs.filter((keyword) => keyword.active === true);
     const activeB =
@@ -142,6 +148,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
             filteredAdditionalBeliefs &&
             filteredAdditionalBeliefs.length &&
             filteredAdditionalBeliefs.join(','),
+          qualityOfLife: labels[value],
         },
         constants.RECONNECT,
       ).then(
@@ -189,14 +196,14 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
   };
 
   // handle button click for form submit
-  // const onError = () => {
-  //   setState((prevState) => {
-  //     return {
-  //       ...prevState,
-  //       isButtonSubmit: true,
-  //     };
-  //   });
-  // };
+  const onError = () => {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        isButtonSubmit: true,
+      };
+    });
+  };
 
   const updateState = (obj) => {
     setState((prevState) => {
@@ -243,7 +250,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
               })}
           </div>
 
-          <div className="form-group recaptcha-container">
+          <div className="form-group recaptcha-container mobile-hide">
             <ReCAPTCHA
               ref={(r) => setCaptchaRef(r)}
               sitekey={siteKey}
@@ -292,26 +299,8 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
           limit={10}
         />
 
-        <div className="rating-container">
-          <Box
-            component="fieldset"
-            mb={3}
-            borderColor="transparent"
-            style={{ padding: '0px !important' }}
-          >
-            <Typography component="legend">10 stars</Typography>
-            <Rating
-              name="customized-10"
-              defaultValue={2}
-              max={10}
-              onChange={(event, newValue) => {
-                console.log('newvalue', newValue);
-              }}
-            />
-          </Box>
-        </div>
-
-        <div className={classes.root}>
+        <h4>Rate your quality of life</h4>
+        <div className={`${classes.root} rating-container`}>
           <Rating
             name="hover-feedback"
             value={value}
@@ -319,6 +308,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
             onChange={(event, newValue: any) => {
               setValue(newValue);
             }}
+            max={6}
             onChangeActive={(event, newHover) => {
               setHover(newHover);
             }}
@@ -328,12 +318,35 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
           )}
         </div>
 
+        <div className="form-group recaptcha-container desktop-hide">
+          <ReCAPTCHA
+            ref={(r) => setCaptchaRef(r)}
+            sitekey={siteKey}
+            onChange={(e) => {
+              const captchaValue = e ? e : '';
+              setState((prevState) => {
+                return {
+                  ...prevState,
+                  captchaValue,
+                  isFormSubmitted: false,
+                };
+              });
+            }}
+          />
+          <input
+            type="hidden"
+            name="captchaValue"
+            ref={register}
+            value={captchaValue}
+          />
+        </div>
+
         <div className="button-container">
           <ButtonContainer
             isLeadDataSent={isLeadDataSent}
             isFormSubmitted={isFormSubmitted}
             captchaValue={captchaValue}
-            handleSubmit={handleSubmit(onSubmit)}
+            handleSubmit={handleSubmit(onSubmit, onError)}
             onSubmit={onSubmit}
             name={'Submit'}
           />
@@ -345,6 +358,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
               captchaValue={captchaValue}
               isSendMailError={isSendMailError}
               isLeadDataSent={isLeadDataSent}
+              isButtonSubmit={isButtonSubmit}
             />
           )}
           {isFormSubmitted && !isLeadDataSent && captchaValue ? (
