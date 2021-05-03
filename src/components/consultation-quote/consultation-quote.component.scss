@@ -36,6 +36,12 @@
 
     justify-self: center;
     padding: 64px 32px 32px 32px;
+    span {
+      color: var(--font-color);
+      text-align: left;
+      letter-spacing: 0em;
+      font-family: 'OpenSansBold', sans-serif;
+    }
     .package-description-one {
       .para-description {
         text-align: center;

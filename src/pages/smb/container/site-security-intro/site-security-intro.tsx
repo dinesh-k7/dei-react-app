@@ -50,7 +50,9 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3 className="feature-title">
-                <a href="https://www.nwohub.com/products/ssl">SSL</a>
+                <a href="https://www.nwohub.com/products/ssl">
+                  DEI™ Certified SSL
+                </a>
               </h3>
               <a href="https://www.nwohub.com/products/ssl">
                 <LaunchIcon
@@ -64,7 +66,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               </a>
             </div>
 
-            <p>Lets visitors know that you&apos;ll keep their data safe.</p>
+            <p>Server Support Unlimited</p>
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
@@ -96,7 +98,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               <img src={serviceBlue} alt="Background image" />
               <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/website-backup">
-                  Website Backup
+                  DEI™ Backup
                 </a>
               </h3>
               <a href="https://www.nwohub.com/products/website-backup">
@@ -110,10 +112,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
                 />
               </a>
             </div>
-            <p>
-              Keep your website data safe while you grow your business online.
-              Automatic backups and one-click restore. Worth every penny!
-            </p>
+            <p>Worth Every Penny!</p>
           </div>
 
           <div className="hero-subtitle-container">

@@ -6,6 +6,11 @@
   padding-right: 24px;
   align-items: center;
   grid-row: 2/3;
+  .service-blob {
+    span {
+      color: var(--font-color);
+    }
+  }
   .smb-blob {
     .hover-intro-text {
       padding-right: 112px !important;

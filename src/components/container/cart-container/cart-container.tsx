@@ -142,9 +142,6 @@ const CartContainer: React.FC = (props: any): ReactElement => {
             <div className="paypal-button">
               <PayPalButton
                 shippingPreference="NO_SHIPPING"
-                onApprove={(details) => {
-                  console.log('approve', details);
-                }}
                 onSuccess={(details, data) => {
                   props.emptyCart();
                   updatePaymentStatus(details, data.orderID);

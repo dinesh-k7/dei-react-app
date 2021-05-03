@@ -17,7 +17,11 @@ const HeroContainer: React.FC = (): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
-              <h3>Dark Web Monitoring</h3>
+              <h3>Dark Web Monitoring Sentry</h3>
+            </div>
+            <div className="features">
+              <img src={serviceBlue} alt="Background image" />
+              <h3>Integrated Email Security Sentry</h3>
             </div>
           </div>
           <h3>The Dark Web Problem:</h3>

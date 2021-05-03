@@ -40,6 +40,9 @@
     .service-title {
       font-family: 'MontFont', sans-serif !important;
     }
+    span {
+      color: var(--font-color);
+    }
   }
 }
 @include respond-between(md, lg) {
