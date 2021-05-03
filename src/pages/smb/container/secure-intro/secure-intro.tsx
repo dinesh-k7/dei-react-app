@@ -34,10 +34,142 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
             />
           </div>
           <div className="hero-subtitle-container">
+            <div className="features">
+              <img src={serviceBlue} alt="Background image" />
+              <h3 className="feature-title">Dark Web Sentry</h3>
+              {!fromPage ? (
+                <a href="https://www.nwohub.com/products/website-security">
+                  <LaunchIcon
+                    style={{
+                      color: '#42b9f8',
+                      fontSize: 34,
+                      paddingTop: 12,
+                      cursor: 'pointer',
+                    }}
+                  />
+                </a>
+              ) : (
+                ''
+              )}
+            </div>
+            <p>Keeping an eye on what matters</p>
+          </div>
+
+          <div className="hero-subtitle-container">
+            <div className="features">
+              <img src={serviceBlue} alt="Background image" />
+              <h3 className="feature-title">Email Sentry</h3>
+              {!fromPage ? (
+                <a href="https://www.nwohub.com/products/website-security">
+                  <LaunchIcon
+                    style={{
+                      color: '#42b9f8',
+                      fontSize: 34,
+                      paddingTop: 12,
+                      cursor: 'pointer',
+                    }}
+                  />
+                </a>
+              ) : (
+                ''
+              )}
+            </div>
+            <p>Premium Security Integrations</p>
+          </div>
+
+          <div className="hero-subtitle-container">
+            <div className="features">
+              <img src={serviceBlue} alt="Background image" />
+              <h3 className="feature-title">Website Sentry</h3>
+              {!fromPage ? (
+                <a href="https://www.nwohub.com/products/website-security">
+                  <LaunchIcon
+                    style={{
+                      color: '#42b9f8',
+                      fontSize: 34,
+                      paddingTop: 12,
+                      cursor: 'pointer',
+                    }}
+                  />
+                </a>
+              ) : (
+                ''
+              )}
+            </div>
             <p>
-              <b>
-                The DEI™ Sentinels Club includes a $100,000,000 USD warranty.
-              </b>
+              Scan your website to detect and remove malware. Removal Guaranteed
+            </p>
+          </div>
+
+          <div className="hero-subtitle-container">
+            <div className="features">
+              <img src={serviceBlue} alt="Background image" />
+              <h3 className="feature-title">DEI™ Certified SSL</h3>
+              {!fromPage ? (
+                <a href="https://www.nwohub.com/products/ssl">
+                  <LaunchIcon
+                    style={{
+                      color: '#42b9f8',
+                      fontSize: 34,
+                      paddingTop: 12,
+                      cursor: 'pointer',
+                    }}
+                  />
+                </a>
+              ) : (
+                ''
+              )}
+            </div>
+
+            <p>Server Support Unlimited</p>
+          </div>
+          <div className="hero-subtitle-container">
+            <div className="features">
+              <img src={serviceBlue} alt="Background image" />
+              <h3 className="feature-title">DEI™ Backup</h3>
+              {!fromPage ? (
+                <a href="https://www.nwohub.com/products/ssl-managed">
+                  <LaunchIcon
+                    style={{
+                      color: '#42b9f8',
+                      fontSize: 34,
+                      paddingTop: 12,
+                      cursor: 'pointer',
+                    }}
+                  />
+                </a>
+              ) : (
+                ''
+              )}
+            </div>
+            <p>Worth Every Penny!</p>
+          </div>
+
+          <div className="hero-subtitle-container">
+            <div className="features">
+              <img src={serviceBlue} alt="Background image" />
+              <h3 className="feature-title">Security Now Newsletter</h3>
+              {!fromPage ? (
+                <a href="https://www.nwohub.com/products/ssl-managed">
+                  <LaunchIcon
+                    style={{
+                      color: '#42b9f8',
+                      fontSize: 34,
+                      paddingTop: 12,
+                      cursor: 'pointer',
+                    }}
+                  />
+                </a>
+              ) : (
+                ''
+              )}
+            </div>
+          </div>
+
+          <div className="hero-subtitle-container">
+            <p>
+              Keep your website data safe while you grow your business online.
+              Automatic backups and one-click restore. Worth every penny!
             </p>
           </div>
           <div className="button-container">

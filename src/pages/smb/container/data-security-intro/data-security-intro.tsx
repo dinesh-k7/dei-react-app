@@ -22,7 +22,7 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
         <div className="hero-title">
           <Fragment>
             <h1>
-              Data Sentries<sup>™️</sup>
+              Data Sentinels<sup>™️</sup>
             </h1>
           </Fragment>
           <div className="hero-mobile-image">
@@ -32,16 +32,22 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3>Dark Web Sentry:</h3>
+              <p>
+                <b>The DEI™ Dark Web Monitors </b> stand guard to detect and
+                notify you of compromised credentials so you can take proactive
+                measures in protecting your data.
+              </p>
             </div>
-          </div>
-          <p className="para-one">Keeping an eye on what matters</p>
-          <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3>Email Sentry:</h3>
+              <p>
+                <b>The DEI™ Email Hunters.</b> You will be the first to know if
+                a potentially malicious email gets lucky enough to slip through
+                our world-class Integrated Email Security Solution.
+              </p>
             </div>
           </div>
-          <p className="para-one">Premium Security Integrations</p>
         </div>
 
         <div className="button-container">
