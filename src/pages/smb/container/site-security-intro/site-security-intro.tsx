@@ -19,7 +19,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
         <div className="hero-title">
           <Fragment>
             <h1>
-              Site Sentries<sup>™️</sup>
+              Site Sentinels<sup>™️</sup>
             </h1>
           </Fragment>
           <div className="hero-mobile-image">
@@ -30,7 +30,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               <img src={serviceBlue} alt="Background image" />
               <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/website-security">
-                  Website Security Express
+                  Website Sentry
                 </a>
               </h3>
               <a href="https://www.nwohub.com/products/website-security">
@@ -50,30 +50,8 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceBlue} alt="Background image" />
               <h3 className="feature-title">
-                <a href="https://www.nwohub.com/products/ssl">
-                  DEI™ Certified SSL
-                </a>
-              </h3>
-              <a href="https://www.nwohub.com/products/ssl">
-                <LaunchIcon
-                  style={{
-                    color: '#9c47ed',
-                    fontSize: 34,
-                    paddingTop: 12,
-                    cursor: 'pointer',
-                  }}
-                />
-              </a>
-            </div>
-
-            <p>Server Support Unlimited</p>
-          </div>
-          <div className="hero-subtitle-container">
-            <div className="features">
-              <img src={serviceBlue} alt="Background image" />
-              <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/ssl-managed">
-                  Managed SSL with install
+                  DEI™ Certified SSL
                 </a>
               </h3>
               <a href="https://www.nwohub.com/products/ssl-managed">
@@ -87,10 +65,8 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
                 />
               </a>
             </div>
-            <p>
-              We handle the install and maintenance of your SSL - saving you
-              time and energy.
-            </p>
+
+            <p>Server Support Unlimited</p>
           </div>
 
           <div className="hero-subtitle-container">

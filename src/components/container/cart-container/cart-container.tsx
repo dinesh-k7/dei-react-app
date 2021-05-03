@@ -190,8 +190,8 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                   updatePaymentStatus(details, data.orderID);
                 }}
                 options={{
-                  clientId: 'sb',
-                  merchantId: '3S3P6MPUEKNZG',
+                  clientId:
+                    'ASS3kboltE0oyTygQ_FNinfl6xJOQ-ka9i56QLBERh0G5hKpSZL_E23kYr1L4jsIWDzbtdEhaDfm0RRT',
                 }}
               />
             </div>
