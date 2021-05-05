@@ -19,6 +19,12 @@
     display: grid;
     grid-template-columns: 1fr 80px;
     align-items: center;
+    .product-count {
+      color: var(--font-color);
+      text-align: left;
+      letter-spacing: 0em;
+      font-family: 'OpenSansBold', sans-serif;
+    }
     .cart-icon {
       display: flex;
 

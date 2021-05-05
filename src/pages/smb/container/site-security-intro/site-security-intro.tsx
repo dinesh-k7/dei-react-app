@@ -110,6 +110,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
                 />
               </a>
             </div>
+            <p>Keep up to date on the latest security trends.</p>
           </div>
         </div>
       </div>
