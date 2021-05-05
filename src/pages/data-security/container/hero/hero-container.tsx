@@ -35,11 +35,11 @@ const HeroContainer: React.FC = (): ReactElement => {
             until it poses a direct threat to your business.
           </p>
           <div className="hero-description-two">
-            <h3>The DEI™ Data Sentries: </h3>
+            <h3>The DEI™ Data Sentinels: </h3>
             <p>
-              The DEI™ Data Sentries Stack includes the most validated
-              credential exposure data on the market with top tier integrated
-              email solutions at one convenient, low price. We provide you with
+              The DEI™ Data Stack includes the most validated credential
+              exposure data on the market with Premium integrated email security
+              solutions at one convenient, low price. We provide you with
               essential updates and vital details to keep you in the know. With
               this powerful tool in your corner, you can proactively prevent
               problems before they become costly issues.

@@ -61,7 +61,9 @@ const Header: React.FC<any> = (props: any): ReactElement => {
                       style={{ color: '#000000' }}
                       fontSize="large"
                     />{' '}
-                    <span>({products && products.length}) </span>
+                    <span className="product-count">
+                      ({products && products.length}){' '}
+                    </span>
                   </div>
                   <div className="hamburger-menu">
                     <PersistentDrawerLeft />
@@ -79,6 +81,7 @@ const Header: React.FC<any> = (props: any): ReactElement => {
 
 const mapStateToProps = (state) => {
   const { cartReducer } = state;
+  console.log('cartReducer', cartReducer);
   return {
     products: cartReducer.products,
   };

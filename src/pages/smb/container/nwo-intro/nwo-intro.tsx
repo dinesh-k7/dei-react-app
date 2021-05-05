@@ -37,11 +37,29 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
               </a>
             </div>
           </div>
+
+          <div className="hero-subtitle-container">
+            <div className="features">
+              <img src={serviceGreen} alt="Background image" />
+              <h3>Get a business email</h3>
+              <a href="https://www.nwohub.com/products/email">
+                <LaunchIcon
+                  style={{
+                    color: '#49e69a',
+                    fontSize: 34,
+                    paddingTop: 12,
+                    cursor: 'pointer',
+                  }}
+                />
+              </a>
+            </div>
+          </div>
+
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceGreen} alt="Background image" />
               <h3>Create a Website</h3>
-              <a href="https://www.nwohub.com/products/wordpress">
+              <a href="https://www.nwohub.com/products/website-builder">
                 <LaunchIcon
                   style={{
                     color: '#49e69a',
@@ -59,22 +77,6 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
               <img src={serviceGreen} alt="Background image" />
               <h3>Host a Website</h3>
               <a href="https://www.nwohub.com/products/business">
-                <LaunchIcon
-                  style={{
-                    color: '#49e69a',
-                    fontSize: 34,
-                    paddingTop: 12,
-                    cursor: 'pointer',
-                  }}
-                />
-              </a>
-            </div>
-          </div>
-          <div className="hero-subtitle-container">
-            <div className="features">
-              <img src={serviceGreen} alt="Background image" />
-              <h3>Create a business email</h3>
-              <a href="https://www.nwohub.com/products/email">
                 <LaunchIcon
                   style={{
                     color: '#49e69a',
