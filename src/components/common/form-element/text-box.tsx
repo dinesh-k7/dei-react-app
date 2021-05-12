@@ -45,11 +45,12 @@ const TextBox: any = ({
         />
       ) : (
         <input
-          type={'text'}
+          type={type === 'password' ? 'password' : 'text'}
           name={name}
           id={name}
           placeholder={placeholder}
           maxLength={maxlength ? maxlength : ''}
+          onChange={onChangeHandler}
           ref={register({
             required: required
               ? filterErrorMessage(

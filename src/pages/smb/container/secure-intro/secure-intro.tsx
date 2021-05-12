@@ -6,6 +6,7 @@ import heroImage from '../../../../assets/images/website_security.svg';
 import dsImage from '../../../../assets/images/data_security_dei_shield.svg';
 import serviceBlue from '../../../../assets/images/service_blue.svg';
 import '../site-security-intro/site-security-intro.scss';
+import './secure-intro.scss';
 
 const SecureIntro: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
@@ -33,6 +34,9 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
               alt="Site Security Image"
             />
           </div>
+          <p className="secure-description">
+            <b>The DEI™ Sentinels Club includes a $100,000,000 USD warranty.</b>
+          </p>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background image" />

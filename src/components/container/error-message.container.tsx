@@ -33,7 +33,7 @@ const ErrorMessageContainer: any = ({
       {(isFormSubmitted || errorKeys.length || isButtonSubmit) &&
       selectedPackages &&
       !selectedPackages.length ? (
-        <p className="error_message">{messages.package_error}</p>
+        <p className="error_message custom_msg">{messages.package_error}</p>
       ) : (
         ''
       )}
@@ -42,7 +42,7 @@ const ErrorMessageContainer: any = ({
       activeKeywords.length < 2 &&
       (fromPage === 'branding' || fromPage === 'wd') &&
       (isButtonSubmit || errorKeys.length) ? (
-        <p className="error_message">{messages.keywords_error}</p>
+        <p className="error_message custom_msg">{messages.keywords_error}</p>
       ) : (
         ''
       )}
@@ -51,7 +51,9 @@ const ErrorMessageContainer: any = ({
       !state.colorPicker &&
       (fromPage === 'branding' || fromPage === 'wd') &&
       (isButtonSubmit || errorKeys.length) ? (
-        <p className="error_message">{messages.color_picker_error}</p>
+        <p className="error_message custom_msg">
+          {messages.color_picker_error}
+        </p>
       ) : (
         ''
       )}
@@ -60,14 +62,26 @@ const ErrorMessageContainer: any = ({
       activeBrands.length < 2 &&
       fromPage === 'branding' &&
       (isButtonSubmit || errorKeys.length) ? (
-        <p className="error_message">{messages.brand_error}</p>
+        <p className="error_message custom_msg">{messages.brand_error}</p>
       ) : (
         ''
       )}
 
-      {!captchaValue && (isFormSubmitted || isButtonSubmit) && (
-        <p className="error_message">{messages.captcha_error}</p>
+      {state &&
+      state.password &&
+      state.cpassword &&
+      state.password !== state.cpassword &&
+      (isFormSubmitted || isButtonSubmit) ? (
+        <p className="error_message custom_msg">{messages.password_error}</p>
+      ) : (
+        ''
       )}
+
+      {!captchaValue &&
+        fromPage !== 'signIn' &&
+        (isFormSubmitted || isButtonSubmit) && (
+          <p className="error_message custom_msg">{messages.captcha_error}</p>
+        )}
       {isSendMailError && (
         <p className="error_message">{messages.mail_send_error}</p>
       )}

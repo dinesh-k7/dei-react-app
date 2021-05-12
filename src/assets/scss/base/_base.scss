@@ -167,6 +167,10 @@ label {
 .error_message {
   color: #ff3f3f;
   font-family: 'OpenSansRegular', sans-serif;
+  margin-top: 0px;
+}
+.custom_msg {
+  padding-top: 8px;
 }
 
 .lead_success {

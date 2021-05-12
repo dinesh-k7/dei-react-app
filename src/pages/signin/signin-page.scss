@@ -1,0 +1,23 @@
+@import '../../assets/scss/abstracts/mixins';
+@import '../../assets/scss/layout/hero';
+
+.landing-border {
+  border-bottom: 1px solid var(--font-color);
+  grid-column: 1/-1;
+  // margin-top: 72px;
+}
+
+@include respond-above(sm) {
+}
+
+@include respond-below(sm) {
+}
+
+@include respond-above(lg) {
+}
+
+@include respond-between(md, lg) {
+}
+
+@include respond-below(sm) {
+}

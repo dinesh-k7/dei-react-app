@@ -12,29 +12,29 @@ export const sendMail = (
   let url;
   switch (fromPage) {
     case constants.BRANDING:
-      url = `${constants.MAIL_SERVICE_ENDPOINT}/branding-quote/sendmail`;
+      url = `${constants.NODE_ENDPOINT}/mail-service/branding-quote/sendmail`;
       break;
     case constants.WD:
-      url = `${constants.MAIL_SERVICE_ENDPOINT}/wd-quote/sendmail`;
+      url = `${constants.NODE_ENDPOINT}/mail-service/wd-quote/sendmail`;
       break;
     case constants.RECONNECT:
-      url = `${constants.MAIL_SERVICE_ENDPOINT}/reconnect/sendmail`;
+      url = `${constants.NODE_ENDPOINT}/mail-service/reconnect/sendmail`;
       break;
     case constants.ES_DATA_SERVICE:
     case constants.ES_PROFESSIONAL_SERVICE:
     case constants.ES_CLOUD_SERVICE:
     case constants.ES_IOT_SERVICE:
     case constants.ES_VOICE_SERVICE:
-      url = `${constants.MAIL_SERVICE_ENDPOINT}/enterprise-service/sendmail`;
+      url = `${constants.NODE_ENDPOINT}/mail-service/enterprise-service/sendmail`;
       break;
     case constants.ES_SECURITY_SERVICE:
-      url = `${constants.MAIL_SERVICE_ENDPOINT}/sdwan-service/sendmail`;
+      url = `${constants.NODE_ENDPOINT}/mail-service/sdwan-service/sendmail`;
       break;
     case constants.CONSULTATION_SERVICE:
-      url = `${constants.MAIL_SERVICE_ENDPOINT}/consultation-service/sendmail`;
+      url = `${constants.NODE_ENDPOINT}/mail-service/consultation-service/sendmail`;
       break;
     default:
-      url = `${constants.MAIL_SERVICE_ENDPOINT}/sendmail`;
+      url = `${constants.NODE_ENDPOINT}/mail-service/sendmail`;
       break;
   }
 
