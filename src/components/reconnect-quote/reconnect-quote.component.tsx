@@ -6,7 +6,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import Box from '@material-ui/core/Box';
 import Rating from '@material-ui/lab/Rating';
 
-import { constants, siteKey } from '../../constants';
+import { constants, messages, siteKey } from '../../constants';
 import TextBox from '../common/form-element/text-box';
 import '../get-quote/get-quote.component.scss';
 import './reconnect-quote.component.scss';
@@ -219,9 +219,19 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
 
   return (
     <section className="reconnect-quote-section">
-      {isLeadDataSent && <SnackBarComponent isOpen={true} isError={false} />}
+      {isLeadDataSent && (
+        <SnackBarComponent
+          isOpen={true}
+          isError={false}
+          message={messages.request_success}
+        />
+      )}
       {errorKeys && errorKeys.length ? (
-        <SnackBarComponent isOpen={true} isError={true} />
+        <SnackBarComponent
+          isOpen={true}
+          isError={true}
+          message={messages.validation_error}
+        />
       ) : (
         ''
       )}

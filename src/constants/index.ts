@@ -172,8 +172,8 @@ export const constants = {
   STARTUP: 'STARTUP',
   STARTUPKIT: 'STARTUPKIT',
   COMPLETED: 'COMPLETED',
-  MAIL_SERVICE_ENDPOINT: 'https://dei-node-service.herokuapp.com/mail-service',
-  //MAIL_SERVICE_ENDPOINT: 'http://localhost:3010/mail-service',
+  NODE_ENDPOINT: 'https://dei-node-service.herokuapp.com',
+  //NODE_ENDPOINT: 'http://localhost:3010',
   PAGES: [
     {
       url: 'smb',
@@ -213,11 +213,13 @@ export const constants = {
 export const quoteValidationErrorMessages = {
   name: [{ type: 'required', message: '*Please enter name' }],
   lastname: [{ type: 'required', message: '*Please enter last name' }],
+  password: [{ type: 'required', message: '*Please enter password' }],
+  cpassword: [{ type: 'required', message: '*Please enter confirm password' }],
   email: [
     { type: 'required', message: '*Please enter email' },
     {
       type: 'pattern',
-      message: '*Please provide valid Business email address',
+      message: '*Please provide valid email address',
     },
   ],
   phone: [
@@ -280,6 +282,10 @@ export const messages = {
   brand_error: '*Please select atleast two brand name',
   keywords_error: '*Please select atleast two keywords',
   package_error: '*Please select a package',
+  password_error: '*Password and Confirm Password should match',
+  request_success: 'Your Request has been processed successfully!',
+  signup_error: 'Error in sign up process',
+  validation_error: 'Please fill out the required field(s).',
 };
 
 export const dataSecurityFormFields = [

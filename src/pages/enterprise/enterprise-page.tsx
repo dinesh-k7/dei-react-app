@@ -3,7 +3,7 @@ import React, { Fragment, ReactElement } from 'react';
 import HeroContainer from './container/hero/hero-container';
 import './enterprise-page.scss';
 
-const EnterprisePage: React.FC = (): ReactElement => {
+const EnterprisePage: React.FC = (props: any): ReactElement => {
   // Google page event track
   window['dataLayer'].push({
     event: 'pageview',

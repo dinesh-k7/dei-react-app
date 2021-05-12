@@ -11,6 +11,9 @@
 .secure-intro,
 .startup-intro,
 .startup-kit-intro {
+  .hero-mobile-image {
+    display: none;
+  }
   .hero-subtitle-container {
     flex-wrap: wrap;
     display: flex;

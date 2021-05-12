@@ -209,9 +209,19 @@ const ConsultationQuoteComponent: React.FC<any> = (
 
   return (
     <section className="consultation-quote-section">
-      {isLeadDataSent && <SnackBarComponent isOpen={true} isError={false} />}
+      {isLeadDataSent && (
+        <SnackBarComponent
+          isOpen={true}
+          isError={false}
+          message={messages.request_success}
+        />
+      )}
       {errorKeys && errorKeys.length ? (
-        <SnackBarComponent isOpen={true} isError={true} />
+        <SnackBarComponent
+          isOpen={true}
+          isError={true}
+          message={messages.validation_error}
+        />
       ) : (
         ''
       )}

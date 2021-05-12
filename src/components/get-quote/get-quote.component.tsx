@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { IGetQuoteProps } from '../../interfaces/get-quote.model';
 import MonthlyPriceComponent from '../monthly-price/monthly-price.component';
-import { constants, siteKey } from '../../constants';
+import { constants, messages, siteKey } from '../../constants';
 import { calculateMonthlyAmount, useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import '../../assets/scss/styles.scss';
@@ -229,9 +229,19 @@ const GetQuoteComponent: React.FC<any> = (
 
   return (
     <section className="get-quote-section">
-      {isLeadDataSent && <SnackBarComponent isOpen={true} isError={false} />}
+      {isLeadDataSent && (
+        <SnackBarComponent
+          isOpen={true}
+          isError={false}
+          message={messages.request_success}
+        />
+      )}
       {errorKeys && errorKeys.length ? (
-        <SnackBarComponent isOpen={true} isError={true} />
+        <SnackBarComponent
+          isOpen={true}
+          isError={true}
+          message={messages.validation_error}
+        />
       ) : (
         ''
       )}

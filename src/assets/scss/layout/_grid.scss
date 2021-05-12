@@ -23,6 +23,7 @@
   .get-quote-section,
   .consultation-quote-section,
   .wd-quote-section,
+  .signup-form-section,
   .reconnect-quote-section,
   .enterprise-quote-section {
     border-bottom: 1px solid var(--font-color);
@@ -83,6 +84,7 @@
 
   input[type='text'],
   input[type='number'],
+  input[type='password'],
   select {
     margin-right: 10px;
   }
@@ -110,7 +112,8 @@
     .MuiInputLabel-shrink {
       display: none !important;
     }
-    input[type='text'] {
+    input[type='text'],
+    input[type='password'] {
       height: 20px !important;
       color: var(--font-color) !important;
       border: none;
@@ -127,7 +130,8 @@
       font-family: 'OpenSansRegular', sans-serif;
     }
 
-    input[type='text']:focus {
+    input[type='text']:focus,
+    input[type='password'] {
       border: none !important;
       box-shadow: none !important;
     }
@@ -209,6 +213,7 @@
   .get-quote-section,
   .consultation-quote-section,
   .wd-quote-section,
+  .signup-form-section,
   .reconnect-quote-section,
   .enterprise-quote-section {
     border-bottom: 1px solid var(--font-color);
@@ -246,6 +251,7 @@
 
     input[type='text'],
     input[type='number'],
+    input[type='password'],
     select {
       height: 60px;
     }
