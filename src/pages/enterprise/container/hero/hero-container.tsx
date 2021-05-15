@@ -8,7 +8,6 @@ import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
 import blueBlob from '../../../../assets/images/service_blue.svg';
 import heroMobileImage from '../../../../assets/images/consultation_mobile.svg';
-import { constants } from '../../../../constants';
 
 const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
   const history = useHistory();
@@ -38,7 +37,7 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    The DEI Data and Site sentinel offer Experience, Knowledge,
+                    The DEI Data and Site sentinels offer Experience, Knowledge,
                     and Technical Understanding Of Cyber And Physical Security
                     Solutions.
                   </p>
@@ -59,19 +58,19 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    Enable your employees to connect to critical data in
-                    real-time – anywhere in the world – securely. Leveraging
-                    that knowledge and experience we chose to work with
+                    Our Data Plexus offers a secure connection to critical data
+                    in real-time – anywhere in the world. We connect you with
                     providers who have a proven track record of delivering and
-                    supporting solutions long term.
+                    supporting long-term solutions.
                   </p>
                   <p>
                     Transitioning from traditional services to advanced unified
-                    communications can be intimidating. The <b>DEI™ </b>has vast
-                    experience working with various data network providers.
+                    communications can be intimidating. The <b>DEI™</b> takes
+                    pride in and the vast experience we have with various data
+                    network providers.
                   </p>
                   <div className="data-connectivity-description">
-                    <b> Our data connectivity portfolio includes:</b>
+                    <b>Our data plexus portfolio includes:</b>
                     <ul>
                       <li>High Performance, Fast Efficient Internet Options</li>
                       <li>Ethernet services – Metro, Wide-Area, and Global</li>
@@ -96,7 +95,7 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                   />
                   <p>
                     Real solutions that enable businesses everywhere to lower
-                    costs, backup their data, and increase efficiency.
+                    costs, back up their data, and increase efficiency.
                   </p>
                 </div>
                 <div className="hero-subtitle-container">
@@ -138,8 +137,8 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    Separated by meters or by a continent the
-                    <b> DEI™</b> connects the communications of your business.
+                    Separated by meters or by a continent, the <b>DEI™</b>
+                    connects the communications of your business.
                   </p>
                 </div>
                 <div className="features">
@@ -158,7 +157,7 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    Until we provide it we will source the best providers for
+                    Until we provide it, we will source the best providers for
                     it!
                   </p>
                 </div>

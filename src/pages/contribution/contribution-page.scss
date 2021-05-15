@@ -1,0 +1,7 @@
+@import '../../assets/scss/abstracts/mixins';
+@import '../../assets/scss/layout/hero';
+
+.landing-border {
+  border-bottom: 1px solid var(--font-color);
+  grid-column: 1/-1;
+}

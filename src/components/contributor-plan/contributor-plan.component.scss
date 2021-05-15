@@ -1,0 +1,72 @@
+@import '../../assets/scss/abstracts/mixins';
+
+.contributor-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) !important;
+  background-color: #fff;
+  grid-gap: 32px;
+  padding: 0px 104px;
+
+  .subscription-plan {
+    .plan-row {
+      .plan-title {
+        display: grid;
+        background-color: #fdcf00;
+        padding: 16px;
+        justify-items: center;
+        span:nth-child(1) {
+          font-family: 'MontFont', sans-serif !important;
+        }
+      }
+
+      background-color: #fff;
+      .plan-description-four {
+        padding: 0px 16px;
+        span {
+          display: flex;
+          justify-content: center;
+        }
+      }
+      .subscribe-button {
+        display: grid;
+        border-bottom: 2px solid #f8f8f8;
+        padding: 0px 16px 16px 0px;
+      }
+      .plan-description-one {
+        padding-bottom: 16px !important;
+      }
+      .plan-description-one {
+        border-bottom: 2px solid #f8f8f8;
+        padding: 0px 16px;
+        span {
+          display: flex;
+          justify-content: center;
+        }
+        .price {
+          font-size: 26px;
+          font-weight: 600;
+          color: var(--font-color);
+          font-family: 'OpenSansBold', sans-serif;
+        }
+      }
+    }
+  }
+}
+
+@include respond-below(sm) {
+  .contributor-section {
+    padding: 10px;
+  }
+}
+
+@include respond-between(sm, md) {
+  .contributor-section {
+    padding: 24px 64px !important;
+  }
+}
+
+@include respond-above(lg) {
+  .contributor-section {
+    padding: 0px 200px 50px 200px !important;
+  }
+}

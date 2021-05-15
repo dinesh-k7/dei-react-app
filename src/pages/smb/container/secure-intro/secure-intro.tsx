@@ -35,7 +35,7 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
             />
           </div>
           <p className="secure-description">
-            <b>The DEI™ Sentinels Club includes a $100,000,000 USD warranty.</b>
+            <b>The DEI™ Sentinels Club includes a $1,000,000 USD warranty.</b>
           </p>
           <div className="hero-subtitle-container">
             <div className="features">
@@ -101,7 +101,7 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
               )}
             </div>
             <p>
-              Scan your website to detect and remove malware. Removal Guaranteed
+              Scans your site to detect and remove malware. Removal Guaranteed!
             </p>
           </div>
 
@@ -146,7 +146,7 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
                 ''
               )}
             </div>
-            <p>Worth Every Penny!</p>
+            <p>Automatic backups and one-click restore. Worth every penny!</p>
           </div>
 
           <div className="hero-subtitle-container">
@@ -168,14 +168,11 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
                 ''
               )}
             </div>
-          </div>
-
-          <div className="hero-subtitle-container">
             <p>
               Keep your website data safe while you grow your business online.
-              Automatic backups and one-click restore. Worth every penny!
             </p>
           </div>
+
           <div className="button-container">
             <button
               type="button"

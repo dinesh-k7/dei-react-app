@@ -92,11 +92,18 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
 
         <div className="hero-description">
           <p>
-            All the help and resources you need to build your online business:
+            The help and resources you need to build your online business:
             Websites, Domains, Emails, Hosting, and Starter SEO, all in one
             place! Plus you get live *customer service to guide you every step
             of the way.
-            <span>*Customer service is strictly for NWOhub™ services. </span>
+            <span>
+              *Customer service is strictly for
+              <a href="https://www.nwohub.com">
+                {' '}
+                <b>NWOhub.com</b>
+              </a>{' '}
+              and services.
+            </span>
           </p>
         </div>
         <div className="button-container">

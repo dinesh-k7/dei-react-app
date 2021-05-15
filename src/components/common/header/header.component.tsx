@@ -15,7 +15,6 @@ import PersistentDrawerLeft from './menu.component';
 
 const Header: React.FC<any> = (props: any): ReactElement => {
   const history = useHistory();
-
   const HideOnScroll = (props: any) => {
     const { children } = props;
     const trigger = useScrollTrigger({ disableHysteresis: false });
@@ -81,7 +80,6 @@ const Header: React.FC<any> = (props: any): ReactElement => {
 
 const mapStateToProps = (state) => {
   const { cartReducer } = state;
-  console.log('cartReducer', cartReducer);
   return {
     products: cartReducer.products,
   };

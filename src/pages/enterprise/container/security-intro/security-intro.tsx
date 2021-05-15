@@ -5,6 +5,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import '../../../../assets/scss/styles.scss';
 
+import '../../container/hero/hero-container.scss';
+
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
 import blueBlob from '../../../../assets/images/service_blue.svg';
@@ -55,14 +57,19 @@ const SecurityIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    Cyber Security is intentionally complex and the DEI has
-                    access to some of the top experts in this field.  The DEI
-                    can help you understand customer requirements and today’s
-                    threat environment, then architect the right security or
-                    SECaaS solution to meet any customer’s security needs. From
-                    network security to ID management, to secure access, and
-                    more.
+                    Cyber Security is intentionally complex, and the DEI has
+                    access to some of the top experts in this field. The DEI™
+                    discovers customer requirements to meet the needs of today.
+                    We customize security or SECaaS solutions to meet any
+                    customer&apos;s security needs. Including:
                   </p>
+                  <ul>
+                    <li>Network security</li>
+                    <li>ID management</li>
+                    <li>Secure access</li>
+                    <li>Data Security</li>
+                    <li>Site Security and more</li>
+                  </ul>
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="cloud services" />
@@ -86,13 +93,11 @@ const SecurityIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    the DEI Cloud-Based Video Monitoring solutions platform is
-                    comprised of industry executives with 35 years of
-                    experience. Leveraging the knowledge of this team we can
-                    assist SMB and Enterprise Businesses with their video needs.
-                    Secure View will assist you in creating a positive
-                    experience for your business so that you may focus on
-                    growing your business.
+                    Our Cloud-Based Video Monitoring solutions platform includes
+                    industry executives with decades of experience. We can
+                    provide SMB&apos;s and Enterprise Businesses with any video
+                    need. Having a secure view of your business allows you to
+                    focus on growth.
                   </p>
                 </div>
               </div>

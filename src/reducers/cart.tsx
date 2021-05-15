@@ -12,7 +12,7 @@ const initialState: InitialState = {
   quantity: 0,
 };
 
-const cartReducer = (state = initialState, action): InitialState => {
+const cartReducer = (state = initialState, action: any): InitialState => {
   switch (action.type) {
     case ADD_TO_CART:
       return {

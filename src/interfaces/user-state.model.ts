@@ -16,5 +16,7 @@ export interface IUserLogin {
 export interface InitialState {
   isRegisterSuccess: boolean;
   isRegisterFailure: boolean;
-  user: IUser;
+  isLoginFailure: boolean;
+  isLoginSuccess: boolean;
+  isUserLoggedIn: boolean;
 }

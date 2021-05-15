@@ -1,23 +1,24 @@
 import React, { Fragment, ReactElement } from 'react';
 
 import HeroContainer from './container/hero/hero-container';
-import './enterprise-page.scss';
+import ContributorPlanComponent from '../../components/contributor-plan/contributor-plan.component';
+import './contribution-page.scss';
 
-const EnterprisePage: React.FC = (): ReactElement => {
+const ContributionPage: React.FC = (): ReactElement => {
   // Google page event track
   window['dataLayer'].push({
     event: 'pageview',
     page: {
       url: window.location.href,
-      title: 'Enterprise Page',
+      title: 'Contributor page',
     },
   });
   return (
     <Fragment>
       <HeroContainer />
-      <div className="bottom-border"></div>
+      <ContributorPlanComponent />
     </Fragment>
   );
 };
 
-export default EnterprisePage;
+export default ContributionPage;

@@ -23,19 +23,27 @@
     .form-group {
       display: grid;
 
-      input {
+      input,
+      button {
         width: 350px;
       }
-    }
-    .button-container {
-      display: grid;
     }
   }
 
   .button-container {
+    display: grid;
     margin-top: 32px !important;
+    button {
+      width: stretch;
+    }
     .btn-basic {
       justify-self: center;
+    }
+    span {
+      font-family: 'OpenSansRegular', sans-serif !important;
+      color: #2c3e50 !important;
+      font-size: var(--font-size5);
+      padding: 8px 0px 0px 8px;
     }
   }
 }
@@ -50,7 +58,7 @@
     }
     .button-container {
       button {
-        width: fill-available;
+        width: stretch;
       }
     }
   }

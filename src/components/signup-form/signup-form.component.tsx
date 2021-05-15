@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
@@ -7,7 +7,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import TextBox from '../common/form-element/text-box';
 import '../get-quote/get-quote.component.scss';
 import './signup-form.component.scss';
-import { sendMail } from '../effects';
+//import { sendMail } from '../effects';
 import { registerUser } from '../../actions/user';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
 import { messages, siteKey } from '../../constants';
@@ -41,23 +41,22 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
     email: '',
     phone: '',
   };
-  const { formFields, user } = props;
+  const { formFields, isRegisterFailure, isRegisterSuccess } = props;
   const { register, errors, handleSubmit } = useForm();
   const [signUpState, setSignUpState] = useState(INITIAL_STATE);
   const [captcha, setCaptcha] = useState({});
-  console.log('propsssssss', props);
+
   const {
     isFormSubmitted,
     captchaValue,
     isButtonSubmit,
     isSendMailError,
-    isSignUpSuccess,
   } = signUpState;
 
   // If register user fails, reset isFormSubmitted and hide loader
   useEffect(() => {
-    const { user } = props;
-    if (user && user.isRegisterFailure) {
+    const { isRegisterFailure } = props;
+    if (isRegisterFailure) {
       setSignUpState((prevState) => {
         return {
           ...prevState,
@@ -123,11 +122,6 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
     }
   };
 
-  // Reset captcha
-  const resetCaptcha = () => {
-    captcha['reset']();
-  };
-
   // Handle form password input change event
   const handleChange = ($event: React.FormEvent<EventTarget>) => {
     const target = $event.target as HTMLInputElement;
@@ -152,7 +146,7 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
   const errorKeys = Object.keys(errors);
   return (
     <section className="signup-form-section">
-      {isSignUpSuccess && (
+      {isRegisterFailure && (
         <SnackBarComponent
           isOpen={true}
           isError={true}
@@ -261,11 +255,9 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
         <div className="button-container">
           <button
             type="button"
-            className={`btn-basic ${
-              user && user.isRegisterSuccess ? 'btn-disabled' : ''
-            }`}
+            className={`btn-basic ${isRegisterSuccess ? 'btn-disabled' : ''}`}
             onClick={handleSubmit(onSubmit, onError)}
-            disabled={user && user.isRegisterSuccess ? true : false}
+            disabled={isRegisterSuccess ? true : false}
           >
             SignUp
           </button>
@@ -282,13 +274,13 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
             />
           )}
 
-          {user && user.isRegisterFailure && !isFormSubmitted ? (
+          {isRegisterFailure && !isFormSubmitted ? (
             <p className="error_message custom_msg">Error in Sign up process</p>
           ) : (
             ''
           )}
 
-          {user && user.isRegisterSuccess ? (
+          {isRegisterSuccess ? (
             <div className="signup-success">
               Sign up process is success. Please{' '}
               <a href="/sign-in">click here</a> to Sign-in
@@ -297,7 +289,7 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
             ''
           )}
 
-          {isFormSubmitted && captchaValue && !user.isRegisterSuccess ? (
+          {isFormSubmitted && captchaValue && !isRegisterSuccess ? (
             <LoaderComponent />
           ) : (
             ''
@@ -309,7 +301,8 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
 };
 
 const mapStateToProps = (state) => {
-  return { user: state.userReducer };
+  const { userReducer } = state;
+  return { ...userReducer };
 };
 
 const mapDispatchToProps = (dispatch) => {

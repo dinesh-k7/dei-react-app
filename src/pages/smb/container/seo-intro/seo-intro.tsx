@@ -39,9 +39,9 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
             </div>
 
             <p>
-              Our SEO tool analyzes your website and gives you step-by-step
-              instructions on how you can optimize for Google®, Yahoo® and
-              Bing®. All it takes a few clicks, and then you can get back to
+              The DEI™ Site Sentinels analyze your website and give you
+              step-by-step instructions on optimizing your site for Google®,
+              Yahoo®, and Bing®. A few clicks and you can optimize your
               business.
             </p>
           </div>

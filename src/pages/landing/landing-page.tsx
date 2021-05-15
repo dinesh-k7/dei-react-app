@@ -126,9 +126,9 @@ const LandingPage: React.FC = (): ReactElement => {
               ref={enterpriseRef}
             >
               <ul>
-                <li>Data Security</li>
+                <li>Data Sentinels</li>
                 <li>Cloud</li>
-                <li>Connectivity</li>
+                <li>Plexus</li>
                 <li>Voice</li>
                 <li>IOT</li>
               </ul>
