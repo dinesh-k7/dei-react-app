@@ -1,11 +1,11 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { connect } from 'react-redux';
-import { contributorPlan } from '../../constants';
 
 import './contributor-plan.component.scss';
 
 const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
+  const [paypalSDKReady, setPaypalSDKReady] = useState(false);
   return (
     <section className="contributor-section">
       <div className="subscription-plan">
@@ -26,6 +26,7 @@ const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
           <div className="subscribe-button">
             <PayPalButton
               shippingPreference="NO_SHIPPING"
+              onButtonReady={() => setPaypalSDKReady(true)}
               onSuccess={(details, data) => {
                 console.log('dataa', data, details);
                 // // OPTIONAL: Call your server to save the transaction
@@ -75,37 +76,41 @@ const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
           </div>
 
           <div className="subscribe-button">
-            <PayPalButton
-              shippingPreference="NO_SHIPPING"
-              onSuccess={(details, data) => {
-                console.log('dataa', data, details);
-                // // OPTIONAL: Call your server to save the transaction
-                // return fetch('/paypal-transaction-complete', {
-                //   method: 'post',
-                //   body: JSON.stringify({
-                //     orderID: data.orderID,
-                //   }),
-                // });
-              }}
-              createSubscription={(data, actions) => {
-                return actions.subscription.create({
-                  plan_id: 'P-7LF88802MJ4268053MCP6NGA',
-                });
-              }}
-              onError={(details, data) => {
-                console.log('details', details, data);
-              }}
-              style={{
-                shape: 'rect',
-                color: 'blue',
-                label: 'subscribe',
-              }}
-              options={{
-                vault: true,
-                clientId: 'sb',
-                merchantId: '3S3P6MPUEKNZG',
-              }}
-            />
+            {paypalSDKReady ? (
+              <PayPalButton
+                shippingPreference="NO_SHIPPING"
+                onSuccess={(details, data) => {
+                  console.log('dataa', data, details);
+                  // // OPTIONAL: Call your server to save the transaction
+                  // return fetch('/paypal-transaction-complete', {
+                  //   method: 'post',
+                  //   body: JSON.stringify({
+                  //     orderID: data.orderID,
+                  //   }),
+                  // });
+                }}
+                createSubscription={(data, actions) => {
+                  return actions.subscription.create({
+                    plan_id: 'P-7LF88802MJ4268053MCP6NGA',
+                  });
+                }}
+                onError={(details, data) => {
+                  console.log('details', details, data);
+                }}
+                style={{
+                  shape: 'rect',
+                  color: 'blue',
+                  label: 'subscribe',
+                }}
+                options={{
+                  vault: true,
+                  clientId: 'sb',
+                  merchantId: '3S3P6MPUEKNZG',
+                }}
+              />
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>
@@ -126,37 +131,41 @@ const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
           </div>
 
           <div className="subscribe-button">
-            <PayPalButton
-              shippingPreference="NO_SHIPPING"
-              onSuccess={(details, data) => {
-                console.log('dataa', data, details);
-                // // OPTIONAL: Call your server to save the transaction
-                // return fetch('/paypal-transaction-complete', {
-                //   method: 'post',
-                //   body: JSON.stringify({
-                //     orderID: data.orderID,
-                //   }),
-                // });
-              }}
-              createSubscription={(data, actions) => {
-                return actions.subscription.create({
-                  plan_id: 'P-1EK089283N940084PMCP6OPY',
-                });
-              }}
-              onError={(details, data) => {
-                console.log('details', details, data);
-              }}
-              style={{
-                shape: 'rect',
-                color: 'blue',
-                label: 'subscribe',
-              }}
-              options={{
-                vault: true,
-                clientId: 'sb',
-                merchantId: '3S3P6MPUEKNZG',
-              }}
-            />
+            {paypalSDKReady ? (
+              <PayPalButton
+                shippingPreference="NO_SHIPPING"
+                onSuccess={(details, data) => {
+                  console.log('dataa', data, details);
+                  // // OPTIONAL: Call your server to save the transaction
+                  // return fetch('/paypal-transaction-complete', {
+                  //   method: 'post',
+                  //   body: JSON.stringify({
+                  //     orderID: data.orderID,
+                  //   }),
+                  // });
+                }}
+                createSubscription={(data, actions) => {
+                  return actions.subscription.create({
+                    plan_id: 'P-1EK089283N940084PMCP6OPY',
+                  });
+                }}
+                onError={(details, data) => {
+                  console.log('details', details, data);
+                }}
+                style={{
+                  shape: 'rect',
+                  color: 'blue',
+                  label: 'subscribe',
+                }}
+                options={{
+                  vault: true,
+                  clientId: 'sb',
+                  merchantId: '3S3P6MPUEKNZG',
+                }}
+              />
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>
