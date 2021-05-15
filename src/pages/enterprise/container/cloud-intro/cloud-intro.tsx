@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import '../../../../assets/scss/styles.scss';
+import '../../container/hero/hero-container.scss';
 
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 

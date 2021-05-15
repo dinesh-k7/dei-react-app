@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -14,6 +14,7 @@ import hamIcon from '../../../assets/images/hamburger_icon.svg';
 import { constants } from '../../../constants';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import { Collapse, ListItemIcon } from '@material-ui/core';
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,9 +75,8 @@ const useStyles = makeStyles((theme) => ({
 export default function TemporaryDrawer(): any {
   const classes = useStyles();
   const location = useLocation();
-
   const [smbMenuOpen, setSmbMenuOpen] = React.useState(false);
-
+  const isUserLoggedIn = localStorage.getItem('userData') ? true : false;
   const [state, setState] = React.useState({
     right: false,
     open: true,
@@ -91,13 +91,17 @@ export default function TemporaryDrawer(): any {
   const routeChange = (menu, from?: string) => {
     if (from === 'submenu') {
       setState({ ...state, right: false });
-      history.push(menu.url);
+      history.push({
+        pathname: menu.url,
+      });
     } else {
       if (menu.children) {
         setSmbMenuOpen(!smbMenuOpen);
       } else {
         setState({ ...state, right: false });
-        history.push(menu.url);
+        history.push({
+          pathname: menu.url,
+        });
       }
     }
   };
@@ -115,7 +119,18 @@ export default function TemporaryDrawer(): any {
       <List className={classes.menuList} component="nav">
         {constants.PAGES.map((page, index) => (
           <Fragment key={index}>
-            <ListItem button onClick={() => routeChange(page)}>
+            <ListItem
+              button
+              onClick={() => routeChange(page)}
+              style={{
+                display:
+                  isUserLoggedIn && page.url.indexOf('sign-in') > -1
+                    ? 'none'
+                    : !isUserLoggedIn && page.url.indexOf('logout') > -1
+                    ? 'none'
+                    : 'flex',
+              }}
+            >
               <ListItemText
                 primary={page.name}
                 className={

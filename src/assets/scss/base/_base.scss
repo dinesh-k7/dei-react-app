@@ -193,3 +193,10 @@ label {
   border: none;
   font-family: 'OpenSansBold', sans-serif;
 }
+
+.bottom-border {
+  display: grid;
+  grid-template-columns: 1px 1fr 1fr;
+  grid-column: 1/-1;
+  border-bottom: 1px solid var(--font-color);
+}

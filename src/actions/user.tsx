@@ -13,6 +13,8 @@ export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 export const USER_LOGIN_FAILURE = 'USER_LOGIN_FAILURE';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAILURE = 'GET_USER_FAILURE';
+export const USER_LOGGEDIN = 'USER_LOGGEDIN';
+export const CLEAR_USER_DATA = 'CLEAR_USER_DATA';
 
 const url = `${constants.NODE_ENDPOINT}/user`;
 
@@ -22,6 +24,18 @@ const regstisterUserSuccessAction = (): any => ({
   isRegisterSuccess: true,
   isRegisterFailure: false,
 });
+
+const clearUserDataAction = (): any => ({
+  type: CLEAR_USER_DATA,
+  isLoginSuccess: false,
+  isUserLoggedIn: false,
+});
+
+export const clearUserData = () => (dispatch: Dispatch): any => {
+  // Clear user data from local storage and redirect to landing page
+  localStorage.removeItem('userData');
+  dispatch(clearUserDataAction());
+};
 
 const regstisterUserFailureAction = (): any => ({
   type: REGISTER_USER_FAILURE,
@@ -34,13 +48,13 @@ const userLoginSuccessAction = (loginData: any): any => ({
   isLoginFailure: false,
 });
 
-const getUserSuccessAction = (user: IUser): any => ({
-  type: GET_USER_SUCCESS,
-  user,
-});
-
 const getUserFailureAction = (): any => ({
   type: GET_USER_FAILURE,
+});
+
+const userLoggedInAction = (isUserLoggedIn: boolean): any => ({
+  type: USER_LOGGEDIN,
+  isUserLoggedIn,
 });
 
 const userLoginFailureAction = (): any => ({
@@ -70,7 +84,7 @@ export const userLogin = (user: IUserLogin) => (dispatch: Dispatch): any => {
       const { user_id } = loginData.data;
       dispatch(userLoginSuccessAction(loginData));
       if (user_id) {
-        //  return dispatch(getUser(user_id));
+        dispatch(getUser(user_id) as any);
       }
     })
     .catch(() => {
@@ -78,15 +92,21 @@ export const userLogin = (user: IUserLogin) => (dispatch: Dispatch): any => {
     });
 };
 
-export const getUser = (userId: any) => (dispatch) => {
+export const getUser = (userId: any) => (dispatch: Dispatch) => {
   const apiUrl = `${url}/${userId}`;
   axios
     .get(apiUrl)
     .then((getUserData) => {
-      const { id, email, name, phone } = getUserData.data;
-      dispatch(getUserSuccessAction({ id, email, name, phone }));
+      const userData = getUserData.data;
+      localStorage.setItem('userData', JSON.stringify(userData));
+      dispatch(isUserLoggedIn() as any);
     })
-    .catch((userDataError) => {
+    .catch(() => {
       dispatch(getUserFailureAction());
     });
+};
+
+export const isUserLoggedIn = () => (dispatch: Dispatch) => {
+  const isUserLoggedIn = localStorage.getItem('userData') ? true : false;
+  dispatch(userLoggedInAction(isUserLoggedIn));
 };

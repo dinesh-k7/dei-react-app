@@ -30,10 +30,8 @@ const DevelopIntro: React.FC<any> = (props: any): ReactElement => {
               </h3>
 
               <p>
-                Build an amazing website in just under an hour with website
-                Builder. Take advantage of designs created just for your
-                industry and then customize them to reflect your one-of-a-kind
-                idea.
+                The DEI™ custom branding is specific to your industry.
+                Customized to reflect your one-of-a-kind idea.
               </p>
             </div>
           </div>
@@ -45,9 +43,10 @@ const DevelopIntro: React.FC<any> = (props: any): ReactElement => {
               </h3>
             </div>
             <p>
-              Our WordPress Hosting provides automatic setup, backups and
-              software updates paired with 24/7, award-winning support. Get
-              started in just a few clicks.
+              Start today and build a stunning website in less than under an
+              hour with the DEI™ website Builder. Our WordPress Hosting provides
+              automatic setup, backups, and software updates paired with 24/7,
+              award-winning support. Get started in just a few clicks.
             </p>
           </div>
           <div className="hero-subtitle-container">
@@ -58,7 +57,7 @@ const DevelopIntro: React.FC<any> = (props: any): ReactElement => {
               </h3>
             </div>
             <p>
-              Fully functioning professional business/ecommerce/shopping cart.
+              Fully functioning professional business/e-commerce/shopping cart.
             </p>
           </div>
           <div className="hero-subtitle-container">

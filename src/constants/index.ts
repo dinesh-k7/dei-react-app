@@ -181,22 +181,34 @@ export const constants = {
       children: true,
       submenu: [
         {
-          url: 'secure',
+          url: '/secure',
           name: 'Secure',
         },
         {
-          url: 'develop',
+          url: '/develop',
           name: 'Develop',
         },
       ],
     },
     {
-      url: 'startup',
+      url: '/startup',
       name: 'Start-Up Central',
     },
     {
-      url: 'enterprise',
+      url: '/enterprise',
       name: 'Enterprise Services',
+    },
+    {
+      url: '/contribution',
+      name: 'Contribution',
+    },
+    {
+      url: '/sign-in',
+      name: 'Sign In',
+    },
+    {
+      url: '/logout',
+      name: 'Logout',
     },
   ],
 
@@ -285,6 +297,7 @@ export const messages = {
   password_error: '*Password and Confirm Password should match',
   request_success: 'Your Request has been processed successfully!',
   signup_error: 'Error in sign up process',
+  signin_error: 'Error in sign in process',
   validation_error: 'Please fill out the required field(s).',
 };
 
@@ -615,6 +628,27 @@ export const CONSULTATION_PACKAGES = [
       'patches',
     ],
   },
+  {
+    id: 994,
+    active: false,
+    name: 'Package A',
+    description: 'Mr. NWO Coaching',
+    description_one: 'Mr. NWO Coaching',
+    price: '30,000.00 Platinum',
+    service: '',
+    quantity: 1,
+    features: [
+      'Mr. NWO Creative',
+      'Premium PWA',
+      'Branding',
+      'I.P. Assist',
+      'Business Planning',
+      'Coaching Sessions',
+    ],
+  },
+];
+
+export const contributorPlan = [
   {
     id: 994,
     active: false,

@@ -44,7 +44,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
                 />
               </a>
             </div>
-            <p>Daily malware scans and gauranteed malware removal.</p>
+            <p>Daily malware scans and guaranteed malware removal.</p>
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
@@ -110,7 +110,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
                 />
               </a>
             </div>
-            <p>Keep up to date on the latest security trends.</p>
+            <p>Stay current with the latest security trends.</p>
           </div>
         </div>
       </div>

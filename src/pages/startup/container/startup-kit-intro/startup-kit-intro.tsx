@@ -19,23 +19,6 @@ const StartupKitIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
     <section className="startup-kit-intro" ref={inputRef}>
       <div className="hero-image">
         <img src={heroImage} alt="consultation Image" />
-        {/* <div className="startup-central-features">
-          <p>DEI™ Essentials:</p>
-          <ul>
-            <li>Comprehensive Trademark screening $599.00</li>
-            <li>
-              {' '}
-              Start-up Package A Branding and trademarking of the brand.
-              $1099.00. Comprehensive Screening report included
-            </li>
-            <li>Copyright registration $149.00 + Fed. filing fee</li>
-            <li>REGISTRATION OF ENTITIES llc formations $1500 (COMING SOON)</li>
-          </ul>
-          <span>
-            Garuanteed registration d or your money back excluding the
-            registration
-          </span>
-        </div> */}
       </div>
       <div className="hero-content">
         <div className="hero-title">
@@ -61,9 +44,14 @@ const StartupKitIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
 
         <div className="hero-description">
           <p>
-            Manifest Digital Destiny! <br /> Building a better tomorrow starts
-            with you!
+            Building a better tomorrow starts with you, manifest digital
+            destiny!
           </p>
+          <ul>
+            <li>Business plan and Branding</li>
+            <li>Composite Trademark Registration</li>
+            <li>Premium Progressive Web Application</li>
+          </ul>
         </div>
         <div className="button-container">
           <button

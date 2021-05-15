@@ -1,17 +1,15 @@
 import React from 'react';
-import {
-  BrowserRouter,
-  Route,
-  Router,
-  Switch,
-  useHistory,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import ScrollToTop from '../common/scroll/scroll-top.component';
-import Skeleton from '@material-ui/lab/Skeleton';
-
 import Header from '../common/header/header.component';
 import Footer from '../common/footer/footer.component';
+
+import ProtectedRoute from '../common/protected-route/protected-route';
+const SecurityIntro = React.lazy(
+  () =>
+    import('../../pages/enterprise/container/security-intro/security-intro'),
+);
 
 const DataSecurityPage = React.lazy(
   () => import('../../pages/data-security/data-security-page'),
@@ -70,6 +68,7 @@ const SecurePage = React.lazy(
 );
 
 import { Suspense } from 'react';
+import LogoutPage from '../../pages/logout/logout-page';
 const ReconnectPage = React.lazy(
   () => import('../../pages/reconnect/reconnect-page'),
 );
@@ -89,10 +88,6 @@ const DataConnectivityIntro = React.lazy(
       '../../pages/enterprise/container/data-connectivity-intro/data-connectivity-intro'
     ),
 );
-const SecurityIntro = React.lazy(
-  () =>
-    import('../../pages/enterprise/container/security-intro/security-intro'),
-);
 
 const DevelopPage = React.lazy(
   () => import('../../pages/smb/develop/develop-page'),
@@ -106,11 +101,17 @@ const SignUpPage = React.lazy(() => import('../../pages/signup/signup-page'));
 
 const SignInPage = React.lazy(() => import('../../pages/signin/signin-page'));
 
+const ContributionPage = React.lazy(
+  () => import('../../pages/contribution/contribution-page'),
+);
+
 const App = () => {
+  // Checked local storage to see whether user data is present or not
+  const user = localStorage.getItem('userData');
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Header />
+      <Header user={user} />
       <Suspense fallback={<p>Loaing...</p>}>
         <Switch>
           <Route exact path="/" render={() => <LandingPage />} />
@@ -177,19 +178,25 @@ const App = () => {
 
           <Route path="/develop" render={() => <DevelopPage />} />
 
+          <Route path="/logout" render={() => <LogoutPage />} />
+
           <Route path="/secure" render={() => <SecurePage />} />
 
           <Route path="/reconnect" render={() => <ReconnectPage />} />
 
-          <Route path="/sign-up" render={() => <SignUpPage />} />
+          <Route path="/sign-in" render={() => <SignInPage />} />
+
+          <Route path="/contribution" render={() => <ContributionPage />} />
+
+          <ProtectedRoute
+            exact
+            path="/sign-up"
+            user={user}
+            component={SignUpPage}
+          />
         </Switch>
       </Suspense>
       <Footer />
-      <Suspense fallback={''}>
-        <Switch>
-          <Route path="/sign-in" render={() => <SignInPage />} />
-        </Switch>
-      </Suspense>
     </BrowserRouter>
   );
 };

@@ -5,12 +5,12 @@ import { useForm } from 'react-hook-form';
 import TextBox from '../common/form-element/text-box';
 import '../get-quote/get-quote.component.scss';
 import './signin-form.component.scss';
-import { sendMail } from '../effects';
-import { constants, messages } from '../../constants';
+import { messages } from '../../constants';
 import { userLogin } from '../../actions/user';
 import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
+import { useHistory } from 'react-router-dom';
 
 interface IntitialState {
   isFormSubmitted: boolean;
@@ -24,9 +24,15 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
     isButtonSubmit: false,
     isSignInSuccess: false,
   };
-  const { formFields } = props;
+  const { formFields, isLoginSuccess, isLoginFailure } = props;
+  const history = useHistory();
   const stateData = {};
-
+  console.log('signinnnnnnnnn', props);
+  // If login is success, re-direct to landing page
+  const userData = localStorage.getItem('userData');
+  if (userData) {
+    history.push('/');
+  }
   //Set form field in state
   formFields &&
     formFields.length &&
@@ -77,6 +83,13 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
   const errorKeys = Object.keys(errors);
   return (
     <section className="signin-form-section">
+      {isLoginFailure && (
+        <SnackBarComponent
+          isOpen={true}
+          isError={true}
+          message={messages.signin_error}
+        />
+      )}
       <div className="form-container">
         <h1>Sign In</h1>
         <form autoComplete="off">
@@ -109,6 +122,9 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
             >
               SignIn
             </button>
+            <span>
+              Not Registered yet? <a href="sign-up">Click here</a> to Sign-up
+            </span>
 
             {errors && (
               <ErrorMessageContainer
@@ -120,22 +136,19 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
               />
             )}
 
-            {/* {user && user.isRegisterFailure && !isFormSubmitted ? (
-            <p className="error_message custom_msg">Error in Sign up process</p>
-          ) : (
-            ''
-          )} */}
+            {/* {isLoginFailure ? (
+              <p className="error_message custom_msg">
+                Error in Sign In process
+              </p>
+            ) : (
+              ''
+            )} */}
 
-            {/* {user && user.isRegisterSuccess ? (
-            <div className="signup-success">
-              Sign up process is success. Please{' '}
-              <a href="/sign-in">click here</a> to Sign-in
-            </div>
-          ) : (
-            ''
-          )} */}
-
-            {isFormSubmitted ? <LoaderComponent /> : ''}
+            {isFormSubmitted && !isLoginSuccess && !isLoginFailure ? (
+              <LoaderComponent />
+            ) : (
+              ''
+            )}
           </div>
         </form>
       </div>

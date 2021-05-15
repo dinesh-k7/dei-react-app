@@ -2,7 +2,6 @@ import React, { Fragment, ReactElement } from 'react';
 
 import SignInFormComponent from '../../components/signin-form/signin-form.component';
 import { signInFormData } from '../../constants/form-data/sign-in-form';
-import HeroContainer from './container/hero/hero-container';
 import './signin-page.scss';
 
 const SignInPage: React.FC = (): ReactElement => {

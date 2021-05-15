@@ -49,10 +49,8 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
                 />
               </a>
               <p>
-                Build an amazing website in just under an hour with website
-                Builder. Take advantage of designs created just for your
-                industry and then customize them to reflect your one-of-a-kind
-                idea.
+                Get over the mental blocks preventing you from doing it. In no
+                time you will see how easy we have made it.
               </p>
             </div>
           </div>
@@ -76,9 +74,9 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
               </a>
             </div>
             <p>
-              Our WordPress Hosting provides automatic setup, backups and
-              software updates paired with 24/7, award-winning support. Get
-              started in just a few clicks.
+              The DEI™ WordPress Hosting provides automatic setup, backups, and
+              software updates paired with 24/7, award-winning support. Start
+              today, just a few clicks away.
             </p>
           </div>
           <div className="hero-subtitle-container">
@@ -101,7 +99,7 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
               </a>
             </div>
             <p>
-              Fully functioning professional business/ecommerce/shopping cart.
+              Fully functioning professional business/e-commerce/shopping cart.
             </p>
           </div>
 

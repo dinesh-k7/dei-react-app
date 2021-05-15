@@ -51,7 +51,7 @@ export const addToCart = (product: IProductDetails[]) => (
 };
 
 export const updateCartItems = (product: IProductDetails) => (
-  dispatch,
+  dispatch: Dispatch,
   getState,
 ): any => {
   const {
@@ -65,7 +65,7 @@ export const updateCartItems = (product: IProductDetails) => (
 };
 
 export const removeFromCart = (product: IProductDetails) => (
-  dispatch,
+  dispatch: Dispatch,
   getState,
 ): any => {
   const { id } = product;
@@ -80,6 +80,6 @@ export const removeFromCart = (product: IProductDetails) => (
   }
 };
 
-export const emptyCart = () => (dispatch): any => {
+export const emptyCart = () => (dispatch: Dispatch): any => {
   dispatch(emptyCartAction([]));
 };
