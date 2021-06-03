@@ -33,6 +33,9 @@ export const sendMail = (
     case constants.CONSULTATION_SERVICE:
       url = `${constants.NODE_ENDPOINT}/mail-service/consultation-service/sendmail`;
       break;
+    case constants.SIGN_UP:
+      url = `${constants.NODE_ENDPOINT}/mail-service/signup-confirmation`;
+      break;
     default:
       url = `${constants.NODE_ENDPOINT}/mail-service/sendmail`;
       break;

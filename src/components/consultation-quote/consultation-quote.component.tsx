@@ -463,7 +463,8 @@ const ConsultationQuoteComponent: React.FC<any> = (
                     $
                     {typeof service.price === 'string'
                       ? service.price
-                      : service.price.toFixed(2)}
+                      : service.price.toFixed(2)}{' '}
+                    USD
                   </span>
                 </div>
                 {service.features && service.features.length ? (

@@ -1,175 +1,135 @@
-import React, { ReactElement, useState } from 'react';
+import React, { Fragment, ReactElement, useState } from 'react';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { connect } from 'react-redux';
+import { constants, messages, PLANS } from '../../constants';
+import PaymentFailureComponent from '../common/payment-failure/payment-failure.component';
+import PaymentSuccessComponent from '../common/payment-success/payment-success.component';
 
 import './contributor-plan.component.scss';
 
 const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
   const [paypalSDKReady, setPaypalSDKReady] = useState(false);
+  const [paymentState, setPaymentState] = useState({
+    isPaymentFailed: false,
+    isPaymentSuccess: false,
+    name: '',
+    amount: 0,
+    paymentId: '',
+  });
+
+  //Update payment status in state
+
+  const updatePaymentStatus = (paymentDetail, orderId) => {
+    const { status, payer } = paymentDetail;
+    if (status === constants.COMPLETED) {
+      const name = payer && payer.name && payer.name.given_name;
+      setPaymentState((prevState) => {
+        return {
+          ...prevState,
+          isPaymentSuccess: true,
+          name: name,
+          paymentId: orderId,
+        };
+      });
+    } else {
+      setPaymentState((prevState) => {
+        return {
+          ...prevState,
+          isPaymentFailed: true,
+        };
+      });
+    }
+  };
+
+  const { isPaymentSuccess, paymentId, isPaymentFailed } = paymentState;
+
   return (
-    <section className="contributor-section">
-      <div className="subscription-plan">
-        <div className={`plan-row`}>
-          <div className="plan-title">
-            <span>Silver Contributor</span>
-          </div>
-          <div className="plan-description-one">
-            <p className="para-normal para-description">Monthly</p>
-            <span className="price">$10</span> <br />
-            <span className="para-normal">Billed for 12 months</span>
-            <p className="para-normal">
-              Subscription will be paused automatically, if billing cycle is
-              missed for 2 months.
-            </p>
-          </div>
+    <Fragment>
+      <section className="contributor-section">
+        {PLANS && PLANS.length
+          ? PLANS.map((plan, index) => {
+              return (
+                <div className="subscription-plan" key={plan.id}>
+                  <div className={`plan-row`}>
+                    <div className="plan-title">
+                      <span>{plan.name}</span>
+                    </div>
+                    <div className="plan-description-one">
+                      <p className="para-normal para-description">Monthly</p>
+                      <span className="price">
+                        {`$${plan.price.toFixed(2)} USD`}
+                      </span>
+                      <br />
+                      {plan.description_one ? (
+                        <span className="para-normal">
+                          {plan.description_one}
+                        </span>
+                      ) : (
+                        ''
+                      )}
+                      {plan.description_two ? (
+                        <p className="para-normal">{plan.description_two}</p>
+                      ) : (
+                        ''
+                      )}
+                    </div>
 
-          <div className="subscribe-button">
-            <PayPalButton
-              shippingPreference="NO_SHIPPING"
-              onButtonReady={() => setPaypalSDKReady(true)}
-              onSuccess={(details, data) => {
-                console.log('dataa', data, details);
-                // // OPTIONAL: Call your server to save the transaction
-                // return fetch('/paypal-transaction-complete', {
-                //   method: 'post',
-                //   body: JSON.stringify({
-                //     orderID: data.orderID,
-                //   }),
-                // });
-              }}
-              createSubscription={(data, actions) => {
-                return actions.subscription.create({
-                  plan_id: 'P-00645188CD6228332MCP53QQ',
-                });
-              }}
-              onError={(details, data) => {
-                console.log('details', details, data);
-              }}
-              style={{
-                shape: 'rect',
-                color: 'blue',
-                label: 'subscribe',
-              }}
-              options={{
-                vault: true,
-                clientId: 'sb',
-                merchantId: '3S3P6MPUEKNZG',
-              }}
-            />
-          </div>
-        </div>
-      </div>
+                    <div className="subscribe-button">
+                      {paypalSDKReady || index === 0 ? (
+                        <PayPalButton
+                          shippingPreference="NO_SHIPPING"
+                          onButtonReady={() => setPaypalSDKReady(true)}
+                          onSuccess={(details, data) => {
+                            updatePaymentStatus(details, data.orderID);
+                          }}
+                          createSubscription={(data, actions) => {
+                            return actions.subscription.create({
+                              plan_id: plan.planId,
+                            });
+                          }}
+                          onError={(details, data) => {
+                            updatePaymentStatus(details, data.orderID);
+                          }}
+                          style={{
+                            shape: 'rect',
+                            color: 'blue',
+                            label: 'subscribe',
+                          }}
+                          options={{
+                            vault: true,
+                            intent: 'subscription',
+                            clientId:
+                              'AUPF1TZNCMS_Fm6WpcL06sF8y1zQR1uz5st0PtDKqpvIQcIHnIRGvNboB4mbXOQ1TNXRkrHuAAwrrxYo',
+                          }}
+                        />
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+          : ''}
+      </section>
+      {isPaymentSuccess ? (
+        <PaymentSuccessComponent
+          paymentId={paymentId}
+          description={messages.payment_success_message}
+        />
+      ) : (
+        ''
+      )}
 
-      <div className="subscription-plan">
-        <div className={`plan-row`}>
-          <div className="plan-title">
-            <span>Gold Contributor</span>
-          </div>
-          <div className="plan-description-one">
-            <p className="para-normal para-description">Monthly</p>
-            <span className="price">$19</span> <br />
-            <span className="para-normal">Billed for 12 months</span>
-            <p className="para-normal">
-              Subscription will be paused automatically, if billing cycle is
-              missed for 2 months.{' '}
-            </p>
-          </div>
-
-          <div className="subscribe-button">
-            {paypalSDKReady ? (
-              <PayPalButton
-                shippingPreference="NO_SHIPPING"
-                onSuccess={(details, data) => {
-                  console.log('dataa', data, details);
-                  // // OPTIONAL: Call your server to save the transaction
-                  // return fetch('/paypal-transaction-complete', {
-                  //   method: 'post',
-                  //   body: JSON.stringify({
-                  //     orderID: data.orderID,
-                  //   }),
-                  // });
-                }}
-                createSubscription={(data, actions) => {
-                  return actions.subscription.create({
-                    plan_id: 'P-7LF88802MJ4268053MCP6NGA',
-                  });
-                }}
-                onError={(details, data) => {
-                  console.log('details', details, data);
-                }}
-                style={{
-                  shape: 'rect',
-                  color: 'blue',
-                  label: 'subscribe',
-                }}
-                options={{
-                  vault: true,
-                  clientId: 'sb',
-                  merchantId: '3S3P6MPUEKNZG',
-                }}
-              />
-            ) : (
-              ''
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div className="subscription-plan">
-        <div className={`plan-row`}>
-          <div className="plan-title">
-            <span>Platinum Contributor</span>
-          </div>
-          <div className="plan-description-one">
-            <p className="para-normal para-description">Monthly</p>
-            <span className="price">$30</span> <br />
-            <span className="para-normal">Billed for 12 months</span>
-            <p className="para-normal">
-              Subscription will be paused automatically, if billing cycle is
-              missed for 2 months.
-            </p>
-          </div>
-
-          <div className="subscribe-button">
-            {paypalSDKReady ? (
-              <PayPalButton
-                shippingPreference="NO_SHIPPING"
-                onSuccess={(details, data) => {
-                  console.log('dataa', data, details);
-                  // // OPTIONAL: Call your server to save the transaction
-                  // return fetch('/paypal-transaction-complete', {
-                  //   method: 'post',
-                  //   body: JSON.stringify({
-                  //     orderID: data.orderID,
-                  //   }),
-                  // });
-                }}
-                createSubscription={(data, actions) => {
-                  return actions.subscription.create({
-                    plan_id: 'P-1EK089283N940084PMCP6OPY',
-                  });
-                }}
-                onError={(details, data) => {
-                  console.log('details', details, data);
-                }}
-                style={{
-                  shape: 'rect',
-                  color: 'blue',
-                  label: 'subscribe',
-                }}
-                options={{
-                  vault: true,
-                  clientId: 'sb',
-                  merchantId: '3S3P6MPUEKNZG',
-                }}
-              />
-            ) : (
-              ''
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
+      {isPaymentFailed ? (
+        <PaymentFailureComponent
+          description={messages.payment_failure_message}
+          page={`cart-page`}
+        />
+      ) : (
+        ''
+      )}
+    </Fragment>
   );
 };
 

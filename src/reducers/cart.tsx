@@ -4,12 +4,16 @@ import {
   UPDATE_CART,
   REMOVE_FROM_CART,
   EMPTY_CART,
+  UPDATE_PAYMENT_FAILURE,
+  UPDATE_PAYMENT_SUCCESS,
 } from '../actions/cart';
 import { InitialState } from '../interfaces/cart-state.model';
 //@typescript-eslint/explicit-module-boundary-types
 const initialState: InitialState = {
   products: [],
   quantity: 0,
+  isPaymentUpdateSuccess: false,
+  isPaymentUpdateFailure: false,
 };
 
 const cartReducer = (state = initialState, action: any): InitialState => {
@@ -43,6 +47,12 @@ const cartReducer = (state = initialState, action: any): InitialState => {
       };
     case GET_CART_ITEMS:
       return state;
+    case UPDATE_PAYMENT_SUCCESS:
+    case UPDATE_PAYMENT_FAILURE:
+      return {
+        ...state,
+        ...action,
+      };
     default:
       return state;
   }

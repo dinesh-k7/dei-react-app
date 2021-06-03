@@ -79,6 +79,7 @@ const ErrorMessageContainer: any = ({
 
       {!captchaValue &&
         fromPage !== 'signIn' &&
+        fromPage !== 'reset' &&
         (isFormSubmitted || isButtonSubmit) && (
           <p className="error_message custom_msg">{messages.captcha_error}</p>
         )}

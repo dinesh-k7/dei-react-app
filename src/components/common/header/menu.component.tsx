@@ -126,7 +126,9 @@ export default function TemporaryDrawer(): any {
                 display:
                   isUserLoggedIn && page.url.indexOf('sign-in') > -1
                     ? 'none'
-                    : !isUserLoggedIn && page.url.indexOf('logout') > -1
+                    : !isUserLoggedIn &&
+                      (page.url.indexOf('order-history') > -1 ||
+                        page.url.indexOf('logout') > -1)
                     ? 'none'
                     : 'flex',
               }}

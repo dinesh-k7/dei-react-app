@@ -9,12 +9,13 @@ import {
   getCartItems,
   emptyCart,
   updateCartItems,
+  updatePaymentTransaction,
 } from '../../../actions/cart';
 import { IProductDetails } from '../../../interfaces/cart-state.model';
-import { constants } from '../../../constants';
-import CartSuccessImage from '../../../assets/images/cart_success_image.svg';
-import CartErrorImage from '../../../assets/images/cart_error_image.svg';
-import { useHistory } from 'react-router-dom';
+import { constants, messages } from '../../../constants';
+import PaymentSuccessComponent from '../../common/payment-success/payment-success.component';
+import PaymentFailureComponent from '../../common/payment-failure/payment-failure.component';
+import { paypalOrder } from '../../../utils';
 
 const sumPropsValue = (items, prop) => items.reduce((a, b) => a + b[prop], 0);
 
@@ -28,9 +29,30 @@ const CartContainer: React.FC = (props: any): ReactElement => {
   });
   useEffect(() => {
     props.fetchAllCartItems();
+    // trackPaymentTransaction();
   }, []);
 
-  const history = useHistory();
+  // Callback function to process order success transaction
+  const trackPaymentTransaction = (paymentDetail, orderId) => {
+    const user = localStorage.getItem('userData');
+    if (props.products && props.products.length && user) {
+      const { userId } = JSON.parse(user);
+      const { id, status, update_time } = paymentDetail;
+      const order = {
+        userId,
+        paypalOrderId: orderId,
+        status,
+        dateTime: update_time,
+      };
+      const orderDetails = {
+        products: props.products,
+        order,
+      };
+
+      props.updatePaymentTransaction(orderDetails);
+      props.emptyCart();
+    }
+  };
 
   const removeItem = (product: IProductDetails) => {
     props.removeFromCart(product);
@@ -50,10 +72,11 @@ const CartContainer: React.FC = (props: any): ReactElement => {
   //Update payment status in state
 
   const updatePaymentStatus = (paymentDetail, orderId) => {
-    console.log('paymentDetail', paymentDetail);
     const { status, payer } = paymentDetail;
     if (status === constants.COMPLETED) {
       const name = payer && payer.name && payer.name.given_name;
+
+      trackPaymentTransaction(paymentDetail, orderId);
       setPaymentState((prevState) => {
         return {
           ...prevState,
@@ -61,6 +84,13 @@ const CartContainer: React.FC = (props: any): ReactElement => {
           amount: 1.0,
           name: name,
           paymentId: orderId,
+        };
+      });
+    } else {
+      setPaymentState((prevState) => {
+        return {
+          ...prevState,
+          isPaymentFailed: true,
         };
       });
     }
@@ -99,14 +129,16 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                         <span>
                           Billed ${product.yearlyPrice.toFixed(2)} &nbsp;every
                           12 months <br />
-                          <span>At 12% Discount</span>
+                          <span>At 8.5% Discount</span>
                         </span>
                       </div>
                     ) : (
                       ''
                     )}
                   </div>
-                  <div className="item-price">${product.price.toFixed(2)}</div>
+                  <div className="item-price">
+                    ${product.price.toFixed(2)} USD
+                  </div>
                   <div className="item-quantity">{product.quantity}</div>
                   <div className="item-action">
                     <span
@@ -131,19 +163,18 @@ const CartContainer: React.FC = (props: any): ReactElement => {
               return (
                 <div className="cart-summary-item" key={product.id}>
                   <div>{product.description}</div>
-                  <div>${product.price.toFixed(2)}</div>
+                  <div>${product.price.toFixed(2)} USD</div>
                 </div>
               );
             })}
             <div className="cart-summary-item">
               <div className="cart-total">TOTAL</div>
-              <div>${sumPropsValue(products, 'price').toFixed(2)}</div>
+              <div>${sumPropsValue(products, 'price').toFixed(2)} USD</div>
             </div>
             <div className="paypal-button">
               <PayPalButton
                 shippingPreference="NO_SHIPPING"
                 onSuccess={(details, data) => {
-                  props.emptyCart();
                   updatePaymentStatus(details, data.orderID);
 
                   // // OPTIONAL: Call your server to save the transaction
@@ -186,12 +217,11 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                   });
                 }}
                 onError={(details, data) => {
-                  console.log('details', details);
                   updatePaymentStatus(details, data.orderID);
                 }}
                 options={{
                   clientId:
-                    'ASS3kboltE0oyTygQ_FNinfl6xJOQ-ka9i56QLBERh0G5hKpSZL_E23kYr1L4jsIWDzbtdEhaDfm0RRT',
+                    'AUPF1TZNCMS_Fm6WpcL06sF8y1zQR1uz5st0PtDKqpvIQcIHnIRGvNboB4mbXOQ1TNXRkrHuAAwrrxYo',
                 }}
               />
             </div>
@@ -206,57 +236,19 @@ const CartContainer: React.FC = (props: any): ReactElement => {
       )}
 
       {isPaymentSuccess ? (
-        <div className="payment-success">
-          <div>
-            <img src={CartSuccessImage} alt={`Payment success image`} />
-          </div>
-          <div className="payment-success-message">
-            <h3>Success</h3>
-            <span>Order Number: {paymentId} </span>
-
-            <p className="success-description">
-              Thank you for your purchase! We are the common denominator! <br />
-              Sincerely, <br />
-              <br />
-              Mr. NWO <br />
-              Technology Cultural Attach
-            </p>
-            <button
-              type="button"
-              className="btn-basic"
-              onClick={() => history.push('/')}
-            >
-              Back
-            </button>
-          </div>
-        </div>
+        <PaymentSuccessComponent
+          paymentId={paymentId}
+          description={messages.payment_success_message}
+        />
       ) : (
         ''
       )}
 
       {isPaymentFailed ? (
-        <div className="payment-error">
-          <div>
-            <img src={CartErrorImage} alt={`Payment error image`} />
-          </div>
-          <div className="payment-error-message">
-            <h3>Something Went Wrong</h3>
-
-            <p className="error-description">
-              thank you for joining us in manifesting digital destiny. Oops wait
-              a minute somethings not quite right please resubmit your order.
-              <br />
-              Thank you!
-            </p>
-            <button
-              type="button"
-              className="btn-basic"
-              onClick={() => history.push('/cart-page')}
-            >
-              Try Again
-            </button>
-          </div>
-        </div>
+        <PaymentFailureComponent
+          description={messages.payment_failure_message}
+          page={`cart-page`}
+        />
       ) : (
         ''
       )}
@@ -277,6 +269,8 @@ const mapDispatchToProps = (dispatch) => {
     removeFromCart: (product) => dispatch(removeFromCart(product)),
     emptyCart: () => dispatch(emptyCart()),
     updateCartItems: (product) => dispatch(updateCartItems(product)),
+    updatePaymentTransaction: (orderDetails) =>
+      dispatch(updatePaymentTransaction(orderDetails)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CartContainer);

@@ -3,6 +3,7 @@ import { IUser, IUserLogin } from '../interfaces/user-state.model';
 import { constants } from '../constants';
 
 import axios from 'axios';
+import { IOrder } from '../interfaces/cart-state.model';
 
 export const REGISTER_USER = 'REGISTER_USER';
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
@@ -15,8 +16,12 @@ export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAILURE = 'GET_USER_FAILURE';
 export const USER_LOGGEDIN = 'USER_LOGGEDIN';
 export const CLEAR_USER_DATA = 'CLEAR_USER_DATA';
+export const GET_ORDER_SUCCESS = 'GET_ORDER_SUCCESS';
+export const GET_ORDER_ERROR = 'GET_ORDER_ERROR';
+export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
+export const RESET_PASSWORD_FAILURE = 'RESET_PASSWORD_FAILURE';
 
-const url = `${constants.NODE_ENDPOINT}/user`;
+const url = `${constants.NODE_ENDPOINT}`;
 
 //eslint-disable react/explicit-module-boundary-types
 const regstisterUserSuccessAction = (): any => ({
@@ -63,7 +68,7 @@ const userLoginFailureAction = (): any => ({
 });
 
 export const registerUser = (user: IUser) => (dispatch: Dispatch): any => {
-  const apiUrl = `${url}/register`;
+  const apiUrl = `${url}/user/register`;
 
   axios
     .post(apiUrl, user)
@@ -76,7 +81,7 @@ export const registerUser = (user: IUser) => (dispatch: Dispatch): any => {
 };
 
 export const userLogin = (user: IUserLogin) => (dispatch: Dispatch): any => {
-  const apiUrl = `${url}/login`;
+  const apiUrl = `${url}/user/login`;
 
   axios
     .post(apiUrl, user)
@@ -93,7 +98,7 @@ export const userLogin = (user: IUserLogin) => (dispatch: Dispatch): any => {
 };
 
 export const getUser = (userId: any) => (dispatch: Dispatch) => {
-  const apiUrl = `${url}/${userId}`;
+  const apiUrl = `${url}/user/${userId}`;
   axios
     .get(apiUrl)
     .then((getUserData) => {
@@ -110,3 +115,52 @@ export const isUserLoggedIn = () => (dispatch: Dispatch) => {
   const isUserLoggedIn = localStorage.getItem('userData') ? true : false;
   dispatch(userLoggedInAction(isUserLoggedIn));
 };
+
+export const getOrders = (userId: string) => (dispatch: Dispatch): any => {
+  const apiUrl = `${url}/orders/${userId}`;
+
+  axios
+    .get(apiUrl)
+    .then((orderData) => {
+      const orders = orderData.data;
+      dispatch(orderSuccessAction(orders));
+    })
+    .catch(() => {
+      dispatch(orderFailureAction());
+    });
+};
+
+const orderSuccessAction = (orderDetail: IOrder): any => ({
+  type: GET_ORDER_SUCCESS,
+  orders: orderDetail,
+  isOrderFetchSuccess: true,
+});
+
+const orderFailureAction = (): any => ({
+  type: GET_ORDER_ERROR,
+  isOrderFetchFailure: true,
+});
+
+export const resetPassword = (payload: any) => (dispatch: Dispatch) => {
+  const apiUrl = `${url}/user/reset-password`;
+  axios
+    .post(apiUrl, payload)
+    .then(() => {
+      dispatch(resetPasswordSuccessAction());
+    })
+    .catch(() => {
+      dispatch(resetPasswordFailureAction());
+    });
+};
+
+const resetPasswordSuccessAction = (): any => ({
+  type: RESET_PASSWORD_SUCCESS,
+  isSuccess: true,
+  isFailure: false,
+});
+
+const resetPasswordFailureAction = (): any => ({
+  type: RESET_PASSWORD_FAILURE,
+  isFailure: true,
+  isSuccess: false,
+});

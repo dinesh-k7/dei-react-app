@@ -10,10 +10,11 @@ import './signup-form.component.scss';
 //import { sendMail } from '../effects';
 import { registerUser } from '../../actions/user';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
-import { messages, siteKey } from '../../constants';
+import { constants, messages, siteKey } from '../../constants';
 
 import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
+import { sendMail } from '../effects';
 
 interface IntitialState {
   captchaValue: string;
@@ -52,6 +53,16 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
     isButtonSubmit,
     isSendMailError,
   } = signUpState;
+
+  // If registration is success, send confirmation email
+  if (isRegisterSuccess) {
+    const { email, name } = signUpState;
+    const userData = {
+      email,
+      name,
+    };
+    sendMail(userData, constants.SIGN_UP);
+  }
 
   // If register user fails, reset isFormSubmitted and hide loader
   useEffect(() => {
@@ -259,7 +270,7 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
             onClick={handleSubmit(onSubmit, onError)}
             disabled={isRegisterSuccess ? true : false}
           >
-            SignUp
+            Sign Up
           </button>
 
           {errors && (

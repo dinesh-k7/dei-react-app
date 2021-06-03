@@ -29,15 +29,15 @@ const StartupKitIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={yellowBlob} alt="trademark" />
-              <h3>Trademark</h3>
+              <h3>Intellectual Property</h3>
             </div>
             <div className="features">
               <img src={yellowBlob} alt="copyright" />
-              <h3>Copyright</h3>
+              <h3>Premium PWA&apos;s</h3>
             </div>
             <div className="features">
               <img src={yellowBlob} alt="patent" />
-              <h3>Patent</h3>
+              <h3>Business Plans & Branding</h3>
             </div>
           </div>
         </div>

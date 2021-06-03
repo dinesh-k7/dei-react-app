@@ -1,7 +1,7 @@
 import React, { Fragment, ReactElement } from 'react';
 
 import GetQuoteComponent from '../../components/get-quote/get-quote.component';
-import { dataSecurityFormFields } from '../../constants';
+import { dataSecurityFormFields } from '../../constants/form-data/data-security-form';
 import HeroContainer from './container/hero/hero-container';
 
 const DataSecurityPage: React.FC = (): ReactElement => {

@@ -648,7 +648,10 @@ const BrandingDetailContainer: React.FC<any> = (
           )}
           <div className="price-container">
             {!isTemplate && (
-              <span className="price">{fromPage ? '$2998' : '$500'}</span>
+              <div>
+                <span className="price">{fromPage ? '$2998' : '$500'}</span>
+                <span className="currency-code"> USD</span>
+              </div>
             )}
             {isTemplate && <span className="price">$799</span>}
           </div>

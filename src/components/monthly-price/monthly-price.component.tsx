@@ -24,10 +24,14 @@ const MonthlyPriceComponent = ({
             {!monthlyPremium && size
               ? 'TBD'
               : monthlyPremium
-              ? monthlyPremium.toFixed(2)
+              ? `$${monthlyPremium.toFixed(2)}`
               : 0}
           </span>
-          {!monthlyPremium && size ? '' : <span className="label">/mo</span>}
+          {!monthlyPremium && size ? (
+            ''
+          ) : (
+            <span className="label"> {monthlyPremium ? 'USD' : ''}/mo</span>
+          )}
         </div>
       </div>
 

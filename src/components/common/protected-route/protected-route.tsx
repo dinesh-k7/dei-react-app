@@ -7,7 +7,6 @@ const ProtectedRoute = ({
   path,
   ...rest
 }: any): ReactElement => {
-  console.log('path', path);
   return (
     <Route
       {...rest}
