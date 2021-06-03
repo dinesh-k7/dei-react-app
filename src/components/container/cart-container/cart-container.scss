@@ -3,7 +3,7 @@
 
 .cart-container {
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 60% 40%;
   height: fit-content;
   .cart-items {
     display: grid;
@@ -83,40 +83,6 @@
   }
 }
 
-.payment-success,
-.payment-error {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-
-  .payment-success-message,
-  .payment-error-message {
-    align-self: center;
-    h3 {
-      font-family: 'MontFont', sans-serif !important;
-      font-size: 48px;
-      padding-bottom: 0px !important;
-      margin-bottom: 0px !important;
-    }
-    span {
-      font-size: 16px;
-      font-family: 'OpenSansLight', sans-serif !important;
-      font-weight: 400 !important;
-    }
-    .success-description,
-    .error-description {
-      font-size: 16px;
-      font-family: 'OpenSansRegular', sans-serif !important;
-      font-weight: 400 !important;
-      padding-bottom: 16px;
-    }
-    .btn-basic {
-      background: #fdcf00 !important;
-      margin-top: 24px;
-    }
-  }
-}
-
 .cart-empty-container {
   display: grid;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -153,25 +119,6 @@
       }
     }
   }
-  .payment-success,
-  .payment-error {
-    grid-template-columns: 1fr;
-    padding-top: 64px;
-    img {
-      width: 196px;
-    }
-    .payment-success-message,
-    .payment-error-message {
-      display: grid;
-      justify-items: center;
-      padding: 8px;
-      .success-description,
-      .error-description,
-      h3 {
-        text-align: center;
-      }
-    }
-  }
 }
 
 @include respond-between(sm, md) {
@@ -180,9 +127,5 @@
     .cart-summary {
       padding-left: 0px;
     }
-  }
-  .payment-success,
-  .payment-error {
-    grid-template-columns: 1fr;
   }
 }

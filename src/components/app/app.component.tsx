@@ -101,6 +101,14 @@ const SignUpPage = React.lazy(() => import('../../pages/signup/signup-page'));
 
 const SignInPage = React.lazy(() => import('../../pages/signin/signin-page'));
 
+const ResetPasswordPage = React.lazy(
+  () => import('../../pages/reset-password/reset-password-page'),
+);
+
+const OrderHistoryPage = React.lazy(
+  () => import('../../pages/order-history/order-history-page'),
+);
+
 const ContributionPage = React.lazy(
   () => import('../../pages/contribution/contribution-page'),
 );
@@ -194,6 +202,10 @@ const App = () => {
             user={user}
             component={SignUpPage}
           />
+
+          <Route path="/order-history" render={() => <OrderHistoryPage />} />
+
+          <Route path="/reset-password" render={() => <ResetPasswordPage />} />
         </Switch>
       </Suspense>
       <Footer />

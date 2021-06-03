@@ -1,0 +1,71 @@
+import { patterns } from '..';
+
+export const dataSecurityFormFields = [
+  {
+    name: 'name',
+    label: 'Name',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. John',
+    section: 'personal',
+  },
+  {
+    name: 'lastname',
+    label: 'Last Name',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. Doe',
+    section: 'personal',
+  },
+  {
+    name: 'email',
+    label: 'E-mail',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. johndoe@email.com',
+    pattern: patterns.email,
+    section: 'personal',
+  },
+  {
+    name: 'phone',
+    label: 'Phone Number',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. 123456789',
+    section: 'personal',
+  },
+  {
+    name: 'companyName',
+    label: 'Company Name',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. JohnDoe and co.',
+    section: 'company',
+  },
+
+  {
+    name: 'companySize',
+    label: 'Company Size',
+    type: 'number',
+    required: true,
+    placeholder: '0',
+    section: 'company',
+  },
+  {
+    name: 'position',
+    label: 'Your position in company',
+    type: 'select',
+    required: true,
+    placeholder: 'e.g. Project Manager',
+    section: 'company',
+  },
+  {
+    name: 'websiteUrl',
+    label: 'Current website URL',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. https://www.company.com',
+    pattern: patterns.website_url,
+    section: 'company',
+  },
+];

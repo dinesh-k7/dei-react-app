@@ -67,7 +67,7 @@ const GetQuoteComponent: React.FC<any> = (
       price: fromPage === 'branding' ? 500 : monthlyCost,
       yearlyPrice:
         fromPage !== 'branding'
-          ? (monthlyCost - constants.OFFER_PERCENTAGE * monthlyCost) * 12
+          ? (monthlyCost - constants.OFFER_PERCENTAGE * monthlyCost) * 8.5
           : '',
       id: fromPage === 'branding' ? 801 : 701,
       description:
@@ -215,8 +215,10 @@ const GetQuoteComponent: React.FC<any> = (
   //handle company size change event
   const onChangeHandler = (event: React.FormEvent<EventTarget>) => {
     const target = event.target as HTMLInputElement;
-    companysize = target && target.value;
-    setCompanySize(+companysize);
+    if (target.name && target.name === 'companySize') {
+      companysize = target && target.value;
+      setCompanySize(+companysize);
+    }
   };
   const { captchaValue, isLeadDataSent } = quoteState;
 

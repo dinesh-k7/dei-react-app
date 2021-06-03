@@ -8,7 +8,7 @@ const HeroContainer: React.FC<any> = (): ReactElement => {
     <section className="hero-section">
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Contribution</h1>
+          <h1>Contributors, Unite!</h1>
         </div>
       </div>
     </section>

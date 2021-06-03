@@ -1,11 +1,18 @@
+import axios from 'axios';
 import { Dispatch } from 'redux';
-import { IProductDetails } from '../interfaces/cart-state.model';
+import { constants } from '../constants';
+import { IOrderDetails, IProductDetails } from '../interfaces/cart-state.model';
 
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const GET_CART_ITEMS = 'GET_CART_ITEMS';
 export const UPDATE_CART = 'UPDATE_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const EMPTY_CART = 'EMPTY_CART';
+export const UPDATE_PAYMENT_SUCCESS = 'UPDATE_PAYMENT_SUCCESS';
+export const UPDATE_PAYMENT_FAILURE = 'UPDATE_PAYMENT_FAILURE';
+
+const url = `${constants.NODE_ENDPOINT}/orders`;
+
 //eslint-disable react/explicit-module-boundary-types
 const addToCartAction = (product: IProductDetails[]): any => ({
   type: ADD_TO_CART,
@@ -83,3 +90,26 @@ export const removeFromCart = (product: IProductDetails) => (
 export const emptyCart = () => (dispatch: Dispatch): any => {
   dispatch(emptyCartAction([]));
 };
+
+export const updatePaymentTransaction = (orderDetails: IOrderDetails) => (
+  dispatch: Dispatch,
+): any => {
+  axios
+    .post(url, orderDetails)
+    .then(() => {
+      dispatch(updatePaymentSuccessAction());
+    })
+    .catch(() => {
+      dispatch(updatePaymentFailureAction());
+    });
+};
+
+const updatePaymentSuccessAction = (): any => ({
+  type: UPDATE_PAYMENT_SUCCESS,
+  isPaymentUpdateSuccess: true,
+});
+
+const updatePaymentFailureAction = (): any => ({
+  type: UPDATE_PAYMENT_FAILURE,
+  isPaymentUpdateFailure: true,
+});

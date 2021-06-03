@@ -31,6 +31,7 @@ export const signUpFormData = [
     section: 'personal',
     maxlength: 50,
     id: 'sg-3',
+    pattern: patterns.password,
   },
   {
     name: 'cpassword',

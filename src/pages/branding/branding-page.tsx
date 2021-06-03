@@ -3,7 +3,7 @@ import React, { Fragment, ReactElement } from 'react';
 import GetQuoteComponent from '../../components/get-quote/get-quote.component';
 import HeroContainer from './container/hero/hero-container';
 import redVector from '../../assets/images/red_vector.svg';
-import { brandingFormFields } from '../../constants';
+import { brandingFormFields } from '../../constants/form-data/branding-form';
 
 const BrandingPage: React.FC = (): ReactElement => {
   const fromPage = 'branding';

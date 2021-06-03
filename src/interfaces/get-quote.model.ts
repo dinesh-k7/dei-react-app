@@ -1,9 +1,11 @@
 export interface IGetQuoteModel {
-  captchaValue: string;
-  isFormSubmitted: boolean;
-  isLeadDataSent: boolean;
+  captchaValue?: string;
+  isFormSubmitted?: boolean;
+  isLeadDataSent?: boolean;
   isSendMailError?: boolean;
   fromPage?: string;
+  name?: string;
+  email?: string;
 }
 
 export interface IGetQuoteProps {

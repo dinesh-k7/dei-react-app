@@ -1,14 +1,16 @@
 @import '../../assets/scss/styles.scss';
 .monthly-price {
-  justify-self: center;
   align-self: center;
+  display: grid;
   span {
     font-family: var(--font-family);
     font-size: 1.87em;
     font-style: normal;
     font-weight: 800;
   }
-
+  button {
+    justify-self: center;
+  }
   .price {
     font-family: 'MontFont', sans-serif;
     font-weight: var(--font-weight900);

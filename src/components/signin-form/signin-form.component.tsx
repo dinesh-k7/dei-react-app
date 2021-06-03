@@ -27,7 +27,7 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
   const { formFields, isLoginSuccess, isLoginFailure } = props;
   const history = useHistory();
   const stateData = {};
-  console.log('signinnnnnnnnn', props);
+
   // If login is success, re-direct to landing page
   const userData = localStorage.getItem('userData');
   if (userData) {
@@ -120,10 +120,13 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
               className={`btn-basic`}
               onClick={handleSubmit(onSubmit, onError)}
             >
-              SignIn
+              Sign In
             </button>
             <span>
               Not Registered yet? <a href="sign-up">Click here</a> to Sign-up
+            </span>
+            <span>
+              <a href="reset-password">Reset Password</a>
             </span>
 
             {errors && (

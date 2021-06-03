@@ -6,6 +6,7 @@ export const constants = {
   ES_VOICE_SERVICE: 'ES_VOICE_SERVICE',
   ES_IOT_SERVICE: 'ES_IOT_SERVICE',
   ES_PROFESSIONAL_SERVICE: 'ES_PROFESSIONAL_SERVICE',
+  SIGN_UP: 'SIGN_UP',
   WD: 'wd',
   BRANDING: 'branding',
   RECONNECT: 'RECONNECT',
@@ -207,6 +208,10 @@ export const constants = {
       name: 'Sign In',
     },
     {
+      url: '/order-history',
+      name: 'Orders',
+    },
+    {
       url: '/logout',
       name: 'Logout',
     },
@@ -225,7 +230,14 @@ export const constants = {
 export const quoteValidationErrorMessages = {
   name: [{ type: 'required', message: '*Please enter name' }],
   lastname: [{ type: 'required', message: '*Please enter last name' }],
-  password: [{ type: 'required', message: '*Please enter password' }],
+  password: [
+    { type: 'required', message: '*Please enter password' },
+    {
+      type: 'pattern',
+      message:
+        '*Password should have atleast 8 characters with one upper case, lower case and special character',
+    },
+  ],
   cpassword: [{ type: 'required', message: '*Please enter confirm password' }],
   email: [
     { type: 'required', message: '*Please enter email' },
@@ -284,6 +296,7 @@ export const patterns = {
   email: /^([\w.-]+)@(\[(\d{1,3}\.){3}|(?!hotmail|googlemail|yahoo|gmx|ymail|outlook|bluewin|protonmail|t\-online|web\.|online\.|aol\.|live\.)(([a-zA-Z\d-]+\.)+))([a-zA-Z]{2,4}|\d{1,3})(\]?)$/i,
   website_url: /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/i,
   phone: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/i,
+  password: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?([^ws]|[_])).{8,}$/,
 };
 
 export const messages = {
@@ -298,78 +311,14 @@ export const messages = {
   request_success: 'Your Request has been processed successfully!',
   signup_error: 'Error in sign up process',
   signin_error: 'Error in sign in process',
+  reset_error: 'Error in password reset',
   validation_error: 'Please fill out the required field(s).',
+  payment_success_message:
+    'Thank you for your purchase! We are the common denominator!',
+  payment_failure_message:
+    'thank you for joining us in manifesting digital destiny. Oops wait a minute somethings not quite right please resubmit your order.',
 };
 
-export const dataSecurityFormFields = [
-  {
-    name: 'name',
-    label: 'Name',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. John',
-    section: 'personal',
-  },
-  {
-    name: 'lastname',
-    label: 'Last Name',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. Doe',
-    section: 'personal',
-  },
-  {
-    name: 'email',
-    label: 'E-mail',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. johndoe@email.com',
-    pattern: patterns.email,
-    section: 'personal',
-  },
-  {
-    name: 'phone',
-    label: 'Phone Number',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. 123456789',
-    section: 'personal',
-  },
-  {
-    name: 'companyName',
-    label: 'Company Name',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. JohnDoe and co.',
-    section: 'company',
-  },
-
-  {
-    name: 'companySize',
-    label: 'Company Size',
-    type: 'number',
-    required: true,
-    placeholder: '0',
-    section: 'company',
-  },
-  {
-    name: 'position',
-    label: 'Your position in company',
-    type: 'select',
-    required: true,
-    placeholder: 'e.g. Project Manager',
-    section: 'company',
-  },
-  {
-    name: 'websiteUrl',
-    label: 'Current website URL',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. https://www.company.com',
-    pattern: patterns.website_url,
-    section: 'company',
-  },
-];
 export const FormFields = [
   {
     name: 'name',
@@ -440,103 +389,6 @@ export const FormFields = [
   },
 ];
 
-export const brandingFormFields = [
-  {
-    name: 'name',
-    label: 'Name',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. John',
-    section: 'personal',
-  },
-  {
-    name: 'lastname',
-    label: 'Last Name',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. Doe',
-    section: 'personal',
-  },
-  {
-    name: 'email',
-    label: 'E-mail',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. johndoe@email.com',
-    pattern: patterns.email,
-    section: 'personal',
-  },
-  {
-    name: 'phone',
-    label: 'Phone Number',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. 123456789',
-    section: 'personal',
-  },
-  {
-    name: 'companyName',
-    label: 'Company Name',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. JohnDoe and co.',
-    section: 'company',
-  },
-
-  {
-    name: 'slogan',
-    label: 'Slogan',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. Think different',
-    section: 'company',
-  },
-  {
-    name: 'industry',
-    label: 'Industry',
-    type: 'text',
-    required: true,
-    placeholder: 'e.g. Accounting',
-    section: 'company',
-  },
-  {
-    name: 'position',
-    label: 'Your position in company',
-    type: 'select',
-    required: true,
-    placeholder: 'e.g. Project Manager',
-    section: 'company',
-  },
-
-  {
-    name: 'targetAudience',
-    label: 'What is your target audience',
-    type: 'textarea',
-    required: true,
-    placeholder: 'e.g. Accounting',
-    maxlength: 1000,
-    section: 'company',
-  },
-  {
-    name: 'aboutCompany',
-    label: 'Tell us about your company',
-    type: 'textarea',
-    required: true,
-    placeholder: 'e.g. Accounting',
-    maxlength: 1000,
-    section: 'company',
-  },
-  {
-    name: 'comment',
-    label: 'Additional comment',
-    type: 'textarea',
-    required: true,
-    placeholder: 'e.g. comment',
-    maxlength: 1000,
-    section: 'company',
-  },
-];
-
 export const TEMPLATES = [
   {
     id: 1,
@@ -563,7 +415,7 @@ export const CONSULTATION_PACKAGES = [
     name: 'Package A',
     description: 'Comprehensive Trademark screening report',
     description_one: 'Composite Trademark Registration',
-    price: 4995,
+    price: 5995,
     service: 'Consultations & Coaching',
     quantity: 1,
     features: [
@@ -600,7 +452,7 @@ export const CONSULTATION_PACKAGES = [
     price: 9900,
     service: 'Consultations & Coaching',
     features: [
-      'Premium PWA',
+      'Premium PWA - Publishing Platform',
       'Branding kit',
       'Composite mark registration',
       '2 (1 hour) sessions with Mr. NWO',
@@ -621,11 +473,11 @@ export const CONSULTATION_PACKAGES = [
     service: 'Digital Security Consultation',
     quantity: 1,
     features: [
-      '3rd party hardware',
-      '3rd party software',
-      'Password policies',
+      '3rd party hardware review',
+      '3rd party software review',
+      'Password policies review',
       'Network Firewall review',
-      'patches',
+      'Patch Management Consultation ',
     ],
   },
   {
@@ -648,23 +500,32 @@ export const CONSULTATION_PACKAGES = [
   },
 ];
 
-export const contributorPlan = [
+export const PLANS = [
   {
-    id: 994,
-    active: false,
-    name: 'Package A',
-    description: 'Mr. NWO Coaching',
-    description_one: 'Mr. NWO Coaching',
-    price: '30,000.00 Platinum',
-    service: '',
-    quantity: 1,
-    features: [
-      'Mr. NWO Creative',
-      'Premium PWA',
-      'Branding',
-      'I.P. Assist',
-      'Business Planning',
-      'Coaching Sessions',
-    ],
+    id: 1001,
+    name: 'Silver Contributor',
+    description_one: 'Billed for 12 months',
+    description_two:
+      'Subscription will be paused automatically, if billing cycle is missed for 2 months.',
+    price: 10.0,
+    planId: 'P-00645188CD6228332MCP53QQ',
+  },
+  {
+    id: 1002,
+    name: 'Gold Contributor',
+    description_one: 'Billed for 12 months',
+    description_two:
+      'Subscription will be paused automatically, if billing cycle is missed for 2 months.',
+    price: 19.0,
+    planId: 'P-7LF88802MJ4268053MCP6NGA',
+  },
+  {
+    id: 1003,
+    name: 'Platinum Contributor',
+    description_one: 'Billed for 12 months',
+    description_two:
+      'Subscription will be paused automatically, if billing cycle is missed for 2 months.',
+    price: 30.0,
+    planId: 'P-1EK089283N940084PMCP6OPY',
   },
 ];
