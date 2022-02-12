@@ -13,7 +13,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
       ref={props.inputRef}
     >
       <div className="hero-image">
-        <img src={heroImage} alt="Data Security Image" />
+        <img src={heroImage} alt="Data Security" />
       </div>
       <div className="hero-content">
         <div className="hero-title">
@@ -23,11 +23,11 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
             </h1>
           </Fragment>
           <div className="hero-mobile-image">
-            <img src={heroImage} alt="Site Security Image" />
+            <img src={heroImage} alt="Site Security" />
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="Blue blob" />
               <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/website-security">
                   Website Sentry
@@ -48,7 +48,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="Blue blob two" />
               <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/ssl-managed">
                   DEI™ Certified SSL
@@ -71,7 +71,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="Blue Blob three" />
               <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/website-backup">
                   DEI™ Backup
@@ -93,7 +93,7 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="Background" />
               <h3 className="feature-title">
                 <a href="https://novusordoseclorum.org/newsletter/ ">
                   Security Now Newsletter

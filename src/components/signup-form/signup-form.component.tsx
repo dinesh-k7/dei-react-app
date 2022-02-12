@@ -1,20 +1,21 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
-
 import ReCAPTCHA from 'react-google-recaptcha';
 
 import TextBox from '../common/form-element/text-box';
 import '../get-quote/get-quote.component.scss';
 import './signup-form.component.scss';
-//import { sendMail } from '../effects';
 import { registerUser } from '../../actions/user';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
 import { constants, messages, siteKey } from '../../constants';
-
 import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
 import { sendMail } from '../effects';
+import SelectBox from '../common/form-element/select-box';
+import { useStyles } from '../../utils';
+import { addToCart } from '../../actions/cart';
+import MultiText from '../common/form-element/multi-text';
 
 interface IntitialState {
   captchaValue: string;
@@ -27,9 +28,26 @@ interface IntitialState {
   name: string;
   email: string;
   phone: string;
+  platform?: string;
+  websiteUrl?: string;
+  budget?: number;
+  certified?: string;
+  type?: string;
+  goal?: string;
 }
 
-const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
+interface SignUpFormComponentProps {
+  fromPage?: string;
+  formFields: any;
+  isRegisterFailure?: any;
+  isRegisterSuccess?: any;
+  isLoading?: any;
+  error?: any;
+  action?: any;
+  registerUser?: (formData: any, action: string) => void;
+}
+
+const SignUpFormComponent = (props: SignUpFormComponentProps): ReactElement => {
   const INITIAL_STATE: IntitialState = {
     captchaValue: '',
     isFormSubmitted: false,
@@ -41,32 +59,33 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
     name: '',
     email: '',
     phone: '',
+    platform: '',
+    websiteUrl: '',
+    budget: 0,
+    certified: '',
+    type: '',
+    goal: '',
   };
-  const { formFields, isRegisterFailure, isRegisterSuccess } = props;
-  const { register, errors, handleSubmit } = useForm();
-  const [signUpState, setSignUpState] = useState(INITIAL_STATE);
-  const [captcha, setCaptcha] = useState({});
-
   const {
-    isFormSubmitted,
-    captchaValue,
-    isButtonSubmit,
-    isSendMailError,
-  } = signUpState;
+    formFields,
+    isRegisterFailure,
+    isRegisterSuccess,
+    isLoading,
+    error,
+    action,
+  } = props;
+  const { register, errors, handleSubmit, control } = useForm();
+  const [signUpState, setSignUpState] = useState(INITIAL_STATE);
+  const [, setCaptcha] = useState({});
 
-  // If registration is success, send confirmation email
-  if (isRegisterSuccess) {
-    const { email, name } = signUpState;
-    const userData = {
-      email,
-      name,
-    };
-    sendMail(userData, constants.SIGN_UP);
-  }
+  const classes = useStyles();
+
+  const { isFormSubmitted, captchaValue, isButtonSubmit, isSendMailError } =
+    signUpState;
 
   // If register user fails, reset isFormSubmitted and hide loader
   useEffect(() => {
-    const { isRegisterFailure } = props;
+    const { isRegisterFailure, isRegisterSuccess } = props;
     if (isRegisterFailure) {
       setSignUpState((prevState) => {
         return {
@@ -74,6 +93,14 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
           isFormSubmitted: false,
         };
       });
+    }
+    if (isRegisterSuccess && !action) {
+      const { email, name } = signUpState;
+      const userData = {
+        email,
+        name,
+      };
+      sendMail(userData, constants.SIGN_UP);
     }
   }, [props]);
 
@@ -97,39 +124,12 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
       };
     });
 
-    if (password !== cpassword) {
+    if (password !== cpassword && !action) {
       return;
     } else if (!captchaValue) {
       return;
     } else {
-      props.registerUser(formData);
-      // sendMail(
-      //   {
-      //     ...formData,
-      //   },
-      //   constants.RECONNECT,
-      // ).then(
-      //   () => {
-      //     setSignUpState((prevState) => {
-      //       return {
-      //         ...prevState,
-      //         isLeadDataSent: true,
-      //         isSendMailError: false,
-      //         isSignUpSuccess: true,
-      //       };
-      //     });
-      //   },
-      //   () => {
-      //     setSignUpState((prevState) => {
-      //       return {
-      //         ...prevState,
-      //         isSendMailError: true,
-      //         isFormSubmitted: false,
-      //         isSignUpSuccess: false,
-      //       };
-      //     });
-      //   },
-      // );
+      props.registerUser(formData, action);
     }
   };
 
@@ -155,13 +155,15 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
     });
   };
   const errorKeys = Object.keys(errors);
+  const { certified } = signUpState;
+
   return (
     <section className="signup-form-section">
-      {isRegisterFailure && (
+      {error && (
         <SnackBarComponent
           isOpen={true}
           isError={true}
-          message={messages.signup_error}
+          message={error ? error : messages.signup_error}
         />
       )}
       {errorKeys && errorKeys.length ? (
@@ -180,7 +182,7 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
             {formFields &&
               formFields.length &&
               formFields.map((field) => {
-                if (field.section === 'personal' && field.type === 'text') {
+                if (field.type === 'text') {
                   return (
                     <TextBox
                       key={field.name}
@@ -191,12 +193,22 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
                       maxlength={field.maxlength}
                       required={field.required}
                       pattern={field.pattern}
+                      prefix={field.prefix}
                     />
                   );
-                } else if (
-                  field.section === 'personal' &&
-                  field.type === 'password'
-                ) {
+                } else if (field.type === 'textarea') {
+                  return (
+                    <MultiText
+                      key={field.name}
+                      register={register}
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      label_name={field.label}
+                      maxlength={field.maxlength}
+                      class_name={'text-area-container'}
+                    />
+                  );
+                } else if (field.type === 'password') {
                   return (
                     <TextBox
                       key={field.name}
@@ -204,12 +216,66 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={50}
+                      maxlength={field.maxlength}
                       required={field.required}
                       pattern={field.pattern}
                       type={field.type}
                       onChangeHandler={handleChange}
                     />
+                  );
+                } else if (field.type === 'select') {
+                  return (
+                    <SelectBox
+                      value={signUpState[field.name]}
+                      key={field.name}
+                      className={classes}
+                      handleSelect={handleChange}
+                      variant={'outlined'}
+                      name={field.name}
+                      id={field.name}
+                      label_name={field.label}
+                      options={field.options}
+                      placeholder={field.placeholder}
+                      control={control}
+                      required={field.required}
+                      error={!!errors[signUpState[field.name]]}
+                    ></SelectBox>
+                  );
+                } else if (field.type === 'radio') {
+                  return (
+                    <div className="form-group radio-section">
+                      <span>{field.label} </span>
+                      <div className="radio-options">
+                        <span
+                          className={
+                            certified === 'Yes' ? 'green-bg' : 'white-bg'
+                          }
+                          onClick={() => {
+                            setSignUpState((prevState) => {
+                              return {
+                                ...prevState,
+                                certified: 'Yes',
+                              };
+                            });
+                          }}
+                        >
+                          YES
+                        </span>
+                        <span
+                          className={certified === 'No' ? 'red-bg' : 'white-bg'}
+                          onClick={() => {
+                            setSignUpState((prevState) => {
+                              return {
+                                ...prevState,
+                                certified: 'No',
+                              };
+                            });
+                          }}
+                        >
+                          NO
+                        </span>
+                      </div>
+                    </div>
                   );
                 }
               })}
@@ -270,7 +336,12 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
             onClick={handleSubmit(onSubmit, onError)}
             disabled={isRegisterSuccess ? true : false}
           >
-            Sign Up
+            {action === 'freelancer' ||
+            action === 'business' ||
+            action === 'personal'
+              ? 'Register'
+              : ''}
+            {!action ? 'Sign Up' : ''}
           </button>
 
           {errors && (
@@ -293,14 +364,15 @@ const SignUpFormComponent: React.FC<any> = (props: any): ReactElement => {
 
           {isRegisterSuccess ? (
             <div className="signup-success">
-              Sign up process is success. Please{' '}
-              <a href="/sign-in">click here</a> to Sign-in
+              {!action
+                ? 'Sign Up is successful. Activation link has been sent to your email.'
+                : 'Account has been registered successfully.'}
             </div>
           ) : (
             ''
           )}
 
-          {isFormSubmitted && captchaValue && !isRegisterSuccess ? (
+          {isFormSubmitted && captchaValue && isLoading ? (
             <LoaderComponent />
           ) : (
             ''
@@ -318,7 +390,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    registerUser: (user) => dispatch(registerUser(user)),
+    registerUser: (user, type) => dispatch(registerUser(user, type)),
+    addToCart: (product) => dispatch(addToCart(product)),
   };
 };
 

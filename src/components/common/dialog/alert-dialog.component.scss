@@ -1,0 +1,17 @@
+@import '../../../assets/scss/styles.scss';
+
+#alert-dialog-title {
+  span {
+    display: block;
+  }
+  .title-one {
+    font-weight: 900;
+  }
+  .title-two {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .title-three {
+    font-size: 14px;
+  }
+}

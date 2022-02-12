@@ -2,22 +2,21 @@
 .monthly-price {
   align-self: center;
   display: grid;
+  justify-self: center;
   span {
     font-family: var(--font-family);
     font-size: 1.87em;
     font-style: normal;
     font-weight: 800;
   }
-  button {
-    justify-self: center;
-  }
+
   .price {
     font-family: 'MontFont', sans-serif;
     font-weight: var(--font-weight900);
-    font-size: 6.25em;
+    font-size: 4em;
   }
   .label {
-    font-size: 1.875em;
+    font-size: 0.875em;
     font-weight: var(--font-weight800);
     font-family: 'OpenSansBold', sans-serif;
   }

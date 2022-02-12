@@ -65,7 +65,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     isSendMailError: false,
     isButtonSubmit: false,
   };
-  const { formFields, fromPage } = props;
+  const { formFields } = props;
   const stateData = {};
 
   formFields &&
@@ -251,7 +251,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={50}
+                      maxlength={field.maxlength}
                       required={field.required}
                       pattern={field.pattern}
                     />

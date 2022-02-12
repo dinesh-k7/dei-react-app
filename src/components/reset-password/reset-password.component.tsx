@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement, useEffect, useState } from 'react';
+import React, { Fragment, ReactElement, useState } from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
@@ -11,6 +11,7 @@ import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
 import { useHistory } from 'react-router-dom';
+import { getQueryStringParams } from '../../utils';
 
 interface IntitialState {
   isFormSubmitted: boolean;
@@ -20,7 +21,18 @@ interface IntitialState {
   cpassword: string;
 }
 
-const ResetPasswordComponent: React.FC<any> = (props: any): ReactElement => {
+interface ResetPasswordComponentProps {
+  formFields: any;
+  isSuccess?: boolean;
+  error?: string;
+  isLoading?: boolean;
+  isPasswordMinAge?: boolean;
+  resetPassword?: (user: any) => void;
+}
+
+const ResetPasswordComponent: React.FC<ResetPasswordComponentProps> = (
+  props: ResetPasswordComponentProps,
+): ReactElement => {
   let INITIAL_STATE: IntitialState = {
     isFormSubmitted: false,
     isButtonSubmit: false,
@@ -28,9 +40,15 @@ const ResetPasswordComponent: React.FC<any> = (props: any): ReactElement => {
     password: '',
     cpassword: '',
   };
-  const { formFields, isSuccess, isFailure } = props;
-  const history = useHistory();
+  const { formFields, isSuccess, error, isLoading, isPasswordMinAge } = props;
   const stateData = {};
+  const history = useHistory();
+  let id, token;
+  if (history.location.search) {
+    const params = getQueryStringParams(history.location.search);
+    id = params.id;
+    token = params.token;
+  }
 
   //Set form field in state
   formFields &&
@@ -69,9 +87,9 @@ const ResetPasswordComponent: React.FC<any> = (props: any): ReactElement => {
     const user = {
       email,
       password,
+      token,
     };
 
-    //Dispatch userLogin event
     props.resetPassword(user);
   };
 
@@ -88,11 +106,11 @@ const ResetPasswordComponent: React.FC<any> = (props: any): ReactElement => {
 
   return (
     <section className="reset-form-section">
-      {isFailure && (
+      {error && (
         <SnackBarComponent
           isOpen={true}
           isError={true}
-          message={messages.reset_error}
+          message={error ? error : messages.reset_error}
         />
       )}
       <div className="form-container">
@@ -104,7 +122,21 @@ const ResetPasswordComponent: React.FC<any> = (props: any): ReactElement => {
                 {formFields &&
                   formFields.length &&
                   formFields.map((field) => {
-                    if (field.type === 'text' || field.type === 'password') {
+                    if (field.type === 'text') {
+                      return (
+                        <TextBox
+                          key={field.name}
+                          register={register}
+                          name={field.name}
+                          placeholder={field.placeholder}
+                          label_name={field.label}
+                          maxlength={field.maxlength}
+                          required={field.required}
+                          pattern={field.pattern}
+                          type={field.type}
+                        />
+                      );
+                    } else if (token && id && field.type === 'password') {
                       return (
                         <TextBox
                           key={field.name}
@@ -142,10 +174,7 @@ const ResetPasswordComponent: React.FC<any> = (props: any): ReactElement => {
               ''
             )} */}
 
-                {isFormSubmitted &&
-                !isSuccess &&
-                !isFailure &&
-                password === cpassword ? (
+                {isFormSubmitted && isLoading && password === cpassword ? (
                   <LoaderComponent />
                 ) : (
                   ''
@@ -168,9 +197,26 @@ const ResetPasswordComponent: React.FC<any> = (props: any): ReactElement => {
         ) : (
           ''
         )}
-        {isSuccess ? (
+        {isSuccess && !token && !isPasswordMinAge ? (
+          <div className="reset-success">
+            Password reset link sent to your email account.
+          </div>
+        ) : (
+          ''
+        )}
+
+        {isSuccess && token ? (
           <div className="reset-success">
             Password has been reset successfully. Please click here to{' '}
+            <a href="sign-in"> Sign In </a>
+          </div>
+        ) : (
+          ''
+        )}
+
+        {isSuccess && isPasswordMinAge ? (
+          <div className="reset-success">
+            Password can be reset after two days.Please click here to
             <a href="sign-in"> Sign In </a>
           </div>
         ) : (

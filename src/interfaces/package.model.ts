@@ -10,4 +10,7 @@ export interface IPackageModel {
   description_one: string;
   service: '';
   features: string[];
+  monthly?: boolean;
+  additional_fee?: any;
+  starting?: any;
 }

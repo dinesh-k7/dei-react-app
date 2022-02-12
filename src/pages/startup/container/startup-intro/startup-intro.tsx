@@ -31,13 +31,12 @@ const StartupIntroContainer: React.FC<any> = ({
       <div className="startup-container">
         <div className="startup-intro-image">
           <img className="green-blob" src={greenBlob} alt="Green vector" />
-          <img className="title" src={startupTitle} />
+          <img className="title" src={startupTitle} alt="Startup intro" />
         </div>
         <p className="startup-intro-text">
           Venturing into the digital world can be risky, especially without the
-          proper tools and know-how. The DEI™ provides the right tools and
-          resources to help you mitigate your risk and maximize your digital
-          potential.
+          proper tools and know-how. The DEI™ Start-Up tools and resources help
+          you mitigate your risk and maximize your digital potential.
         </p>
       </div>
       <div className="startup-service">
@@ -46,6 +45,7 @@ const StartupIntroContainer: React.FC<any> = ({
             <img
               src={yellowBlob}
               onClick={() => onClickHandler(constants.STARTUP)}
+              alt="Yellow Blob"
             />
             <span
               onClick={() => onClickHandler(constants.STARTUP)}
@@ -71,6 +71,7 @@ const StartupIntroContainer: React.FC<any> = ({
               width={80}
               height={80}
               onClick={() => onClickHandler(constants.SMB.NWO)}
+              alt="NWO Blob"
             />
             <span
               onClick={() => onClickHandler(constants.SMB.NWO)}
@@ -98,6 +99,7 @@ const StartupIntroContainer: React.FC<any> = ({
               width={80}
               height={80}
               onClick={() => onClickHandler(constants.SMB.BRANDING)}
+              alt="SMB Branding"
             />
             <span
               onClick={() => onClickHandler(constants.SMB.BRANDING)}

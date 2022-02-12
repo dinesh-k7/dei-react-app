@@ -22,7 +22,6 @@ const DevelopPage: React.FC = (): ReactElement => {
         <WdIntro />
         <SeoIntro />
       </div>
-      <div className="landing-border"></div>
     </Fragment>
   );
 };

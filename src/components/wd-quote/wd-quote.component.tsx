@@ -1,25 +1,38 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
 import ReCAPTCHA from 'react-google-recaptcha';
 
-import { messages, siteKey } from '../../constants';
+import { messages, modalData, siteKey } from '../../constants';
 
 import MultiText from '../common/form-element/multi-text';
 import SelectBox from '../common/form-element/select-box';
 import TextBox from '../common/form-element/text-box';
 import '../get-quote/get-quote.component.scss';
 import './wd-quote.component.scss';
-import { useStyles } from '../../utils';
+import { addProductToCart, useStyles } from '../../utils';
 import { sendMail } from '../effects';
 // import ErrorMessageContainer from '../container/error-message.container';
 // import LoaderComponent from '../common/loader/loader.component';
 import { addToCart } from '../../actions/cart';
 import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
+import { useHistory } from 'react-router-dom';
+import { getConfigDetails } from '../../actions/config';
+import AlertDialogComponent from '../common/dialog/alert-dialog.component';
 
-const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
+interface WdQuoteComponentProps {
+  fromPage: string;
+  vimage: string;
+  formFields: any;
+  settings?: any;
+  addToCart?: any;
+}
+
+const WdQuoteComponent: React.FC<WdQuoteComponentProps> = (
+  props: WdQuoteComponentProps,
+): ReactElement => {
   let INITIAL_STATE: any = {
     captchaValue: '',
     isFormSubmitted: false,
@@ -31,7 +44,9 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     isSelling: '',
     isSEO: '',
   };
-  const { formFields, fromPage } = props;
+  const { formFields, fromPage, settings } = props;
+  const history = useHistory();
+
   const state = {};
 
   formFields &&
@@ -53,6 +68,35 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
   const { register, handleSubmit, errors, control } = useForm();
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
   const [captcha, setCaptcha] = useState({});
+  const [open, setOpen] = useState(true);
+
+  useEffect(() => {
+    // If user is logged
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      const {
+        email,
+        name,
+        phone,
+        lastname,
+        companyName,
+        position,
+        websiteUrl,
+      } = JSON.parse(userData);
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          email,
+          name,
+          phone,
+          lastname,
+          companyName,
+          position,
+          websiteUrl,
+        };
+      });
+    }
+  }, []);
 
   // Set captcha reference
 
@@ -61,6 +105,20 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
       setCaptcha(ref);
     }
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  // check Custom designs settings
+  let isEnabled = false;
+  if (settings && settings.length) {
+    const key = 'enableWd';
+    const config = settings.find((set) => set.name === key);
+    if (config?.value) {
+      isEnabled = true;
+    }
+  }
 
   // handle get quote form onSubmit
   const onSubmit = (quoteData: any) => {
@@ -104,7 +162,11 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     if (!captchaValue) {
       return;
     } else {
-      //props.dispatch(addToCart(selectedPackages));
+      const product = addProductToCart(quoteData, fromPage);
+      if (isEnabled) {
+        props.addToCart([product]);
+      }
+
       sendMail({ ...quoteData }, fromPage).then(
         () => {
           setQuoteState((prevState) => {
@@ -114,6 +176,9 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
               isSendMailError: false,
             };
           });
+          // {
+          //   isEnabled ? history.push('cart-page') : '';
+          // }
         },
         () => {
           setQuoteState((prevState) => {
@@ -177,9 +242,23 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
     });
   };
 
+  // handle input change
+  const onChangeHandler = ($event: React.FormEvent<EventTarget>) => {
+    const target = $event.target as HTMLInputElement;
+    const value = target.value;
+    if (target && target.name) {
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          [target.name]: value,
+        };
+      });
+    }
+  };
+
   const classes = useStyles();
   const errorKeys = Object.keys(errors);
-
+  const { title, description } = modalData;
   return (
     <section className="wd-quote-section">
       {isLeadDataSent && (
@@ -200,7 +279,18 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
       )}
       <div className="bg-image"></div>
       <div className="form-container">
-        <h1>{`DEI™ Custom DevOps:`}</h1>
+        {open && !isEnabled && isLeadDataSent ? (
+          <AlertDialogComponent
+            title={title}
+            description={description}
+            isShow={open}
+            handleClose={handleClose}
+          />
+        ) : (
+          ''
+        )}
+
+        <h1>{`DEI™ Custom Designs:`}</h1>
         <h4>Personal Information</h4>
         <form autoComplete="off">
           <div className="personal-information">
@@ -215,9 +305,11 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={50}
+                      maxlength={field.maxlength}
                       required={field.required}
                       pattern={field.pattern}
+                      value={quoteState[field.name]}
+                      onChangeHandler={onChangeHandler}
                     />
                   );
                 } else if (
@@ -260,10 +352,12 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={50}
+                      maxlength={field.maxlength}
                       required={field.required}
                       pattern={field.pattern}
                       type={field.type}
+                      value={quoteState[field.name]}
+                      onChangeHandler={onChangeHandler}
                     />
                   );
                 } else if (
@@ -297,7 +391,7 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={500}
+                      maxlength={field.maxlength}
                       class_name={'text-area-container'}
                     />
                   );
@@ -383,8 +477,16 @@ const WdQuoteComponent: React.FC<any> = (props: any): ReactElement => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  products: addToCart(state),
-});
+const mapStateToProps = (state) => {
+  const { configReducer } = state;
+  return { ...configReducer };
+};
 
-export default connect(mapStateToProps)(WdQuoteComponent);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getConfigDetails: () => dispatch(getConfigDetails()),
+    addToCart: (product) => dispatch(addToCart(product)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WdQuoteComponent);

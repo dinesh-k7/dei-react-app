@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 
-import { constants } from '../constants';
+import { branding, constants, ds, wd } from '../constants';
 
 interface IErrorMessageModel {
   type: string;
@@ -74,141 +74,62 @@ export const calculateMonthlyAmount: any = (totalUsers: number) => {
   }
 };
 
-export const paypalOrder = {
-  id: '51M29379UF007463Y',
-  intent: 'CAPTURE',
-  status: 'COMPLETED',
-  purchase_units: [
-    {
-      reference_id: 'default',
-      amount: {
-        currency_code: 'USD',
-        value: '0.03',
-        breakdown: {
-          item_total: {
-            currency_code: 'USD',
-            value: '0.03',
-          },
-          shipping: {
-            currency_code: 'USD',
-            value: '0.00',
-          },
-          handling: {
-            currency_code: 'USD',
-            value: '0.00',
-          },
-          insurance: {
-            currency_code: 'USD',
-            value: '0.00',
-          },
-          shipping_discount: {
-            currency_code: 'USD',
-            value: '0.00',
-          },
-          discount: {
-            currency_code: 'USD',
-            value: '0.00',
-          },
-        },
-      },
-      payee: {
-        email_address: 'sb-th8oo5324761@business.example.com',
-        merchant_id: '3S3P6MPUEKNZG',
-      },
-      description: '',
-      shipping: {
-        name: {
-          full_name: 'John Doe',
-        },
-        address: {
-          address_line_1: '1 Main St',
-          admin_area_2: 'San Jose',
-          admin_area_1: 'CA',
-          postal_code: '95131',
-          country_code: 'US',
-        },
-      },
-      payments: {
-        captures: [
-          {
-            id: '53084932H0595304M',
-            status: 'COMPLETED',
-            amount: {
-              currency_code: 'USD',
-              value: '0.03',
-            },
-            final_capture: true,
-            seller_protection: {
-              status: 'ELIGIBLE',
-              dispute_categories: [
-                'ITEM_NOT_RECEIVED',
-                'UNAUTHORIZED_TRANSACTION',
-              ],
-            },
-            seller_receivable_breakdown: {
-              gross_amount: {
-                currency_code: 'USD',
-                value: '0.03',
-              },
-              paypal_fee: {
-                currency_code: 'USD',
-                value: '0.03',
-              },
-              net_amount: {
-                currency_code: 'USD',
-                value: '0.00',
-              },
-            },
-            links: [
-              {
-                href:
-                  'https://api.sandbox.paypal.com/v2/payments/captures/53084932H0595304M',
-                rel: 'self',
-                method: 'GET',
-              },
-              {
-                href:
-                  'https://api.sandbox.paypal.com/v2/payments/captures/53084932H0595304M/refund',
-                rel: 'refund',
-                method: 'POST',
-              },
-              {
-                href:
-                  'https://api.sandbox.paypal.com/v2/checkout/orders/51M29379UF007463Y',
-                rel: 'up',
-                method: 'GET',
-              },
-            ],
-            create_time: '2021-05-28T10:36:23Z',
-            update_time: '2021-05-28T10:36:23Z',
-          },
-        ],
-      },
-    },
-  ],
-  payer: {
-    name: {
-      given_name: 'John',
-      surname: 'Doe',
-    },
-    email_address: 'sb-xrhea5338878@personal.example.com',
-    payer_id: '34XUXNBBPW4KG',
-    phone: {
-      phone_number: {
-        national_number: '4085060688',
-      },
-    },
-    address: {
-      country_code: 'US',
-    },
-  },
-  update_time: '2021-05-28T10:36:23Z',
-  links: [
-    {
-      href:
-        'https://api.sandbox.paypal.com/v2/checkout/orders/51M29379UF007463Y',
-      rel: 'self',
-      method: 'GET',
-    },
-  ],
+const getProductDetail = (fromPage, field) => {
+  if (fromPage === constants.BRANDING) {
+    return branding[field];
+  } else if (fromPage === constants.WD) {
+    return wd[field];
+  } else {
+    return ds[field];
+  }
+};
+
+// eslint-disable-next-line  @typescript-eslint/explicit-module-boundary-types
+export const addProductToCart = (quoteData: any, fromPage: string): any => {
+  const { monthlyCost } = quoteData;
+  const product = {
+    name: getProductDetail(fromPage, 'name'),
+    packageName: getProductDetail(fromPage, 'name'),
+    price:
+      fromPage === 'branding' || fromPage === 'wd'
+        ? getProductDetail(fromPage, 'price')
+        : monthlyCost,
+    yearlyPrice:
+      fromPage !== 'branding' && fromPage !== 'wd'
+        ? (monthlyCost - constants.OFFER_PERCENTAGE * monthlyCost) * 8.5
+        : '',
+    id: getProductDetail(fromPage, 'id'),
+    description: getProductDetail(fromPage, 'description'),
+    section: getProductDetail(fromPage, 'section'),
+    quantity: 1,
+    monthlyPrice:
+      fromPage !== 'branding' && fromPage !== 'wd' ? monthlyCost : '',
+  };
+  return product;
+};
+
+// eslint-disable-next-line
+export const getQueryStringParams = (query: any) => {
+  return query
+    ? (/^[?#]/.test(query) ? query.slice(1) : query)
+        .split('&')
+        .reduce((params, param) => {
+          const [key, value] = param.split('=');
+          params[key] = value
+            ? decodeURIComponent(value.replace(/\+/g, ' '))
+            : '';
+          return params;
+        }, {})
+    : {};
+};
+
+export const camelToSnakeCase = (str: string): string =>
+  str
+    .replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)
+    .replace(/^_/, '');
+
+// eslint-disable-next-line  @typescript-eslint/explicit-module-boundary-types
+export const dateDiff = (d1: any, d2: any): number => {
+  const g: any = (d1 - d2) / (1000 * 60 * 60 * 24);
+  return parseInt(g, 10);
 };

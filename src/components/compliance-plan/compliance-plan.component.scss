@@ -1,0 +1,80 @@
+@import '../../assets/scss/abstracts/mixins';
+@import '../../assets/scss/layout/hero';
+
+.compliance-section {
+  display: grid !important;
+  grid-column: 1/4;
+  grid-row: 3/4;
+}
+.hippa-container,
+.nist-container {
+  display: grid;
+  padding: 32px 0px 0px 0px;
+  justify-content: center;
+}
+.device-detail {
+  .plan-description {
+    display: grid;
+    justify-items: center;
+    .price {
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--font-color);
+      font-family: 'OpenSansBold', sans-serif;
+    }
+    ul {
+      padding-left: 48px;
+      li {
+        padding-top: 8px !important;
+        color: var(--font-color) !important;
+        font-size: 14px;
+        font-family: 'OpenSansRegular', sans-serif;
+        list-style: outside;
+      }
+      li.feature {
+        font-size: 18px !important;
+        color: red !important;
+      }
+    }
+  }
+}
+.plan-title {
+  background-color: #fdcf00;
+  padding: 16px;
+  justify-items: center;
+  display: grid;
+  b {
+    font-family: 'OpenSansBold', sans-serif !important;
+    font-size: 20px;
+    color: var(--font-color);
+  }
+}
+.devices-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 8px;
+}
+
+.nist-container {
+  padding-bottom: 32px;
+}
+
+.nist-title,
+.hippa-title {
+  h1 {
+    font-family: 'OpenSansBold', sans-serif !important;
+  }
+}
+
+@include respond-below(sm) {
+  .hippa-container,
+  .nist-container {
+    display: grid;
+    padding: 8px;
+  }
+  .devices-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}

@@ -1,0 +1,11 @@
+@import '../../../../assets/scss/layout/hero';
+ul.compliance-features {
+  margin: 0px !important;
+  li {
+    padding-top: 8px !important;
+    color: var(--font-color) !important;
+    font-size: 16px;
+    font-family: 'OpenSansRegular', sans-serif;
+    list-style: outside;
+  }
+}

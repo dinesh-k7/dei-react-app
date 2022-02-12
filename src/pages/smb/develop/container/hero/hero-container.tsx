@@ -12,7 +12,7 @@ const HeroContainer: React.FC = (): ReactElement => {
       <div className="develop-page-container">
         <div className="develop-intro-image">
           <img className="green-blob" src={greenBlob} alt="Green vector" />
-          <img className="title" src={startupTitle} />
+          <img className="title" src={startupTitle} alt="Startup title" />
         </div>
         <p className="develop-intro-text">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo expedita
@@ -24,7 +24,7 @@ const HeroContainer: React.FC = (): ReactElement => {
       <div className="develop-service">
         <div className="service-one">
           <div className="develop-blob">
-            <img src={wdBlobImage} />
+            <img src={wdBlobImage} alt="Develop blob" />
             <span className="develop-service-title">Develop</span>
           </div>
         </div>

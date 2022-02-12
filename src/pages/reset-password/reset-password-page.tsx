@@ -16,7 +16,6 @@ const ResetPasswordPage: React.FC = (): ReactElement => {
   return (
     <Fragment>
       <ResetPasswordComponent formFields={resetPasswordFormData} />
-      <div className="landing-border"></div>
     </Fragment>
   );
 };

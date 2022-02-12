@@ -17,7 +17,6 @@ const CartPage: React.FC = (): ReactElement => {
       <section className="cart-page-grid">
         <CartContainer />
       </section>
-      <div className="landing-border"></div>
     </Fragment>
   );
 };

@@ -1,3 +1,5 @@
+import { ISettings } from './config-state.model';
+
 export interface IGetQuoteModel {
   captchaValue?: string;
   isFormSubmitted?: boolean;
@@ -10,7 +12,11 @@ export interface IGetQuoteModel {
 
 export interface IGetQuoteProps {
   fromPage: string;
-  vimage: string;
+  vimage?: string;
   formFields: any;
-  dispatch: any;
+  dispatch?: any;
+  getConfigDetails?: any;
+  addToCart?: any;
+  settings?: ISettings[];
+  serviceName?: string;
 }

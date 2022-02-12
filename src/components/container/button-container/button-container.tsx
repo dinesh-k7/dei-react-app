@@ -37,7 +37,7 @@ const ButtonContainer: any = ({
           } ${isLeadDataSent ? 'btn-green' : ''}`}
           onClick={() => handleSubmit()}
         >
-          Schedule Consultation
+          Add To Cart
         </button>
       )}
 
@@ -45,7 +45,7 @@ const ButtonContainer: any = ({
         <button
           type="button"
           className="btn-basic btn-green"
-          onClick={() => window.location.reload(false)}
+          onClick={() => window.location.reload()}
         >
           Start Over
         </button>

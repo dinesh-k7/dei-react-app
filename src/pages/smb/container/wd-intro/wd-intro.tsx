@@ -27,12 +27,12 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
           <h1>Website development</h1>
           <h3 className="hero-sub-title">DIY:</h3>
           <div className="hero-mobile-image">
-            <img src={heroMobileImage} alt="Webiste development Image" />
+            <img src={heroMobileImage} alt="Webiste development" />
           </div>
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="Blob one" />
               <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/website-builder">
                   Website Builder
@@ -56,7 +56,7 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="Blob two" />
               <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/wordpress">
                   WordPress
@@ -81,7 +81,7 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="Blob three" />
               <h3 className="feature-title">
                 <a href="https://www.nwohub.com/products/shopping-cart">
                   Shopping Cart
@@ -117,7 +117,7 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
         )}
       </div>
       <div className="hero-image">
-        <img src={heroImage} alt="Webiste development Image" />
+        <img src={heroImage} alt="website development hero" />
       </div>
     </section>
   );

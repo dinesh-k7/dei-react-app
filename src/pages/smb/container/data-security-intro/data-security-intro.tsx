@@ -44,7 +44,7 @@ const DataSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               <p>
                 <b>The DEI™ Email Hunters.</b> You will be the first to know if
                 a potentially malicious email gets lucky enough to slip through
-                our world-class Integrated Email Security Solution.
+                our world-class integrated email security solution.
               </p>
             </div>
           </div>

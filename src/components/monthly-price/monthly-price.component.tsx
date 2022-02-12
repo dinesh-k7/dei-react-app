@@ -13,6 +13,7 @@ const MonthlyPriceComponent = ({
   errors,
   quoteState,
   onError,
+  isEnabled,
 }: any): ReactElement => {
   const monthlyPremium = calculateMonthlyAmount(size);
   return (
@@ -41,6 +42,7 @@ const MonthlyPriceComponent = ({
         errors={errors}
         onSubmit={onSubmit}
         onError={onError}
+        isEnabled={isEnabled}
       />
     </div>
   );

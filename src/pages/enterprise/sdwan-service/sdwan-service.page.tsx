@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import EnterpriseQuoteComponent from '../../../components/enterprise-quote/enterprise-quote.component';
 import { constants } from '../../../constants';
 import { SDWANFormData } from '../../../constants/form-data/sdwan-form';
+import { PointToPointFormData } from '../../../constants/form-data/point-to-point-form';
 import HeroContainer from '../container/hero/hero-container';
 import '../enterprise-page.scss';
 
@@ -38,7 +39,12 @@ const SDWANServicePage: React.FC = (props: any): ReactElement => {
       <HeroContainer fromPage={serviceName} />
       <EnterpriseQuoteComponent
         fromPage={fromPage}
-        formFields={SDWANFormData}
+        serviceName={serviceName}
+        formFields={
+          serviceName === 'Point To Point'
+            ? PointToPointFormData
+            : SDWANFormData
+        }
       />
     </Fragment>
   );

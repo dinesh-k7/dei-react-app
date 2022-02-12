@@ -27,26 +27,31 @@ body {
 
 @font-face {
   font-family: 'MontFont';
+  font-display: swap;
   src: url('../../fonts/Mont-HeavyDEMO.otf');
 }
 
 @font-face {
   font-family: 'OpenSansBold';
+  font-display: swap;
   src: url('../../fonts/OpenSans-Bold.ttf');
 }
 
 @font-face {
   font-family: 'OpenSansLight';
+  font-display: swap;
   src: url('../../fonts/OpenSans-Light.ttf');
 }
 
 @font-face {
   font-family: 'OpenSansRegular';
+  font-display: swap;
   src: url('../../fonts/OpenSans-Regular.ttf');
 }
 
 @font-face {
   font-family: 'OpenSansSemiBold';
+  font-display: swap;
   src: url('../../fonts/OpenSans-SemiBold.ttf');
 }
 
@@ -199,9 +204,4 @@ label {
   grid-template-columns: 1px 1fr 1fr;
   grid-column: 1/-1;
   border-bottom: 1px solid var(--font-color);
-}
-
-.landing-border {
-  border-bottom: 1px solid var(--font-color);
-  grid-column: 1/-1;
 }

@@ -68,3 +68,11 @@
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
+
+@include respond-below(sm) {
+  .enterprise-quote-section {
+    .button-container {
+      padding: 0px 8px !important;
+    }
+  }
+}

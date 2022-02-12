@@ -7,7 +7,7 @@ import redVector from '../../assets/images/red_vector.svg';
 import { websiteDevelopmentFormData } from '../../constants/form-data/website-development-form';
 
 const WebsiteDevelopmentPage: React.FC = (): ReactElement => {
-  const fromPage = 'wd';
+  const fromPage = 'wd' as any;
   // Google page event track
   window['dataLayer'].push({
     event: 'pageview',
@@ -16,6 +16,7 @@ const WebsiteDevelopmentPage: React.FC = (): ReactElement => {
       title: 'Website development Quote Page',
     },
   });
+  //eslint-disable
   return (
     <Fragment>
       {/* <WdIntro fromPage={'wd'} /> */}

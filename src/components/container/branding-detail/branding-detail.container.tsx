@@ -48,6 +48,7 @@ const BrandingDetailContainer: React.FC<any> = (
     onSubmit,
     handleState,
     onError,
+    isEnabled,
   } = props;
   const [state, setState] = useState(initialState);
   useEffect(() => {
@@ -231,19 +232,14 @@ const BrandingDetailContainer: React.FC<any> = (
                   });
                 }}
               >
-                <h4>Custom Design</h4>
+                <h4>Custom Designs</h4>
               </span>
             </div>
             {isTemplate && (
               <Fragment>
                 {/* <span>Choose a Template</span> */}
                 <div className="template-grid">
-                  <span>
-                    Soon we will offer paid vocational training on website
-                    development. NWOcoin™ will revolutionize the planet,
-                    providing universal income and employment. This is one
-                    facet.
-                  </span>
+                  <span>With NWOcoin™ you can learn and earn!</span>
                   {/* {TEMPLATES &&
                     TEMPLATES.length &&
                     TEMPLATES.map((template, idx) => {
@@ -383,6 +379,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-a" htmlFor="color_picker_a">
                 <img
+                  alt="color picker"
                   src={cPickerOne}
                   className={
                     colorPicker === 'color_picker_a'
@@ -402,6 +399,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-b" htmlFor="color_picker_b">
                 <img
+                  alt="color picker"
                   src={cPickerTwo}
                   className={
                     colorPicker === 'color_picker_b'
@@ -421,6 +419,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-c" htmlFor="color_picker_c">
                 <img
+                  alt="color picker"
                   src={cPickerThree}
                   className={
                     colorPicker === 'color_picker_c'
@@ -440,6 +439,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-d" htmlFor="color_picker_d">
                 <img
+                  alt="color picker"
                   src={cPickerFour}
                   className={
                     colorPicker === 'color_picker_d'
@@ -459,6 +459,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-e" htmlFor="color_picker_e">
                 <img
+                  alt="color picker"
                   src={cPickerFive}
                   className={
                     colorPicker === 'color_picker_e'
@@ -478,6 +479,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-f" htmlFor="color_picker_f">
                 <img
+                  alt="color picker"
                   src={cPickerSix}
                   className={
                     colorPicker === 'color_picker_f'
@@ -497,6 +499,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-g" htmlFor="color_picker_g">
                 <img
+                  alt="color picker"
                   src={cPickerSeven}
                   className={
                     colorPicker === 'color_picker_g'
@@ -516,6 +519,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-h" htmlFor="color_picker_h">
                 <img
+                  alt="color picker"
                   src={cPickerEight}
                   className={
                     colorPicker === 'color_picker_h'
@@ -535,6 +539,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-i" htmlFor="color_picker_i">
                 <img
+                  alt="color picker"
                   src={cPickerNine}
                   className={
                     colorPicker === 'color_picker_i'
@@ -554,6 +559,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-j" htmlFor="color_picker_j">
                 <img
+                  alt="color picker"
                   src={cPickerTen}
                   className={
                     colorPicker === 'color_picker_j'
@@ -573,6 +579,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-k" htmlFor="color_picker_k">
                 <img
+                  alt="color picker"
                   src={cPickerEleven}
                   className={
                     colorPicker === 'color_picker_k'
@@ -592,6 +599,7 @@ const BrandingDetailContainer: React.FC<any> = (
               />
               <label className="c-picker-l" htmlFor="color_picker_l">
                 <img
+                  alt="color picker"
                   src={cPickerTwelve}
                   className={
                     colorPicker === 'color_picker_l'
@@ -639,39 +647,44 @@ const BrandingDetailContainer: React.FC<any> = (
           </form>
         </div>
       )}
-      <div className="price-container">
-        <div className="sticky-content">
-          {fromPage ? (
-            <h4>Approximate service cost</h4>
-          ) : (
-            <h4> Starting from</h4>
-          )}
-          <div className="price-container">
-            {!isTemplate && (
-              <div>
-                <span className="price">{fromPage ? '$2998' : '$500'}</span>
-                <span className="currency-code"> USD</span>
-              </div>
+      {fromPage === 'wd' && isTemplate ? (
+        ''
+      ) : (
+        <div className="price-container">
+          <div className="sticky-content">
+            {fromPage ? (
+              <h4>Approximate service cost</h4>
+            ) : (
+              <h4> Starting from</h4>
             )}
-            {isTemplate && <span className="price">$799</span>}
+            <div className="price-container">
+              {!isTemplate && (
+                <div>
+                  <span className="price">{fromPage ? '$2998' : '$500'}</span>
+                  <span className="currency-code"> USD</span>
+                </div>
+              )}
+              {isTemplate && <span className="price">$799</span>}
+            </div>
+          </div>
+          <div
+            className={
+              fromPage ? `wd-button-container` : `branding-btn-container`
+            }
+          >
+            <GetQuoteButton
+              quoteState={quoteState}
+              handleSubmit={handleSubmit}
+              errors={errors}
+              onSubmit={onSubmit}
+              state={state}
+              onError={onError}
+              fromPage={fromPage ? `wd` : `branding`}
+              isEnabled={isEnabled}
+            />
           </div>
         </div>
-        <div
-          className={
-            fromPage ? `wd-button-container` : `branding-btn-container`
-          }
-        >
-          <GetQuoteButton
-            quoteState={quoteState}
-            handleSubmit={handleSubmit}
-            errors={errors}
-            onSubmit={onSubmit}
-            state={state}
-            onError={onError}
-            fromPage={fromPage ? `wd` : `branding`}
-          />
-        </div>
-      </div>
+      )}
     </div>
   );
 };

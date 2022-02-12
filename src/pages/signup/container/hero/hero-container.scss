@@ -3,3 +3,12 @@
 .signup-form {
   grid-template-columns: 1fr !important;
 }
+
+.hero-content {
+  display: grid;
+  .climate_push_logo,
+  .active_ego_logo {
+    justify-self: center;
+    height: 132px;
+  }
+}

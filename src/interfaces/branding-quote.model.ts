@@ -7,4 +7,5 @@ export interface IBrandingQuoteModel {
   handleState: any;
   onError: any;
   fromPage: string;
+  isEnabled: boolean;
 }

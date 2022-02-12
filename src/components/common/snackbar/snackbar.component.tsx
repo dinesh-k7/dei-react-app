@@ -6,9 +6,9 @@ import MuiAlert from '@material-ui/lab/Alert';
 const Alert = (props) => {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 };
-
+// eslint-disable-next-line  @typescript-eslint/explicit-module-boundary-types
 const SnackBarComponent = (props: any): ReactElement => {
-  const { isOpen, isError, isSignUpError, message } = props;
+  const { isOpen, isError, message } = props;
   const [open, setOpen] = useState(isOpen);
 
   const handleClose = () => {

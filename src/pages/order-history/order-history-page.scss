@@ -3,8 +3,13 @@
 .order-history-section {
   display: grid;
   grid-column: 1/-1;
-  padding: 72px;
+  margin: 5%;
   background-color: #f8f8f8;
+  h3 {
+    color: var(--font-color);
+    font-family: 'MontFont', sans-serif;
+    font-size: var(--font-size7);
+  }
   .order-history-row {
     display: grid;
     min-height: 64px;

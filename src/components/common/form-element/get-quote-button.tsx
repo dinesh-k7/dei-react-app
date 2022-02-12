@@ -3,7 +3,6 @@ import React, { Fragment, ReactElement } from 'react';
 import { Backdrop, CircularProgress, makeStyles } from '@material-ui/core';
 
 import ErrorMessageContainer from '../../container/error-message.container';
-import { messages } from '../../../constants';
 
 // Back drop styles
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +20,7 @@ const GetQuoteButton: any = ({
   state,
   onError,
   fromPage,
+  isEnabled,
 }): ReactElement => {
   const {
     captchaValue,
@@ -42,6 +42,7 @@ const GetQuoteButton: any = ({
     activeKeywords = [];
   }
   const errorKeys = Object.keys(errors);
+  const btnTxt = isEnabled ? 'Add To Cart' : 'Get a Quote';
   return (
     <Fragment>
       {!isLeadDataSent && (
@@ -58,14 +59,14 @@ const GetQuoteButton: any = ({
             ? 'Start Over'
             : fromPage === 'wd'
             ? 'Schedule Consultation'
-            : 'Add to Cart'}
+            : btnTxt}
         </button>
       )}
       {isLeadDataSent && (
         <button
           type="button"
           className="btn-data-security btn-green"
-          onClick={() => window.location.reload(false)}
+          onClick={() => window.location.reload()}
         >
           Start Over
         </button>

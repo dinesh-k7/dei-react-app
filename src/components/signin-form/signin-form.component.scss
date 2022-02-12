@@ -5,12 +5,39 @@
   grid-column: 1/-1;
   padding: 72px;
   justify-content: center;
+  span,
+  a {
+    font-family: 'OpenSansRegular', sans-serif !important;
+    color: #2c3e50 !important;
+    font-size: var(--font-size4);
+  }
   .form-container {
     padding: 16px !important;
     max-width: 1300px;
     width: 100%;
     margin: 0 auto;
     background-color: #f8f8f8;
+    .nwo-logo,
+    .quolli-logo,
+    .climate-push-logo {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 16px;
+    }
+    .logo-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      .quolii-logo {
+        align-self: center;
+      }
+      .cp-logo {
+        justify-self: center;
+      }
+      .wimp-logo {
+        justify-self: center;
+        align-self: center;
+      }
+    }
     h1 {
       text-align: center;
       color: #2c3e50 !important;

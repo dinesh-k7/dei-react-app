@@ -1,13 +1,13 @@
-import { IOrder } from './cart-state.model';
-
 export interface IUser {
   name: string;
   email: string;
-  phone: number;
+  phone?: number;
   id?: number;
   password?: string;
   isActive?: boolean;
   createdAt?: Date;
+  isAdmin?: number;
+  avatar?: string;
 }
 
 export interface IUserLogin {
@@ -15,17 +15,21 @@ export interface IUserLogin {
   password: string;
 }
 
+export interface IRetry {
+  count: any;
+  dateTime: any;
+}
+
 export interface InitialState {
-  isRegisterSuccess: boolean;
-  isRegisterFailure: boolean;
-  isLoginFailure: boolean;
-  isLoginSuccess: boolean;
-  isUserLoggedIn: boolean;
-  isOrderFetchSuccess: boolean;
-  isOrderFetchFailure: boolean;
-  isSuccess: boolean;
-  isFailure: boolean;
+  isLoading: boolean;
+  error: string;
   orders?: IOrders[];
+  isRegisterSuccess: boolean;
+  isUpdateSuccess: boolean;
+  isActivationFailed: boolean;
+  isActivationSuccess: boolean;
+  user: IUser;
+  retry: IRetry;
 }
 
 export interface IOrders {
@@ -35,5 +39,11 @@ export interface IOrders {
   orderId: string;
   status: string;
   price: string;
+  email: string;
+}
+
+export interface IActivateAccount {
+  id: string;
+  token: string;
   email: string;
 }

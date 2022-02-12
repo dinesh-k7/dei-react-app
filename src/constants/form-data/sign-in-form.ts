@@ -9,6 +9,7 @@ export const signInFormData = [
     placeholder: 'e.g. johndoe@email.com',
     pattern: patterns.email,
     id: 'si-1',
+    maxlength: 254,
   },
   {
     name: 'password',
@@ -30,6 +31,7 @@ export const resetPasswordFormData = [
     placeholder: 'e.g. johndoe@email.com',
     pattern: patterns.email,
     id: 're-1',
+    maxlength: 254,
   },
   {
     name: 'password',

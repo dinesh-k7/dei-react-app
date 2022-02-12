@@ -1,96 +1,61 @@
 @import '../../../assets/scss/styles.scss';
 
 .footer-section {
-  span {
-    font-family: var(--font-family);
-    font-size: var(--font-medium);
-    font-weight: var(--font-weight600);
-    color: var(--font-color);
-  }
-  p a,
-  span a {
-    text-decoration: none;
-    color: var(--font-color);
-  }
-  @include respond-above(sm) {
-    div span {
-      padding: 0px 5px;
-      display: inline-block;
-    }
-    .footer-content {
-      align-self: center;
-      padding-left: 20%;
-      .contactus-container {
-        padding-top: 1.25em;
-      }
-    }
-    .contactus-container {
-      display: grid;
-      grid-template-columns: 250px 160px;
-      .mail-icon,
-      .phone-icon {
-        display: grid;
-        grid-template-columns: 32px 1fr;
-      }
-    }
-  }
-  @include respond-between(sm, md) {
-    .footer-content {
-      padding-left: 12%;
-    }
-  }
-  @include respond-below(sm) {
-    .contactus-container {
-      span {
-        display: inline-block;
-      }
-      .mail-icon,
-      .phone-icon {
-        display: grid;
-        grid-template-columns: 12vw 1fr;
-        padding-top: 16px;
-      }
-    }
-    .footer-content {
-      span:first-child {
-        display: block;
-        padding-top: var(--font-size2);
-      }
-    }
-    .footer-social-wrapper {
-      .copyright-text {
-        padding-left: 2px;
-      }
-    }
-
-    height: 275px;
-  }
-
-  .footer-social-wrapper {
-    .social-links {
+  border-top: 1px solid var(--font-color);
+  background-color: #f2f2f2;
+  display: grid;
+  padding: 0 8%;
+  .footer-row-one {
+    display: grid;
+    .footer-links {
+      padding: 0px;
       li {
-        justify-self: end;
+        display: inline-block;
+        padding: 0 1.3rem 0 1rem;
+        border-right: gray solid 0.2rem;
+        a {
+          text-decoration: none;
+          color: var(--font-color);
+          font-family: 'OpenSansRegular', sans-serif;
+          font-size: var(--font-size1);
+          text-transform: uppercase;
+        }
+      }
+      li:last-child {
+        border-right: 0px !important;
       }
     }
-    p {
-      font-family: 'OpenSansRegular', sans-serif;
-      font-size: var(--font-size2);
-      font-weight: var(--font-weight400);
-      text-align: right;
+  }
+  .footer-row-one {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 8px;
+    align-self: center;
+    .footer-social-link {
+      span {
+        padding-right: 16px;
+      }
+    }
+    .donate-link {
+      justify-self: end;
     }
   }
+}
 
-  .contactus-title {
-    font-size: var(--font-size3);
-    font-weight: var(--font-family900);
-    font-family: 'MontFont', sans-serif;
-  }
-
-  .contactus-container {
-    span {
-      font-weight: var(--font-family600);
-      font-family: 'OpenSansSemiBold', sans-serif;
-      font-size: var(--font-size2);
+@include respond-below(sm) {
+  .footer-section {
+    padding: 0px !important;
+    .footer-social-link {
+      align-self: center;
+    }
+    .footer-row-one {
+      grid-template-columns: 1fr;
+      .footer-links {
+        padding: 0px !important;
+      }
+      .donate-link {
+        justify-self: center;
+      }
     }
   }
 }

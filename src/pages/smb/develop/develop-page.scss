@@ -6,12 +6,6 @@
   grid-row: 2/3;
 }
 
-.landing-border {
-  border-bottom: 1px solid var(--font-color);
-  grid-column: 1/-1;
-  // margin-top: 72px;
-}
-
 @include respond-above(lg) {
   .develop-page-grid {
     padding: 0px 200px !important;

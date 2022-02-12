@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -14,7 +14,6 @@ import hamIcon from '../../../assets/images/hamburger_icon.svg';
 import { constants } from '../../../constants';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import { Collapse, ListItemIcon } from '@material-ui/core';
-import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -185,7 +184,11 @@ export default function TemporaryDrawer(): any {
           aria-label="Hamburger Menu"
           onClick={toggleDrawer('right', true)}
         >
-          <img className={classes.hamburgerIcon} src={hamIcon} />
+          <img
+            className={classes.hamburgerIcon}
+            src={hamIcon}
+            alt="Hamburger Menu"
+          />
         </Button>
         <Drawer anchor={'right'} open={state['right']}>
           {list('right')}

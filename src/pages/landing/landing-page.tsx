@@ -13,6 +13,16 @@ import blueVector from '../../assets/images/service_blue.svg';
 import yellowVector from '../../assets/images/yellow_vector.svg';
 import { useRef } from 'react';
 
+import FadeIn from 'react-fade-in';
+import SectionLayoutComponent from '../../components/section-layout/section-layout.component';
+import { brandingSection } from './constants/branding';
+import { dataSecuritySection } from './constants/data-security';
+import { nwoHubSection } from './constants/nwo-hub';
+import { seoSection } from './constants/seo';
+import { websiteDevelopmentSection } from './constants/website-development';
+import { startupKitsSection } from './constants/startup-kits';
+import { ITServicesSection } from './constants/it-services';
+
 const LandingPage: React.FC = (): ReactElement => {
   const history = useHistory();
   const smbRef = useRef(null);
@@ -66,11 +76,13 @@ const LandingPage: React.FC = (): ReactElement => {
           </div>
 
           <div className="intro-text">
-            <p>
-              A broad scope single-source provider to facilitate your digital
-              enterprise ambitions. If we don&apos;t provide it, we will source
-              the best providers for it.
-            </p>
+            <FadeIn>
+              <p>
+                Broad scope single-source provider to facilitate your digital
+                enterprise ambitions. Until we provide it, we source the best
+                providers for it.
+              </p>
+            </FadeIn>
           </div>
         </div>
         <div className="service-blob">
@@ -88,10 +100,18 @@ const LandingPage: React.FC = (): ReactElement => {
             >
               SMBs
             </span>
-            <img onClick={() => routeChange('/smb')} src={coralVector} />
+            <img
+              onClick={() => routeChange('/smb')}
+              src={coralVector}
+              alt="Coral vector"
+            />
           </div>
           <div className="startup-blob">
-            <img src={greenVector} onClick={() => routeChange('/startup')} />
+            <img
+              src={greenVector}
+              onClick={() => routeChange('/startup')}
+              alt="Startup blob"
+            />
             <span
               onClick={() => routeChange('/startup')}
               onMouseOver={() => onMouseOverHandler(startupRef)}
@@ -102,6 +122,7 @@ const LandingPage: React.FC = (): ReactElement => {
             <span className="startup-services" ref={startupRef}>
               <ul>
                 <li>Start-Up Kits</li>
+                <li>Certifications</li>
                 <li>Branding</li>
                 <li>NWOhub™</li>
               </ul>
@@ -109,6 +130,7 @@ const LandingPage: React.FC = (): ReactElement => {
           </div>
           <div className="enterprise-blob">
             <img
+              alt="Enterprise blob"
               src={enterpriseVector}
               onClick={() => routeChange('/enterprise')}
             />
@@ -136,7 +158,47 @@ const LandingPage: React.FC = (): ReactElement => {
           </div>
         </div>
       </div>
-      <div className="landing-border"></div>
+      {/** Branding section starts */}
+      <div className="branding-section">
+        <SectionLayoutComponent {...brandingSection} />
+      </div>
+      {/**Branding section ends */}
+
+      {/** Data security section starts */}
+      <div className="data-security-section">
+        <SectionLayoutComponent {...dataSecuritySection} />
+      </div>
+      {/**Data security section ends */}
+
+      {/** NWOhub section starts */}
+      <div className="nwo-hub-section">
+        <SectionLayoutComponent {...nwoHubSection} />
+      </div>
+      {/** NWOhub section ends */}
+
+      {/** SEO section starts */}
+      <div className="seo-section">
+        <SectionLayoutComponent {...seoSection} />
+      </div>
+      {/** SEO section ends */}
+
+      {/** Website Development section starts */}
+      <div className="website-section">
+        <SectionLayoutComponent {...websiteDevelopmentSection} />
+      </div>
+      {/** Website Development section ends */}
+
+      {/** Startup Kit section starts */}
+      <div className="startup-section">
+        <SectionLayoutComponent {...startupKitsSection} />
+      </div>
+      {/** Startup Kit section ends */}
+
+      {/** IT Services section starts */}
+      <div className="it-service-section">
+        <SectionLayoutComponent {...ITServicesSection} />
+      </div>
+      {/** IT Services section ends */}
     </Fragment>
   );
 };

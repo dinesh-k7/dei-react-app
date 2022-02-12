@@ -12,17 +12,17 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
   return (
     <section className="seo-intro" ref={props.inputRef}>
       <div className="hero-image">
-        <img src={heroImage} alt="SEO Marketing Image" />
+        <img src={heroImage} alt="SEO Marketing" />
       </div>
       <div className="hero-content">
         <div className="hero-title">
           <h1>SEO & Marketing</h1>
           <div className="hero-mobile-image">
-            <img src={heroMobileImage} alt="SEO Marketing Image" />
+            <img src={heroMobileImage} alt="SEO Marketing mobile" />
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceYellow} alt="Background image" />
+              <img src={serviceYellow} alt="Blob one" />
               <h3>
                 <a href="https://www.nwohub.com/products/seo">SEO</a>
               </h3>
@@ -47,7 +47,7 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceYellow} alt="Background image" />
+              <img src={serviceYellow} alt="Blob two" />
               <h3>
                 <a href="https://www.nwohub.com/products/email-marketing">
                   Email Marketing

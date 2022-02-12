@@ -43,33 +43,40 @@ const IOTIntro: React.FC<any> = (props: any): ReactElement => {
                     onClick={() =>
                       routeChange(
                         '/enterprise/sdwan-service',
-                        'Wireless Backup Failover Solutions',
+                        'Cloud backup & failover strategies',
                       )
                     }
                   >
-                    Wireless Backup Failover Solutions
+                    Cloud backup & failover strategies
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
                       routeChange(
                         '/enterprise/sdwan-service',
-                        'Wireless Backup Failover Solutions',
+                        'Cloud backup & failover strategies',
                       )
                     }
                     className="chevron-right"
                   />
                   <div className="feature-description">
-                    Protect your business from interruption of service with
-                    wireless backup failover solutions. Detecting a connection
-                    issue and immediately resolving it will mitigate loss of
-                    revenue and a poor customer experience. Relying on primary
-                    internet services alone can result in disruption in
-                    communication and lack of productivity within your
-                    organization. Saving time and money can be easily
-                    accomplished with a wireless backup failover solution.{' '}
+                    You can protect your digital enterprise from interruption of
+                    services with DEI:tm: wireless backup and failover
+                    strategies & solutions. Mitigate poor customer experiences,
+                    resulting in revenue loss by quickly detecting a connection
+                    issue and solving it. Gone are the days when you can rely on
+                    a simple internet service alone:
+                    <br />
+                    <ul>
+                      <li>Disruptions in communication</li>
+                      <li>Decreased productivity</li>
+                      <li>Lack of trust</li>
+                    </ul>
+                    <br />
+                    Our strategies and solutions can save you time and money.
                     <br />
                     <br />
-                    <b>Service & Platform</b>
+                    <b>Service & Platform:</b>
+                    <br />
                     <ul>
                       <li>Customer User Interface</li>
                       <li>Managed Workflow</li>
@@ -87,36 +94,43 @@ const IOTIntro: React.FC<any> = (props: any): ReactElement => {
                     onClick={() =>
                       routeChange(
                         '/enterprise/ucaas-service',
-                        'Managed Data Solutions',
+                        '"Hands-Free" solutions to managing your data',
                       )
                     }
                   >
-                    Managed Data Solutions
+                    &quot;Hands-Free&quot; solutions to managing your data
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
                       routeChange(
                         '/enterprise/ucaas-service',
-                        'Managed Data Solutions',
+                        '"Hands-Free" solutions to managing your data',
                       )
                     }
                     className="chevron-right"
                   />
                   <div className="feature-description">
-                    Gain visibility and proactively manage your drivers with
-                    integrated fleet management solutions. Centralized remote
-                    access to tracking GPS locations, gauging sensors, and being
-                    alerted of violations or engine trouble is essential in
-                    operating your business safely and productively.
+                    Our integrated fleet management solutions give you the
+                    visibility that allows proactive management of your drivers.
+                    Remote and Centralized access to:
                     <br />
-                    <br />
-                    <b>Service & Platform</b>
                     <ul>
-                      <li>Web-Based Provisioning Portal</li>
-                      <li>Usage Thresholds</li>
+                      <li>GPS locations</li>
+                      <li>Gauging sensors</li>
+                      <li>Engine troubles</li>
+                      <li>Violations</li>
+                    </ul>
+                    <br />
+                    Operate your business safely and productively with our
+                    managed data solution.
+                    <br />
+                    <ul>
+                      <li>Service & Platform</li>
                       <li>Inventory Control</li>
                       <li>Reporting Capabilities</li>
                       <li>Custom Monitoring Tools</li>
+                      <li>Web-Based Provisioning Portal</li>
+                      <li>Usage Thresholds</li>
                     </ul>
                   </div>
                 </div>

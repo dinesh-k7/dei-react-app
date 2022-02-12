@@ -53,6 +53,7 @@ const SmbIntroContainer: React.FC<any> = ({
             <img
               src={dsBlobImage}
               onClick={() => onClickHandler(constants.SMB.SECURE)}
+              alt="Secure Service"
             />
             <span
               onMouseOver={() => onMouseOverHandler(dsRef)}
@@ -75,6 +76,7 @@ const SmbIntroContainer: React.FC<any> = ({
             <img
               src={wdBlobImage}
               onClick={() => onClickHandler(constants.SMB.DEVELOP)}
+              alt="Develop Service"
             />
             <span
               onClick={() => onClickHandler(constants.SMB.DEVELOP)}

@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/node_modules_old
+/node_modules_oldd
 /.pnp
 .pnp.js
 
@@ -12,12 +14,14 @@
 # production
 /build
 
+
 # misc
 .DS_Store
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env
 .eslintcache
 .scannerwork
 debug.log

@@ -8,6 +8,8 @@ export const brandingFormFields = [
     required: true,
     placeholder: 'e.g. John',
     section: 'personal',
+    pattern: patterns.name,
+    maxlength: 75,
   },
   {
     name: 'lastname',
@@ -16,6 +18,8 @@ export const brandingFormFields = [
     required: true,
     placeholder: 'e.g. Doe',
     section: 'personal',
+    pattern: patterns.name,
+    maxlength: 75,
   },
   {
     name: 'email',
@@ -25,6 +29,7 @@ export const brandingFormFields = [
     placeholder: 'e.g. johndoe@email.com',
     pattern: patterns.email,
     section: 'personal',
+    maxlength: 254,
   },
   {
     name: 'phone',
@@ -33,6 +38,7 @@ export const brandingFormFields = [
     required: true,
     placeholder: 'e.g. 123456789',
     section: 'personal',
+    pattern: patterns.phone,
   },
   {
     name: 'companyName',
@@ -41,6 +47,7 @@ export const brandingFormFields = [
     required: true,
     placeholder: 'e.g. JohnDoe and co.',
     section: 'company',
+    maxlength: 127,
   },
 
   {
@@ -50,6 +57,7 @@ export const brandingFormFields = [
     required: true,
     placeholder: 'e.g. Think different',
     section: 'company',
+    maxlength: 254,
   },
   {
     name: 'industry',
@@ -58,6 +66,7 @@ export const brandingFormFields = [
     required: true,
     placeholder: 'e.g. Accounting',
     section: 'company',
+    maxlength: 100,
   },
   {
     name: 'position',

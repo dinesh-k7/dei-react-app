@@ -25,7 +25,11 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceGreen} alt="Background image" />
               <h3>Buy a Domain</h3>
-              <a href="https://www.nwohub.com/">
+              <a
+                href="https://www.nwohub.com/"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <LaunchIcon
                   style={{
                     color: '#49e69a',
@@ -42,7 +46,11 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceGreen} alt="Background image" />
               <h3>Get a business email</h3>
-              <a href="https://www.nwohub.com/products/email">
+              <a
+                href="https://www.nwohub.com/products/email"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <LaunchIcon
                   style={{
                     color: '#49e69a',
@@ -59,7 +67,11 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceGreen} alt="Background image" />
               <h3>Create a Website</h3>
-              <a href="https://www.nwohub.com/products/website-builder">
+              <a
+                href="https://www.nwohub.com/products/website-builder"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <LaunchIcon
                   style={{
                     color: '#49e69a',
@@ -76,7 +88,11 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceGreen} alt="Background image" />
               <h3>Host a Website</h3>
-              <a href="https://www.nwohub.com/products/business">
+              <a
+                href="https://www.nwohub.com/products/business"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <LaunchIcon
                   style={{
                     color: '#49e69a',
@@ -98,10 +114,9 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
             of the way.
             <span>
               *Customer service is strictly for
-              <a href="https://www.nwohub.com">
-                {' '}
+              <a href="https://www.nwohub.com" rel="noreferrer" target="_blank">
                 <b>NWOhub.com</b>
-              </a>{' '}
+              </a>
               and services.
             </span>
           </p>
@@ -109,7 +124,7 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
         <div className="button-container">
           <button type="button" className={`btn-basic`}>
             <a href="https://www.nwohub.com" rel="noreferrer" target="_blank">
-              Visit NWOhub.com{' '}
+              Visit NWOhub.com
             </a>
           </button>
         </div>

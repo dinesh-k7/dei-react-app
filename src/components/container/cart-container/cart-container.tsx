@@ -15,7 +15,7 @@ import { IProductDetails } from '../../../interfaces/cart-state.model';
 import { constants, messages } from '../../../constants';
 import PaymentSuccessComponent from '../../common/payment-success/payment-success.component';
 import PaymentFailureComponent from '../../common/payment-failure/payment-failure.component';
-import { paypalOrder } from '../../../utils';
+import { useHistory } from 'react-router-dom';
 
 const sumPropsValue = (items, prop) => items.reduce((a, b) => a + b[prop], 0);
 
@@ -37,7 +37,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
     const user = localStorage.getItem('userData');
     if (props.products && props.products.length && user) {
       const { userId } = JSON.parse(user);
-      const { id, status, update_time } = paymentDetail;
+      const { status, update_time } = paymentDetail;
       const order = {
         userId,
         paypalOrderId: orderId,
@@ -96,9 +96,20 @@ const CartContainer: React.FC = (props: any): ReactElement => {
     }
   };
 
-  const { products } = props;
+  const { products, settings } = props;
   const { isPaymentSuccess, paymentId, isPaymentFailed } = paymentState;
+  const user = localStorage.getItem('userData');
+  const history = useHistory();
 
+  // check Data sentinels settings
+  let isEnabled = false;
+  if (settings && settings.length) {
+    const key = 'enableSandbox';
+    const config = settings.find((set) => set.name === key);
+    if (config?.value) {
+      isEnabled = true;
+    }
+  }
   return (
     <Fragment>
       {products && products.length ? (
@@ -137,7 +148,13 @@ const CartContainer: React.FC = (props: any): ReactElement => {
                     )}
                   </div>
                   <div className="item-price">
-                    ${product.price.toFixed(2)} USD
+                    {product.additional_fee
+                      ? `${product.price.toFixed(
+                          2,
+                        )} + ${product.additional_fee.toFixed(2)}`
+                      : `${product.price.toFixed(2)}`}
+
+                    {product.yearlyPrice ? ' USD/mo' : ' USD'}
                   </div>
                   <div className="item-quantity">{product.quantity}</div>
                   <div className="item-action">
@@ -154,78 +171,66 @@ const CartContainer: React.FC = (props: any): ReactElement => {
             <div style={{ borderBottom: '1px solid #000' }}></div>
           </div>
 
-          <div className="cart-summary">
-            <div className="cart-summary-header">
-              <div>Order Summary</div>
-              <div> {products.length} items</div>
+          {user ? (
+            <div className="cart-summary">
+              <div className="cart-summary-header">
+                <div>Order Summary</div>
+                <div> {products.length} items</div>
+              </div>
+              {products.map((product) => {
+                return (
+                  <div className="cart-summary-item" key={product.id}>
+                    <div>{product.description}</div>
+                    <div>
+                      {product.additional_fee
+                        ? `${(product.price + product.additional_fee).toFixed(
+                            2,
+                          )} USD`
+                        : `${product.price.toFixed(2)} USD`}
+                    </div>
+                  </div>
+                );
+              })}
+              <div className="cart-summary-item">
+                <div className="cart-total">TOTAL</div>
+                <div>${sumPropsValue(products, 'price').toFixed(2)} USD</div>
+              </div>
+              <div className="paypal-button">
+                <PayPalButton
+                  shippingPreference="NO_SHIPPING"
+                  amount={
+                    isEnabled
+                      ? '0.01'
+                      : sumPropsValue(products, 'price').toFixed(2)
+                  }
+                  onSuccess={(details, data) => {
+                    updatePaymentStatus(details, data.orderID);
+                  }}
+                  onError={(details, data) => {
+                    updatePaymentStatus(details, data.orderID);
+                  }}
+                  options={{
+                    clientId: isEnabled
+                      ? process.env.REACT_APP_PAYPAL_SANDBOX_CLIENTID
+                      : process.env.REACT_APP_PAYPAL_LIVE_CLIENTID,
+                  }}
+                />
+              </div>
             </div>
-            {products.map((product) => {
-              return (
-                <div className="cart-summary-item" key={product.id}>
-                  <div>{product.description}</div>
-                  <div>${product.price.toFixed(2)} USD</div>
-                </div>
-              );
-            })}
-            <div className="cart-summary-item">
-              <div className="cart-total">TOTAL</div>
-              <div>${sumPropsValue(products, 'price').toFixed(2)} USD</div>
+          ) : (
+            <div className="sign-in-section">
+              <p>Please login to checkout</p>
+              <button
+                className="btn-basic"
+                onClick={() => history.push('sign-in')}
+              >
+                Sign In
+              </button>
+              <p className="create-account">
+                Create an Account <a href="sign-up">here</a>
+              </p>
             </div>
-            <div className="paypal-button">
-              <PayPalButton
-                shippingPreference="NO_SHIPPING"
-                onSuccess={(details, data) => {
-                  updatePaymentStatus(details, data.orderID);
-
-                  // // OPTIONAL: Call your server to save the transaction
-                  // return fetch('/paypal-transaction-complete', {
-                  //   method: 'post',
-                  //   body: JSON.stringify({
-                  //     orderID: data.orderID,
-                  //   }),
-                  // });
-                }}
-                createOrder={(data, actions) => {
-                  return actions.order.create({
-                    purchase_units: [
-                      {
-                        amount: {
-                          currency_code: 'USD',
-                          value: '0.03',
-                        },
-                        item: [
-                          {
-                            name: 'Data Security',
-                            unit_amount: {
-                              currency_code: 'USD',
-                              value: '0.04',
-                            },
-                          },
-                          {
-                            name: 'Branding',
-                            unit_amount: {
-                              currency_code: 'USD',
-                              value: '0.02',
-                            },
-                          },
-                        ],
-                      },
-                    ],
-                    // application_context: {
-                    //   shipping_preference: "NO_SHIPPING" // default is "GET_FROM_FILE"
-                    // }
-                  });
-                }}
-                onError={(details, data) => {
-                  updatePaymentStatus(details, data.orderID);
-                }}
-                options={{
-                  clientId:
-                    'AUPF1TZNCMS_Fm6WpcL06sF8y1zQR1uz5st0PtDKqpvIQcIHnIRGvNboB4mbXOQ1TNXRkrHuAAwrrxYo',
-                }}
-              />
-            </div>
-          </div>
+          )}
         </div>
       ) : !isPaymentSuccess ? (
         <div className="cart-empty-container">
@@ -257,9 +262,12 @@ const CartContainer: React.FC = (props: any): ReactElement => {
 };
 
 const mapStateToProps = (state) => {
-  const { cartReducer } = state;
+  const { cartReducer, configReducer } = state;
   return {
     products: cartReducer.products,
+    settings: configReducer.settings,
+    isLoading: configReducer.isLoading,
+    error: configReducer.error,
   };
 };
 

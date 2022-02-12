@@ -3,12 +3,16 @@
 .nav-container {
   width: 100%;
   border-bottom: 0px !important;
+  background-color: #ffffff !important;
+  .MuiAppBar-colorPrimary {
+    background-color: #ffffff !important;
+  }
   .logo {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     .hamburger-menu {
-      justify-self: end;
+      justify-self: start;
     }
   }
   .close-icon,
@@ -17,7 +21,9 @@
   }
   .menu-container {
     display: grid;
-    grid-template-columns: 1fr 80px;
+    grid-template-columns: 32px 38px 1fr 1fr 1fr;
+    justify-items: center;
+    justify-self: end;
     align-items: center;
     .product-count {
       color: var(--font-color);
@@ -27,22 +33,36 @@
     }
     .cart-icon {
       display: flex;
-
       justify-self: end;
-
       cursor: pointer;
       span {
         align-self: center;
         font-size: 1rem;
       }
     }
+    a img {
+      padding-top: 4px;
+    }
+    .hamburger-menu {
+      button {
+        background-color: transparent !important;
+      }
+    }
+  }
+  .hide-profile-menu {
+    grid-template-columns: 32px 38px 1fr 1fr !important;
+  }
+  .hide {
+    display: none;
   }
 }
 
 @include respond-below(sm) {
   .nav-container {
     .menu-container {
-      grid-template-columns: 1fr 32px;
+      grid-template-columns: 32px 32px 1fr 1fr 1fr;
+      align-items: center;
+      justify-items: center;
       .cart-icon {
         justify-self: center;
         padding-left: 12px;
@@ -50,6 +70,9 @@
       .hamburger-menu {
         width: 48px;
       }
+    }
+    .hide-profile-menu {
+      grid-template-columns: 32px 32px 1fr 1fr !important;
     }
   }
 }
