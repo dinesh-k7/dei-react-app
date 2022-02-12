@@ -28,7 +28,11 @@ const SelectBox: any = ({
   return (
     <div className="form-group">
       <label htmlFor={name}>{label_name}</label>
-      <FormControl variant={variant} className={className.root}>
+      <FormControl
+        variant={variant}
+        className={className.root}
+        style={{ minWidth: 120 }}
+      >
         <Controller
           as={
             <Select

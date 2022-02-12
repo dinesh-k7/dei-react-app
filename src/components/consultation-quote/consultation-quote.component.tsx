@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement, useState } from 'react';
+import React, { Fragment, ReactElement, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
@@ -9,6 +9,7 @@ import {
   messages,
   siteKey,
   CONSULTATION_PACKAGES,
+  modalData,
 } from '../../constants';
 
 import MultiText from '../common/form-element/multi-text';
@@ -25,9 +26,18 @@ import { addToCart } from '../../actions/cart';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
 import { useHistory } from 'react-router-dom';
 import { IPackageModel } from '../../interfaces/package.model';
+import { getConfigDetails } from '../../actions/config';
+import AlertDialogComponent from '../common/dialog/alert-dialog.component';
 
-const ConsultationQuoteComponent: React.FC<any> = (
-  props: any,
+interface ConsultationQuoteComponentProps {
+  fromPage: string;
+  formFields: any;
+  addToCart?: (selectedPackages: any) => void;
+  settings?: any;
+}
+
+const ConsultationQuoteComponent: React.FC<ConsultationQuoteComponentProps> = (
+  props: ConsultationQuoteComponentProps,
 ): ReactElement => {
   let INITIAL_STATE: any = {
     captchaValue: '',
@@ -38,7 +48,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
     isButtonSubmit: false,
     packages: CONSULTATION_PACKAGES,
   };
-  const { formFields, fromPage } = props;
+  const { formFields, fromPage, settings } = props;
   const state = {};
 
   let isLocationExist;
@@ -61,8 +71,53 @@ const ConsultationQuoteComponent: React.FC<any> = (
 
   const { register, handleSubmit, errors, control } = useForm();
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
+  const [open, setOpen] = useState(true);
+
   const [captcha, setCaptcha] = useState({});
   const history = useHistory();
+
+  useEffect(() => {
+    // If user is logged
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      const {
+        email,
+        name,
+        phone,
+        lastname,
+        companyName,
+        position,
+        websiteUrl,
+      } = JSON.parse(userData);
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          email,
+          name,
+          phone,
+          lastname,
+          companyName,
+          position,
+          websiteUrl,
+        };
+      });
+    }
+  }, []);
+
+  // handle input change
+  const onChangeHandler = ($event: React.FormEvent<EventTarget>) => {
+    const target = $event.target as HTMLInputElement;
+    const value = target.value;
+    if (target && target.name) {
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          [target.name]: value,
+        };
+      });
+    }
+  };
+
   const {
     captchaValue,
     isLeadDataSent,
@@ -72,6 +127,10 @@ const ConsultationQuoteComponent: React.FC<any> = (
     isButtonSubmit,
   } = quoteState;
   const selectedPackages = packages && packages.filter((s) => s.active);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   // Set captcha reference
 
@@ -90,6 +149,16 @@ const ConsultationQuoteComponent: React.FC<any> = (
       };
     });
   };
+
+  // check Start up kit settings
+  let isEnabled = false;
+  if (settings && settings.length) {
+    const key = 'enableSuk';
+    const config = settings.find((set) => set.name === key);
+    if (config?.value) {
+      isEnabled = true;
+    }
+  }
 
   // handle get quote form onSubmit
   const onSubmit = (quoteData: any) => {
@@ -122,7 +191,10 @@ const ConsultationQuoteComponent: React.FC<any> = (
       return;
     } else {
       if (selectedPackages && selectedPackages.length) {
-        props.dispatch(addToCart(selectedPackages));
+        // return;
+        // {
+        //   isEnabled ? props.addToCart(selectedPackages) : '';
+        // }
 
         sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
           () => {
@@ -143,7 +215,9 @@ const ConsultationQuoteComponent: React.FC<any> = (
                 isSendMailError: false,
               };
             });
-            history.push('cart-page');
+            // {
+            //   isEnabled ? history.push('cart-page') : '';
+            // }
           },
           () => {
             setQuoteState((prevState) => {
@@ -206,7 +280,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
       (pk) => pk.id !== constants.COACHING_PACKAGE_ID,
     );
   }
-
+  const { title, description } = modalData;
   return (
     <section className="consultation-quote-section">
       {isLeadDataSent && (
@@ -227,6 +301,16 @@ const ConsultationQuoteComponent: React.FC<any> = (
       )}
       <div className="bg-image"></div>
       <div className="form-container">
+        {open && !isEnabled && isLeadDataSent ? (
+          <AlertDialogComponent
+            title={title}
+            description={description}
+            isShow={open}
+            handleClose={handleClose}
+          />
+        ) : (
+          ''
+        )}
         <h1>Tell us about your project</h1>
         <h4>Personal Information</h4>
         <form autoComplete="off">
@@ -242,9 +326,11 @@ const ConsultationQuoteComponent: React.FC<any> = (
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={50}
+                      maxlength={field.maxlength}
                       required={field.required}
                       pattern={field.pattern}
+                      value={quoteState[field.name]}
+                      onChangeHandler={onChangeHandler}
                     />
                   );
                 } else if (
@@ -288,10 +374,12 @@ const ConsultationQuoteComponent: React.FC<any> = (
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={50}
+                      maxlength={field.maxlength}
                       required={field.required}
                       pattern={field.pattern}
                       type={field.type}
+                      value={quoteState[field.name]}
+                      onChangeHandler={onChangeHandler}
                     />
                   );
                 } else if (
@@ -351,7 +439,7 @@ const ConsultationQuoteComponent: React.FC<any> = (
                           name={field.name}
                           placeholder={field.placeholder}
                           label_name={field.label}
-                          maxlength={50}
+                          maxlength={field.maxlength}
                           required={field.required}
                           pattern={field.pattern}
                           type={field.type}
@@ -460,11 +548,16 @@ const ConsultationQuoteComponent: React.FC<any> = (
                     {service.description_one}
                   </p>
                   <span>
-                    $
+                    {service.starting ? 'Starting at' : ''} $
                     {typeof service.price === 'string'
                       ? service.price
                       : service.price.toFixed(2)}{' '}
                     USD
+                    {service.monthly
+                      ? `/ month + $${service.additional_fee.toFixed(
+                          2,
+                        )} registration fee`
+                      : ''}
                   </span>
                 </div>
                 {service.features && service.features.length ? (
@@ -532,8 +625,19 @@ const ConsultationQuoteComponent: React.FC<any> = (
   );
 };
 
-const mapStateToProps = (state) => ({
-  products: addToCart(state),
-});
+const mapStateToProps = (state) => {
+  const { configReducer } = state;
+  return { ...configReducer };
+};
 
-export default connect(mapStateToProps)(ConsultationQuoteComponent);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getConfigDetails: () => dispatch(getConfigDetails()),
+    addToCart: (product) => dispatch(addToCart(product)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ConsultationQuoteComponent);

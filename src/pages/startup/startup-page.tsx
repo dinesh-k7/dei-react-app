@@ -50,7 +50,6 @@ const StartUpPage: React.FC = (): ReactElement => {
         <NWOIntro inputRef={NWORef} />
         <BrandingIntro inputRef={brandingRef} />
       </section>
-      <div className="landing-border"></div>
     </Fragment>
   );
 };

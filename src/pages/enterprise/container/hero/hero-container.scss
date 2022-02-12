@@ -54,8 +54,15 @@
   }
 }
 @include respond-below(sm) {
+  .pbtm {
+    padding: 8px !important;
+  }
+  .hero-image {
+    display: none;
+  }
   .hero-mobile-image {
     display: block !important;
+    justify-self: center;
   }
   .chevron-right {
     margin-top: 24px !important;

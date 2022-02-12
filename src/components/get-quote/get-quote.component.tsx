@@ -1,12 +1,16 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { connect } from 'react-redux';
 
 import { IGetQuoteProps } from '../../interfaces/get-quote.model';
 import MonthlyPriceComponent from '../monthly-price/monthly-price.component';
-import { constants, messages, siteKey } from '../../constants';
-import { calculateMonthlyAmount, useStyles } from '../../utils';
+import { constants, messages, modalData, siteKey } from '../../constants';
+import {
+  addProductToCart,
+  calculateMonthlyAmount,
+  useStyles,
+} from '../../utils';
 import { sendMail } from '../effects';
 import '../../assets/scss/styles.scss';
 import './get-quote.component.scss';
@@ -20,8 +24,10 @@ import { industries } from '../../constants/industry-option';
 import { addToCart } from '../../actions/cart';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
 import { useHistory } from 'react-router-dom';
+import { getConfigDetails } from '../../actions/config';
+import AlertDialogComponent from '../common/dialog/alert-dialog.component';
 
-const GetQuoteComponent: React.FC<any> = (
+const GetQuoteComponent: React.FC<IGetQuoteProps> = (
   props: IGetQuoteProps,
 ): ReactElement => {
   let INITIAL_STATE: any = {
@@ -32,7 +38,7 @@ const GetQuoteComponent: React.FC<any> = (
     isBrandingDetailSubmitted: false,
     isButtonSubmit: false,
   };
-  const { formFields, fromPage, vimage, dispatch } = props;
+  const { formFields, fromPage, vimage, settings } = props;
   const state = {};
 
   formFields &&
@@ -54,30 +60,14 @@ const GetQuoteComponent: React.FC<any> = (
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
   const [size, setCompanySize] = useState(0);
   const [captcha, setCaptcha] = useState({});
+  const [open, setOpen] = useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const history = useHistory();
   let companysize = '';
-
-  //Add product to cart based on the frompage
-  const addProductToCart = (quoteData) => {
-    const { monthlyCost } = quoteData;
-    const product = {
-      name: fromPage === 'branding' ? 'Branding' : 'Data Security',
-      packageName:
-        fromPage === 'branding' ? 'Branding Package' : 'Data Security Package',
-      price: fromPage === 'branding' ? 500 : monthlyCost,
-      yearlyPrice:
-        fromPage !== 'branding'
-          ? (monthlyCost - constants.OFFER_PERCENTAGE * monthlyCost) * 8.5
-          : '',
-      id: fromPage === 'branding' ? 801 : 701,
-      description:
-        fromPage === 'branding' ? 'Branding Package' : 'Data Security Package',
-      section: fromPage === 'branding' ? 'Branding' : 'Data Security',
-      quantity: 1,
-      monthlyPrice: fromPage !== 'branding' ? monthlyCost : '',
-    };
-    dispatch(addToCart([product]));
-  };
 
   // Set captcha reference
 
@@ -86,6 +76,35 @@ const GetQuoteComponent: React.FC<any> = (
       setCaptcha(ref);
     }
   };
+
+  useEffect(() => {
+    props.getConfigDetails();
+    // If user is logged
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      const {
+        email,
+        name,
+        phone,
+        lastname,
+        companyName,
+        position,
+        websiteUrl,
+      } = JSON.parse(userData);
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          email,
+          name,
+          phone,
+          lastname,
+          companyName,
+          position,
+          websiteUrl,
+        };
+      });
+    }
+  }, []);
 
   const handleState = (state) => {
     const { keywords, colorPicker, brands } = state;
@@ -133,15 +152,21 @@ const GetQuoteComponent: React.FC<any> = (
     });
   };
 
+  // check Data sentinels settings
+  let isEnabled = false;
+  if (settings && settings.length) {
+    const key = fromPage === 'branding' ? 'enableBranding' : 'enableDs';
+    const config = settings.find((set) => set.name === key);
+    if (config?.value) {
+      isEnabled = true;
+    }
+  }
+
   // handle get quote form onSubmit
   const onSubmit = (quoteData: any) => {
     const { captchaValue } = quoteData;
-    const {
-      isBrandingDetailSubmitted,
-      keywords,
-      brands,
-      colorPicker,
-    } = quoteState;
+    const { isBrandingDetailSubmitted, keywords, brands, colorPicker } =
+      quoteState;
 
     if (fromPage === 'branding' && !isBrandingDetailSubmitted) {
       setQuoteState({ ...quoteState, isButtonSubmit: true });
@@ -168,7 +193,12 @@ const GetQuoteComponent: React.FC<any> = (
     } else {
       const monthlyPremium = calculateMonthlyAmount(size);
       quoteData.monthlyCost = monthlyPremium && +monthlyPremium.toFixed(2);
-      addProductToCart(quoteData);
+      const product = addProductToCart(quoteData, fromPage);
+
+      if (isEnabled) {
+        props.addToCart([product]);
+      }
+
       sendMail(quoteData, fromPage).then(
         () => {
           // Google Event tracking
@@ -192,7 +222,9 @@ const GetQuoteComponent: React.FC<any> = (
             };
           });
 
-          history.push('cart-page');
+          // {
+          //   isEnabled ? history.push('cart-page') : '';
+          // }
         },
         () => {
           setQuoteState((prevState) => {
@@ -215,9 +247,17 @@ const GetQuoteComponent: React.FC<any> = (
   //handle company size change event
   const onChangeHandler = (event: React.FormEvent<EventTarget>) => {
     const target = event.target as HTMLInputElement;
+    const value = target.value;
     if (target.name && target.name === 'companySize') {
-      companysize = target && target.value;
+      companysize = value;
       setCompanySize(+companysize);
+    } else {
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          [target.name]: value,
+        };
+      });
     }
   };
   const { captchaValue, isLeadDataSent } = quoteState;
@@ -228,6 +268,7 @@ const GetQuoteComponent: React.FC<any> = (
 
   const classes = useStyles();
   const errorKeys = Object.keys(errors);
+  const { title, description } = modalData;
 
   return (
     <section className="get-quote-section">
@@ -247,10 +288,22 @@ const GetQuoteComponent: React.FC<any> = (
       ) : (
         ''
       )}
+
       <div className="bg-image">
         <img src={vimage ? vimage : bg} alt="Quote bg vector" />
       </div>
       <div className="form-container">
+        {open && !isEnabled && isLeadDataSent ? (
+          <AlertDialogComponent
+            title={title}
+            description={description}
+            isShow={open}
+            handleClose={handleClose}
+          />
+        ) : (
+          ''
+        )}
+
         <h1>Tell us about your company</h1>
         <h4>Personal Information</h4>
         <form autoComplete="off">
@@ -266,9 +319,11 @@ const GetQuoteComponent: React.FC<any> = (
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={50}
+                      maxlength={field.maxlength}
                       required={field.required}
                       pattern={field.pattern}
+                      value={quoteState[field.name]}
+                      onChangeHandler={onChangeHandler}
                     />
                   );
                 }
@@ -291,12 +346,18 @@ const GetQuoteComponent: React.FC<any> = (
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={50}
+                      maxlength={field.maxlength}
                       required={field.required}
                       pattern={field.pattern}
                       type={field.type}
+                      min={field.min}
                       info_icon={field.name === 'companySize' ? info_icon : ''}
                       onChangeHandler={onChangeHandler}
+                      value={
+                        field.name === 'companySize'
+                          ? size
+                          : quoteState[field.name]
+                      }
                     />
                   );
                 } else if (
@@ -319,6 +380,7 @@ const GetQuoteComponent: React.FC<any> = (
                       }
                       placeholder={field.placeholder}
                       control={control}
+                      required={field.required}
                       error={!!errors[quoteState[field.name]]}
                     ></SelectBox>
                   );
@@ -333,7 +395,7 @@ const GetQuoteComponent: React.FC<any> = (
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={500}
+                      maxlength={field.maxlength}
                       class_name={'text-area-container'}
                     />
                   );
@@ -373,6 +435,7 @@ const GetQuoteComponent: React.FC<any> = (
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
           onError={onError}
+          isEnabled={isEnabled}
         />
       )}
       {fromPage === 'branding' && (
@@ -384,14 +447,23 @@ const GetQuoteComponent: React.FC<any> = (
           register={register}
           onError={onError}
           handleState={handleState}
+          isEnabled={isEnabled}
         />
       )}
     </section>
   );
 };
 
-const mapStateToProps = (state) => ({
-  products: addToCart(state),
-});
+const mapStateToProps = (state) => {
+  const { configReducer } = state;
+  return { ...configReducer };
+};
 
-export default connect(mapStateToProps)(GetQuoteComponent);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getConfigDetails: () => dispatch(getConfigDetails()),
+    addToCart: (product) => dispatch(addToCart(product)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GetQuoteComponent);

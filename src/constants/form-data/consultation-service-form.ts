@@ -8,6 +8,8 @@ export const consultationFormData = [
     required: true,
     placeholder: 'e.g. John',
     section: 'personal',
+    pattern: patterns.name,
+    maxlength: 75,
   },
   {
     name: 'position',
@@ -26,6 +28,7 @@ export const consultationFormData = [
     placeholder: 'e.g. johndoe@email.com',
     pattern: patterns.email,
     section: 'personal',
+    maxlength: 254,
   },
   {
     name: 'phone',
@@ -34,6 +37,7 @@ export const consultationFormData = [
     required: true,
     placeholder: 'e.g. 123456789',
     section: 'personal',
+    pattern: patterns.phone,
   },
   {
     name: 'companyName',
@@ -42,6 +46,7 @@ export const consultationFormData = [
     required: false,
     placeholder: 'e.g. JohnDoe and co.',
     section: 'company',
+    maxlength: 127,
   },
   {
     name: 'websiteUrl',
@@ -51,6 +56,7 @@ export const consultationFormData = [
     placeholder: 'e.g. https://www.company.com',
     pattern: patterns.website_url,
     section: 'company',
+    maxlength: 100,
   },
 
   {
@@ -69,6 +75,7 @@ export const consultationFormData = [
     required: false,
     placeholder: 'e.g. 90001',
     section: 'company',
+    maxlength: 25,
   },
   {
     name: 'projectDesc',
@@ -79,27 +86,4 @@ export const consultationFormData = [
     section: 'company',
     maxlength: 1000,
   },
-  // {
-  //   name: 'package',
-  //   label: 'Select Package',
-  //   type: 'select',
-  //   required: true,
-  //   placeholder: 'e.g. ',
-  //   section: 'company',
-  //   options: [
-  //     {
-  //       id: 990,
-  //       name: 'Comprehensive Trademark screening report - $499.00',
-  //     },
-  //     {
-  //       id: 991,
-  //       name:
-  //         'Start-up Package A - Branding & Trademark registration - $1099.00',
-  //     },
-  //     {
-  //       id: 992,
-  //       name: 'Copyright registration + Federal Filing fee - $149.00',
-  //     },
-  //   ],
-  // },
 ];

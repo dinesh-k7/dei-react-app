@@ -22,37 +22,37 @@ const StartupKitIntro: React.FC<any> = ({ inputRef }: any): ReactElement => {
       </div>
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Start-Up Kit</h1>
+          <h1>Start-Up Kits</h1>
           <div className="hero-mobile-image">
             <img src={heroMobileImage} alt="consultation Image" />
           </div>
+          <div className="startup-hero-description">
+            <p>Start right with DEI™ Start-Up Kits.</p>
+          </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={yellowBlob} alt="trademark" />
-              <h3>Intellectual Property</h3>
+              <img src={yellowBlob} alt="Plans & Branding" />
+              <h3>Business Plans & Branding</h3>
             </div>
             <div className="features">
-              <img src={yellowBlob} alt="copyright" />
+              <img src={yellowBlob} alt="Intellectual Property" />
+              <h3>Intellectual Property Assistance</h3>
+            </div>
+            <div className="features">
+              <img src={yellowBlob} alt="PWA" />
               <h3>Premium PWA&apos;s</h3>
             </div>
             <div className="features">
-              <img src={yellowBlob} alt="patent" />
-              <h3>Business Plans & Branding</h3>
+              <img src={yellowBlob} alt="Business Certification" />
+              <h3>DEI - Business Certification</h3>
+            </div>
+            <div className="features">
+              <img src={yellowBlob} alt="Freelancer Certification" />
+              <h3>NWO - Freelancer Certification</h3>
             </div>
           </div>
         </div>
 
-        <div className="hero-description">
-          <p>
-            Building a better tomorrow starts with you, manifest digital
-            destiny!
-          </p>
-          <ul>
-            <li>Business plan and Branding</li>
-            <li>Composite Trademark Registration</li>
-            <li>Premium Progressive Web Application</li>
-          </ul>
-        </div>
         <div className="button-container">
           <button
             type="button"

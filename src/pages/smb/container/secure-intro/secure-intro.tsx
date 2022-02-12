@@ -23,23 +23,20 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
       ref={props.inputRef}
     >
       <div className="hero-image">
-        <img src={fromPage ? dsImage : heroImage} alt="Data Security Image" />
+        <img src={fromPage ? dsImage : heroImage} alt="Data Security" />
       </div>
       <div className="hero-content">
         <div className="hero-title">
           {fromPage ? <h1>Secure</h1> : <h1>Site Sentinels™️</h1>}
           <div className="hero-mobile-image">
-            <img
-              src={fromPage ? dsImage : heroImage}
-              alt="Site Security Image"
-            />
+            <img src={fromPage ? dsImage : heroImage} alt="Site Security" />
           </div>
           <p className="secure-description">
             <b>The DEI™ Sentinels Club includes a $1,000,000 USD warranty.</b>
           </p>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="Background" />
               <h3 className="feature-title">Dark Web Sentry</h3>
               {!fromPage ? (
                 <a href="https://www.nwohub.com/products/website-security">
@@ -61,7 +58,7 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="Email sentry blob" />
               <h3 className="feature-title">Email Sentry</h3>
               {!fromPage ? (
                 <a href="https://www.nwohub.com/products/website-security">
@@ -83,7 +80,7 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="Website sentry blob" />
               <h3 className="feature-title">Website Sentry</h3>
               {!fromPage ? (
                 <a href="https://www.nwohub.com/products/website-security">
@@ -107,7 +104,7 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="SSL blob" />
               <h3 className="feature-title">DEI™ Certified SSL</h3>
               {!fromPage ? (
                 <a href="https://www.nwohub.com/products/ssl">
@@ -129,7 +126,7 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
+              <img src={serviceBlue} alt="Backup blob" />
               <h3 className="feature-title">DEI™ Backup</h3>
               {!fromPage ? (
                 <a href="https://www.nwohub.com/products/ssl-managed">
@@ -151,8 +148,8 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background image" />
-              <h3 className="feature-title">Security Now Newsletter</h3>
+              <img src={serviceBlue} alt="Newsletter blob" />
+              <h3 className="feature-title">Security Newsletter</h3>
               {!fromPage ? (
                 <a href="https://www.nwohub.com/products/ssl-managed">
                   <LaunchIcon

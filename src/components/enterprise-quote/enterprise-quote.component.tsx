@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement, useState } from 'react';
+import React, { Fragment, ReactElement, useEffect, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import { constants, messages, siteKey } from '../../constants';
@@ -59,7 +59,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
       },
     ],
   };
-  const { formFields, fromPage } = props;
+  const { formFields, fromPage, serviceName } = props;
   const state = {};
 
   let isLocationExist;
@@ -84,11 +84,53 @@ const EnterpriseQuoteComponent: React.FC<any> = (
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
   const [captcha, setCaptcha] = useState({});
 
+  useEffect(() => {
+    // If user is logged
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      const {
+        email,
+        name,
+        phone,
+        lastname,
+        companyName,
+        position,
+        websiteUrl,
+      } = JSON.parse(userData);
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          email,
+          name,
+          phone,
+          lastname,
+          companyName,
+          position,
+          websiteUrl,
+        };
+      });
+    }
+  }, []);
+
   // Set captcha reference
 
   const setCaptchaRef = (ref) => {
     if (ref) {
       setCaptcha(ref);
+    }
+  };
+
+  // handle input change
+  const onChangeHandler = ($event: React.FormEvent<EventTarget>) => {
+    const target = $event.target as HTMLInputElement;
+    const value = target.value;
+    if (target && target.name) {
+      setQuoteState((prevState) => {
+        return {
+          ...prevState,
+          [target.name]: value,
+        };
+      });
     }
   };
 
@@ -214,9 +256,11 @@ const EnterpriseQuoteComponent: React.FC<any> = (
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={50}
+                      maxlength={field.maxlength}
                       required={field.required}
                       pattern={field.pattern}
+                      value={quoteState[field.name]}
+                      onChangeHandler={onChangeHandler}
                     />
                   );
                 } else if (
@@ -259,10 +303,12 @@ const EnterpriseQuoteComponent: React.FC<any> = (
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={50}
+                      maxlength={field.maxlength}
                       required={field.required}
                       pattern={field.pattern}
                       type={field.type}
+                      value={quoteState[field.name]}
+                      onChangeHandler={onChangeHandler}
                     />
                   );
                 } else if (
@@ -296,7 +342,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
                       name={field.name}
                       placeholder={field.placeholder}
                       label_name={field.label}
-                      maxlength={500}
+                      maxlength={field.maxlength}
                       class_name={'text-area-container'}
                     />
                   );
@@ -306,7 +352,11 @@ const EnterpriseQuoteComponent: React.FC<any> = (
 
           {isLocationExist && (
             <Fragment>
-              <h4>Locations and Connectivity Requirements</h4>
+              {serviceName && serviceName === 'Point To Point' ? (
+                <h4>Describe your Point to Point need</h4>
+              ) : (
+                <h4>Locations and Connectivity Requirements</h4>
+              )}
               <div className="company-information">
                 {formFields &&
                   formFields.length &&
@@ -322,7 +372,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
                           name={field.name}
                           placeholder={field.placeholder}
                           label_name={field.label}
-                          maxlength={50}
+                          maxlength={field.maxlength}
                           required={field.required}
                           pattern={field.pattern}
                           type={field.type}
@@ -347,6 +397,21 @@ const EnterpriseQuoteComponent: React.FC<any> = (
                           error={!!errors[quoteState[field.name]]}
                           grouping={field.grouping}
                         ></SelectBox>
+                      );
+                    } else if (
+                      field.section === 'location' &&
+                      field.type === 'textarea'
+                    ) {
+                      return (
+                        <MultiText
+                          key={idx}
+                          register={register}
+                          name={field.name}
+                          placeholder={field.placeholder}
+                          label_name={field.label}
+                          maxlength={field.maxlength}
+                          class_name={'text-area-container'}
+                        />
                       );
                     }
                   })}
@@ -420,7 +485,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
           <button
             type="button"
             className="btn-basic btn-green"
-            onClick={() => window.location.reload(false)}
+            onClick={() => window.location.reload()}
           >
             Start Over
           </button>

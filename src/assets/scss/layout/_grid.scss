@@ -24,10 +24,13 @@
   .consultation-quote-section,
   .wd-quote-section,
   .signup-form-section,
+  .profile-form-section,
+  .contactus-form-section,
   .reconnect-quote-section,
+  .config-form-section,
   .contributor-section,
   .enterprise-quote-section {
-    border-bottom: 1px solid var(--font-color);
+    //  border-bottom: 1px solid var(--font-color);
     grid-column: 1/4;
     grid-row: 3/4;
     padding-bottom: 90px;
@@ -63,8 +66,7 @@
     padding-top: 0.3em;
     grid-column: 1/4;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-row: 4/5;
+    grid-row: auto;
     .footer-social-wrapper {
       justify-self: end;
       padding-right: 20%;
@@ -78,11 +80,14 @@
 
   .logo {
     padding: 20px;
-    img {
+    .dei-logo {
       width: 75px;
     }
   }
 
+  textarea {
+    padding: 16px;
+  }
   input[type='text'],
   input[type='number'],
   input[type='password'],
@@ -98,6 +103,15 @@
 
   .MuiOutlinedInput-root {
     margin-right: 8px !important;
+  }
+
+  // Drop down menu style
+  .profile-icon {
+    .MuiMenu-paper {
+      right: 24px !important;
+      left: 90% !important;
+      top: 56px !important;
+    }
   }
 
   #combo-box-demo {
@@ -166,6 +180,19 @@
     width: 100vw;
   }
 
+  // Drop down menu style
+  .profile-icon {
+    .MuiMenu-paper {
+      right: 8px !important;
+      left: 70% !important;
+      top: 56px !important;
+    }
+  }
+
+  .MuiToolbar-gutters {
+    padding-right: 0px !important;
+  }
+
   .sticky-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -196,7 +223,7 @@
 
   .logo {
     padding: 20px 0px 10px 15px;
-    img {
+    .dei-logo {
       width: 60px;
     }
   }
@@ -215,8 +242,11 @@
   .consultation-quote-section,
   .wd-quote-section,
   .signup-form-section,
+  .profile-form-section,
+  .contactus-form-section,
   .reconnect-quote-section,
   .contributor-section,
+  .config-form-section,
   .enterprise-quote-section {
     border-bottom: 1px solid var(--font-color);
     padding-bottom: 90px;
@@ -269,19 +299,7 @@
   .footer-section {
     padding-top: 0.3em;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-row: 4/5;
-    padding-left: 8px;
-    li {
-      display: inline;
-      padding: 5px;
-    }
-    p {
-      text-align: right;
-    }
-    span {
-      padding-bottom: 10px;
-    }
+    grid-row: auto;
   }
 
   .recaptcha-container {
@@ -301,7 +319,13 @@
     margin-right: 0px !important;
   }
 }
-
+.MuiPaper-elevation8 {
+  .MuiListItem-root {
+    font-family: 'OpenSansRegular', sans-serif !important;
+    font-size: 16px !important;
+    color: var(--font-color);
+  }
+}
 .nav-container {
   border-bottom: 1px solid var(--font-color);
   grid-column: 1/4;

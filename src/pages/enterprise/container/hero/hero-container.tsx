@@ -7,7 +7,6 @@ import './hero-container.scss';
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
 import blueBlob from '../../../../assets/images/service_blue.svg';
-import heroMobileImage from '../../../../assets/images/consultation_mobile.svg';
 
 const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
   const history = useHistory();
@@ -30,7 +29,7 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                   <h3
                     onClick={() => routeChange('/enterprise/security-service')}
                   >
-                    Security
+                    Security Sentinels
                   </h3>
                   <ChevronRightIcon
                     onClick={() => routeChange('/enterprise/security-service')}
@@ -110,8 +109,8 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                     />
 
                     <p>
-                      Our DEI™ Consultations offers customers ease and control
-                      of managing machine-to-machine or M2M connections for IoT
+                      Our DEI™ Consultations offer customers ease and control of
+                      managing machine-to-machine or M2M connections for IoT
                       solutions. Conduct your business simply and efficiently by
                       integrating wireless backup failover solutions or using
                       M2M technology to access remote devices using our managed
@@ -173,9 +172,9 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
             <div className="hero-title">
               <h1>{fromPage}</h1>
             </div>
-            <div className="hero-mobile-image">
+            {/* <div className="hero-mobile-image">
               <img src={heroMobileImage} alt="enterprise Image" />
-            </div>
+            </div> */}
           </Fragment>
         )}
       </div>

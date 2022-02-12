@@ -59,7 +59,8 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
                     locator tool is available for you to find the best data
                     center to meet your customer’s needs.
                     <br />
-                    <a href="https://otg.upstack.com/">Find Datacenter Now</a>
+                    <br />
+                    <a href="#">Find Datacenter Now</a>
                   </p>
                 </div>
                 <div className="features">
@@ -78,11 +79,10 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    Your customers want public cloud solutions like AWS and
-                    Azure. Many partners struggle to monetize these products. 
-                    DEI and partner portfolio of partners not only helps deliver
-                    these offerings but can also show you a model that will
-                    optimize your profitability on these deals. 
+                    Providing your customers with public cloud solutions like
+                    AWS® and Azure® is only the beginning. The DEI™ and partner
+                    portfolio can show you a model that will optimize your
+                    profitablity in these deals.
                   </p>
                 </div>
                 <div className="features">
@@ -107,14 +107,14 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    Not a disaster recovery but simply data protection. Critical
-                    for organizations to understand their data footprints and
-                    disaster recovery exposure. Once you understand the total
-                    footprint of your data and critical services we can define
-                    custom solutions for your backup and DR needs that meet your
-                    budget goals while providing the most versatility and
-                    reliability. Whether your data is one terabyte or hundreds
-                    of terabytes we can provide a solution to meet your needs.
+                    There is a big difference between disaster recovery and DEI™
+                    back-up and data preservation. You should understand your
+                    organization&apos;s data footprint and exposure. When you do
+                    we can then define custom solutions to meet your back-up and
+                    recovery needs. Our solutions meet your budget goals and
+                    provide you with optimal versatility and reliability. From
+                    terabytes to petabites we can provide the best solutions
+                    that meet your needs.
                   </p>
                 </div>
 
@@ -133,22 +133,34 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
                     }
                     className="chevron-right"
                   />
-                  <p>
-                    Cloud storage is a critical component of cloud computing,
-                    holding the information used by applications. Big data
-                    analytics, data warehouses, Internet of Things, databases,
-                    and backup and archive applications all rely on some form of
-                    data storage architecture. Cloud storage is typically more
-                    reliable, scalable, and secure than traditional on-premises
-                    storage systems. 
-                  </p>
-                  <p>
-                    DEI™ offers a complete range of cloud storage services to
-                    support both application and archival compliance
-                    requirements. Select from object, file, and block storage
-                    services as well as cloud data migration options to start
-                    designing the foundation of your cloud IT environment.
-                  </p>
+
+                  <div className="feature-description">
+                    <p>A critical component of cloud computing is storage.</p>
+                    Storing data in the Cloud offers increase:
+                    <br />
+                    <ul>
+                      <li>Reliability</li>
+                      <li>Scalability</li>
+                      <li>Security</li>
+                    </ul>
+                    <br />
+                    Above the traditional on-premises storage systems.
+                    <br />
+                    <br />
+                    The DEI™ offers a broad scope of storage services for your
+                    application&apos;s archival requirements so you remain
+                    compliant. with:
+                    <br />
+                    <ul>
+                      <li>Object</li>
+                      <li>File</li>
+                      <li>Block storage services</li>
+                      <li>Cloud data migration</li>
+                    </ul>
+                    <br />
+                    You can start designing the foundation of your cloud IT
+                    environment today.
+                  </div>
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
@@ -165,16 +177,25 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
                       routeChange('/enterprise/cloud-quote', 'Virtual Servers')
                     }
                   />
-                  <p>
-                    Linux, Windows Server, SQL Server, Oracle, IBM, and SAP, Our
-                    selection of Virtual Machines gives you the flexibility of
-                    virtualization for nearly all computing
-                    solutions—development and testing, running applications,
-                    even extending your datacenter. The freedom of open-source
-                    software customized for your need. Just another rack in your
-                    datacenter, giving you the power to deploy in minutes
-                    instead of weeks. 
-                  </p>
+                  <div className="feature-description">
+                    The DEI™ gives you the flexibility of virtualization for
+                    nearly all computing solutions:
+                    <br />
+                    <ul>
+                      <li>Linux</li>
+                      <li>Windows Server</li>
+                      <li>SQL Server</li>
+                      <li>Oracle</li>
+                      <li>IBM</li>
+                      <li>SAP</li>
+                    </ul>
+                    <br />
+                    Our selection of Virtual Machines —development and testing,
+                    running applications, even extending your data center.
+                    Combined with the freedom of open-source software customized
+                    for your need. You can deploy in minutes instead of weeks.
+                    Manifest Digital Destiny with The DEI™
+                  </div>
                 </div>
               </div>
             </div>

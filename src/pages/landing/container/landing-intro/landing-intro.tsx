@@ -8,7 +8,7 @@ const LandingIntroContainer: React.FC = (): ReactElement => {
   return (
     <section className="landing-intro">
       <div className="intro-image">
-        <img src={deiImage} />
+        <img src={deiImage} alt="Intro Image" />
       </div>
       <div className="services"></div>
       <p className="intro-text">

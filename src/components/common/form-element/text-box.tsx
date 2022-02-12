@@ -16,6 +16,7 @@ const TextBox: any = ({
   onChangeHandler,
   info_icon,
   required,
+  value,
 }): ReactElement => {
   return (
     <div className="form-group">
@@ -25,22 +26,27 @@ const TextBox: any = ({
           type={'number'}
           name={name}
           id={name}
+          value={value}
+          autoComplete="false"
           placeholder={placeholder}
           maxLength={maxlength ? maxlength : ''}
           onChange={onChangeHandler}
+          min={min ? min : ''}
           ref={register({
             required: filterErrorMessage(
               quoteValidationErrorMessages[name],
               'required',
             ),
 
-            min: {
-              value: 1,
-              message: filterErrorMessage(
-                quoteValidationErrorMessages[name],
-                'min',
-              ),
-            },
+            min: min
+              ? {
+                  value: min,
+                  message: filterErrorMessage(
+                    quoteValidationErrorMessages[name],
+                    'min',
+                  ),
+                }
+              : '',
           })}
         />
       ) : (
@@ -48,7 +54,9 @@ const TextBox: any = ({
           type={type === 'password' ? 'password' : 'text'}
           name={name}
           id={name}
+          autoComplete="false"
           placeholder={placeholder}
+          value={value}
           maxLength={maxlength ? maxlength : ''}
           onChange={onChangeHandler}
           ref={register({
@@ -89,6 +97,7 @@ const TextBox: any = ({
           <img src={info_icon} width={20} height={20} alt="Info Icon" />
         </div>
       )}
+      {/* {prefix && <span className="info-icon">{prefix}</span>} */}
     </div>
   );
 };

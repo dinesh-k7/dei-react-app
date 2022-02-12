@@ -46,7 +46,6 @@ const LandingPage: React.FC = (): ReactElement => {
         <SecureIntro inputRef={secureRef} fromPage={'smb'} />
         <DevelopIntro inputRef={developRef} fromPage={'smb'} />
       </section>
-      <div className="landing-border"></div>
     </Fragment>
   );
 };

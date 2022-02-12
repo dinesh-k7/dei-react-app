@@ -1,5 +1,7 @@
 import React, { ReactElement } from 'react';
 
+import FadeIn from 'react-fade-in';
+
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 import '../../../../assets/scss/styles.scss';
 import './hero-container.scss';
@@ -10,7 +12,7 @@ const HeroContainer: React.FC = (): ReactElement => {
     <section className="hero-section">
       <div className="hero-content">
         <div className="hero-title">
-          <h1>Data Security</h1>
+          <h1>Data Sentinels™️</h1>
           <div className="hero-mobile-image">
             <img src={heroImage} alt="Data Security Image" />
           </div>
@@ -27,23 +29,27 @@ const HeroContainer: React.FC = (): ReactElement => {
           <h3>The Dark Web Problem:</h3>
         </div>
         <div className="hero-description">
-          <p>
-            In the Dark Web, a compromised credential sells for ~$1-$8. They
-            range from online services to corporate network user names and
-            passwords. Whether it is in blocks of 100,000 or 1, Dark Web Pirates
-            frequently purchase credentials. Then they index the data obtained
-            until it poses a direct threat to your business.
-          </p>
+          <FadeIn>
+            <p>
+              In the Dark Web, a compromised credential sells for between $1 and
+              $8. They range from online services to corporate network user
+              names and passwords. Whether it is in blocks of 100,000 or 1, Dark
+              Web Pirates frequently purchase credentials. Then they index the
+              data obtained until it poses a direct threat to your business.
+            </p>
+          </FadeIn>
           <div className="hero-description-two">
             <h3>The DEI™ Data Sentinels: </h3>
-            <p>
-              The DEI™ Data Stack includes the most validated credential
-              exposure data on the market with Premium integrated email security
-              solutions at one convenient, low price. We provide you with
-              essential updates and vital details to keep you in the know. With
-              this powerful tool in your corner, you can proactively prevent
-              problems before they become costly issues.
-            </p>
+            <FadeIn>
+              <p>
+                The DEI Data Sentinels™ stack includes the most validated
+                credential exposure data on the market with Premium integrated
+                email security solutions at one reasonable, low price. We
+                provide you with essential updates and vital details to keep you
+                in the know. With this powerful tool in your corner, you can
+                proactively prevent problems before they become costly issues.
+              </p>
+            </FadeIn>
           </div>
         </div>
       </div>

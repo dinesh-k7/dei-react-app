@@ -16,7 +16,12 @@ const initialState: InitialState = {
   isPaymentUpdateFailure: false,
 };
 
-const cartReducer = (state = initialState, action: any): InitialState => {
+interface IAction {
+  type: string;
+  product: any;
+}
+
+const cartReducer = (state = initialState, action: IAction): InitialState => {
   switch (action.type) {
     case ADD_TO_CART:
       return {

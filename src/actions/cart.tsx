@@ -40,6 +40,7 @@ export const getCartItems = (): any => ({
 
 export const addToCart = (product: IProductDetails[]) => (
   dispatch: Dispatch,
+  // eslint-disable-next-line  @typescript-eslint/explicit-module-boundary-types
   getState: any,
 ): any => {
   const [pd] = product;
@@ -50,16 +51,13 @@ export const addToCart = (product: IProductDetails[]) => (
 
   if (!productExist) {
     dispatch(addToCartAction(product));
-  } else {
-    // const pd = Object.assign({}, productExist);
-    // pd.quantity += pd.quantity;
-    // dispatch(updateCartAction([pd]));
   }
 };
 
 export const updateCartItems = (product: IProductDetails) => (
   dispatch: Dispatch,
-  getState,
+  // eslint-disable-next-line  @typescript-eslint/explicit-module-boundary-types
+  getState: any,
 ): any => {
   const {
     cartReducer: { products },
@@ -73,7 +71,8 @@ export const updateCartItems = (product: IProductDetails) => (
 
 export const removeFromCart = (product: IProductDetails) => (
   dispatch: Dispatch,
-  getState,
+  // eslint-disable-next-line  @typescript-eslint/explicit-module-boundary-types
+  getState: any,
 ): any => {
   const { id } = product;
   const {

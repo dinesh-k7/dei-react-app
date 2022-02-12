@@ -1,5 +1,4 @@
-import { constants } from '..';
-import { industries } from '../industry-option';
+import { patterns } from '..';
 export const reconnectFormData = [
   {
     name: 'name',
@@ -9,6 +8,8 @@ export const reconnectFormData = [
     placeholder: 'e.g. John',
     section: 'personal',
     id: 're-1',
+    pattern: patterns.name,
+    maxlength: 75,
   },
   {
     name: 'phone',
@@ -18,6 +19,7 @@ export const reconnectFormData = [
     placeholder: 'e.g. 123456789',
     section: 'personal',
     id: 're-2',
+    pattern: patterns.phone,
   },
   {
     name: 'email',
@@ -27,5 +29,7 @@ export const reconnectFormData = [
     placeholder: 'e.g. johndoe@email.com',
     section: 'personal',
     id: 're-3',
+    pattern: patterns.email,
+    maxlength: 254,
   },
 ];

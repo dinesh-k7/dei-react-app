@@ -58,15 +58,15 @@ const PSIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    Enterprises of all sizes need to be efficient to be
-                    competitive. We provide comprehensive IT Consulting services
-                    to companies that are looking to leverage their company’s IT
-                    into higher degrees of productivity, and ultimately,
-                    profitability. In order to take your business to the next
-                    level, you’ll need to cut out the redundancies in process
-                    and in cost.
+                    Optimizing your enterprise&apos;s efficiency is essential to
+                    compete in today&apos;s world, no matter your size. The DEI™
+                    provides IT consulting services to companies looking for
+                    more productivity and profitability. We can help you
+                    identify the unnecessary redundancies in your process and
+                    cost. Our knowledge and expertise can make your technology
+                    work for you!
                   </p>
-                  <p>
+                  {/* <p>
                     The most successful companies will acknowledge the best ways
                     to get the most out of the resources that are available to
                     them. If your company is looking to enhance efficiency, and
@@ -74,7 +74,7 @@ const PSIntro: React.FC<any> = (props: any): ReactElement => {
                     our professional IT consulting service. We have the
                     knowledge and the expertise necessary to make your
                     technology work best for you.
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="features">
@@ -93,46 +93,9 @@ const PSIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    IT Solutions practice provides access to traditional IT
-                    support and monitoring services, infrastructure hardware and
-                    software solutions as well as a unique backup and disaster
-                    recovery capabilities all at a predictable monthly
-                    subscription rate and customized to your unique business
-                    needs, simplifying how technology is purchased.
-                  </p>
-                </div>
-                <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
-                  <h3
-                    onClick={() =>
-                      routeChange(
-                        '/enterprise/ucaas-service',
-                        'Managed Hosting Services',
-                      )
-                    }
-                  >
-                    Managed Hosting Services
-                  </h3>
-                  <ChevronRightIcon
-                    onClick={() =>
-                      routeChange(
-                        '/enterprise/ucaas-service',
-                        'Managed Hosting Services',
-                      )
-                    }
-                    className="chevron-right"
-                  />
-                  <p>
-                    We add availability and recovery services on top of our
-                    managed cloud foundation to further protect data and
-                    applications against component failure and disasters. Next,
-                    we provide adjustable levels of security and compliance
-                    services that scale to match organizations’ evolving
-                    business requirements. Application support services such as
-                    database administration (DBA) are available to further
-                    customize our customers’ cloud environments. Finally, we
-                    offer a full suite of consulting Services to help you plan,
-                    migrate and manage your cloud infrastructure.
+                    Gain access to monitoring services and traditional IT
+                    support at a predictable monthly subscription rate
+                    customized for your unique enterprise needs.
                   </p>
                 </div>
               </div>

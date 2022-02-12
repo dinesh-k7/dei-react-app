@@ -173,12 +173,29 @@ export const constants = {
   STARTUP: 'STARTUP',
   STARTUPKIT: 'STARTUPKIT',
   COMPLETED: 'COMPLETED',
-  NODE_ENDPOINT: 'https://dei-node-service.herokuapp.com',
-  //NODE_ENDPOINT: 'http://localhost:3010',
+  CONTACTUS: 'CONTACTUS',
+  NODE_ENDPOINT:
+    process.env.REACT_APP_REGION === 'PROD'
+      ? process.env.REACT_APP_NODE_BASE_URL
+      : 'http://localhost:3010',
+  CONTRIBUTOR_PAYPAL_PRODUCT_ID: 'PROD-05L02357TD894522S',
+  HIPPA_PAYPAL_PRODUCT_ID: 'PROD-5LN61512H7991384W',
+  NIST_PAYPAL_PRODUCT_ID: 'PROD-22F77795G6298660V',
+  CONTRIBUTOR: 'CONTRIBUTOR',
+  HIPPA: 'HIPPA',
+  NIST: 'NIST',
   PAGES: [
     {
+      url: '/contributors',
+      name: 'Contributors',
+    },
+    {
+      url: '/startup',
+      name: 'Start-Up Central',
+    },
+    {
       url: 'smb',
-      name: `SMB's`,
+      name: `SMB's Services`,
       children: true,
       submenu: [
         {
@@ -191,18 +208,17 @@ export const constants = {
         },
       ],
     },
-    {
-      url: '/startup',
-      name: 'Start-Up Central',
-    },
+
     {
       url: '/enterprise',
       name: 'Enterprise Services',
     },
+
     {
-      url: '/contribution',
-      name: 'Contribution',
+      url: '/compliance-central',
+      name: 'Compliance Central',
     },
+
     {
       url: '/sign-in',
       name: 'Sign In',
@@ -225,17 +241,94 @@ export const constants = {
   EU_75: 3,
   EU_150: 2,
   EU_250: 1.75,
+  PLATFORMS: [
+    {
+      id: 1,
+      name: 'Fiver',
+    },
+    {
+      id: 2,
+      name: 'Upwork',
+    },
+    {
+      id: 3,
+      name: 'Other',
+    },
+  ],
+  ESTIMATED_AGE: [
+    {
+      id: 1,
+      name: '0 - 6 Months',
+    },
+    {
+      id: 2,
+      name: '6 - 24 Months',
+    },
+    {
+      id: 3,
+      name: '24 Plus',
+    },
+  ],
+
+  INTERESTED: [
+    {
+      id: 1,
+      name: 'Classess',
+    },
+    {
+      id: 2,
+      name: 'Conferences',
+    },
+    {
+      id: 3,
+      name: 'Workshops',
+    },
+    {
+      id: 4,
+      name: 'Seminar',
+    },
+    {
+      id: 5,
+      name: 'Cultural Activities',
+    },
+  ],
+  GOALS: [
+    {
+      id: 1,
+      name: 'Vocational Enablement',
+    },
+    {
+      id: 2,
+      name: 'Academic Advancement',
+    },
+    {
+      id: 3,
+      name: 'To re-connect',
+    },
+  ],
 };
 
 export const quoteValidationErrorMessages = {
-  name: [{ type: 'required', message: '*Please enter name' }],
-  lastname: [{ type: 'required', message: '*Please enter last name' }],
+  name: [
+    { type: 'required', message: '*Please enter name' },
+    {
+      type: 'pattern',
+      message: '*Please enter valid name',
+    },
+  ],
+  lastname: [
+    { type: 'required', message: '*Please enter last name' },
+    {
+      type: 'pattern',
+      message: '*Please enter valid last name',
+    },
+  ],
   password: [
     { type: 'required', message: '*Please enter password' },
     {
       type: 'pattern',
       message:
-        '*Password should have atleast 8 characters with one upper case, lower case and special character',
+        '*Password should have atleast 10 characters with one upper case, lower case and special character',
     },
   ],
   cpassword: [{ type: 'required', message: '*Please enter confirm password' }],
@@ -288,15 +381,49 @@ export const quoteValidationErrorMessages = {
     { type: 'required', message: '*Please enter Number of seats' },
     { type: 'min', message: '*Number of seats must be at least 1' },
   ],
+  brandingNumOrders: [
+    {
+      type: 'required',
+      message: '*Please enter allowed orders for branding',
+    },
+  ],
+  dsNumOrders: [
+    {
+      type: 'required',
+      message: '*Please enter allowed orders for Data sentinels',
+    },
+  ],
+  sukNumOrders: [
+    {
+      type: 'required',
+      message: '*Please enter allowed orders for Startup kit',
+    },
+  ],
+  wdNumOrders: [
+    {
+      type: 'required',
+      message: '*Please enter allowed orders for Custom designs',
+    },
+  ],
+  comment: [{ type: 'required', message: '*Please provide comment' }],
+  budget: [
+    { type: 'required', message: '*Please enter Budget' },
+    { type: 'pattern', message: '*Enter valid Budget' },
+  ],
+  platform: [{ type: 'required', message: '*Please select Hiring platform' }],
+  type: [{ type: 'required', message: '*Please select Interested In' }],
+  goal: [{ type: 'required', message: '*Please select goal' }],
 };
 
-export const siteKey = '6Le4OhkaAAAAAHlSqTn2MuAN8vsgE9DUaZjPaa6n';
+export const siteKey = '6Lf0uTYaAAAAALouJbS6qkJofkJyzW29zgnXRENC';
 
 export const patterns = {
   email: /^([\w.-]+)@(\[(\d{1,3}\.){3}|(?!hotmail|googlemail|yahoo|gmx|ymail|outlook|bluewin|protonmail|t\-online|web\.|online\.|aol\.|live\.)(([a-zA-Z\d-]+\.)+))([a-zA-Z]{2,4}|\d{1,3})(\]?)$/i,
   website_url: /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/i,
-  phone: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/i,
-  password: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?([^ws]|[_])).{8,}$/,
+  phone: /^[+]?(\d{1,2})?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+  password: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?([^ws]|[_])).{10,}$/,
+  name: /^[a-zA-Z]+(?:[\s.]+[a-zA-Z]+)*$/,
+  budget: /^\d{0,17}(\.\d{1,2})?$/,
 };
 
 export const messages = {
@@ -312,11 +439,17 @@ export const messages = {
   signup_error: 'Error in sign up process',
   signin_error: 'Error in sign in process',
   reset_error: 'Error in password reset',
+  contactus_error: 'Error in submitting contact us form.',
   validation_error: 'Please fill out the required field(s).',
   payment_success_message:
     'Thank you for your purchase! We are the common denominator!',
   payment_failure_message:
     'thank you for joining us in manifesting digital destiny. Oops wait a minute somethings not quite right please resubmit your order.',
+  profile_error: 'Error in updating profile',
+  profile_update: '  Account detail has been updated successfully.',
+  activation_success: 'Your Account has been activated successfully.',
+  activation_exist: 'Your Account has been activated already.',
+  activate_expired: 'Activation link has been expired',
 };
 
 export const FormFields = [
@@ -412,45 +545,49 @@ export const CONSULTATION_PACKAGES = [
   {
     id: 990,
     active: false,
-    name: 'Package A',
-    description: 'Comprehensive Trademark screening report',
-    description_one: 'Composite Trademark Registration',
-    price: 5995,
+    name: 'NWO™ Certification - Freelancer',
+    description: 'NWO™ Certification - Freelancer',
+    description_one: 'NWO™ Zero Trust Protocol',
+    price: 6.99,
+    monthly: true,
+    additional_fee: 49,
     service: 'Consultations & Coaching',
     quantity: 1,
     features: [
-      'Branding Kit',
-      'Detailed Screening Report (4 iterations)',
-      'Word, Slogan, and Design/Logo application.',
-      "18 mo's of responses all fees included",
-      '95% success rate',
-      'Support from start to finish. ',
+      'Email - World Class Integrated Security Solutions',
+      'Password Manager',
+      'Added to the NWO Prefered hiring Database',
+      'Security best practice trainings',
     ],
   },
   {
     id: 991,
     active: false,
-    name: 'Package B',
-    description: 'Start-up Package A - Branding & Trademark registration',
-    description_one: 'Business plan and Branding',
-    price: 2390,
+    name: 'DEI™ Certification - Business',
+    description: 'DEI™ Certification - Business',
+    description_one: 'DEI™ Zero Trust Protocol',
+    price: 999,
     service: 'Consultations & Coaching',
+    starting: true,
     quantity: 1,
     features: [
-      'Investor ready or bank/grant compliant 50+ page business and marketing plan delivered in PDF and Word format including current market analysis, all research, financial spreadsheets, graphs, charts, tables and visuals',
-      'Revisions of business plan after review until satisfaction (within reason)',
-      'Consultation during and after the project to assist with funding and implementation',
-      'Research: IbisWorld, MarketLine, Barnes, eMarketer, MarketingCharts, Deloitte, Forrester, CountryWatch, BMI Research, First Research',
+      'Digital Security Consultation',
+      '3rd party hardware review',
+      '3rd party software review',
+      'Password policies review',
+      'Network Firewall review',
+      'Patch Management Consultation',
+      'Pentest - with a hybrid documentation',
     ],
   },
   {
     id: 992,
     active: false,
-    name: 'Package C',
-    description: 'Copyright registration + Federal Filing fee',
-    description_one: 'Premium Progressive Web Application',
+    name: 'Premium Manifestation Application',
+    description: 'Premium Manifestation Application',
+    description_one: 'Premium Manifestation Application',
     price: 9900,
-    service: 'Consultations & Coaching',
+    service: 'Premium Manifestation Application',
     features: [
       'Premium PWA - Publishing Platform',
       'Branding kit',
@@ -463,21 +600,18 @@ export const CONSULTATION_PACKAGES = [
   {
     id: 993,
     active: false,
-    name: 'Package D',
-    description: 'Digital Security Consultation',
-    description_one: 'Digital Security Consultation',
+    name: 'Business plan and Branding',
+    description: 'Business plan and Branding',
+    description_one: 'Business plan and Branding',
     description_two: '',
     description_three: '',
     description_four: '',
-    price: 799,
+    price: 2999.99,
     service: 'Digital Security Consultation',
     quantity: 1,
     features: [
-      '3rd party hardware review',
-      '3rd party software review',
-      'Password policies review',
-      'Network Firewall review',
-      'Patch Management Consultation ',
+      'Investor ready or bank/grant compliant 50+ page business and marketing plan delivered in PDF and Word format including current market analysis, all research, financial spreadsheets, graphs, charts, tables and visuals',
+      'Research: IbisWorld, MarketLine, Barnes, eMarketer, MarketingCharts, Deloitte, Forrester, CountryWatch, BMI Research, First Research',
     ],
   },
   {
@@ -500,32 +634,321 @@ export const CONSULTATION_PACKAGES = [
   },
 ];
 
-export const PLANS = [
+export const branding = {
+  name: 'Branding',
+  price: 500,
+  id: 70001,
+  description: 'Branding',
+};
+
+export const wd = {
+  name: 'DEI Custom Designs',
+  price: 2998,
+  id: 80001,
+  description: 'DEI Custom Designs',
+};
+
+export const ds = {
+  name: 'Data Sentinels',
+  id: 60001,
+  description: 'Data Sentinels',
+};
+
+export const modalData = {
+  title: 'Quality experience is our priority!',
+  description:
+    'We demonstrate our commitment to providing gold standard customer experiences by restricting the number of orders submitted. We implement adaptive management strategies to optimize our performance. We appreciate your patience. Please fill out the form, and an account executive will coordinate the fulfillment of your order as soon as possible. Thank you for growing with us! Together we can Manifest Digital Destiny!',
+  textOne: 'textOne',
+};
+
+export const copyrightData = {
+  title: 'Copyright',
+  description:
+    'The materials on this web site are forbidden to be transmitted, used, reproduced or , in part or in whole or , by any means, or in any form mechanical or electronic, including recording, photocopying, or using any information retrieval and storage system, except where expcilitly provided for in the Terms and Conditions of Use of The DEI Website, without written permission from the publisher.',
+};
+
+export const hippaPlans = [
   {
-    id: 1001,
-    name: 'Silver Contributor',
-    description_one: 'Billed for 12 months',
-    description_two:
-      'Subscription will be paused automatically, if billing cycle is missed for 2 months.',
-    price: 10.0,
-    planId: 'P-00645188CD6228332MCP53QQ',
+    id: 'hippa-one',
+    name_one: '1-2',
+    name_two: 'Individual | < 10 Devices',
+    price: 325.99,
+    setup_price: 600,
+    planid: '',
+    total_cycles: 36,
+    features: [
+      {
+        id: 'plan-one-feature-a',
+        description: 'Custom Compliance Portal',
+      },
+      {
+        id: 'plan-one-feature-b',
+        description: 'Ongoing network scans',
+      },
+      {
+        id: 'plan-one-feature-c',
+        description: 'Ongoing compliance reporting',
+      },
+      {
+        id: 'plan-one-feature-d',
+        description: 'Issue alerts & notifications',
+      },
+      {
+        id: 'plan-one-feature-e',
+        description: 'Industry-approved documentation',
+      },
+      {
+        id: 'plan-one-feature-f',
+        description: 'Annual Compliance Review',
+      },
+    ],
   },
   {
-    id: 1002,
-    name: 'Gold Contributor',
-    description_one: 'Billed for 12 months',
-    description_two:
-      'Subscription will be paused automatically, if billing cycle is missed for 2 months.',
-    price: 19.0,
-    planId: 'P-7LF88802MJ4268053MCP6NGA',
+    id: 'hippa-two',
+    name_one: '3-5',
+    name_two: 'Individual | < 50 Devices',
+    price: 649.99,
+    setup_price: 600,
+    planid: '',
+    total_cycles: 36,
+    features: [
+      {
+        id: 'plan-two-feature-a',
+        description: 'Custom Compliance Portal',
+      },
+      {
+        id: 'plan-two-feature-b',
+        description: 'Ongoing network scans',
+      },
+      {
+        id: 'plan-two-feature-c',
+        description: 'Ongoing compliance reporting',
+      },
+      {
+        id: 'plan-two-feature-d',
+        description: 'Issue alerts & notifications',
+      },
+      {
+        id: 'plan-two-feature-e',
+        description: 'Industry-approved documentation',
+      },
+      {
+        id: 'plan-two-feature-f',
+        description: 'Semi-Annual Compliance Review',
+      },
+    ],
   },
   {
-    id: 1003,
-    name: 'Platinum Contributor',
-    description_one: 'Billed for 12 months',
-    description_two:
-      'Subscription will be paused automatically, if billing cycle is missed for 2 months.',
-    price: 30.0,
-    planId: 'P-1EK089283N940084PMCP6OPY',
+    id: 'hippa-three',
+    name_one: '6-10',
+    name_two: 'Individual | < 100 Devices',
+    price: 799.99,
+    setup_price: 600,
+    planid: '',
+    total_cycles: 36,
+    features: [
+      {
+        id: 'plan-three-feature-a',
+        description: 'Custom Compliance Portal',
+      },
+      {
+        id: 'plan-three-feature-b',
+        description: 'Ongoing network scans',
+      },
+      {
+        id: 'plan-three-feature-c',
+        description: 'Ongoing compliance reporting',
+      },
+      {
+        id: 'plan-three-feature-d',
+        description: 'Issue alerts & notifications',
+      },
+      {
+        id: 'plan-three-feature-e',
+        description: 'Industry-approved documentation',
+      },
+      {
+        id: 'plan-three-feature-f',
+        description: 'Quarterly Compliance Review',
+      },
+    ],
+  },
+  {
+    id: 'hippa-four',
+    name_one: '11+',
+    name_two: 'Individual | > 100 Devices',
+    price: 1299.99,
+    setup_price: 600,
+    planid: '',
+    total_cycles: 36,
+    features: [
+      {
+        id: 'plan-four-feature-a',
+        description: 'Custom Compliance Portal',
+      },
+      {
+        id: 'plan-four-feature-b',
+        description: 'Ongoing network scans',
+      },
+      {
+        id: 'plan-four-feature-c',
+        description: 'Ongoing compliance reporting',
+      },
+      {
+        id: 'plan-four-feature-d',
+        description: 'Issue alerts & notifications',
+      },
+      {
+        id: 'plan-four-feature-e',
+        description: 'Industry-approved documentation',
+      },
+      {
+        id: 'plan-four-feature-f',
+        description: 'Monthly Compliance Review',
+      },
+    ],
+  },
+];
+
+export const nistPlans = [
+  {
+    id: 'nist-one',
+    name_one: 'Individual',
+    name_two: '| <10 Devices |',
+    price: 325.99,
+    setup_price: 600,
+    planid: '',
+    total_cycles: 36,
+    features: [
+      {
+        id: 'nist-plan-one-feature-a',
+        description: 'Custom Compliance Portal',
+      },
+      {
+        id: 'nist-plan-one-feature-b',
+        description: 'Ongoing network scans',
+      },
+      {
+        id: 'nist-plan-one-feature-c',
+        description: 'Ongoing compliance reporting',
+      },
+      {
+        id: 'nist-plan-one-feature-d',
+        description: 'Issue alerts & notifications',
+      },
+      {
+        id: 'nist-plan-one-feature-e',
+        description: 'Industry-approved documentation',
+      },
+      {
+        id: 'nist-plan-one-feature-f',
+        description: 'Annual Compliance Review',
+      },
+    ],
+  },
+  {
+    id: 'nist-two',
+    name_one: 'Team',
+    name_two: '| 11-100 Devices |',
+    price: 699.99,
+    setup_price: 600,
+    planid: '',
+    total_cycles: 36,
+    features: [
+      {
+        id: 'nist-plan-two-feature-a',
+        description: 'Custom Compliance Portal',
+      },
+      {
+        id: 'nist-plan-two-feature-b',
+        description: 'Ongoing network scans',
+      },
+      {
+        id: 'nist-plan-two-feature-c',
+        description: 'Ongoing compliance reporting',
+      },
+      {
+        id: 'nist-plan-two-feature-d',
+        description: 'Issue alerts & notifications',
+      },
+      {
+        id: 'nist-plan-two-feature-e',
+        description: 'Industry-approved documentation',
+      },
+      {
+        id: 'nist-plan-two-feature-f',
+        description: 'Semi-Annual Compliance Review',
+      },
+    ],
+  },
+  {
+    id: 'nist-three',
+    name_one: 'Corporate',
+    name_two: '| 101-350 Devices |',
+    price: 899.99,
+    setup_price: 600,
+    planid: '',
+    total_cycles: 36,
+    features: [
+      {
+        id: 'nist-plan-three-feature-a',
+        description: 'Custom Compliance Portal',
+      },
+      {
+        id: 'nist-plan-three-feature-b',
+        description: 'Ongoing network scans',
+      },
+      {
+        id: 'nist-plan-three-feature-c',
+        description: 'Ongoing compliance reporting',
+      },
+      {
+        id: 'nist-plan-three-feature-d',
+        description: 'Issue alerts & notifications',
+      },
+      {
+        id: 'nist-plan-three-feature-e',
+        description: 'Industry-approved documentation',
+      },
+      {
+        id: 'nist-plan-three-feature-f',
+        description: 'Quarterly Compliance Review',
+      },
+    ],
+  },
+  {
+    id: 'nist-four',
+    name_one: 'Enterprise',
+    name_two: '| 350+ Devices |',
+    price: 1299.99,
+    setup_price: 600,
+    planid: '',
+    total_cycles: 36,
+    features: [
+      {
+        id: 'nist-plan-four-feature-a',
+        description: 'Custom Compliance Portal',
+      },
+      {
+        id: 'nist-plan-four-feature-b',
+        description: 'Ongoing network scans',
+      },
+      {
+        id: 'nist-plan-four-feature-c',
+        description: 'Ongoing compliance reporting',
+      },
+      {
+        id: 'nist-plan-four-feature-d',
+        description: 'Issue alerts & notifications',
+      },
+      {
+        id: 'nist-plan-four-feature-e',
+        description: 'Industry-approved documentation',
+      },
+      {
+        id: 'nist-plan-four-feature-f',
+        description: 'Monthly Compliance Review',
+      },
+    ],
   },
 ];

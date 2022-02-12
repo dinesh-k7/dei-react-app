@@ -1,13 +1,15 @@
-import React, { Fragment, ReactElement, useState } from 'react';
+import React, { Fragment, ReactElement, useEffect, useState } from 'react';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { connect } from 'react-redux';
-import { constants, messages, PLANS } from '../../constants';
+import { getPaypalPlans } from '../../actions/config';
+import { constants, messages } from '../../constants';
+import LoaderComponent from '../common/loader/loader.component';
 import PaymentFailureComponent from '../common/payment-failure/payment-failure.component';
 import PaymentSuccessComponent from '../common/payment-success/payment-success.component';
 
 import './contributor-plan.component.scss';
 
-const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
+const ContributorPlanComponent: React.FC<any> = (props: any): ReactElement => {
   const [paypalSDKReady, setPaypalSDKReady] = useState(false);
   const [paymentState, setPaymentState] = useState({
     isPaymentFailed: false,
@@ -16,6 +18,10 @@ const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
     amount: 0,
     paymentId: '',
   });
+
+  useEffect(() => {
+    props.getPaypalPlans(constants.CONTRIBUTOR_PAYPAL_PRODUCT_ID);
+  }, []);
 
   //Update payment status in state
 
@@ -42,12 +48,13 @@ const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
   };
 
   const { isPaymentSuccess, paymentId, isPaymentFailed } = paymentState;
+  const { isLoading, plans } = props;
 
   return (
     <Fragment>
       <section className="contributor-section">
-        {PLANS && PLANS.length
-          ? PLANS.map((plan, index) => {
+        {plans && plans.length
+          ? plans.map((plan, index) => {
               return (
                 <div className="subscription-plan" key={plan.id}>
                   <div className={`plan-row`}>
@@ -56,19 +63,21 @@ const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
                     </div>
                     <div className="plan-description-one">
                       <p className="para-normal para-description">Monthly</p>
-                      <span className="price">
-                        {`$${plan.price.toFixed(2)} USD`}
-                      </span>
+                      <span className="price">{`$${plan.price} USD`}</span>
                       <br />
-                      {plan.description_one ? (
+                      {plan.total_cycles ? (
                         <span className="para-normal">
-                          {plan.description_one}
+                          Billed for {plan.total_cycles} months
                         </span>
                       ) : (
                         ''
                       )}
-                      {plan.description_two ? (
-                        <p className="para-normal">{plan.description_two}</p>
+                      {plan.payment_failure_threshold ? (
+                        <p className="para-normal">
+                          Subscription will be paused automatically, if billing
+                          cycle is missed for {plan.payment_failure_threshold}{' '}
+                          months.
+                        </p>
                       ) : (
                         ''
                       )}
@@ -84,7 +93,7 @@ const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
                           }}
                           createSubscription={(data, actions) => {
                             return actions.subscription.create({
-                              plan_id: plan.planId,
+                              plan_id: plan.id,
                             });
                           }}
                           onError={(details, data) => {
@@ -99,7 +108,9 @@ const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
                             vault: true,
                             intent: 'subscription',
                             clientId:
-                              'AUPF1TZNCMS_Fm6WpcL06sF8y1zQR1uz5st0PtDKqpvIQcIHnIRGvNboB4mbXOQ1TNXRkrHuAAwrrxYo',
+                              process.env.REACT_APP_REGION === 'PROD'
+                                ? process.env.REACT_APP_PAYPAL_LIVE_CLIENTID
+                                : process.env.REACT_APP_PAYPAL_SANDBOX_CLIENTID,
                           }}
                         />
                       ) : (
@@ -111,6 +122,8 @@ const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
               );
             })
           : ''}
+
+        {isLoading ? <LoaderComponent /> : ''}
       </section>
       {isPaymentSuccess ? (
         <PaymentSuccessComponent
@@ -134,12 +147,15 @@ const ContributorPlanComponent: React.FC<any> = (): ReactElement => {
 };
 
 const mapStateToProps = (state) => {
-  const { userReducer } = state;
-  return { ...userReducer };
+  const { configReducer } = state;
+  return { ...configReducer };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    getPaypalPlans: (productId) =>
+      dispatch(getPaypalPlans(productId, constants.CONTRIBUTOR)),
+  };
 };
 
 export default connect(

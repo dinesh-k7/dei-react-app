@@ -8,6 +8,8 @@ export const enterpriseFormData = [
     required: true,
     placeholder: 'e.g. John',
     section: 'personal',
+    pattern: patterns.name,
+    maxlength: 75,
   },
   {
     name: 'position',
@@ -26,6 +28,7 @@ export const enterpriseFormData = [
     placeholder: 'e.g. johndoe@email.com',
     pattern: patterns.email,
     section: 'personal',
+    maxlength: 254,
   },
   {
     name: 'phone',
@@ -34,6 +37,7 @@ export const enterpriseFormData = [
     required: true,
     placeholder: 'e.g. 123456789',
     section: 'personal',
+    pattern: patterns.phone,
   },
   {
     name: 'companyName',
@@ -42,6 +46,7 @@ export const enterpriseFormData = [
     required: true,
     placeholder: 'e.g. JohnDoe and co.',
     section: 'company',
+    maxlength: 127,
   },
   {
     name: 'websiteUrl',
@@ -51,6 +56,7 @@ export const enterpriseFormData = [
     placeholder: 'e.g. https://www.company.com',
     pattern: patterns.website_url,
     section: 'company',
+    maxlength: 100,
   },
   {
     name: 'companySize',
@@ -77,6 +83,7 @@ export const enterpriseFormData = [
     required: true,
     placeholder: 'e.g. Address line 1',
     section: 'company',
+    maxlength: 300,
   },
   {
     name: 'suite',
@@ -85,5 +92,6 @@ export const enterpriseFormData = [
     required: true,
     placeholder: 'e.g. Suite#1',
     section: 'company',
+    maxlength: 100,
   },
 ];

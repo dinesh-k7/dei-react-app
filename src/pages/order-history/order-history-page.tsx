@@ -15,7 +15,7 @@ window['dataLayer'].push({
 });
 
 const OrderHistoryPage: React.FC = (props: any): ReactElement => {
-  const { getOrders, orders, isOrderFetchSuccess, isOrderFetchFailure } = props;
+  const { getOrders, orders, isLoading } = props;
 
   useEffect(() => {
     // Get userId from local storage
@@ -29,15 +29,8 @@ const OrderHistoryPage: React.FC = (props: any): ReactElement => {
   return (
     <Fragment>
       <section className="order-history-section">
-        <h3>Order History</h3>
-        {orders &&
-        !orders.length &&
-        !isOrderFetchSuccess &&
-        !isOrderFetchFailure ? (
-          <LoaderComponent />
-        ) : (
-          ''
-        )}
+        {orders && orders.length ? <h3>Order History</h3> : ''}
+        {orders && !orders.length && isLoading ? <LoaderComponent /> : ''}
         {orders && orders.length
           ? orders.map((order, idx) => {
               return (
@@ -62,13 +55,12 @@ const OrderHistoryPage: React.FC = (props: any): ReactElement => {
               );
             })
           : ''}
-        {orders && !orders.length && isOrderFetchSuccess ? (
+        {orders && !orders.length && !isLoading ? (
           <div className="order-history-row no-order"> No Orders found</div>
         ) : (
           ''
         )}
       </section>
-      <div className="landing-border"></div>
     </Fragment>
   );
 };

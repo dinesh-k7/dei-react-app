@@ -34,6 +34,9 @@
   .hero-content {
     justify-self: end;
     .hero-title {
+      h1 {
+        margin: 0px !important;
+      }
       h3 {
         margin: 0px !important;
       }
@@ -41,6 +44,15 @@
   }
   .hero-description {
     margin-top: 48px;
+  }
+  .startup-hero-description {
+    p {
+      font-family: 'MontFont', sans-serif !important;
+      font-size: 20px !important;
+      font-weight: var(--font-weight400) !important;
+      font-style: normal;
+      padding: 0px 0px 0px 6px !important;
+    }
   }
   .hero-image {
     display: grid;
@@ -100,7 +112,7 @@
       display: none !important;
     }
     .hero-mobile-image {
-      display: block;
+      display: block !important;
       justify-self: center;
       padding-top: 40px;
       padding-bottom: 16px;

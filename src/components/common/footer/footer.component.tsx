@@ -1,26 +1,98 @@
-import React, { ReactElement } from 'react';
-import { isIOS } from 'react-device-detect';
+import React, { ReactElement, useState } from 'react';
 
-import mailIcon from '../../../assets/images/mail_icon.png';
-import phoneIcon from '../../../assets/images/phone_icon.png';
-import fbIcon from '../../../assets/images/fb_icon.png';
-import linkedInIcon from '../../../assets/images/linkedin_icon.png';
+import { copyrightData } from '../../../constants';
+import AlertDialogComponent from '../../common/dialog/alert-dialog.component';
 
 import './footer.component.scss';
 
 const Footer: React.FC = (): ReactElement => {
-  const fb_url = isIOS
-    ? 'fb://DEI-Digital-Enterprise-Initiative/104773368286034'
-    : 'https://www.facebook.com/DEI-Digital-Enterprise-Initiative-104773368286034';
+  const [open, setOpen] = useState(false);
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const { title, description } = copyrightData;
   return (
     <footer className="footer-section">
-      <div className="footer-content">
+      {open ? (
+        <AlertDialogComponent
+          fromPage={`footer`}
+          title={title}
+          description={description}
+          isShow={open}
+          handleClose={handleClose}
+        />
+      ) : (
+        ''
+      )}
+      <div className="footer-row-one">
+        <ul className="footer-links">
+          <li>
+            <a href="/contactus">Contact</a>
+          </li>
+          <li>
+            <a href="#" onClick={handleClick}>
+              Copyright
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.thedei.com/privacy-policy"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Privacy
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.thedei.com/terms"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Terms of Use
+            </a>
+          </li>
+        </ul>
+        <div className="donate-link">
+          <form
+            action="https://www.paypal.com/donate"
+            method="post"
+            target="_blank"
+          >
+            <input
+              type="hidden"
+              name="hosted_button_id"
+              value="HWF882AUJ96WA"
+            />
+            <input
+              type="image"
+              src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+              name="submit"
+              title="PayPal - The safer, easier way to pay online!"
+              alt="Donate with PayPal button"
+            />
+            <img
+              alt="donate"
+              src="https://www.paypal.com/en_US/i/scr/pixel.gif"
+              width="1"
+              height="1"
+            />
+          </form>
+        </div>
+      </div>
+
+      {/* <div className="footer-content">
         <span className="contactus-title">Contact us</span>
         <div className="contactus-container">
           <div className="mail-icon">
             <img src={mailIcon} alt="Footer Mail Icon" />
             <span>
-              <a href="mailto:securus@xiiiusa.com">notam@XiiiUSA.com</a>
+              <a href="mailto:securus@xiiiusa.com">securus@xiiiusa.com</a>
             </span>
           </div>
           <div className="phone-icon">
@@ -32,8 +104,8 @@ const Footer: React.FC = (): ReactElement => {
         </div>
       </div>
 
-      <div className="footer-social-wrapper">
-        <ul className="social-links">
+      <div className="footer-social-wrapper"> */}
+      {/* <ul className="social-links">
           <li className="facebook">
             <a rel="noreferrer" href={fb_url}>
               <img src={fbIcon} alt="Footer Facebook icon" />
@@ -60,7 +132,7 @@ const Footer: React.FC = (): ReactElement => {
             Privacy & Legal
           </a>
         </p>
-      </div>
+      </div> */}
     </footer>
   );
 };

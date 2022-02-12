@@ -1,4 +1,4 @@
-import { constants } from '..';
+import { constants, patterns } from '..';
 import { industries } from '../industry-option';
 export const websiteDevelopmentFormData = [
   {
@@ -9,6 +9,8 @@ export const websiteDevelopmentFormData = [
     placeholder: 'e.g. John',
     section: 'personal',
     id: 'wd-1',
+    pattern: patterns.name,
+    maxlength: 75,
   },
   {
     name: 'lastname',
@@ -18,6 +20,8 @@ export const websiteDevelopmentFormData = [
     placeholder: 'e.g. Doe',
     section: 'personal',
     id: 'wd-2',
+    pattern: patterns.name,
+    maxlength: 75,
   },
   {
     name: 'email',
@@ -27,6 +31,7 @@ export const websiteDevelopmentFormData = [
     placeholder: 'e.g. johndoe@email.com',
     section: 'personal',
     id: 'wd-3',
+    maxlength: 254,
   },
   {
     name: 'phone',
@@ -36,6 +41,7 @@ export const websiteDevelopmentFormData = [
     placeholder: 'e.g. 123456789',
     section: 'personal',
     id: 'wd-4',
+    pattern: patterns.phone,
   },
   {
     name: 'companyName',
@@ -45,6 +51,7 @@ export const websiteDevelopmentFormData = [
     placeholder: 'e.g. JohnDoe and co.',
     section: 'company',
     id: 'wd-4',
+    maxlength: 127,
   },
   {
     name: 'industry',

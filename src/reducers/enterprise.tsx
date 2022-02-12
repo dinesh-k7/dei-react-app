@@ -4,7 +4,14 @@ const initialState: InitialState = {
   serviceName: '',
 };
 
-const enterpriseReducer = (state = initialState, action: any): InitialState => {
+interface IAction {
+  type: string;
+  serviceName: string;
+}
+const enterpriseReducer = (
+  state = initialState,
+  action: IAction,
+): InitialState => {
   switch (action.type) {
     case GET_SERVICE_NAME:
       return {

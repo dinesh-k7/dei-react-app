@@ -16,7 +16,6 @@ const SignInPage: React.FC = (): ReactElement => {
   return (
     <Fragment>
       <SignInFormComponent formFields={signInFormData} />
-      <div className="landing-border"></div>
     </Fragment>
   );
 };

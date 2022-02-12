@@ -21,7 +21,6 @@ const SecurePage: React.FC = (): ReactElement => {
         <DataSecurityIntro />
         <SiteSecurityIntro />
       </div>
-      <div className="landing-border"></div>
     </Fragment>
   );
 };

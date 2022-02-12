@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import ScrollToTop from '../common/scroll/scroll-top.component';
 import Header from '../common/header/header.component';
 import Footer from '../common/footer/footer.component';
+import NotFoundPage from '../../pages/not-found/not-found-page';
 
 import ProtectedRoute from '../common/protected-route/protected-route';
+
+import { Suspense } from 'react';
+import LogoutPage from '../../pages/logout/logout-page';
+import LoaderComponent from '../common/loader/loader.component';
+
 const SecurityIntro = React.lazy(
   () =>
     import('../../pages/enterprise/container/security-intro/security-intro'),
@@ -67,8 +73,10 @@ const SecurePage = React.lazy(
   () => import('../../pages/smb/secure/secure-page'),
 );
 
-import { Suspense } from 'react';
-import LogoutPage from '../../pages/logout/logout-page';
+const ActivateAccountComponent = React.lazy(
+  () => import('../activate-account/activate-account.component'),
+);
+
 const ReconnectPage = React.lazy(
   () => import('../../pages/reconnect/reconnect-page'),
 );
@@ -113,18 +121,42 @@ const ContributionPage = React.lazy(
   () => import('../../pages/contribution/contribution-page'),
 );
 
-const App = () => {
+const ConfigPage = React.lazy(() => import('../../pages/config/config-page'));
+const ContactUsPage = React.lazy(
+  () => import('../../pages/contactus/contactus-page'),
+);
+
+const ProfilePage = React.lazy(
+  () => import('../../pages/profile/profile-page'),
+);
+
+const CompliancePage = React.lazy(
+  () => import('../../pages/compliance/compliance-page'),
+);
+
+const App = (): ReactElement => {
   // Checked local storage to see whether user data is present or not
   const user = localStorage.getItem('userData');
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Header user={user} />
-      <Suspense fallback={<p>Loaing...</p>}>
+      <Suspense
+        fallback={
+          <div
+            style={{ height: '400px', display: 'grid', paddingTop: '400px' }}
+          >
+            <LoaderComponent />
+          </div>
+        }
+      >
         <Switch>
           <Route exact path="/" render={() => <LandingPage />} />
           <Route path="/data-security" render={() => <DataSecurityPage />} />
-
+          <Route
+            path="/activate-account"
+            render={() => <ActivateAccountComponent />}
+          />
           <Route path="/branding" render={() => <BrandingPage />} />
 
           <Route path="/smb" render={() => <SmbPage />} />
@@ -194,7 +226,7 @@ const App = () => {
 
           <Route path="/sign-in" render={() => <SignInPage />} />
 
-          <Route path="/contribution" render={() => <ContributionPage />} />
+          <Route path="/contributors" render={() => <ContributionPage />} />
 
           <ProtectedRoute
             exact
@@ -203,9 +235,37 @@ const App = () => {
             component={SignUpPage}
           />
 
+          <Route
+            exact
+            path="/active-ego-registration"
+            render={() => <SignUpPage type={`freelancer`} />}
+          />
+
+          <Route
+            exact
+            path="/climate-push-registration"
+            render={() => <SignUpPage type={`business`} />}
+          />
+
+          <Route
+            exact
+            path="/climate-push-personal-registration"
+            render={() => <SignUpPage type={`personal`} />}
+          />
+
+          <Route
+            exact
+            path="/compliance-central"
+            render={() => <CompliancePage />}
+          />
+
           <Route path="/order-history" render={() => <OrderHistoryPage />} />
 
           <Route path="/reset-password" render={() => <ResetPasswordPage />} />
+          <Route path="/configuration" render={() => <ConfigPage />} />
+          <Route path="/contactus" render={() => <ContactUsPage />} />
+          <Route path="/profile" render={() => <ProfilePage />} />
+          <Route component={NotFoundPage} />
         </Switch>
       </Suspense>
       <Footer />

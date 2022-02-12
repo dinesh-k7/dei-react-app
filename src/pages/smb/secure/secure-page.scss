@@ -1,15 +1,10 @@
 @import '../../../assets/scss/abstracts/mixins';
+@import '../../../assets/scss/layout/hero';
 .secure-page-grid {
   display: grid;
   grid-column: 1/-1;
   padding: 0px 104px;
   grid-row: 2/3;
-}
-
-.landing-border {
-  border-bottom: 1px solid var(--font-color);
-  grid-column: 1/-1;
-  // margin-top: 72px;
 }
 
 @include respond-between(sm, md) {

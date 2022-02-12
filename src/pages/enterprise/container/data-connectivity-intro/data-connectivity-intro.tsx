@@ -80,13 +80,13 @@ const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    <b>Point to Point Connections</b> is a closed network data
-                    transport service that does not traverse the public Internet
-                    and is secure with no data encryption needed. Connecting
-                    securely two or more locations for private data services.
-                    Provided businesses with reliable, secure network data
+                    <b>Point to Point Connections </b> is a closed network data
+                    transport service that does not traverse the public internet
+                    and is secure with no data encryption needed. Two or more
+                    locations are connected securely for private data services
+                    providing your businesses with reliable, secure network data
                     service applications, credit card processing, file sharing,
-                    data backup, VOIP, and video conferencing.
+                    data backup, VOIP, and video conferencing
                   </p>
                 </div>
                 <div className="features">
@@ -105,22 +105,31 @@ const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    Multi-Protocol Label Switching (MPLS) is the backdoor
-                    routing and switching technology, providing Layer 3 routing
-                    at Layer 2 speeds and enabling multiple virtual networking
+                    Multi-Protocol Label Switching (MPLS) is the backdoor that
+                    routes and switches technology to provide Layer 3 route at
+                    Layer 2 speeds and enabling multiple virtual networking
                     environments and services to be delivered on a single layer
-                    1 connection. Software-Defined Networking (SDN) is the
-                    separation of the Network Control Plane and the Data Plane.
+                    1 connection.
                   </p>
                   <p>
-                    Our global network gives you the power to directly affect
-                    real-time changes in bandwidth and QoS service planes. Our
-                    proprietary code writes changes directly to our PE routers
-                    (in our customer’s virtualized network space) from within
-                    our web portal, or even their smartphones (see video). This
-                    on-demand flexibility keeps our clients in control of their
-                    changing network needs; eliminating the need for CLI access
-                    to the hardware that controls the data flow.
+                    (SDN) or Software-Defined Networking is the separation of
+                    the Network Control Plane and the Data Plane.
+                  </p>
+                  <p>
+                    Our global network gives you the ability to directly affect
+                    and control the real-time changes with bandwidth & Quality
+                    of Service or QoS.
+                  </p>
+                  <p>
+                    The proprietary code changes and writes precisely to our PE
+                    routers (In virtualized network space with the customers)
+                    our web portal or even their smartphones.
+                  </p>
+                  <p>
+                    This requested by direct control flexibility allows our
+                    clients to control their changing network needs; eliminating
+                    the need for CLI access to the hardware that controls the
+                    data flow.
                   </p>
                 </div>
               </div>

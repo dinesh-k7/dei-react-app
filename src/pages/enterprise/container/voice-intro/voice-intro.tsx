@@ -59,38 +59,32 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <div className="feature-description">
-                    DEI™ has connections within every Unified Communications
-                    (UC) provider in the Gartner magic quadrant available to
-                    meet your customer’s needs and a few more to meet those
-                    special requirements only a few vendors can provide. Our
-                    experience in selling Unified Communications as a Service
-                    (UCaaS) solutions is unmatched in the channel. We cover
-                    basic telephony, video, conferencing, collaboration, contact
-                    center and more. Our UCaaS providers can meet both domestic
-                    and multi-national customer needs.
+                    The DEI™ provides connections with all (UC) or Unified
+                    Communications providers with/in the magic quadrant of
+                    Gartner. This enables us to meet your customer&apos;s needs
+                    above and beyond. A quality that only a few vendors can
+                    provide. With unmatched experience selling Unified
+                    Communications as a Service (UCaaS), our group confidently
+                    can deliver domestic and international needs:
                     <br />
                     <br />
                     <ul>
+                      <li>Basic telephony</li>
+                      <li>Video</li>
+                      <li>Conferencing</li>
+                      <li>Collaboration</li>
+                      <li>Contact Center</li>
                       <li>
-                        Voice and telephony, including mobile devices support
+                        Messaging both Email with voice mail and (UM) or unified
+                        messaging
                       </li>
-                      <li>
-                        Conferencing — Audioconferencing, videoconferencing and
-                        web conferencing
-                      </li>
-                      <li>
-                        Messaging — Email with voice mail and unified messaging
-                        (UM)
-                      </li>
-                      <li>Instant messaging and presence (IM &P)</li>
-                      <li>
-                        Soft-Clients — Including desktop clients and thin
-                        browser clients
-                      </li>
+                      <li>(IM &P) - Instant messaging and presence</li>
+                      <li>Soft-Clients</li>
                       <li>
                         Communications-enabled applications — For example,
                         integrated collaboration and contact center applications
                       </li>
+                      <li>and more</li>
                     </ul>
                   </div>
                 </div>
@@ -110,20 +104,24 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                     }
                     className="chevron-right"
                   />
-                  <p>
-                    Our web conferencing services are designed to make it easy
-                    to schedule and conduct meetings, sales demos, remote
-                    support and training sessions. Make instant, spontaneous
-                    video meetings a breeze. Your remote employees will feel
-                    engaged again. And it’s easy to do. How easy? If you can
-                    click a link, you can meet and collaborate.
-                  </p>
-                  <p>
-                    Our audio conferencing can meet any business need—from the
-                    smallest impromptu calls to your largest business-critical
-                    events. Remarkably easy-to-use and clear connections
-                    worldwide…always available and always dependable.
-                  </p>
+                  <div className="feature-description">
+                    We know that engaging with your remote workers is a
+                    necessity. Our web conferencing solutions define digital
+                    intimacy by making conferencing feel more spontaneous,
+                    instant, and natural. Engaging collaborations are just a few
+                    clicks away.
+                    <br />
+                    <ul>
+                      <li>conduct meetings</li>
+                      <li>sales demos</li>
+                      <li>remote support</li>
+                      <li>training sessions</li>
+                    </ul>
+                    <br />
+                    Our audio conferencing solutions can meet any business need.
+                    We are dedicated to making clear connections worldwide at
+                    any time, day or night.
+                  </div>
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
@@ -140,16 +138,24 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                     }
                     className="chevron-right"
                   />
-                  <p>
-                    Multi-channel contact center provides ACD services across
-                    all channels; inbound & outbound voice, IVR, chat and email.
-                    Available as a cloud service or premise system and highly
-                    available to ensure critical customer interactions are
-                    successful. Multi-channel quality assurance recording and
-                    management, workforce optimization, and CTI (screen pop)
-                    will ensure you can provide your customers an effortless
-                    experience.
-                  </p>
+                  <div className="feature-description">
+                    Cloud service or on-premise systems our ACD services are
+                    highly available to ensure critical customer interactions
+                    are successful across all channels;
+                    <br />
+                    <ul>
+                      <li>Inbound & Outbound voice</li>
+                      <li>IVR or Interactive Voice Response,</li>
+                      <li>Chat and email</li>
+                      <li>Instant messaging and presence (IM &P)</li>
+                      <li>CTI (screen pop)</li>
+                    </ul>
+                    <br />
+                    Managed workforce optimization combined with multi-channel
+                    quality assurance recording enables workforce optimization.
+                    Providing your customers with a seemingly effortless
+                    experience
+                  </div>
                 </div>
                 <div className="features">
                   <img src={blueBlob} alt="blue blob" />
@@ -166,19 +172,28 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                     }
                     className="chevron-right"
                   />
-                  <p>
-                    A SIP trunk is a direct connection between your organization
-                    and an ITSP. It enables you to extend VoIP telephony beyond
-                    your organization’s firewall without the need for an IP-PSTN
-                    gateway. Additionally, SIP trunks can carry instant
-                    messages, multimedia conferences, user presence information,
-                    Enhanced 9-1-1 emergency calls, and other SIP-based,
-                    real-time communications services. Because it is easier to
-                    configure and less expensive to design, operate, maintain,
-                    and upgrade, and because ITSPs deliver services at
-                    substantial savings, your investment in SIP trunking can
-                    give a quick and substantial return on investment.
-                  </p>
+                  <div className="feature-description">
+                    Forming a direct connection between your organization and
+                    its ITSP is called a SIP trunk. With it, your VoIP telephony
+                    extends beyond your firewall without the need for an
+                    additional IP-PSTN gateway.
+                    <br />
+                    Additionally, SIP trunks can carry
+                    <ul>
+                      <li>Instant messages,</li>
+                      <li>Multimedia conferences,</li>
+                      <li>User presence information,</li>
+                      <li>Enhanced 9-1-1 emergency calls,</li>
+                      <li>Other SIP-based,</li>
+                      <li>Real-time communications services.</li>
+                    </ul>
+                    <br />
+                    Making it easier to configure and less expensive to design,
+                    operate, maintain, and upgrade. An investment in SIP
+                    trunking can give a quick and substantial return on
+                    investment by enabling ITSPs to deliver service at
+                    significant savings.
+                  </div>
                 </div>
 
                 <div className="features">
@@ -197,23 +212,21 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <div className="feature-description">
-                    With Hosted PBX, make phone calls using the same broadband
-                    connection you use for Business Internet service. Select
-                    your phone plan, features, and IP phones, and let us do the
-                    rest. Get the most advanced PBX capabilities in the cloud
-                    and easy online administration, where users can manage their
-                    call preferences and service options.
+                    Using a hosted PBX allows you to make phone calls with your
+                    preferred ISP for Business Internet. You select your phone
+                    plan, features, and IP phones, and we will handle everything
+                    else.
                     <br /> <br />
                     <ul>
                       <li>
-                        <b>VoIP Phones</b> – available to buy or rent
+                        <b>VoIP Phones</b> – for purchase or rent
                       </li>
                       <li>
-                        <b>Phone Numbers</b> – we’ll help you obtain new numbers
-                        or transfer your existing numbers
+                        <b>Phone Numbers</b> – Transfer your existing number or
+                        get a new one
                       </li>
                       <li>
-                        <b>Broadband Connection</b> – Use your existing services
+                        <b>Broadband Connection</b> – Use your current services
                         or let us provide a high-quality broadband connection
                       </li>
                       <li>
@@ -245,13 +258,14 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    Traditional telephone service/POTS or Plain Old Telephone
-                    System refers to a landline phone service that uses copper
-                    wiring to make and receive calls. It is usually offered by
-                    household-name companies such as Verizon, AT&T, MCI, or any
-                    other local landline operator in your specific area.
+                    A Plain Old Telephone System is a traditional landline with
+                    copper wiring making and recieving calls. For some,
+                    traditional telephone services is still the best choice.
+                    However, modern advancements provide similar services with
+                    better pricing. So, before making a final desicion on your
+                    landline provider book a consultation with us!
                   </p>
-                  <p>
+                  {/* <p>
                     These companies rely on the PSTN (Public Switched Telephone
                     Network) to transmit calls. The PSTN is a complex system of
                     hardwired landlines that act as the backbone of traditional
@@ -263,7 +277,7 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                     <a href="https://www.myrateplan.com">VoIP</a> (Voice over
                     Internet Protocol) and wireless phone service before you
                     make a final decision on your landline service provider.
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="features">
@@ -282,26 +296,19 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    PRI, or Primary Rate Interface, is the standard service
-                    level for carrying digital voice and data services. If you
-                    already own a PBX or are able to obtain a PBX at a low cost,
-                    the PRI circuit is a viable solution for your business.
-                    Medium to large businesses that can make use of 23
-                    simultaneous phone calls benefit the most from this service,
-                    otherwise you have empty channels that you are paying for
-                    and not using. The PBX itself offers a lot of features that
-                    you see in medium to large businesses (auto attendants,
-                    rings groups, hold music, etc). It may not be right for you
-                    if you’re a very small business with only a few employees.
-                    It may not be right for you if you’re a large organization
-                    with multiple locations. An MPLS with SIP Trunking might be
-                    a better solution.
+                    Primary Rate Interface or PRI, is the standard service level
+                    for carrying digital voice and data services. Some companies
+                    have made the investment of a PBX, features like auto
+                    attendants, ring groups, hold music, etc, offset the
+                    expense. A larger business with multiple locations might be
+                    better served with MPLS and SIP trunking. A medium to a
+                    large-sized business needing 23 simultaneous phone calls
+                    would benefit the most from a PRI. Don&apos;t get stuck
+                    paying for services that you won&apos;t use.
                   </p>
                   <p>
-                    We can help you determine if a PRI is an appropriate
-                    solution for your business. We’ll talk with you to discover
-                    what your business goals are, and what technological needs
-                    will satisfy those goals.
+                    Book a consultation with the DEI™ we can help you determine
+                    if a PRI is the right solution.
                   </p>
                 </div>
               </div>
