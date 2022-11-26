@@ -12,11 +12,7 @@ const HeroContainer: React.FC<any> = (): ReactElement => {
         </div>
         <div className="hero-description">
           <p>
-            Develop, Protect and Preserve the DIGNITY of humanity! Help preserve
-            the identity of the human race! &quot;De Oppresso Liber&quot;, free
-            the oppressed,contributors like you are the backbone of our mission:
-            To Unite humanity with the common goal of solving the problems that
-            threaten our species. Join by making a contribution today.
+           Your contributions help build a better world for all. Thank you for contributing to our project.
             <br />
             <br />
             Your Donations are securely processed.

@@ -12,6 +12,7 @@ import LoaderComponent from '../common/loader/loader.component';
 import { getConfigDetails, updateConfigDetails } from '../../actions/config';
 import { camelToSnakeCase } from '../../utils';
 import { ISettings } from '../../interfaces/config-state.model';
+import { defaultSettings } from '../../constants/form-data/config-form';
 
 interface IntitialState {
   isFormSubmitted: boolean;
@@ -58,15 +59,17 @@ const ConfigFormComponent: React.FC<ConfigFormComponentProps> = (
 
   useEffect(() => {
     props.getConfigDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // handle form onSubmit
   const onSubmit = (quoteData: any) => {
     quoteData.isFormSubmitted = true;
     quoteData.isButtonSubmit = false;
-
-    if (settings && settings.length) {
-      const updateSettings = settings.map((st) => {
+    const data = settings && settings.length ? settings : defaultSettings;
+    if (data && data.length) {
+      const filterSettings = data.filter((st) => st.name !== 'enableSandbox');
+      const updateSettings = filterSettings.map((st) => {
         const { id, name, type } = st;
         return {
           id,
@@ -129,6 +132,7 @@ const ConfigFormComponent: React.FC<ConfigFormComponentProps> = (
           <div className="personal-information">
             {formFields &&
               formFields.length &&
+              // eslint-disable-next-line array-callback-return
               formFields.map((field) => {
                 if (field.type === 'radio') {
                   return (

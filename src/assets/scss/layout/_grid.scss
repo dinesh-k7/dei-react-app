@@ -4,7 +4,7 @@
   #root {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 80px auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
   }
 
   .hero-section {
@@ -29,6 +29,7 @@
   .reconnect-quote-section,
   .config-form-section,
   .contributor-section,
+  .terms-section,
   .enterprise-quote-section {
     //  border-bottom: 1px solid var(--font-color);
     grid-column: 1/4;
@@ -168,7 +169,7 @@
 
 @include respond-above(lg) {
   .hero-section {
-    padding: 50px 200px !important;
+    padding: 50px 104px !important;
   }
 }
 
@@ -190,7 +191,7 @@
   }
 
   .MuiToolbar-gutters {
-    padding-right: 0px !important;
+    padding: 0px !important;
   }
 
   .sticky-content {
@@ -247,6 +248,7 @@
   .reconnect-quote-section,
   .contributor-section,
   .config-form-section,
+  .terms-section,
   .enterprise-quote-section {
     border-bottom: 1px solid var(--font-color);
     padding-bottom: 90px;

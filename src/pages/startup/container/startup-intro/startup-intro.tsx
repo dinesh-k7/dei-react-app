@@ -35,7 +35,7 @@ const StartupIntroContainer: React.FC<any> = ({
         </div>
         <p className="startup-intro-text">
           Venturing into the digital world can be risky, especially without the
-          proper tools and know-how. The DEI™ Start-Up tools and resources help
+          proper tools and know-how. The DEI®️ Start-Up tools and resources help
           you mitigate your risk and maximize your digital potential.
         </p>
       </div>

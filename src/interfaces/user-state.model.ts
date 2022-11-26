@@ -22,6 +22,7 @@ export interface IRetry {
 
 export interface InitialState {
   isLoading: boolean;
+  isFetching?: boolean;
   error: string;
   orders?: IOrders[];
   isRegisterSuccess: boolean;

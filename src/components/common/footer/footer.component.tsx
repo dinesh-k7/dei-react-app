@@ -1,15 +1,16 @@
 import React, { ReactElement, useState } from 'react';
 
 import { copyrightData } from '../../../constants';
+import copyrightICon from '../../../assets/images/copyrightIcon.png';
 import AlertDialogComponent from '../../common/dialog/alert-dialog.component';
-
 import './footer.component.scss';
+
+import linkedInIcon from '../../../assets/images/linkedin_icon.svg';
+import twitterIcon from '../../../assets/images/twitter-icon.svg';
+import mailIcon from '../../../assets/images/mail-icon.png';
 
 const Footer: React.FC = (): ReactElement => {
   const [open, setOpen] = useState(false);
-  const handleClick = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -29,35 +30,38 @@ const Footer: React.FC = (): ReactElement => {
       ) : (
         ''
       )}
-      <div className="footer-row-one">
+      <div className="footer-wrapper">
         <ul className="footer-links">
           <li>
-            <a href="/contactus">Contact</a>
-          </li>
-          <li>
-            <a href="#" onClick={handleClick}>
-              Copyright
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.thedei.com/privacy-policy"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Privacy
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.thedei.com/terms"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Terms of Use
-            </a>
+            <a href="contactus">Contact us</a>
           </li>
         </ul>
+
+        <div className="social-link-container">
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href="https://twitter.com/xiiiusa"
+          >
+            <img src={twitterIcon} alt="twitter icon" height={25} />
+          </a>
+
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href="https://www.linkedin.com/showcase/dei%E2%84%A2-digital-enterprise-initiative"
+          >
+            <img src={linkedInIcon} alt="linkedin Icon" height={25} />
+          </a>
+        </div>
+        <div className="mail-icon">
+          <img src={mailIcon} alt="Footer Mail Icon" />
+          <span>
+            <a href="mailto:helpdesk@thedei.com">helpdesk@thedei.com</a>
+          </span>
+        </div>
+
+        <span className="consulting"> Pat. Pend. © DEI DAO LLC</span>
         <div className="donate-link">
           <form
             action="https://www.paypal.com/donate"
@@ -84,6 +88,24 @@ const Footer: React.FC = (): ReactElement => {
             />
           </form>
         </div>
+        <span className="privacy">
+          <button
+            className="btn-bor"
+            type="button"
+            onClick={() => setOpen(true)}
+          >
+            <img src={copyrightICon} height={18} />
+          </button>
+
+          <a
+            href="https://digitalenterpriseinitiative.com/privacy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {' '}
+            <span>Privacy & Legal</span>
+          </a>
+        </span>
       </div>
 
       {/* <div className="footer-content">
@@ -92,7 +114,7 @@ const Footer: React.FC = (): ReactElement => {
           <div className="mail-icon">
             <img src={mailIcon} alt="Footer Mail Icon" />
             <span>
-              <a href="mailto:securus@xiiiusa.com">securus@xiiiusa.com</a>
+              <a href="helpdesk@thedei.com">helpdesk@thedei.com</a>
             </span>
           </div>
           <div className="phone-icon">
@@ -122,7 +144,7 @@ const Footer: React.FC = (): ReactElement => {
             </a>
           </li>
         </ul>
-        <p className="copyright-text">xiiiusa @ 2021</p>
+        <p className="copyright-text">xiii @ 2022</p>
         <p>
           <a
             href="https://www.thedei.com/terms"

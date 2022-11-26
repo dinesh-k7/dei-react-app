@@ -5,7 +5,6 @@ import { getPaypalPlans } from '../../actions/config';
 import { constants, messages } from '../../constants';
 import LoaderComponent from '../common/loader/loader.component';
 import PaymentFailureComponent from '../common/payment-failure/payment-failure.component';
-import PaymentSuccessComponent from '../common/payment-success/payment-success.component';
 
 import './contributor-plan.component.scss';
 
@@ -21,6 +20,7 @@ const ContributorPlanComponent: React.FC<any> = (props: any): ReactElement => {
 
   useEffect(() => {
     props.getPaypalPlans(constants.CONTRIBUTOR_PAYPAL_PRODUCT_ID);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //Update payment status in state
@@ -47,7 +47,7 @@ const ContributorPlanComponent: React.FC<any> = (props: any): ReactElement => {
     }
   };
 
-  const { isPaymentSuccess, paymentId, isPaymentFailed } = paymentState;
+  const { isPaymentFailed } = paymentState;
   const { isLoading, plans } = props;
 
   return (
@@ -125,14 +125,14 @@ const ContributorPlanComponent: React.FC<any> = (props: any): ReactElement => {
 
         {isLoading ? <LoaderComponent /> : ''}
       </section>
-      {isPaymentSuccess ? (
+      {/* {isPaymentSuccess ? (
         <PaymentSuccessComponent
           paymentId={paymentId}
           description={messages.payment_success_message}
         />
       ) : (
         ''
-      )}
+      )} */}
 
       {isPaymentFailed ? (
         <PaymentFailureComponent

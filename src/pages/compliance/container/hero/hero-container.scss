@@ -1,11 +1,35 @@
 @import '../../../../assets/scss/layout/hero';
-ul.compliance-features {
-  margin: 0px !important;
-  li {
-    padding-top: 8px !important;
-    color: var(--font-color) !important;
-    font-size: 16px;
-    font-family: 'OpenSansRegular', sans-serif;
-    list-style: outside;
+.hero-section {
+  .hero-content {
+    grid-column: span 2;
+  }
+
+  .hero-image-container {
+    display: grid;
+    justify-content: center;
+  }
+
+  ul.compliance-features {
+    margin: 0px !important;
+    li {
+      padding-top: 8px !important;
+      color: var(--font-color) !important;
+      font-size: 16px;
+      font-family: 'OpenSansRegular', sans-serif;
+      list-style: outside;
+    }
+  }
+}
+
+@include respond-below(sm) {
+  .hero-section {
+    .hero-content {
+      grid-column: span 1;
+    }
+    .hero-image-container {
+      display: grid;
+      justify-content: center;
+      padding: 16px;
+    }
   }
 }

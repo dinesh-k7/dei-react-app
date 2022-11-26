@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { ReactElement, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -168,6 +169,7 @@ const ProfileFormComponent: React.FC<ProfileFormComponentProps> = (
         };
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props]);
 
   // Set captcha reference
@@ -310,67 +312,6 @@ const ProfileFormComponent: React.FC<ProfileFormComponentProps> = (
                       tooltip={field.tooltip}
                     />
                   );
-                } else if (field.type === 'radio') {
-                  return (
-                    <div className="form-group radio-section" key={field.id}>
-                      {field.tooltip ? (
-                        <div className="info-icon-container">
-                          <span> {field.label} </span>
-                          <div
-                            className="tooltip-icon"
-                            aria-label={field.infoText}
-                            data-balloon-pos="right"
-                            data-balloon-length="large"
-                          >
-                            <img
-                              src={info_icon}
-                              width={20}
-                              height={18}
-                              alt="Info Icon"
-                            />
-                          </div>
-                        </div>
-                      ) : (
-                        field.label
-                      )}
-                      <div className="radio-options">
-                        <span
-                          className={
-                            profileState[field.name] === true
-                              ? 'green-bg'
-                              : 'white-bg'
-                          }
-                          onClick={() => {
-                            setProfileState((prevState) => {
-                              return {
-                                ...prevState,
-                                [field.name]: true,
-                              };
-                            });
-                          }}
-                        >
-                          YES
-                        </span>
-                        <span
-                          className={
-                            profileState[field.name] === false
-                              ? 'red-bg'
-                              : 'white-bg'
-                          }
-                          onClick={() => {
-                            setProfileState((prevState) => {
-                              return {
-                                ...prevState,
-                                [field.name]: false,
-                              };
-                            });
-                          }}
-                        >
-                          NO
-                        </span>
-                      </div>
-                    </div>
-                  );
                 }
               })}
           </div>
@@ -485,6 +426,75 @@ const ProfileFormComponent: React.FC<ProfileFormComponentProps> = (
               ref={register}
               value={captchaValue}
             />
+          </div>
+
+          <div className="personal-information">
+            {formFields &&
+              formFields.length &&
+              formFields.map((field) => {
+                if (field.type === 'radio') {
+                  return (
+                    <div className="form-group radio-section" key={field.id}>
+                      {field.tooltip ? (
+                        <div className="info-icon-container">
+                          <span> {field.label} </span>
+                          <div
+                            className="tooltip-icon"
+                            aria-label={field.infoText}
+                            data-balloon-pos="right"
+                            data-balloon-length="large"
+                          >
+                            <img
+                              src={info_icon}
+                              width={20}
+                              height={18}
+                              alt="Info Icon"
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        field.label
+                      )}
+                      <div className="radio-options">
+                        <span
+                          className={
+                            profileState[field.name] === true
+                              ? 'green-bg'
+                              : 'white-bg'
+                          }
+                          onClick={() => {
+                            setProfileState((prevState) => {
+                              return {
+                                ...prevState,
+                                [field.name]: true,
+                              };
+                            });
+                          }}
+                        >
+                          YES
+                        </span>
+                        <span
+                          className={
+                            profileState[field.name] === false
+                              ? 'red-bg'
+                              : 'white-bg'
+                          }
+                          onClick={() => {
+                            setProfileState((prevState) => {
+                              return {
+                                ...prevState,
+                                [field.name]: false,
+                              };
+                            });
+                          }}
+                        >
+                          NO
+                        </span>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
           </div>
         </form>
       </div>

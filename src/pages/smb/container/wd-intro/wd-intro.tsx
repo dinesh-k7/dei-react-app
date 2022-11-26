@@ -34,11 +34,19 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceBlue} alt="Blob one" />
               <h3 className="feature-title">
-                <a href="https://www.nwohub.com/products/website-builder">
+                <a
+                  href="https://www.deiportal.com/products/website-builder"
+                  rel="noreferrer"
+                  target="_blank"
+                >
                   Website Builder
                 </a>
               </h3>
-              <a href="https://www.nwohub.com/products/website-builder">
+              <a
+                href="https://www.deiportal.com/products/website-builder"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <LaunchIcon
                   style={{
                     color: '#9c47ed',
@@ -58,11 +66,19 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceBlue} alt="Blob two" />
               <h3 className="feature-title">
-                <a href="https://www.nwohub.com/products/wordpress">
+                <a
+                  href="https://www.deiportal.com/products/wordpress"
+                  rel="noreferrer"
+                  target="_blank"
+                >
                   WordPress
                 </a>
               </h3>
-              <a href="https://www.nwohub.com/products/wordpress">
+              <a
+                href="https://www.deiportal.com/products/wordpress"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <LaunchIcon
                   style={{
                     color: '#9c47ed',
@@ -74,7 +90,7 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
               </a>
             </div>
             <p>
-              The DEI™ WordPress Hosting provides automatic setup, backups, and
+              The DEI®️ WordPress Hosting provides automatic setup, backups, and
               software updates paired with 24/7, award-winning support. Start
               today, just a few clicks away.
             </p>
@@ -83,11 +99,19 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceBlue} alt="Blob three" />
               <h3 className="feature-title">
-                <a href="https://www.nwohub.com/products/shopping-cart">
+                <a
+                  href="https://www.secureserver.net/products/website-builder?plid=568415"
+                  rel="noreferrer"
+                  target="_blank"
+                >
                   Shopping Cart
                 </a>
               </h3>
-              <a href="https://www.nwohub.com/products/shopping-cart">
+              <a
+                href="https://www.secureserver.net/products/website-builder?plid=568415"
+                rel="noreferrer"
+                target="_blank"
+              >
                 <LaunchIcon
                   style={{
                     color: '#9c47ed',
@@ -104,7 +128,7 @@ const WdIntro: React.FC<any> = (props: any): ReactElement => {
           </div>
 
           <div>
-            <h3 className="hero-sub-title">DEI™:</h3>
+            <h3 className="hero-sub-title">DEI®️:</h3>
           </div>
         </div>
 

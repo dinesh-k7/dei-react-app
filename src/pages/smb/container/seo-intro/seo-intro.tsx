@@ -24,9 +24,9 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceYellow} alt="Blob one" />
               <h3>
-                <a href="https://www.nwohub.com/products/seo">SEO</a>
+                <a href="https://www.deiportal.com/products/seo">SEO</a>
               </h3>
-              <a href="https://www.nwohub.com/products/seo">
+              <a href="https://www.deiportal.com/products/seo">
                 <LaunchIcon
                   style={{
                     color: '#fdcf00',
@@ -39,7 +39,7 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
             </div>
 
             <p>
-              The DEI™ Site Sentinels analyze your website and give you
+              The DEI®️ Site Sentinels analyze your website and give you
               step-by-step instructions on optimizing your site for Google®,
               Yahoo®, and Bing®. A few clicks and you can optimize your
               business.
@@ -49,11 +49,11 @@ const SeoIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="features">
               <img src={serviceYellow} alt="Blob two" />
               <h3>
-                <a href="https://www.nwohub.com/products/email-marketing">
+                <a href="https://www.deiportal.com/products/email-marketing">
                   Email Marketing
                 </a>
               </h3>
-              <a href="https://www.nwohub.com/products/email-marketing">
+              <a href="https://www.deiportal.com/products/email-marketing">
                 <LaunchIcon
                   style={{
                     color: '#fdcf00',

@@ -7,17 +7,33 @@ import './payment-success.component.scss';
 interface IProps {
   paymentId: string;
   description: string;
+  amount: number;
 }
 
 const PaymentSuccessComponent: React.FC<IProps> = (
   props: IProps,
 ): ReactElement => {
   const history = useHistory();
-  const { paymentId, description } = props;
+  const { paymentId, description, amount } = props;
+
+  //Google conversion tracking script
+  // Google page event track
+  window['dataLayer'].push({
+    event: 'conversion',
+    page: {
+      url: window.location.href,
+      title: 'DEI®️ - Conversion',
+      value: amount,
+      currency: 'USD',
+      transaction_id: paymentId,
+      send_to: 'AW-1054480827/GbkpCNTcta4DELuz6PYD',
+    },
+  });
+
   return (
     <div className="payment-success">
       <div>
-        <img src={CartSuccessImage} alt={`Payment success image`} />
+        <img src={CartSuccessImage} alt={`Payment success`} />
       </div>
       <div className="payment-success-message">
         <h3>Success</h3>

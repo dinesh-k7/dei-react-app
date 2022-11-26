@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 
 import startupTitle from '../../../../../assets/images/startup_title.svg';
 import greenBlob from '../../../../../assets/images/startup_blob.svg';

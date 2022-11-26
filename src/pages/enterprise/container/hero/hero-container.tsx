@@ -1,14 +1,18 @@
 import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import FitbitIcon from '@mui/icons-material/Fitbit';
 
 import '../../../../assets/scss/styles.scss';
 import './hero-container.scss';
-import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
+import heroImage from '../../../../assets/images/it-services.svg';
 
-import blueBlob from '../../../../assets/images/service_blue.svg';
+import { constants } from '../../../../constants';
 
-const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
+const HeroContainer: React.FC<any> = ({
+  fromPage,
+  pageContent,
+}: any): ReactElement => {
   const history = useHistory();
   const routeChange = (url) => {
     history.push(url);
@@ -19,13 +23,13 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
         {!fromPage && (
           <Fragment>
             <div className="hero-title">
-              <h1>Enterprise</h1>
+              <h1>I.T. Plexus™️</h1>
               <div className="hero-mobile-image">
-                <img src={heroImage} alt="consultation Image" />
+                <img src={heroImage} alt="consultation" />
               </div>
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
-                  <img src={blueBlob} alt="sdwan" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() => routeChange('/enterprise/security-service')}
                   >
@@ -36,23 +40,23 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    The DEI Data and Site sentinels offer Experience, Knowledge,
-                    and Technical Understanding Of Cyber And Physical Security
-                    Solutions.
+                    The DEI®️ Data and Site sentinels offer Experience,
+                    Knowledge, and Technical Understanding Of Cyber And Physical
+                    Security Solutions.
                   </p>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="cloud services" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/data-connectivity-service')
+                      routeChange('/enterprise/data-plexus-service')
                     }
                   >
                     Data Plexus
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/data-connectivity-service')
+                      routeChange('/enterprise/data-plexus-service')
                     }
                     className="chevron-right"
                   />
@@ -64,7 +68,7 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                   </p>
                   <p>
                     Transitioning from traditional services to advanced unified
-                    communications can be intimidating. The <b>DEI™</b> takes
+                    communications can be intimidating. The <b>DEI®️</b> takes
                     pride in and the vast experience we have with various data
                     network providers.
                   </p>
@@ -84,7 +88,8 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
               </div>
               <div className="hero-subtitle-container">
                 <div className="features">
-                  <img src={blueBlob} alt="carrier services" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
+
                   <h3 onClick={() => routeChange('/enterprise/cloud-service')}>
                     Cloud
                   </h3>
@@ -99,7 +104,8 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                 </div>
                 <div className="hero-subtitle-container">
                   <div className="features">
-                    <img src={blueBlob} alt="cable services" />
+                    <FitbitIcon fontSize="large" className="fitbit-icon" />
+
                     <h3 onClick={() => routeChange('/enterprise/iot-service')}>
                       IOT
                     </h3>
@@ -109,8 +115,8 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                     />
 
                     <p>
-                      Our DEI™ Consultations offer customers ease and control of
-                      managing machine-to-machine or M2M connections for IoT
+                      Our DEI®️ Consultations offer customers ease and control
+                      of managing machine-to-machine or M2M connections for IoT
                       solutions. Conduct your business simply and efficiently by
                       integrating wireless backup failover solutions or using
                       M2M technology to access remote devices using our managed
@@ -127,7 +133,8 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                   </div>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="ucaas services" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
+
                   <h3 onClick={() => routeChange('/enterprise/voice-service')}>
                     Voice
                   </h3>
@@ -136,12 +143,13 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
                     className="chevron-right"
                   />
                   <p>
-                    Separated by meters or by a continent, the <b>DEI™</b>
+                    Separated by meters or by a continent, the <b>DEI®️</b>
                     connects the communications of your business.
                   </p>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="ucaas services" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
+
                   <h3
                     onClick={() =>
                       routeChange('/enterprise/professional-service')
@@ -171,6 +179,122 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
           <Fragment>
             <div className="hero-title">
               <h1>{fromPage}</h1>
+
+              {pageContent ? (
+                <div className="hero-subtitle-container enterprise-service">
+                  <div className="features page-content">
+                    <p>{pageContent.description_one}</p>
+                    {pageContent.features && pageContent.features.length ? (
+                      <div className="feature-description">
+                        <ul>
+                          {pageContent.features.map((feature) => {
+                            return (
+                              <li key={feature.id}>{feature.description}</li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    ) : (
+                      ''
+                    )}
+                    {pageContent.description_two ? (
+                      <p>{pageContent.description_two}</p>
+                    ) : (
+                      ''
+                    )}
+                    {pageContent.features_two &&
+                    pageContent.features_two.length ? (
+                      <div className="data-connectivity-description">
+                        {fromPage === constants.CLOUD_BACKUP ? (
+                          <b>Service & Platform:</b>
+                        ) : (
+                          ''
+                        )}
+                        <ul>
+                          {pageContent.features_two.map((feature) => {
+                            return (
+                              <li key={feature.id}>{feature.description}</li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    ) : (
+                      ''
+                    )}
+                    {pageContent.description_three ? (
+                      <p>{pageContent.description_three}</p>
+                    ) : (
+                      ''
+                    )}
+                    {pageContent.description_four ? (
+                      <p>{pageContent.description_four}</p>
+                    ) : (
+                      ''
+                    )}
+                    {pageContent.features_four &&
+                    pageContent.features_four.length ? (
+                      <div className="data-connectivity-description">
+                        <ul>
+                          {pageContent.features_four.map((feature) => {
+                            return (
+                              <li key={feature.id}>{feature.description}</li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    ) : (
+                      ''
+                    )}
+                    {pageContent.description_five ? (
+                      <p>{pageContent.description_five}</p>
+                    ) : (
+                      ''
+                    )}
+                  </div>
+                </div>
+              ) : (
+                ''
+              )}
+
+              {/** Hosted VOIP section starts */}
+              {fromPage === constants.VOIP ? (
+                <div className="hero-subtitle-container enterprise-service">
+                  <div className="features">
+                    <p>
+                      Using a hosted PBX allows you to make phone calls with
+                      your preferred ISP for Business Internet. You select your
+                      phone plan, features, and IP phones, and we will handle
+                      everything else.
+                    </p>
+                    <br />
+                    <ul>
+                      <li>
+                        <b>VoIP Phones</b> – for purchase or rent
+                      </li>
+                      <li>
+                        <b>Phone Numbers</b> – Transfer your existing number or
+                        get a new one
+                      </li>
+                      <li>
+                        <b>Broadband Connection</b> – Use your current services
+                        or let us provide a high-quality broadband connection
+                      </li>
+                      <li>
+                        <b> Voice-capable Router</b> – we recommend a router
+                        with QoS settings that can prioritize voice traffic over
+                        data traffic. We can help you select one
+                      </li>
+                      <li>
+                        <b>Toll-Free and Vanity Numbers </b> – make it easy for
+                        customers you reach you
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              ) : (
+                ''
+              )}
+              {/**Hosted voip section ends */}
             </div>
             {/* <div className="hero-mobile-image">
               <img src={heroMobileImage} alt="enterprise Image" />
@@ -179,7 +303,7 @@ const HeroContainer: React.FC<any> = ({ fromPage }: any): ReactElement => {
         )}
       </div>
       <div className="hero-image">
-        <img src={heroImage} alt="Enterprise Image" />
+        <img src={heroImage} alt="Enterprise" />
       </div>
     </section>
   );

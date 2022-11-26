@@ -58,7 +58,7 @@ const GetQuoteButton: any = ({
           {isLeadDataSent
             ? 'Start Over'
             : fromPage === 'wd'
-            ? 'Schedule Consultation'
+            ? 'Book Consultation'
             : btnTxt}
         </button>
       )}

@@ -1,0 +1,33 @@
+@import '../../assets/scss/abstracts/mixins';
+
+.terms-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: #f8f8f8;
+  grid-column: 1/4;
+  grid-row: 3/4;
+}
+
+@include respond-above(sm) {
+  .terms-section {
+    padding: 50px 104px;
+  }
+}
+
+@include respond-between(sm, md) {
+  .terms-section {
+    padding: 24px 64px !important;
+  }
+}
+
+@include respond-above(lg) {
+  .terms-section {
+    padding: 50px 104px !important;
+  }
+}
+
+@include respond-below(sm) {
+  .terms-section {
+    padding: 10px;
+  }
+}

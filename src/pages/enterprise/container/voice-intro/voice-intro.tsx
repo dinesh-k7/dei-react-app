@@ -2,14 +2,14 @@ import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import FitbitIcon from '@mui/icons-material/Fitbit';
 
 import '../../../../assets/scss/styles.scss';
 import '../../container/hero/hero-container.scss';
 
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
-
-import blueBlob from '../../../../assets/images/service_blue.svg';
 import { setServiceAction } from '../../../../actions/enterprise';
+import { constants } from '../../../../constants';
 
 const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
   // Google page event track
@@ -34,15 +34,15 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="hero-title">
               <h1>Voice</h1>
               <div className="hero-mobile-image">
-                <img src={heroImage} alt="consultation Image" />
+                <img src={heroImage} alt="consultation" />
               </div>
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
-                  <img src={blueBlob} alt="sdwan" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
                       routeChange(
-                        '/enterprise/sdwan-service',
+                        '/enterprise/unified-communications',
                         'Unified Communications',
                       )
                     }
@@ -52,14 +52,14 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                   <ChevronRightIcon
                     onClick={() =>
                       routeChange(
-                        '/enterprise/sdwan-service',
-                        'Unified Communications',
+                        '/enterprise/unified-communications',
+                        constants.UNIFIED_COMM,
                       )
                     }
                     className="chevron-right"
                   />
                   <div className="feature-description">
-                    The DEI™ provides connections with all (UC) or Unified
+                    The DEI®️ provides connections with all (UC) or Unified
                     Communications providers with/in the magic quadrant of
                     Gartner. This enables us to meet your customer&apos;s needs
                     above and beyond. A quality that only a few vendors can
@@ -90,17 +90,23 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                 </div>
 
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'Conferencing')
+                      routeChange(
+                        '/enterprise/conferencing',
+                        constants.CONFERENCING,
+                      )
                     }
                   >
                     Conferencing
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'Conferencing')
+                      routeChange(
+                        '/enterprise/conferencing',
+                        constants.CONFERENCING,
+                      )
                     }
                     className="chevron-right"
                   />
@@ -124,17 +130,23 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                   </div>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'Contact Center')
+                      routeChange(
+                        '/enterprise/contact-center',
+                        constants.CONTACT_CENTER,
+                      )
                     }
                   >
                     Contact Center
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'Contact Center')
+                      routeChange(
+                        '/enterprise/contact-center',
+                        constants.CONTACT_CENTER,
+                      )
                     }
                     className="chevron-right"
                   />
@@ -158,17 +170,17 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                   </div>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'SIP Trunks')
+                      routeChange('/enterprise/sip-trunk', constants.SIP)
                     }
                   >
-                    SIP Trunks
+                    SIP Trunk
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'SIP Trunks')
+                      routeChange('/enterprise/sip-trunk', constants.SIP)
                     }
                     className="chevron-right"
                   />
@@ -197,17 +209,17 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                 </div>
 
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'Hosted VOIP')
+                      routeChange('/enterprise/hosted-voip', constants.VOIP)
                     }
                   >
                     Hosted VOIP
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'Hosted VOIP')
+                      routeChange('/enterprise/hosted-voip', constants.VOIP)
                     }
                     className="chevron-right"
                   />
@@ -243,17 +255,17 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                 </div>
 
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'POTS')
+                      routeChange('/enterprise/pots', constants.POTS)
                     }
                   >
                     POTS
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'POTS')
+                      routeChange('/enterprise/pots', constants.POTS)
                     }
                     className="chevron-right"
                   />
@@ -281,17 +293,17 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                 </div>
 
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'PRI')
+                      routeChange('/enterprise/pri', constants.PRI)
                     }
                   >
                     PRI
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'PRI')
+                      routeChange('/enterprise/pri', constants.PRI)
                     }
                     className="chevron-right"
                   />
@@ -307,7 +319,7 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
                     paying for services that you won&apos;t use.
                   </p>
                   <p>
-                    Book a consultation with the DEI™ we can help you determine
+                    Book a consultation with the DEI®️ we can help you determine
                     if a PRI is the right solution.
                   </p>
                 </div>
@@ -316,7 +328,7 @@ const VoiceIntro: React.FC<any> = (props: any): ReactElement => {
           </Fragment>
         </div>
         <div className="hero-image">
-          <img src={heroImage} alt="Enterprise Image" />
+          <img src={heroImage} alt="Enterprise" />
         </div>
       </section>
       <div className="bottom-border"></div>

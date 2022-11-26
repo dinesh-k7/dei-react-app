@@ -1,18 +1,30 @@
 import React, { ReactElement } from 'react';
 
+import VideoComponent from '../../../../components/common/video/video.component';
 import '../../../../assets/scss/styles.scss';
 import './hero-container.scss';
+import { VIMEO_VIDEOIDS } from '../../../../constants/vimeo-videoids';
+
+import generalCompliance from '../../../../assets/images/general_compliance.png';
 
 const HeroContainer: React.FC<any> = (): ReactElement => {
   return (
     <section className="hero-section">
       <div className="hero-content">
+        <div className="hero-image-container">
+          <img src={generalCompliance} alt="General Compliance" />
+        </div>
         <div className="hero-title">
-          <h1>Compliance Central</h1>
+          <h1>
+            Compliance Central{' '}
+            <VideoComponent
+              videoId={VIMEO_VIDEOIDS.COMPLIANCE_CENTRAL_VIDEO_ID}
+            />
+          </h1>
         </div>
         <div className="hero-description">
           <p>
-            The DEI™ helps you take the guesswork out of data compliance. The
+            The DEI®️ helps you take the guesswork out of data compliance. The
             digital realm currently has no rule of law, and cybercriminals are
             winning. Businesses bear the burden of navigating this treacherous
             terrain. Obtaining compliance is the sure way of mitigating risk.
@@ -49,7 +61,7 @@ const HeroContainer: React.FC<any> = (): ReactElement => {
             </li>
             <li>
               <b> Delivers</b> and manages all the above for various regulatory
-              standards with our simple, budget-friendly DEI™ CaaS solution.
+              standards with our simple, budget-friendly DEI®️ CaaS solution.
             </li>
           </ul>
         </div>

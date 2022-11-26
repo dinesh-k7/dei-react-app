@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { constants } from '../../constants';
-import { IGetQuoteModel } from '../../interfaces/get-quote.model';
+import { IGetQuoteModel, ISFCRMModel } from '../../interfaces/get-quote.model';
 
 // eslint-disable-next-line
 export const sendMail = (
@@ -42,4 +42,15 @@ export const sendMail = (
   }
 
   return axios.post(url, quoteData);
+};
+
+//Function to create leads in sfcrm
+export const postSFCRMData = (postSFCRMData: ISFCRMModel, fromPage: string) => {
+  let url;
+  switch (fromPage) {
+    case constants.DATA_SENTINELS:
+      url = `${constants.NODE_ENDPOINT}/salesforce-crm/leads`;
+      break;
+  }
+  return axios.post(url, postSFCRMData);
 };

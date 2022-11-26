@@ -6,7 +6,24 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
   // margin-top: 96px;
-  height: 100vh;
+  min-height: 100vh;
+
+  .features {
+    align-items: center !important;
+    .feature-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ff7d7d !important;
+      align-self: center;
+      margin-top: 8px;
+    }
+    .fitbit-icon {
+      color: #ff7d7d !important;
+      font-size: 32px;
+      margin-top: 6px;
+    }
+  }
 
   align-items: center;
   padding: 64px 0;

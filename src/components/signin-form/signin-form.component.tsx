@@ -77,19 +77,10 @@ const SignUpFormComponent: React.FC<SignUpFormComponentProps> = (
     quoteData.isFormSubmitted = true;
     quoteData.isButtonSubmit = false;
     const { email, password } = quoteData;
-
-    setSignInState((prevState) => {
-      return {
-        ...prevState,
-        ...quoteData,
-      };
-    });
-
     const user = {
       email,
       password,
     };
-
     //Dispatch userLogin event
     props.userLogin(user);
   };
@@ -125,11 +116,13 @@ const SignUpFormComponent: React.FC<SignUpFormComponentProps> = (
   return (
     <section className="signin-form-section">
       {error && (
-        <SnackBarComponent
-          isOpen={true}
-          isError={true}
-          message={error ? error : messages.signin_error}
-        />
+        <>
+          <SnackBarComponent
+            isOpen={true}
+            isError={true}
+            message={error ? error : messages.signin_error}
+          />
+        </>
       )}
       {Boolean(isActivate) && (
         <SnackBarComponent
@@ -148,6 +141,7 @@ const SignUpFormComponent: React.FC<SignUpFormComponentProps> = (
             <div className="personal-information">
               {formFields &&
                 formFields.length &&
+                // eslint-disable-next-line array-callback-return
                 formFields.map((field) => {
                   if (field.type === 'text' || field.type === 'password') {
                     return (

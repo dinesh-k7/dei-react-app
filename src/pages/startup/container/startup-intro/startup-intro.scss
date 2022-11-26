@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
-  height: 100vh;
+  min-height: 100vh;
   align-items: center;
   grid-row: 2/-1;
   .startup-service-title {
@@ -123,12 +123,12 @@
     .nwo-hub,
     .branding {
       img {
-        width: 205px !important;
-        height: 164px !important;
+        width: 190px !important;
+        height: 148px !important;
       }
     }
     span {
-      font-size: 48px !important;
+      font-size: 40px !important;
     }
     li {
       font-size: 24px !important;

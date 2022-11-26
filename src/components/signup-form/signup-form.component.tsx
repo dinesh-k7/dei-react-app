@@ -13,9 +13,17 @@ import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
 import { sendMail } from '../effects';
 import SelectBox from '../common/form-element/select-box';
-import { useStyles } from '../../utils';
+// import { useStyles } from '../../utils';
 import { addToCart } from '../../actions/cart';
 import MultiText from '../common/form-element/multi-text';
+import {
+  Avatar,
+  Button,
+  createStyles,
+  IconButton,
+  makeStyles,
+  Theme,
+} from '@material-ui/core';
 
 interface IntitialState {
   captchaValue: string;
@@ -34,6 +42,12 @@ interface IntitialState {
   certified?: string;
   type?: string;
   goal?: string;
+  avatar?: string;
+  isp?: string;
+  skills?: string;
+  experience?: string;
+  isAgency?: boolean;
+  isDEICertified?: boolean;
 }
 
 interface SignUpFormComponentProps {
@@ -65,6 +79,12 @@ const SignUpFormComponent = (props: SignUpFormComponentProps): ReactElement => {
     certified: '',
     type: '',
     goal: '',
+    avatar: '',
+    isp: '',
+    skills: '',
+    experience: '',
+    isAgency: false,
+    isDEICertified: false,
   };
   const {
     formFields,
@@ -77,11 +97,28 @@ const SignUpFormComponent = (props: SignUpFormComponentProps): ReactElement => {
   const { register, errors, handleSubmit, control } = useForm();
   const [signUpState, setSignUpState] = useState(INITIAL_STATE);
   const [, setCaptcha] = useState({});
+  const [image, setImage] = useState('');
 
+  const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      input: {
+        display: 'none',
+      },
+      large: {
+        width: theme.spacing(7),
+        height: theme.spacing(7),
+      },
+    }),
+  );
   const classes = useStyles();
 
-  const { isFormSubmitted, captchaValue, isButtonSubmit, isSendMailError } =
-    signUpState;
+  const {
+    isFormSubmitted,
+    captchaValue,
+    isButtonSubmit,
+    isSendMailError,
+    avatar,
+  } = signUpState;
 
   // If register user fails, reset isFormSubmitted and hide loader
   useEffect(() => {
@@ -102,7 +139,7 @@ const SignUpFormComponent = (props: SignUpFormComponentProps): ReactElement => {
       };
       sendMail(userData, constants.SIGN_UP);
     }
-  }, [props]);
+  }, [action, props, signUpState]);
 
   // Set captcha reference
   const setCaptchaRef = (ref) => {
@@ -124,12 +161,42 @@ const SignUpFormComponent = (props: SignUpFormComponentProps): ReactElement => {
       };
     });
 
-    if (password !== cpassword && !action) {
-      return;
-    } else if (!captchaValue) {
-      return;
+    if (action === 'freelancer') {
+      const { name, phone, email, isp, skills, experience, security } =
+        formData;
+      const { isAgency, isDEICertified } = signUpState;
+      const data = new FormData();
+      data.append('name', name);
+      data.append('email', email);
+      data.append('phone', phone);
+      data.append('profile_image', image);
+      data.append('is_agency', isAgency.toString());
+      data.append('is_dei_certified', isDEICertified.toString());
+      data.append('isp', isp);
+      data.append('skills', skills);
+      data.append('experience', experience);
+      data.append('security', security);
+      if (!image) {
+        data.append('avatar', avatar);
+      }
+      props.registerUser(data, action);
+      console.log('dataaaaaaaa', data);
     } else {
-      props.registerUser(formData, action);
+      if (password !== cpassword && !action) {
+        return;
+      } else if (!captchaValue) {
+        return;
+      } else {
+        props.registerUser(formData, action);
+      }
+    }
+  };
+
+  const handleOnChange = (event) => {
+    const newImage = event.target?.files?.[0];
+    if (newImage) {
+      // setImage(URL.createObjectURL(newImage));
+      setImage(newImage);
     }
   };
 
@@ -155,7 +222,7 @@ const SignUpFormComponent = (props: SignUpFormComponentProps): ReactElement => {
     });
   };
   const errorKeys = Object.keys(errors);
-  const { certified } = signUpState;
+  const { isDEICertified } = signUpState;
 
   return (
     <section className="signup-form-section">
@@ -181,6 +248,7 @@ const SignUpFormComponent = (props: SignUpFormComponentProps): ReactElement => {
           <div className="personal-information">
             {formFields &&
               formFields.length &&
+              // eslint-disable-next-line array-callback-return
               formFields.map((field) => {
                 if (field.type === 'text') {
                   return (
@@ -195,6 +263,64 @@ const SignUpFormComponent = (props: SignUpFormComponentProps): ReactElement => {
                       pattern={field.pattern}
                       prefix={field.prefix}
                     />
+                  );
+                } else if (field.type === 'image') {
+                  return (
+                    <div
+                      className="form-group profile-image-container"
+                      key={field.name}
+                    >
+                      <label htmlFor={'profile_image'}>
+                        Update Profile Image
+                      </label>
+                      <input
+                        accept="image/*"
+                        className={classes.input}
+                        id="contained-button-file"
+                        multiple
+                        type="file"
+                        onChange={handleOnChange}
+                      />
+                      <label htmlFor="contained-button-file">
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          component="span"
+                        >
+                          Upload
+                        </Button>
+                      </label>{' '}
+                      {image && image['name'] ? (
+                        <span className="image-name"> {image['name']}</span>
+                      ) : (
+                        ''
+                      )}
+                      <input
+                        accept="image/*"
+                        className={classes.input}
+                        id="icon-button-file"
+                        type="file"
+                      />
+                      <label htmlFor="icon-button-file">
+                        <IconButton
+                          color="primary"
+                          aria-label="upload picture"
+                          component="span"
+                        >
+                          {avatar ? (
+                            <Avatar
+                              src={`${constants.NODE_ENDPOINT}/images/${avatar}`}
+                              className={classes.large}
+                            />
+                          ) : (
+                            <Avatar
+                              src={`broken-image.jpg`}
+                              className={classes.large}
+                            />
+                          )}
+                        </IconButton>
+                      </label>
+                    </div>
                   );
                 } else if (field.type === 'textarea') {
                   return (
@@ -245,16 +371,29 @@ const SignUpFormComponent = (props: SignUpFormComponentProps): ReactElement => {
                   return (
                     <div className="form-group radio-section">
                       <span>{field.label} </span>
+                      {field.name === 'isDEICertified' ? (
+                        <span>
+                          <a
+                            href="https://digitalenterpriseinitiative.com/startup-kit"
+                            target={'_blank'}
+                            rel="noreferrer"
+                          >
+                            Learn More Click Here
+                          </a>
+                        </span>
+                      ) : (
+                        ''
+                      )}
                       <div className="radio-options">
                         <span
                           className={
-                            certified === 'Yes' ? 'green-bg' : 'white-bg'
+                            signUpState[field.name] ? 'green-bg' : 'white-bg'
                           }
                           onClick={() => {
                             setSignUpState((prevState) => {
                               return {
                                 ...prevState,
-                                certified: 'Yes',
+                                [field.name]: true,
                               };
                             });
                           }}
@@ -262,12 +401,14 @@ const SignUpFormComponent = (props: SignUpFormComponentProps): ReactElement => {
                           YES
                         </span>
                         <span
-                          className={certified === 'No' ? 'red-bg' : 'white-bg'}
+                          className={
+                            !signUpState[field.name] ? 'red-bg' : 'white-bg'
+                          }
                           onClick={() => {
                             setSignUpState((prevState) => {
                               return {
                                 ...prevState,
-                                certified: 'No',
+                                [field.name]: false,
                               };
                             });
                           }}
@@ -338,6 +479,9 @@ const SignUpFormComponent = (props: SignUpFormComponentProps): ReactElement => {
           >
             {action === 'freelancer' ||
             action === 'business' ||
+            action === 'nwo' ||
+            action === 'dao' ||
+            action === 'dao-consultation' ||
             action === 'personal'
               ? 'Register'
               : ''}

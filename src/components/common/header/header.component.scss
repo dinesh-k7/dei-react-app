@@ -1,5 +1,11 @@
 @import '../../../assets/scss/abstracts/mixins';
 
+.MuiPaper-root {
+  .MuiToolbar-root {
+    padding: 0px !important;
+  }
+}
+
 .nav-container {
   width: 100%;
   border-bottom: 0px !important;

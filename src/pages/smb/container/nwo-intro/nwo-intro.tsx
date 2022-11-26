@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import LaunchIcon from '@material-ui/icons/Launch';
+import FitbitIcon from '@mui/icons-material/Fitbit';
 
-import serviceGreen from '../../../../assets/images/audit_service_blob.svg';
 import '../../../../assets/scss/styles.scss';
 import heroImage from '../../../../assets/images/audit_service.svg';
 
@@ -23,10 +23,10 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceGreen} alt="Background image" />
+              <FitbitIcon fontSize="large" className="fitbit-icon" />
               <h3>Buy a Domain</h3>
               <a
-                href="https://www.nwohub.com/"
+                href="https://www.deiportal.com/"
                 rel="noreferrer"
                 target="_blank"
               >
@@ -44,10 +44,10 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceGreen} alt="Background image" />
+              <FitbitIcon fontSize="large" className="fitbit-icon" />
               <h3>Get a business email</h3>
               <a
-                href="https://www.nwohub.com/products/email"
+                href="https://www.deiportal.com/products/email"
                 rel="noreferrer"
                 target="_blank"
               >
@@ -65,10 +65,10 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceGreen} alt="Background image" />
+              <FitbitIcon fontSize="large" className="fitbit-icon" />
               <h3>Create a Website</h3>
               <a
-                href="https://www.nwohub.com/products/website-builder"
+                href="https://www.deiportal.com/products/website-builder"
                 rel="noreferrer"
                 target="_blank"
               >
@@ -86,10 +86,10 @@ const NWOIntro: React.FC<any> = (props: any): ReactElement => {
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceGreen} alt="Background image" />
+              <FitbitIcon fontSize="large" className="fitbit-icon" />
               <h3>Host a Website</h3>
               <a
-                href="https://www.nwohub.com/products/business"
+                href="https://www.deiportal.com/products/business"
                 rel="noreferrer"
                 target="_blank"
               >

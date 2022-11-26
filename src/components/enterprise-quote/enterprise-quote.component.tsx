@@ -1,22 +1,25 @@
+/* eslint-disable array-callback-return */
 import React, { Fragment, ReactElement, useEffect, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
-import { constants, messages, siteKey } from '../../constants';
+import { constants, messages, modalData, siteKey } from '../../constants';
 import { IGetQuoteProps } from '../../interfaces/get-quote.model';
 import MultiText from '../common/form-element/multi-text';
 import SelectBox from '../common/form-element/select-box';
 import TextBox from '../common/form-element/text-box';
-
-import '../get-quote/get-quote.component.scss';
-import './enterprise-quote.component.scss';
 
 import { useStyles } from '../../utils';
 import { sendMail } from '../effects';
 import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
+import AlertDialogComponent from '../common/dialog/alert-dialog.component';
 
-const EnterpriseQuoteComponent: React.FC<any> = (
+import '../get-quote/get-quote.component.scss';
+import './enterprise-quote.component.scss';
+import { connect } from 'react-redux';
+
+const EnterpriseQuoteComponent: React.FC<IGetQuoteProps> = (
   props: IGetQuoteProps,
 ): ReactElement => {
   let INITIAL_STATE: any = {
@@ -59,7 +62,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
       },
     ],
   };
-  const { formFields, fromPage, serviceName } = props;
+  const { formFields, fromPage, serviceName, settings } = props;
   const state = {};
 
   let isLocationExist;
@@ -83,6 +86,11 @@ const EnterpriseQuoteComponent: React.FC<any> = (
   const { register, handleSubmit, errors, control } = useForm();
   const [quoteState, setQuoteState] = useState(INITIAL_STATE);
   const [captcha, setCaptcha] = useState({});
+  const [open, setOpen] = useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     // If user is logged
@@ -219,10 +227,24 @@ const EnterpriseQuoteComponent: React.FC<any> = (
     resetCaptcha();
   }
 
+  // check IT Plexus settings
+  let isEnabled = false;
+  if (settings && settings.length) {
+    const key = 'enableItPlexus';
+    const config = settings.find((set) => set.name === key);
+    if (config?.value) {
+      isEnabled = true;
+    }
+  }
+
   const classes = useStyles();
   const errorKeys = Object.keys(errors);
+  const { title, description } = modalData;
   return (
-    <section className="enterprise-quote-section">
+    <section
+      className="enterprise-quote-section"
+      style={{ gridRow: fromPage === 'compliance' ? '4/5' : '3/4' }}
+    >
       {isLeadDataSent && (
         <SnackBarComponent
           isOpen={true}
@@ -241,6 +263,16 @@ const EnterpriseQuoteComponent: React.FC<any> = (
       )}
       <div className="bg-image"></div>
       <div className="form-container">
+        {open && !isEnabled && isLeadDataSent ? (
+          <AlertDialogComponent
+            title={title}
+            description={description}
+            isShow={open}
+            handleClose={handleClose}
+          />
+        ) : (
+          ''
+        )}
         <h1>Tell us about your company</h1>
         <h4>Personal Information</h4>
         <form autoComplete="off">
@@ -453,7 +485,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
             <li>Describe communications gap.</li>
             <li>Define obstacles preventing implementation.</li>
           </ul>
-          <h4>Be able to:</h4>
+          <h4>What to expect:</h4>
 
           <ul>
             <li>A detailed discovery session.</li>
@@ -475,8 +507,10 @@ const EnterpriseQuoteComponent: React.FC<any> = (
             {fromPage &&
               fromPage === constants.ES_SECURITY_SERVICE &&
               'Book a Discovery Consultation'}
+            {fromPage && fromPage === 'compliance' && 'VSA Consultation'}
             {fromPage &&
               fromPage !== constants.ES_SECURITY_SERVICE &&
+              fromPage !== 'compliance' &&
               'Request Service'}
           </button>
         )}
@@ -496,7 +530,7 @@ const EnterpriseQuoteComponent: React.FC<any> = (
         )}
         {/* {isLeadDataSent && (
           <div className="confirmation-text">
-            <p>the DEI™ has received your information, {name}</p>
+            <p>the DEI®️ has received your information, {name}</p>
             <p>
               An account executive will call you within 2 – 3 business days to
               discover more about your enterprise needs.
@@ -519,4 +553,9 @@ const EnterpriseQuoteComponent: React.FC<any> = (
   );
 };
 
-export default EnterpriseQuoteComponent;
+const mapStateToProps = (state) => {
+  const { configReducer } = state;
+  return { ...configReducer };
+};
+
+export default connect(mapStateToProps)(EnterpriseQuoteComponent);

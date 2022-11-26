@@ -133,3 +133,20 @@ export const dateDiff = (d1: any, d2: any): number => {
   const g: any = (d1 - d2) / (1000 * 60 * 60 * 24);
   return parseInt(g, 10);
 };
+
+// Function to process the payload for SFCRM post API
+export const processSFCRMPayload = (payload, formname: string) => {
+  const { name, lastname, email, phone } = payload;
+  let sfcrmPayload;
+  switch (formname) {
+    case 'DATA_SENTINELS':
+      sfcrmPayload = {
+        FirstName: name,
+        LastName: lastname,
+        Email: email,
+        Phone: phone,
+        formname__c: 'Data Sentinels',
+      };
+      return sfcrmPayload;
+  }
+};

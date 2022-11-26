@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { Fragment, ReactElement, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -131,7 +132,6 @@ const ConsultationQuoteComponent: React.FC<ConsultationQuoteComponentProps> = (
   const handleClose = () => {
     setOpen(false);
   };
-
   // Set captcha reference
 
   const setCaptchaRef = (ref) => {
@@ -191,10 +191,9 @@ const ConsultationQuoteComponent: React.FC<ConsultationQuoteComponentProps> = (
       return;
     } else {
       if (selectedPackages && selectedPackages.length) {
-        // return;
-        // {
-        //   isEnabled ? props.addToCart(selectedPackages) : '';
-        // }
+        if (isEnabled) {
+          props.addToCart(selectedPackages);
+        }
 
         sendMail({ ...quoteData, packages: preferedPackage }, fromPage).then(
           () => {
@@ -215,9 +214,10 @@ const ConsultationQuoteComponent: React.FC<ConsultationQuoteComponentProps> = (
                 isSendMailError: false,
               };
             });
-            // {
-            //   isEnabled ? history.push('cart-page') : '';
-            // }
+
+            if (isEnabled) {
+              history.push('cart-page');
+            }
           },
           () => {
             setQuoteState((prevState) => {
@@ -252,8 +252,6 @@ const ConsultationQuoteComponent: React.FC<ConsultationQuoteComponentProps> = (
     const filterService = packages.map((pkg) => {
       if (pkg.id === id) {
         pkg.active = !pkg.active;
-      } else {
-        pkg.active = false;
       }
       return pkg;
     });
@@ -598,7 +596,7 @@ const ConsultationQuoteComponent: React.FC<ConsultationQuoteComponentProps> = (
         )}
         {/* {isLeadDataSent && (
           <div className="confirmation-text">
-            <p>the DEI™ has received your information, {name}</p>
+            <p>the DEI®️ has received your information, {name}</p>
             <p>
               An account executive will call you within 2 – 3 business days to
               discover more about your enterprise needs.

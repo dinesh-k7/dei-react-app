@@ -17,7 +17,7 @@ const PaymentFailureComponent: React.FC<IProps> = (
   return (
     <div className="payment-error">
       <div>
-        <img src={CartErrorImage} alt={`Payment error image`} />
+        <img src={CartErrorImage} alt={`displaying payment error`} />
       </div>
       <div className="payment-error-message">
         <h3>Something Went Wrong</h3>

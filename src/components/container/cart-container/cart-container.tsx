@@ -30,6 +30,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
   useEffect(() => {
     props.fetchAllCartItems();
     // trackPaymentTransaction();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Callback function to process order success transaction
@@ -71,7 +72,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
 
   //Update payment status in state
 
-  const updatePaymentStatus = (paymentDetail, orderId) => {
+  const updatePaymentStatus = (paymentDetail, orderId, amount) => {
     const { status, payer } = paymentDetail;
     if (status === constants.COMPLETED) {
       const name = payer && payer.name && payer.name.given_name;
@@ -81,7 +82,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
         return {
           ...prevState,
           isPaymentSuccess: true,
-          amount: 1.0,
+          amount: amount,
           name: name,
           paymentId: orderId,
         };
@@ -97,12 +98,11 @@ const CartContainer: React.FC = (props: any): ReactElement => {
   };
 
   const { products, settings } = props;
-  const { isPaymentSuccess, paymentId, isPaymentFailed } = paymentState;
+  const { isPaymentSuccess, paymentId, isPaymentFailed, amount } = paymentState;
   const user = localStorage.getItem('userData');
   const history = useHistory();
 
-  // check Data sentinels settings
-  let isEnabled = false;
+  let isEnabled = true;
   if (settings && settings.length) {
     const key = 'enableSandbox';
     const config = settings.find((set) => set.name === key);
@@ -110,6 +110,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
       isEnabled = true;
     }
   }
+
   return (
     <Fragment>
       {products && products.length ? (
@@ -198,16 +199,15 @@ const CartContainer: React.FC = (props: any): ReactElement => {
               <div className="paypal-button">
                 <PayPalButton
                   shippingPreference="NO_SHIPPING"
-                  amount={
-                    isEnabled
-                      ? '0.01'
-                      : sumPropsValue(products, 'price').toFixed(2)
-                  }
+                  //amount={sumPropsValue(products, 'price').toFixed(2)}
+                  amount={0.01}
                   onSuccess={(details, data) => {
-                    updatePaymentStatus(details, data.orderID);
+                    const amount = sumPropsValue(products, 'price').toFixed(2);
+                    updatePaymentStatus(details, data.orderID, amount);
                   }}
                   onError={(details, data) => {
-                    updatePaymentStatus(details, data.orderID);
+                    const amount = sumPropsValue(products, 'price').toFixed(2);
+                    updatePaymentStatus(details, data.orderID, amount);
                   }}
                   options={{
                     clientId: isEnabled
@@ -242,6 +242,7 @@ const CartContainer: React.FC = (props: any): ReactElement => {
 
       {isPaymentSuccess ? (
         <PaymentSuccessComponent
+          amount={amount}
           paymentId={paymentId}
           description={messages.payment_success_message}
         />

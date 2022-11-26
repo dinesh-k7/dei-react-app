@@ -27,6 +27,18 @@
   .features {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    .feature-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #42b9f8;
+      align-self: center;
+      margin-top: 8px;
+    }
+    h3 {
+      margin: 12px 0px !important;
+    }
   }
   @include respond-below(sm) {
     .hero-description {
@@ -76,7 +88,7 @@
       letter-spacing: -0.07em;
       text-align: left;
       font-family: 'MontFont', sans-serif;
-      margin: 25px 0px;
+      margin: 24px 0px 16px 0px;
     }
 
     h3 {
@@ -101,7 +113,7 @@
 
   .hero-description {
     .hero-description-two {
-      padding-top: 25px;
+      padding-top: 16px;
     }
   }
 

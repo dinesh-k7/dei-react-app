@@ -1,5 +1,8 @@
 @import '../../assets/scss/abstracts/mixins';
 
+.compliance-page {
+  // grid-column: 4/5 !important;
+}
 .enterprise-quote-section {
   display: grid;
   grid-template-columns: 1px 1fr 1fr;

@@ -1,0 +1,109 @@
+@import '../../assets/scss/abstracts/mixins';
+
+.signin-form-section {
+  display: grid;
+  grid-column: 1/-1;
+  padding: 72px;
+  justify-content: center;
+  span,
+  a {
+    font-family: 'OpenSansRegular', sans-serif !important;
+    color: #2c3e50 !important;
+    font-size: var(--font-size4);
+  }
+  .error-txt{
+    font-size: 11px;
+    color: red;
+  }
+  .form-container {
+    padding: 16px !important;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f8f8f8;
+    .nwo-logo,
+    .quolli-logo,
+    .climate-push-logo {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 16px;
+    }
+    .logo-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      .quolii-logo {
+        align-self: center;
+      }
+      .cp-logo {
+        justify-self: center;
+      }
+      .wimp-logo {
+        justify-self: center;
+        align-self: center;
+      }
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50 !important;
+      font-size: 40px !important;
+      margin-top: 0px !important;
+    }
+    .form-group:nth-child(2) {
+      padding-top: 8px;
+    }
+    .form-group {
+      display: grid;
+
+      input,
+      button {
+        width: auto;
+      }
+    }
+  }
+
+  .button-container {
+    display: grid;
+    margin-top: 32px !important;
+    button {
+      width: stretch;
+    }
+    .btn-basic {
+      justify-self: center;
+    }
+    span {
+      font-family: 'OpenSansRegular', sans-serif !important;
+      color: #2c3e50 !important;
+      font-size: var(--font-size5);
+      padding: 8px 0px 0px 8px;
+    }
+  }
+}
+@include respond-below(sm) {
+  .signin-form-section {
+    padding: 32px 0px !important;
+    .form-group {
+      input {
+        max-width: 300px;
+      }
+    }
+    .button-container {
+      button {
+        width: stretch;
+      }
+    }
+  }
+}
+
+@include respond-above(lg) {
+  .signin-form-section {
+    padding: 64px 0px !important;
+    .form-container {
+      padding: 80px !important;
+      .form-group {
+        input {
+          width: 600px !important;
+        }
+      }
+    }
+  }
+}

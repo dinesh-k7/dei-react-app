@@ -10,10 +10,22 @@
     align-self: start !important;
     padding-top: 32px !important;
   }
+  .features {
+    align-items: center;
+    .fitbit-icon {
+      color: #4db6ac !important;
+      font-size: 32px;
+      margin-top: 6px;
+    }
+  }
+
   .hero-subtitle-container {
     h3 {
       padding-right: 8px !important;
       cursor: pointer;
+    }
+    .page-content {
+      display: grid !important;
     }
     .data-connectivity-description {
       font-family: 'OpenSansRegular', sans-serif !important;
@@ -34,7 +46,7 @@
       }
     }
     .chevron-right {
-      margin-top: 32px;
+      margin-top: 8px;
       cursor: pointer;
     }
     .enterprise-service {

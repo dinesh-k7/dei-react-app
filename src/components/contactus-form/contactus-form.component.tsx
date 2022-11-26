@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { ReactElement, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';

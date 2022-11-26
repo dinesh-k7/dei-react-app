@@ -24,6 +24,7 @@ const OrderHistoryPage: React.FC = (props: any): ReactElement => {
       const { userId } = JSON.parse(userData);
       getOrders(userId);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

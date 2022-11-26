@@ -1,0 +1,174 @@
+@import '../../assets/scss/abstracts/mixins';
+@import '../../assets/scss/layout/hero';
+@import '../../assets/scss/blobz.min.css';
+
+.wall-of-love-grid {
+  display: grid;
+  grid-column: 1/-1;
+  .wall-of-love-header {
+    height: 500px;
+    background-image: url('../../assets/images/wall-image.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    .header-content-container {
+      display: grid;
+      justify-items: center;
+      margin-top: 5%;
+      p {
+        width: 50%;
+        font-style: normal;
+        font-size: 20px;
+        font-weight: var(--font-weight400) !important;
+        font-family: 'OpenSansRegular', sans-serif !important;
+        color: var(--font-color) !important;
+        text-align: center;
+      }
+      .wall-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 40px;
+        .contributors,
+        .exploitors {
+          display: grid;
+          grid-template-columns: 32px 1fr;
+          align-items: center;
+          h2 {
+            cursor: pointer;
+            z-index: 99999;
+            color: var(--font-color);
+            letter-spacing: 0em;
+            font-family: 'OpenSansBold', sans-serif;
+          }
+        }
+      }
+
+      .search-bar {
+        padding-top: 16px;
+        input {
+          background: #f4f4f4;
+          border: 1px solid rgba(44, 62, 80, 0.5);
+          border-radius: 23px;
+          height: 35px;
+          width: 264px;
+          padding: 16px;
+        }
+      }
+    }
+  }
+  .registration-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 16% 0 0 0;
+    justify-items: center;
+    .freelancer,
+    .business {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      h2 {
+        color: var(--font-color);
+        letter-spacing: 0em;
+        font-family: 'OpenSansBold', sans-serif;
+      }
+    }
+  }
+
+  .title-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    padding-top: 24px;
+    .freelancer-title,
+    .agencies-title {
+      display: grid;
+      align-items: center;
+      justify-items: center;
+    }
+  }
+
+  .contributors-exploitors-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    .freelancer-profile-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 24px 92px;
+      background: #ffffff;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+      border-radius: 8px 8px 0px 8px;
+      justify-items: center;
+      .profile-image {
+        display: grid;
+        justify-items: center;
+        align-self: end;
+        // background-image: url('../../assets/images/contributor-vector-one.svg');
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: contain;
+        img {
+          width: 172px;
+          max-height: 230px;
+        }
+      }
+      .profile-description {
+        display: grid;
+        h5 {
+          font-family: 'OpenSans', sans-serif !important;
+          font-weight: 600;
+          font-size: 16px;
+        }
+        p {
+          font-family: 'OpenSansRegular', sans-serif !important;
+          font-size: 1em !important;
+          font-weight: var(--font-weight400) !important;
+        }
+        .vector-one,
+        .vector-three {
+          justify-self: end;
+          align-self: end;
+          width: 64px;
+          height: 64px;
+          margin-right: -24px;
+        }
+
+        .vector-two {
+          align-self: end;
+          width: 64px;
+          height: 64px;
+          margin-left: -38%;
+        }
+      }
+    }
+  }
+}
+
+@include respond-below(sm) {
+  .wall-of-love-grid {
+    .header-image {
+      width: 280px;
+    }
+    h2 {
+      font-size: 16px;
+    }
+    .registration-container {
+      padding-top: 38%;
+      grid-column-gap: 32px;
+    }
+
+    .contributors-exploitors-container {
+      grid-template-columns: 1fr !important;
+      .freelancer-profile-container {
+        margin: 24px 32px;
+        .profile-description {
+          .vector-two {
+            margin-left: -34%;
+          }
+        }
+      }
+    }
+  }
+}

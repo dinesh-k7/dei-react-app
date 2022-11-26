@@ -242,6 +242,7 @@ const ReconnectQuoteComponent: React.FC<any> = (props: any): ReactElement => {
           <div className="personal-information">
             {formFields &&
               formFields.length &&
+              // eslint-disable-next-line array-callback-return
               formFields.map((field) => {
                 if (field.section === 'personal' && field.type === 'text') {
                   return (

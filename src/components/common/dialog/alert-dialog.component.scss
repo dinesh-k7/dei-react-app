@@ -15,3 +15,19 @@
     font-size: 14px;
   }
 }
+
+#video-dialog {
+  .MuiDialog-paper {
+    width: 100%;
+    max-height: fit-content;
+    .MuiTypography-h6 {
+      text-align: end;
+    }
+    .MuiButtonBase-root {
+      padding: 2px !important;
+    }
+    .MuiDialogTitle-root {
+      padding: 0px !important;
+    }
+  }
+}

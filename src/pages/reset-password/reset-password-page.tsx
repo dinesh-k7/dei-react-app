@@ -4,7 +4,8 @@ import ResetPasswordComponent from '../../components/reset-password/reset-passwo
 import { resetPasswordFormData } from '../../constants/form-data/sign-in-form';
 import './reset-password-page.scss';
 
-const ResetPasswordPage: React.FC = (): ReactElement => {
+const ResetPasswordPage: React.FC<any> = (props: any): ReactElement => {
+  const { fromPage } = props;
   // Google page event track
   window['dataLayer'].push({
     event: 'pageview',
@@ -15,7 +16,10 @@ const ResetPasswordPage: React.FC = (): ReactElement => {
   });
   return (
     <Fragment>
-      <ResetPasswordComponent formFields={resetPasswordFormData} />
+      <ResetPasswordComponent
+        formFields={resetPasswordFormData}
+        fromPage={fromPage}
+      />
     </Fragment>
   );
 };

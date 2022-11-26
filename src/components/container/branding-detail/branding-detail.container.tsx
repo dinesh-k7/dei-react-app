@@ -37,7 +37,7 @@ const BrandingDetailContainer: React.FC<any> = (
     brands: [],
     keyword: '',
     brandName: '',
-    isTemplate: false,
+    isTemplate: props.path && props.path === '/dao-builder' ? true : false,
     isSelling: '',
     isSEO: '',
   };
@@ -49,6 +49,7 @@ const BrandingDetailContainer: React.FC<any> = (
     handleState,
     onError,
     isEnabled,
+    path,
   } = props;
   const [state, setState] = useState(initialState);
   useEffect(() => {
@@ -56,6 +57,7 @@ const BrandingDetailContainer: React.FC<any> = (
     if (colorPicker) {
       handleState(state);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
   const {
     keyword,
@@ -198,7 +200,7 @@ const BrandingDetailContainer: React.FC<any> = (
   return (
     <div className="branding-container">
       <div className="technical-info">
-        {fromPage ? <h1></h1> : <h1>Brand Identity factors</h1>}
+        {fromPage ? '' : <h1>Brand Identity factors</h1>}
         <h4 className={fromPage ? 'wd-technical-info' : ''}>
           Technical Information
         </h4>
@@ -220,7 +222,7 @@ const BrandingDetailContainer: React.FC<any> = (
                   });
                 }}
               >
-                <h4>NWOcoin</h4>
+                <h4>Custom Website</h4>
               </span>
               <span
                 onClick={() => {
@@ -232,14 +234,17 @@ const BrandingDetailContainer: React.FC<any> = (
                   });
                 }}
               >
-                <h4>Custom Designs</h4>
+                <h4> {path ? 'DAO/dApp Builder™' : 'Custom Designs'}</h4>
               </span>
             </div>
             {isTemplate && (
               <Fragment>
                 {/* <span>Choose a Template</span> */}
                 <div className="template-grid">
-                  <span>With NWOcoin™ you can learn and earn!</span>
+                  <span>
+                    Experience DEI's proprietary DAO/dApp forger™️. DAO/dApp forging™️, DAOchain™/dAppchain, DAO Bridge™/dApp Bridge™,
+                    Book your DAO/dApp Consultation Today.
+                  </span>
                   {/* {TEMPLATES &&
                     TEMPLATES.length &&
                     TEMPLATES.map((template, idx) => {
@@ -653,14 +658,14 @@ const BrandingDetailContainer: React.FC<any> = (
         <div className="price-container">
           <div className="sticky-content">
             {fromPage ? (
-              <h4>Approximate service cost</h4>
+              <h4>Minimum Service Estimate</h4>
             ) : (
               <h4> Starting from</h4>
             )}
             <div className="price-container">
               {!isTemplate && (
                 <div>
-                  <span className="price">{fromPage ? '$2998' : '$500'}</span>
+                  <span className="price">{fromPage ? '$30,000' : '$799'}</span>
                   <span className="currency-code"> USD</span>
                 </div>
               )}

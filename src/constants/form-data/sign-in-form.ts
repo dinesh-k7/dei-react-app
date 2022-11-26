@@ -22,6 +22,40 @@ export const signInFormData = [
   },
 ];
 
+
+export const field = [
+  {
+    name: "Email",
+    label: "Enter Your Email",
+    type: "email",
+    required: true,
+    placeholder: "e.g. user@gmail.com",
+    pattern: patterns.email,
+    id: "si-1",
+    maxlength: 25400,
+  },
+  {
+    name: "Subject",
+    label: "Enter the Subject",
+    type: "text",
+    required: true,
+    placeholder: "e.g. Payment related issue",
+    // pattern: patterns.email,
+    id: "si-1",
+    maxlength: 25400,
+  },
+  {
+    name: "Query",
+    label: "Enter Your Query",
+    type: "textbox",
+    required: true,
+    placeholder: "e.g. This is What i am having the issue.....",
+    // pattern: patterns.email,
+    id: "si-1",
+    maxlength: 150,
+  }
+];
+
 export const resetPasswordFormData = [
   {
     name: 'email',

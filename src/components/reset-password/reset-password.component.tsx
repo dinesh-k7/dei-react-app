@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { Fragment, ReactElement, useState } from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -6,7 +7,7 @@ import TextBox from '../common/form-element/text-box';
 import '../get-quote/get-quote.component.scss';
 import './reset-password.component.scss';
 import { messages } from '../../constants';
-import { resetPassword } from '../../actions/user';
+import { resendActivationLink, resetPassword } from '../../actions/user';
 import ErrorMessageContainer from '../container/error-message.container';
 import LoaderComponent from '../common/loader/loader.component';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
@@ -27,7 +28,9 @@ interface ResetPasswordComponentProps {
   error?: string;
   isLoading?: boolean;
   isPasswordMinAge?: boolean;
+  fromPage?: string;
   resetPassword?: (user: any) => void;
+  resendActivationLink?: ({ email: string }) => void;
 }
 
 const ResetPasswordComponent: React.FC<ResetPasswordComponentProps> = (
@@ -40,7 +43,14 @@ const ResetPasswordComponent: React.FC<ResetPasswordComponentProps> = (
     password: '',
     cpassword: '',
   };
-  const { formFields, isSuccess, error, isLoading, isPasswordMinAge } = props;
+  const {
+    formFields,
+    isSuccess,
+    error,
+    isLoading,
+    isPasswordMinAge,
+    fromPage,
+  } = props;
   const stateData = {};
   const history = useHistory();
   let id, token;
@@ -79,6 +89,11 @@ const ResetPasswordComponent: React.FC<ResetPasswordComponentProps> = (
       };
     });
 
+    if (fromPage) {
+      props.resendActivationLink(email);
+      return;
+    }
+
     // If password and confirm password doesn't match, then return
     if (password !== cpassword) {
       return;
@@ -116,7 +131,7 @@ const ResetPasswordComponent: React.FC<ResetPasswordComponentProps> = (
       <div className="form-container">
         {!isSuccess ? (
           <Fragment>
-            <h1>Reset Password</h1>
+            <h1>{!fromPage ? 'Reset Password' : 'Resend Activation link'}</h1>
             <form autoComplete="off">
               <div className="personal-information">
                 {formFields &&
@@ -197,9 +212,17 @@ const ResetPasswordComponent: React.FC<ResetPasswordComponentProps> = (
         ) : (
           ''
         )}
-        {isSuccess && !token && !isPasswordMinAge ? (
+        {isSuccess && !token && !isPasswordMinAge && !fromPage ? (
           <div className="reset-success">
             Password reset link sent to your email account.
+          </div>
+        ) : (
+          ''
+        )}
+
+        {isSuccess && fromPage ? (
+          <div className="reset-success">
+            Account Activation link sent to your email account.
           </div>
         ) : (
           ''
@@ -208,7 +231,7 @@ const ResetPasswordComponent: React.FC<ResetPasswordComponentProps> = (
         {isSuccess && token ? (
           <div className="reset-success">
             Password has been reset successfully. Please click here to{' '}
-            <a href="sign-in"> Sign In </a>
+            <a href="sign-in"> Sign-In </a>
           </div>
         ) : (
           ''
@@ -217,7 +240,7 @@ const ResetPasswordComponent: React.FC<ResetPasswordComponentProps> = (
         {isSuccess && isPasswordMinAge ? (
           <div className="reset-success">
             Password can be reset after two days.Please click here to
-            <a href="sign-in"> Sign In </a>
+            <a href="sign-in"> Sign-In </a>
           </div>
         ) : (
           ''
@@ -235,6 +258,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     resetPassword: (user) => dispatch(resetPassword(user)),
+    resendActivationLink: (email) => dispatch(resendActivationLink({ email })),
   };
 };
 

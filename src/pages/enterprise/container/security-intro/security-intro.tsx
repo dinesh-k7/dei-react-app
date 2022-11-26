@@ -2,15 +2,15 @@ import React, { Fragment, ReactElement } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import FitbitIcon from '@mui/icons-material/Fitbit';
 
 import '../../../../assets/scss/styles.scss';
 
 import '../../container/hero/hero-container.scss';
 
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
-
-import blueBlob from '../../../../assets/images/service_blue.svg';
 import { setServiceAction } from '../../../../actions/enterprise';
+import { constants } from '../../../../constants';
 
 const SecurityIntro: React.FC<any> = (props: any): ReactElement => {
   // Google page event track
@@ -35,16 +35,16 @@ const SecurityIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="hero-title">
               <h1>Security</h1>
               <div className="hero-mobile-image">
-                <img src={heroImage} alt="consultation Image" />
+                <img src={heroImage} alt="cyber security" />
               </div>
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
-                  <img src={blueBlob} alt="sdwan" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() => {
                       routeChange(
-                        '/enterprise/sdwan-service',
-                        'Cyber Security',
+                        '/enterprise/cyber-security',
+                        constants.CYBER_SECURITY,
                       );
                     }}
                   >
@@ -52,32 +52,32 @@ const SecurityIntro: React.FC<any> = (props: any): ReactElement => {
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/sdwan-service', 'Cyber Security')
+                      routeChange(
+                        '/enterprise/cyber-security',
+                        constants.CYBER_SECURITY,
+                      )
                     }
                     className="chevron-right"
                   />
                   <p>
-                    Cyber Security is intentionally complex, and the DEI has
-                    access to some of the top experts in this field. The DEI™
-                    discovers customer requirements to meet the needs of today.
-                    We customize security or SECaaS solutions to meet any
-                    customer&apos;s security needs. Including:
+                    When a natural disaster strikes, it is critical to get your 
+                    systems back online quickly while you are still reeling from 
+                    the impact. That is exactly what our DEI® Local Back-Up 
+                    provides – fast recovery from a local hardware or system failure.
                   </p>
                   <ul>
-                    <li>Network security</li>
-                    <li>ID management</li>
-                    <li>Secure access</li>
-                    <li>Data Security</li>
-                    <li>Site Security and more</li>
+                    <li>Top Tech Delivered to you</li>
+                    <li>Redundant Back-Up is Essential</li>
                   </ul>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="cloud services" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
+
                   <h3
                     onClick={() =>
                       routeChange(
-                        '/enterprise/ucaas-service',
-                        'Physical Security',
+                        '/enterprise/physical-security',
+                        constants.PHYSICAL_SECURITY,
                       )
                     }
                   >
@@ -86,8 +86,8 @@ const SecurityIntro: React.FC<any> = (props: any): ReactElement => {
                   <ChevronRightIcon
                     onClick={() =>
                       routeChange(
-                        '/enterprise/ucaas-service',
-                        'Physical Security',
+                        '/enterprise/physical-security',
+                        constants.PHYSICAL_SECURITY,
                       )
                     }
                     className="chevron-right"
@@ -105,7 +105,7 @@ const SecurityIntro: React.FC<any> = (props: any): ReactElement => {
           </Fragment>
         </div>
         <div className="hero-image">
-          <img src={heroImage} alt="Enterprise Image" />
+          <img src={heroImage} alt="Enterprise" />
         </div>
       </section>
       <div className="bottom-border"></div>

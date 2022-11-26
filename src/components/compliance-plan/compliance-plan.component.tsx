@@ -3,9 +3,14 @@ import React, { Fragment, ReactElement, useState } from 'react';
 import { connect } from 'react-redux';
 import { getPaypalPlans } from '../../actions/config';
 import { messages, nistPlans, hippaPlans } from '../../constants';
+import { SDWANFormData } from '../../constants/form-data/sdwan-form';
 //import LoaderComponent from '../common/loader/loader.component';
 import PaymentFailureComponent from '../common/payment-failure/payment-failure.component';
-import PaymentSuccessComponent from '../common/payment-success/payment-success.component';
+// import PaymentSuccessComponent from '../common/payment-success/payment-success.component';
+import EnterpriseQuoteComponent from '../enterprise-quote/enterprise-quote.component';
+
+import hippaLC from '../../assets/images/HIPAA_LP.png';
+import cyberInsurance from '../../assets/images/cyber_insurance.png';
 
 import './compliance-plan.component.scss';
 
@@ -54,7 +59,7 @@ const CompliancePlanComponent: React.FC<any> = (): ReactElement => {
   //   }
   // };
 
-  const { isPaymentSuccess, paymentId, isPaymentFailed } = paymentState;
+  const { isPaymentFailed } = paymentState;
   // const { isLoading } = props;
 
   return (
@@ -62,9 +67,7 @@ const CompliancePlanComponent: React.FC<any> = (): ReactElement => {
       <section className="compliance-section">
         <div className="nist-container">
           <div className="nist-title">
-            <h1>
-              NIST CSF/GDPR/PIPEDA/CMMC Compliance Manager Services Per Company
-            </h1>
+            <h1>NIST CSF/GDPR/PIPEDA/CMMC Compliance Manager</h1>
           </div>
           <div className="devices-section">
             {nistPlans && nistPlans.length
@@ -77,6 +80,12 @@ const CompliancePlanComponent: React.FC<any> = (): ReactElement => {
                       </div>
                       <div className="plan-description">
                         <p className="para-normal para-description">Monthly</p>
+                        <p
+                          className="para-normal para-description"
+                          style={{ marginTop: '0px' }}
+                        >
+                          Services per Company
+                        </p>
                         <span className="price">{`$${plan.price} USD`}</span>
                         <span className="price">+</span>
                         <span className="price">
@@ -150,8 +159,9 @@ const CompliancePlanComponent: React.FC<any> = (): ReactElement => {
 
         {/* Hippa container section starts */}
         <div className="hippa-container">
+          <img src={hippaLC} alt="HIPPA" className="hippa-image" />
           <div className="hippa-title">
-            <h1>HIPAA Compliance Manager Services Per Practitioner</h1>
+            <h1>HIPAA Compliance Manager</h1>
           </div>
           <div className="devices-section">
             {hippaPlans && hippaPlans.length
@@ -164,6 +174,12 @@ const CompliancePlanComponent: React.FC<any> = (): ReactElement => {
                       </div>
                       <div className="plan-description">
                         <p className="para-normal para-description">Monthly</p>
+                        <p
+                          className="para-normal para-description"
+                          style={{ marginTop: '0px' }}
+                        >
+                          Services per Practitioner
+                        </p>
                         <span className="price">{`$${plan.price} USD`}</span>
                         <span className="price">+</span>
                         <span className="price">
@@ -234,16 +250,23 @@ const CompliancePlanComponent: React.FC<any> = (): ReactElement => {
           </div>
         </div>
 
+        <img src={cyberInsurance} alt="Cyber Insurance" className="ci-image" />
+
         {/* {isLoading ? <LoaderComponent /> : ''} */}
       </section>
-      {isPaymentSuccess ? (
+      <EnterpriseQuoteComponent
+        fromPage={`compliance`}
+        formFields={SDWANFormData}
+      />
+      {/* {isPaymentSuccess ? (
         <PaymentSuccessComponent
+        amount={amount}
           paymentId={paymentId}
           description={messages.payment_success_message}
         />
       ) : (
         ''
-      )}
+      )} */}
 
       {isPaymentFailed ? (
         <PaymentFailureComponent

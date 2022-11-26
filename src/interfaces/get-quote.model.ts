@@ -20,3 +20,11 @@ export interface IGetQuoteProps {
   settings?: ISettings[];
   serviceName?: string;
 }
+
+export interface ISFCRMModel {
+  FirstName: string;
+  LastName: string;
+  Email: string;
+  Phone: string;
+  formname__c: string;
+}

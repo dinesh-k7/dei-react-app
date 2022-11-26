@@ -10,6 +10,17 @@
       padding-right: var(--font-size7);
     }
   }
+  .features {
+    align-items: center;
+    .branding-feature-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ff7d7d;
+      align-self: center;
+      margin-top: 8px;
+    }
+  }
 }
 
 @include respond-between(sm, md) {

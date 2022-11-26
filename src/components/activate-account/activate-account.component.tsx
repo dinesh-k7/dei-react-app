@@ -35,6 +35,7 @@ const ActivateAccountComponent: any = (props: any): ReactElement => {
   };
   useEffect(() => {
     activateAccount(detail);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // If activate account is success, then re-direct the user back to login back page
@@ -43,7 +44,7 @@ const ActivateAccountComponent: any = (props: any): ReactElement => {
   }
 
   if (!isLoading && isActivationFailed) {
-    history.push('sign-in?activation=false');
+    history.push('resend-activation-link');
   }
 
   return (

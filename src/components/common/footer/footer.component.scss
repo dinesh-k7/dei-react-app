@@ -2,31 +2,10 @@
 
 .footer-section {
   border-top: 1px solid var(--font-color);
-  background-color: #f2f2f2;
+  background-color: #fff !important;
   display: grid;
   padding: 0 8%;
-  .footer-row-one {
-    display: grid;
-    .footer-links {
-      padding: 0px;
-      li {
-        display: inline-block;
-        padding: 0 1.3rem 0 1rem;
-        border-right: gray solid 0.2rem;
-        a {
-          text-decoration: none;
-          color: var(--font-color);
-          font-family: 'OpenSansRegular', sans-serif;
-          font-size: var(--font-size1);
-          text-transform: uppercase;
-        }
-      }
-      li:last-child {
-        border-right: 0px !important;
-      }
-    }
-  }
-  .footer-row-one {
+  .footer-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 8px;
@@ -36,8 +15,62 @@
         padding-right: 16px;
       }
     }
-    .donate-link {
+    .social-link-container,
+    .consulting,
+    .privacy {
+      align-self: center;
       justify-self: end;
+      font-family: 'OpenSansRegular', sans-serif;
+      color: #2c3e50;
+      font-size: var(--font-size1) !important;
+      a {
+        padding-right: 16px;
+        text-decoration: none;
+        color: #2c3e50;
+      }
+    }
+    .donate-link {
+      padding-top: 8px;
+    }
+    .btn-bor{
+      background:none;
+      border: none;
+      cursor: pointer;
+      position:relative;
+      top:3px;
+    }
+    
+    .mail-icon {
+      display: flex;
+      span {
+        padding-left: 8px;
+        a {
+          font-family: 'OpenSansRegular', sans-serif;
+          color: #2c3e50;
+          text-decoration: none;
+          font-size: var(--font-size1);
+        }
+      }
+    }
+
+    .footer-links {
+      padding: 0px;
+      li {
+        display: inline-block;
+        padding: 0 1.3rem 0 0;
+        border-right: gray solid 0.2rem;
+        a {
+          text-decoration: none;
+          color: var(--font-color);
+          font-family: 'MontFont', sans-serif;
+          font-size: var(--font-size4);
+          font-weight: 900;
+          text-transform: uppercase;
+        }
+      }
+      li:last-child {
+        border-right: 0px !important;
+      }
     }
   }
 }
@@ -48,12 +81,17 @@
     .footer-social-link {
       align-self: center;
     }
-    .footer-row-one {
+    .footer-wrapper {
       grid-template-columns: 1fr;
+      justify-items: center;
+      grid-row-gap: 8px;
       .footer-links {
         padding: 0px !important;
       }
-      .donate-link {
+      .donate-link,
+      .social-link-container,
+      .consulting,
+      .privacy {
         justify-self: center;
       }
     }

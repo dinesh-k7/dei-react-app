@@ -1,38 +1,55 @@
-import React, { Fragment, ReactElement } from 'react';
+import React, { Fragment, ReactElement, useState } from 'react';
+import { useRef } from 'react';
 
-import { useHistory } from 'react-router-dom';
+import VideoLibraryTwoToneIcon from '@mui/icons-material/VideoLibraryTwoTone';
+import { isMobile } from 'react-device-detect';
 
 import './landing-page.scss';
 import deiImage from '../../assets/images/dei.svg';
 import deiMobileImage from '../../assets/images/dei-mobile.svg';
 
-import greenVector from '../../assets/images/green_vector.svg';
-import enterpriseVector from '../../assets/images/enterprise_vector.svg';
-import coralVector from '../../assets/images/coral_vector.svg';
-import blueVector from '../../assets/images/service_blue.svg';
+import { ReactComponent as NWOBlob } from '../../assets/images/service-one.svg';
+import { ReactComponent as ITServicesBlob } from '../../assets/images/service-two.svg';
+import { ReactComponent as DataSecurityBlob } from '../../assets/images/service-three.svg';
+import { ReactComponent as WebsiteDevelopmentBlob } from '../../assets/images/service-four.svg';
+import { ReactComponent as MarketingBlob } from '../../assets/images/service-five.svg';
+import { ReactComponent as BrandingBlob } from '../../assets/images/service-six.svg';
+import { ReactComponent as StartupKitBlob } from '../../assets/images/service-seven.svg';
 import yellowVector from '../../assets/images/yellow_vector.svg';
-import { useRef } from 'react';
-
-import FadeIn from 'react-fade-in';
 import SectionLayoutComponent from '../../components/section-layout/section-layout.component';
-import { brandingSection } from './constants/branding';
-import { dataSecuritySection } from './constants/data-security';
-import { nwoHubSection } from './constants/nwo-hub';
-import { seoSection } from './constants/seo';
-import { websiteDevelopmentSection } from './constants/website-development';
-import { startupKitsSection } from './constants/startup-kits';
-import { ITServicesSection } from './constants/it-services';
+import { brandingSection } from './content/branding';
+import { dataSecuritySection } from './content/data-security';
+import { nwoHubSection } from './content/nwo-hub';
+import { seoSection } from './content/seo';
+import { websiteDevelopmentSection } from './content/website-development';
+import { startupKitsSection } from './content/startup-kits';
+import { ITServicesSection } from './content/it-services';
+import AlertDialogComponent from '../../components/common/dialog/alert-dialog.component';
+import { VIMEO_VIDEOIDS } from '../../constants/vimeo-videoids';
 
-const LandingPage: React.FC = (): ReactElement => {
-  const history = useHistory();
-  const smbRef = useRef(null);
-  const enterpriseRef = useRef(null);
-  const startupRef = useRef(null);
-  const routeChange = (url) => {
-    history.push(url);
+const LandingPage: React.FC = (props: any): ReactElement => {
+  const nwoRef = useRef(null);
+  const itServicesRef = useRef(null);
+  const dataSecurityRef = useRef(null);
+  const wdRef = useRef(null);
+  const marketingRef = useRef(null);
+  const brandingRef = useRef(null);
+  const startupKitRef = useRef(null);
+
+  const scrollToElement = (ref) => {
+    return ref && ref.current && ref.current.scrollIntoView();
   };
 
-  // Google page event track
+  const [openVideo, setOpenVideo] = useState(false);
+  const handleClick = () => {
+    setOpenVideo(true);
+  };
+
+  const handleClose = () => {
+    setOpenVideo(false);
+  };
+
+  // Google page event track  <Vimeo video="530599390" autoplay responsive />
   window['dataLayer'].push({
     event: 'pageview',
     page: {
@@ -40,18 +57,13 @@ const LandingPage: React.FC = (): ReactElement => {
       title: 'Landing Page',
     },
   });
+  const rndInt = Math.floor(Math.random() * 5) + 1;
 
-  const onMouseOverHandler = (ref: any) => {
-    if (ref && ref.current) {
-      ref.current.classList.toggle('hover-intro-text');
-    }
+  const rotate: any = {
+    '--time': '20s',
+    '--amount': rndInt,
+    '--fill': '#56cbb9',
   };
-  const onMouseOutHandler = (ref: any) => {
-    if (ref && ref.current) {
-      ref.current.classList.toggle('hover-intro-text');
-    }
-  };
-
   return (
     <Fragment>
       <div className="landing-page-grid">
@@ -72,133 +84,194 @@ const LandingPage: React.FC = (): ReactElement => {
               src={deiMobileImage}
               alt="Digital Enterprise Initiative"
             />
-            <img className="blue-vector" src={blueVector} alt="blue vector" />
           </div>
 
           <div className="intro-text">
-            <FadeIn>
-              <p>
-                Broad scope single-source provider to facilitate your digital
-                enterprise ambitions. Until we provide it, we source the best
-                providers for it.
-              </p>
-            </FadeIn>
+            <p>
+              Welcome To Internet 4.0 the AI Neural Network Data As A Platform & XaaS Cybersecurity
+              Provider. Managed Network Services, Branding Services, Data
+              Compliance Manager, and DEI® Decentralized Autonomous Organizations are
+              are ready for you to convert your business into a DEI® DAO. Your one-stop shop for all things IT.{' '}
+            </p>
+
+            <div
+              style={{ cursor: 'pointer !important', width: 'fit-content' }}
+              onClick={() => handleClick()}
+            >
+              <VideoLibraryTwoToneIcon
+                style={{
+                  color: '#453396',
+                  cursor: 'pointer',
+                  fontSize: '42px',
+                }}
+              />
+            </div>
           </div>
         </div>
         <div className="service-blob">
-          <div className="smb-blob">
-            <span className="smb-services-landing" ref={smbRef}>
-              <ul>
-                <li>Secure</li>
-                <li>Develop</li>
-              </ul>
-            </span>
-            <span
-              onClick={() => routeChange('/smb')}
-              onMouseOver={() => onMouseOverHandler(smbRef)}
-              onMouseOut={() => onMouseOutHandler(smbRef)}
-            >
-              SMBs
-            </span>
-            <img
-              onClick={() => routeChange('/smb')}
-              src={coralVector}
-              alt="Coral vector"
-            />
+          <div
+            className="service-row-one"
+            onClick={() => scrollToElement(nwoRef)}
+          >
+            <div style={rotate} className="tk-blob">
+              <NWOBlob />
+            </div>
+
+            <span>DEI Portal</span>
           </div>
-          <div className="startup-blob">
-            <img
-              src={greenVector}
-              onClick={() => routeChange('/startup')}
-              alt="Startup blob"
-            />
-            <span
-              onClick={() => routeChange('/startup')}
-              onMouseOver={() => onMouseOverHandler(startupRef)}
-              onMouseOut={() => onMouseOutHandler(startupRef)}
-            >
-              Start-Up
-            </span>
-            <span className="startup-services" ref={startupRef}>
-              <ul>
-                <li>Start-Up Kits</li>
-                <li>Certifications</li>
-                <li>Branding</li>
-                <li>NWOhub™</li>
-              </ul>
-            </span>
+
+          <div
+            className="service-row-two"
+            id="IT"
+            onClick={() => scrollToElement(itServicesRef)}
+          >
+            <div style={rotate} className="tk-blob">
+              <ITServicesBlob />
+            </div>
+            <span>I.T. Plexus</span>
           </div>
-          <div className="enterprise-blob">
-            <img
-              alt="Enterprise blob"
-              src={enterpriseVector}
-              onClick={() => routeChange('/enterprise')}
-            />
-            <span
-              onClick={() => routeChange('/enterprise')}
-              onMouseOver={() => onMouseOverHandler(enterpriseRef)}
-              onMouseOut={() => onMouseOutHandler(enterpriseRef)}
-              className="service-title"
+          <div
+            className="service-row-three"
+            onClick={() => scrollToElement(dataSecurityRef)}
+          >
+            <div style={rotate} className="tk-blob">
+              <DataSecurityBlob />
+            </div>
+            <span>Data Security</span>
+          </div>
+          <div className="service-row-four">
+            <div className="wd-blob" onClick={() => scrollToElement(wdRef)}>
+              <div style={rotate} className="tk-blob">
+                <WebsiteDevelopmentBlob />
+              </div>
+              <span>DAO Builder™ </span>
+            </div>
+
+            <div
+              className="seo-blob"
+              onClick={() => scrollToElement(marketingRef)}
             >
-              Enterprise
-            </span>
-            <span
-              className="enterprise-services"
-              id="enterprise-services"
-              ref={enterpriseRef}
-            >
-              <ul>
-                <li>Data Sentinels</li>
-                <li>Cloud</li>
-                <li>Plexus</li>
-                <li>Voice</li>
-                <li>IOT</li>
-              </ul>
-            </span>
+              <div style={rotate} className="tk-blob">
+                <MarketingBlob />
+              </div>
+              <span>Marketing</span>
+            </div>
+          </div>
+          <div
+            className="service-row-five"
+            onClick={() => scrollToElement(brandingRef)}
+          >
+            <div style={rotate} className="tk-blob">
+              <BrandingBlob />
+            </div>
+            <span> Branding</span>
+          </div>
+          <div
+            className="service-row-six"
+            onClick={() => scrollToElement(startupKitRef)}
+          >
+            <div style={rotate} className="tk-blob">
+              <StartupKitBlob />
+            </div>
+            <span> Start-Up Kits</span>
           </div>
         </div>
       </div>
-      {/** Branding section starts */}
-      <div className="branding-section">
-        <SectionLayoutComponent {...brandingSection} />
-      </div>
-      {/**Branding section ends */}
 
-      {/** Data security section starts */}
-      <div className="data-security-section">
-        <SectionLayoutComponent {...dataSecuritySection} />
-      </div>
-      {/**Data security section ends */}
+      {openVideo ? (
+        <AlertDialogComponent
+          fromPage={`landing`}
+          title={``}
+          description={``}
+          isShow={openVideo}
+          handleClose={handleClose}
+          videoId={VIMEO_VIDEOIDS.LANDING_PAGE_VIDEO_ID}
+        />
+      ) : (
+        ''
+      )}
 
-      {/** NWOhub section starts */}
-      <div className="nwo-hub-section">
-        <SectionLayoutComponent {...nwoHubSection} />
-      </div>
-      {/** NWOhub section ends */}
+      {isMobile ? (
+        <>
+          <div className="nwo-hub-section" ref={nwoRef}>
+            <SectionLayoutComponent {...nwoHubSection} />
+          </div>
 
-      {/** SEO section starts */}
-      <div className="seo-section">
-        <SectionLayoutComponent {...seoSection} />
-      </div>
-      {/** SEO section ends */}
+          <div className="branding-section" ref={brandingRef}>
+            <SectionLayoutComponent {...brandingSection} />
+          </div>
 
-      {/** Website Development section starts */}
-      <div className="website-section">
-        <SectionLayoutComponent {...websiteDevelopmentSection} />
-      </div>
-      {/** Website Development section ends */}
+          <div className="seo-section" ref={marketingRef}>
+            <SectionLayoutComponent {...seoSection} />
+          </div>
 
-      {/** Startup Kit section starts */}
-      <div className="startup-section">
-        <SectionLayoutComponent {...startupKitsSection} />
-      </div>
-      {/** Startup Kit section ends */}
+          <div className="data-security-section" ref={dataSecurityRef}>
+            <SectionLayoutComponent {...dataSecuritySection} />
+          </div>
 
-      {/** IT Services section starts */}
-      <div className="it-service-section">
-        <SectionLayoutComponent {...ITServicesSection} />
-      </div>
-      {/** IT Services section ends */}
+          {/** Website Development section starts */}
+          <div className="website-section" ref={wdRef}>
+            <SectionLayoutComponent {...websiteDevelopmentSection} />
+          </div>
+          {/** Website Development section ends */}
+
+          <div className="it-service-section" ref={itServicesRef}>
+            <SectionLayoutComponent {...ITServicesSection} />
+          </div>
+
+          <div className="startup-section" ref={startupKitRef}>
+            <SectionLayoutComponent {...startupKitsSection} />
+          </div>
+        </>
+      ) : (
+        <>
+          {/** Data security section starts */}
+          <div className="data-security-section" ref={dataSecurityRef}>
+            <SectionLayoutComponent {...dataSecuritySection} />
+          </div>
+          {/**Data security section ends */}
+
+          {/** DEI Portal section starts */}
+          <div className="nwo-hub-section" ref={nwoRef}>
+            <SectionLayoutComponent {...nwoHubSection} />
+          </div>
+          {/** DEI Portal section ends */}
+
+          {/** Branding section starts */}
+          <div className="branding-section" ref={brandingRef}>
+            <SectionLayoutComponent {...brandingSection} />
+          </div>
+          {/**Branding section ends */}
+
+          {/** Website Development section starts */}
+          <div className="website-section" ref={wdRef}>
+            <SectionLayoutComponent {...websiteDevelopmentSection} />
+          </div>
+          {/** Website Development section ends */}
+
+          {/** IT Services section starts */}
+          <div
+            id="it-services"
+            className="it-service-section"
+            ref={itServicesRef}
+          >
+            <SectionLayoutComponent {...ITServicesSection} />
+          </div>
+          {/** IT Services section ends */}
+
+          {/** SEO section starts */}
+          <div className="seo-section" ref={marketingRef}>
+            <SectionLayoutComponent {...seoSection} />
+          </div>
+          {/** SEO section ends */}
+
+          {/** Startup Kit section starts */}
+          <div className="startup-section" ref={startupKitRef}>
+            <SectionLayoutComponent {...startupKitsSection} />
+          </div>
+          {/** Startup Kit section ends */}
+        </>
+      )}
     </Fragment>
   );
 };

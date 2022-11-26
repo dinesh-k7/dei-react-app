@@ -3,6 +3,7 @@
 .wd-quote-section {
   display: grid;
   grid-template-columns: 1px 1fr 1fr;
+  grid-row: auto !important;
   background-color: #f8f8f8;
   .red-bg {
     background-color: #ff7d7d !important;

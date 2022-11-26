@@ -1,2 +1,6 @@
 @import '../../assets/scss/abstracts/mixins';
 @import '../../assets/scss/layout/hero';
+
+.footer-section {
+  grid-row: 5/6 !important;
+}

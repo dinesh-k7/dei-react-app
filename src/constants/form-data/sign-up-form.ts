@@ -146,6 +146,7 @@ export const userFormData = [
     required: true,
     id: 'ur-5',
     tooltip: true,
+    infoText: `Quality science reporting means you won't be spending your valuable time sifting through fluff pieces for the latest important news.  Providing the NWO community with non-partisan news and information, focusing on issues and solutions that have a real impact on your life. I would like to see a miss-information act passed`,
   },
 
   {
@@ -155,6 +156,7 @@ export const userFormData = [
     required: true,
     id: 'ur-7',
     tooltip: true,
+    infoText: `I want Evolutionary Advantage app it's an innovative tool that allows you to keep track of your health information in one, convenient place. I  can finally provide a complete view of my health history to the clinicians of my choosing any where in the world`,
   },
   {
     name: 'wipOptin',
@@ -190,7 +192,7 @@ export const userFormData = [
   },
 ];
 
-export const freelancerFormData = [
+export const serviceFormData = [
   {
     name: 'name',
     label: 'Name',
@@ -242,6 +244,99 @@ export const freelancerFormData = [
     maxlength: 1000,
     section: 'personal',
     id: 'fl-9',
+  },
+];
+
+export const freelancerFormData = [
+  {
+    name: 'name',
+    label: 'Name',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. John',
+    section: 'personal',
+    id: 'flr-1',
+    pattern: patterns.name,
+    maxlength: 75,
+  },
+  {
+    name: 'phone',
+    label: 'Phone Number',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. 123456789',
+    section: 'personal',
+    id: 'flr-2',
+    pattern: patterns.phone,
+  },
+  {
+    name: 'email',
+    label: 'E-mail',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. johndoe@email.com',
+    section: 'personal',
+    pattern: patterns.email,
+    maxlength: 254,
+    id: 'flr-3',
+  },
+  {
+    name: 'isp',
+    label: 'Internet Service Provider',
+    type: 'text',
+    required: true,
+    placeholder: 'e.g. Fido',
+    section: 'personal',
+    id: 'flr-4',
+  },
+  {
+    name: 'profileImage',
+    type: 'image',
+    id: 'flr-10',
+  },
+  {
+    name: 'skills',
+    label: 'Skills and Expertise',
+    type: 'textarea',
+    required: true,
+    placeholder: 'e.g. Angular,React,Vue,HTML',
+    maxlength: 1000,
+    section: 'personal',
+    id: 'flr-5',
+  },
+  {
+    name: 'experience',
+    label: 'Experience',
+    type: 'select',
+    required: true,
+    placeholder: 'e.g. 2 years',
+    options: constants.EXPERIENCES,
+    id: 'flr-6',
+  },
+  {
+    name: 'security',
+    label: 'Type of Network Security',
+    type: 'text',
+    required: false,
+    placeholder: 'e.g. Secured VPN',
+    section: 'personal',
+    id: 'flr-7',
+  },
+  {
+    name: 'isAgency',
+    label: 'Are you an Agency?',
+    type: 'radio',
+    required: false,
+    id: 'flr-8',
+    tooltip: false,
+  },
+  {
+    name: 'isDEICertified',
+    label: `DEI® certified`,
+    type: 'radio',
+    required: false,
+    id: 'flr-9',
+    tooltip: false,
   },
 ];
 

@@ -18,7 +18,6 @@ import { sendMail } from '../effects';
 import { addToCart } from '../../actions/cart';
 import BrandingDetailContainer from '../container/branding-detail/branding-detail.container';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
-import { useHistory } from 'react-router-dom';
 import { getConfigDetails } from '../../actions/config';
 import AlertDialogComponent from '../common/dialog/alert-dialog.component';
 
@@ -28,6 +27,7 @@ interface WdQuoteComponentProps {
   formFields: any;
   settings?: any;
   addToCart?: any;
+  path?: string;
 }
 
 const WdQuoteComponent: React.FC<WdQuoteComponentProps> = (
@@ -44,8 +44,8 @@ const WdQuoteComponent: React.FC<WdQuoteComponentProps> = (
     isSelling: '',
     isSEO: '',
   };
-  const { formFields, fromPage, settings } = props;
-  const history = useHistory();
+  const { formFields, fromPage, settings, path } = props;
+  // const history = useHistory();
 
   const state = {};
 
@@ -290,12 +290,13 @@ const WdQuoteComponent: React.FC<WdQuoteComponentProps> = (
           ''
         )}
 
-        <h1>{`DEI™ Custom Designs:`}</h1>
+        <h1>{`DEI®️ Custom DAO:`}</h1>
         <h4>Personal Information</h4>
         <form autoComplete="off">
           <div className="personal-information">
             {formFields &&
               formFields.length &&
+              // eslint-disable-next-line array-callback-return
               formFields.map((field) => {
                 if (field.section === 'personal' && field.type === 'text') {
                   return (
@@ -340,6 +341,7 @@ const WdQuoteComponent: React.FC<WdQuoteComponentProps> = (
           <div className="company-information">
             {formFields &&
               formFields.length &&
+              // eslint-disable-next-line array-callback-return
               formFields.map((field) => {
                 if (
                   field.section === 'company' &&
@@ -472,6 +474,7 @@ const WdQuoteComponent: React.FC<WdQuoteComponentProps> = (
         onError={onError}
         fromPage={'wd'}
         handleState={handleState}
+        path={path}
       />
     </section>
   );

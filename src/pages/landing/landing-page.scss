@@ -1,14 +1,89 @@
 @import '../../assets/scss/abstracts/mixins';
 @import '../../assets/scss/layout/hero';
+@import '../../assets/scss/blobz.min.css';
+
 .landing-page-grid {
   display: grid;
   grid-column: 1/-1;
   padding-right: 24px;
   align-items: center;
   grid-row: 2/3;
+  .video-container {
+    cursor: pointer !important;
+    width: 'fit-content';
+  }
   .service-blob {
-    span {
-      color: var(--font-color);
+    display: grid;
+    row-gap: 16px;
+
+    .service-row-four {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .service-row-one,
+    .service-row-two,
+    .service-row-three,
+    .wd-blob,
+    .seo-blob,
+    .service-row-five,
+    .service-row-six {
+      display: grid;
+      grid-template-columns: 48px auto;
+      justify-content: end;
+      span {
+        font-size: 20px;
+        color: var(--font-color);
+        color: var(--fontf-color);
+        z-index: 999;
+        align-self: center;
+        margin-left: -48px;
+        cursor: pointer;
+      }
+      img {
+        justify-self: flex-start;
+      }
+    }
+
+    .wd-blob {
+      justify-content: center !important;
+    }
+
+    .service-row-two {
+      justify-content: start !important;
+    }
+
+    .service-row-three {
+      justify-content: center !important;
+      img {
+        justify-self: flex-start;
+      }
+    }
+
+    .service-row-five {
+      justify-items: end;
+      img {
+        justify-self: flex-start;
+      }
+    }
+
+    .service-row-six {
+      justify-content: start;
+      img {
+        justify-self: flex-start;
+      }
+    }
+
+    .service-row-five {
+      padding-top: 16px;
+    }
+    .service-row-three {
+      justify-items: center;
+    }
+    .service-row-four {
+      img:nth-child(2) {
+        justify-self: center;
+      }
     }
   }
   .smb-blob {
@@ -114,6 +189,9 @@
 @include respond-above(lg) {
   .landing-page-grid {
     padding: 0px 180px !important;
+    .dei-image {
+      width: 450px;
+    }
     .startup-services {
       margin-top: 132px !important;
     }
@@ -149,20 +227,6 @@
   .dei-image {
     width: 350px;
   }
-  .service-blob {
-    img {
-      width: 120px;
-      height: 120px;
-    }
-    span {
-      font-size: 32px !important;
-    }
-    .smb-blob,
-    .startup-blob,
-    .enterprise-blob {
-      height: 140px !important;
-    }
-  }
 }
 
 @include respond-below(sm) {
@@ -185,6 +249,7 @@
     }
     .landing-intro {
       background: none !important;
+      padding-top: 56px !important;
       .yellow-blob {
         display: grid !important;
         width: 64px;
@@ -215,6 +280,12 @@
     }
     .service-blob {
       padding: 32px !important;
+      row-gap: 8px;
+      .service-row-four {
+        img:nth-child(2) {
+          justify-self: end !important;
+        }
+      }
       .startup-blob {
         grid-template-columns: 32px 1fr !important;
       }
@@ -266,7 +337,8 @@
     background-image: url('../../assets/images/yellow_vector.svg');
     background-repeat: no-repeat;
     padding-left: 48px;
-    padding-top: 32px;
+    padding-top: 32px !important;
+    margin-top: 32px;
     .image-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -350,17 +422,29 @@
 }
 
 @include respond-between(sm, md) {
+  .data-security-section,
+  .branding-section,
+  .nwo-hub-section,
+  .seo-section,
+  .website-section,
+  .startup-section,
+  .it-service-section {
+    padding: 0px 64px !important;
+  }
   .landing-page-grid {
     grid-template-columns: 1fr !important;
     height: auto !important;
     padding: 64px 64px 0px 64px;
     align-items: center;
+    .dei-image {
+      width: 100%;
+    }
     .service-blob {
       img {
         width: 160px;
       }
       span {
-        font-size: 40px !important;
+        font-size: 24px !important;
       }
       .enterprise-blob {
         img {

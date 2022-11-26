@@ -13,9 +13,9 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar';
 
-import logo from '../../../assets/images/dei_dark_logo_vector.svg';
-import fbIcon from '../../../assets/images/fb_icon.png';
-import linkedInIcon from '../../../assets/images/linkedin_icon.png';
+import logo from '../../../assets/images/dei_dark_logo.svg';
+import fbIcon from '../../../assets/images/fb_icon.svg';
+import linkedInIcon from '../../../assets/images/linkedin_icon.svg';
 import './header.component.scss';
 
 import PersistentDrawerLeft from './menu.component';
@@ -78,13 +78,13 @@ const Header: React.FC<any> = (props: any): ReactElement => {
             borderBottom: '1px solid #2c3e50',
           }}
         >
-          <Toolbar>
+          <Toolbar className="nav-toolbar">
             <header className="nav-container">
               <div className="logo">
                 <img
                   src={logo}
                   className="dei-logo"
-                  alt="DEI Logo"
+                  alt="DEI®️ Logo"
                   onClick={() => routeChange()}
                 />
                 <div
@@ -96,11 +96,7 @@ const Header: React.FC<any> = (props: any): ReactElement => {
                 >
                   <div>
                     <a rel="noreferrer" href={fb_url} target="_blank">
-                      <img
-                        src={fbIcon}
-                        alt="Footer Facebook icon"
-                        height={25}
-                      />
+                      <img src={fbIcon} alt="Facebook icon" height={25} />
                     </a>
                   </div>
 
@@ -110,11 +106,7 @@ const Header: React.FC<any> = (props: any): ReactElement => {
                       target="_blank"
                       href="https://www.linkedin.com/showcase/dei%E2%84%A2-digital-enterprise-initiative"
                     >
-                      <img
-                        src={linkedInIcon}
-                        alt="Footer linkedin Icon"
-                        height={25}
-                      />
+                      <img src={linkedInIcon} alt="linkedin Icon" height={25} />
                     </a>
                   </div>
                   <div

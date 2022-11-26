@@ -4,7 +4,12 @@
 .compliance-section {
   display: grid !important;
   grid-column: 1/4;
-  grid-row: 3/4;
+
+  .ci-image {
+    display: flex;
+    justify-self: center;
+    width: 33%;
+  }
 }
 .hippa-container,
 .nist-container {
@@ -59,10 +64,20 @@
   padding-bottom: 32px;
 }
 
+.hippa-container {
+  .hippa-image,
+  .ci-image {
+    display: flex;
+    justify-self: center;
+    width: 33%;
+  }
+}
+
 .nist-title,
 .hippa-title {
   h1 {
     font-family: 'OpenSansBold', sans-serif !important;
+    text-align: center !important;
   }
 }
 
@@ -75,6 +90,10 @@
   .devices-section {
     display: grid;
     grid-template-columns: 1fr;
-    justify-items: center;
+  }
+  .hippa-container {
+    .hippa-image {
+      width: 60%;
+    }
   }
 }

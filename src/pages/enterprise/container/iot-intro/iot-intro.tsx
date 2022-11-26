@@ -2,14 +2,15 @@ import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import FitbitIcon from '@mui/icons-material/Fitbit';
 
 import '../../../../assets/scss/styles.scss';
 import '../../container/hero/hero-container.scss';
 
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
-import blueBlob from '../../../../assets/images/service_blue.svg';
 import { setServiceAction } from '../../../../actions/enterprise';
+import { constants } from '../../../../constants';
 
 const IOTIntro: React.FC<any> = (props: any): ReactElement => {
   // Google page event track
@@ -34,16 +35,16 @@ const IOTIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="hero-title">
               <h1>IOT</h1>
               <div className="hero-mobile-image">
-                <img src={heroImage} alt="consultation Image" />
+                <img src={heroImage} alt="IOT" />
               </div>
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
-                  <img src={blueBlob} alt="sdwan" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
                       routeChange(
-                        '/enterprise/sdwan-service',
-                        'Cloud backup & failover strategies',
+                        '/enterprise/cloud-backup',
+                        constants.CLOUD_BACKUP,
                       )
                     }
                   >
@@ -52,15 +53,15 @@ const IOTIntro: React.FC<any> = (props: any): ReactElement => {
                   <ChevronRightIcon
                     onClick={() =>
                       routeChange(
-                        '/enterprise/sdwan-service',
-                        'Cloud backup & failover strategies',
+                        '/enterprise/cloud-backup',
+                        constants.CLOUD_BACKUP,
                       )
                     }
                     className="chevron-right"
                   />
                   <div className="feature-description">
                     You can protect your digital enterprise from interruption of
-                    services with DEI:tm: wireless backup and failover
+                    services with DEI®️:tm: wireless backup and failover
                     strategies & solutions. Mitigate poor customer experiences,
                     resulting in revenue loss by quickly detecting a connection
                     issue and solving it. Gone are the days when you can rely on
@@ -89,12 +90,12 @@ const IOTIntro: React.FC<any> = (props: any): ReactElement => {
                   </div>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
                       routeChange(
-                        '/enterprise/ucaas-service',
-                        '"Hands-Free" solutions to managing your data',
+                        '/enterprise/hands-free',
+                        constants.HANDS_FREE,
                       )
                     }
                   >
@@ -103,8 +104,8 @@ const IOTIntro: React.FC<any> = (props: any): ReactElement => {
                   <ChevronRightIcon
                     onClick={() =>
                       routeChange(
-                        '/enterprise/ucaas-service',
-                        '"Hands-Free" solutions to managing your data',
+                        '/enterprise/hands-free',
+                        constants.HANDS_FREE,
                       )
                     }
                     className="chevron-right"
@@ -139,7 +140,7 @@ const IOTIntro: React.FC<any> = (props: any): ReactElement => {
           </Fragment>
         </div>
         <div className="hero-image">
-          <img src={heroImage} alt="Enterprise Image" />
+          <img src={heroImage} alt="Enterprise" />
         </div>
       </section>
       <div className="bottom-border"></div>

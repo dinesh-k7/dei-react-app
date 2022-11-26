@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { ReactElement, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -9,9 +10,10 @@ import { constants, messages, modalData, siteKey } from '../../constants';
 import {
   addProductToCart,
   calculateMonthlyAmount,
+  processSFCRMPayload,
   useStyles,
 } from '../../utils';
-import { sendMail } from '../effects';
+import { postSFCRMData, sendMail } from '../effects';
 import '../../assets/scss/styles.scss';
 import './get-quote.component.scss';
 import bg from '../../assets/images/blue_blob_vector.svg';
@@ -23,9 +25,9 @@ import BrandingDetailContainer from '../container/branding-detail/branding-detai
 import { industries } from '../../constants/industry-option';
 import { addToCart } from '../../actions/cart';
 import SnackBarComponent from '../common/snackbar/snackbar.component';
-import { useHistory } from 'react-router-dom';
 import { getConfigDetails } from '../../actions/config';
 import AlertDialogComponent from '../common/dialog/alert-dialog.component';
+import { useHistory } from 'react-router-dom';
 
 const GetQuoteComponent: React.FC<IGetQuoteProps> = (
   props: IGetQuoteProps,
@@ -39,6 +41,7 @@ const GetQuoteComponent: React.FC<IGetQuoteProps> = (
     isButtonSubmit: false,
   };
   const { formFields, fromPage, vimage, settings } = props;
+  const history = useHistory();
   const state = {};
 
   formFields &&
@@ -66,7 +69,6 @@ const GetQuoteComponent: React.FC<IGetQuoteProps> = (
     setOpen(false);
   };
 
-  const history = useHistory();
   let companysize = '';
 
   // Set captcha reference
@@ -104,6 +106,7 @@ const GetQuoteComponent: React.FC<IGetQuoteProps> = (
         };
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleState = (state) => {
@@ -198,9 +201,16 @@ const GetQuoteComponent: React.FC<IGetQuoteProps> = (
       if (isEnabled) {
         props.addToCart([product]);
       }
-
+    
+      
       sendMail(quoteData, fromPage).then(
         () => {
+          //Post data to SFCRM
+          const sfcrmPayload = processSFCRMPayload(
+            quoteData,
+            constants.DATA_SENTINELS,
+          );
+          postSFCRMData(sfcrmPayload, constants.DATA_SENTINELS);
           // Google Event tracking
           window['dataLayer'].push({
             event: 'event',
@@ -222,9 +232,9 @@ const GetQuoteComponent: React.FC<IGetQuoteProps> = (
             };
           });
 
-          // {
-          //   isEnabled ? history.push('cart-page') : '';
-          // }
+          if (isEnabled) {
+            history.push('cart-page');
+          }
         },
         () => {
           setQuoteState((prevState) => {

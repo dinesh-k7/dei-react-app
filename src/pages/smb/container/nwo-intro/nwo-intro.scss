@@ -6,7 +6,7 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
   //margin-top: 96px;
-  height: 100vh;
+  min-height: 100vh;
   max-width: 1400px;
   width: 100%;
   margin: 0px auto;
@@ -19,6 +19,11 @@
     padding-bottom: 8px;
     h3 {
       padding-right: 8px;
+    }
+    .fitbit-icon {
+      color: #49e69a !important;
+      font-size: 32px;
+      margin-top: 6px;
     }
   }
   .hero-content {

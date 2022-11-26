@@ -3,7 +3,7 @@
 .smb-intro {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  min-height: 100vh;
   grid-gap: 32px;
   align-items: center;
   grid-row: 2/-1;

@@ -2,14 +2,15 @@ import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import FitbitIcon from '@mui/icons-material/Fitbit';
 
 import '../../../../assets/scss/styles.scss';
 import '../../container/hero/hero-container.scss';
 
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
-import blueBlob from '../../../../assets/images/service_blue.svg';
 import { setServiceAction } from '../../../../actions/enterprise';
+import { constants } from '../../../../constants';
 
 const CloudIntro: React.FC<any> = (props: any): ReactElement => {
   // Google page event track
@@ -34,64 +35,77 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="hero-title">
               <h1>Cloud</h1>
               <div className="hero-mobile-image">
-                <img src={heroImage} alt="consultation Image" />
+                <img src={heroImage} alt="Cloud" />
               </div>
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
-                  <img src={blueBlob} alt="sdwan" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
+
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/cloud-quote', 'Colocation')
+                      routeChange(
+                        '/enterprise/colocation',
+                        constants.COLOCATION,
+                      )
                     }
                   >
                     Colocation
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/cloud-quote', 'Colocation')
+                      routeChange(
+                        '/enterprise/colocation',
+                        constants.COLOCATION,
+                      )
                     }
                     className="chevron-right"
                   />
                   <p>
-                    DEI™ networks with 1400 carrier-neutral colocation
+                    DEI®️ networks with 1400 carrier-neutral colocation
                     facilities around the globe (and growing), available for you
                     to offer to your customers. Our exclusive data center
                     locator tool is available for you to find the best data
                     center to meet your customer’s needs.
                     <br />
                     <br />
-                    <a href="#">Find Datacenter Now</a>
+                    {/* <a href="#">Find Datacenter Now</a> */}
                   </p>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/cloud-quote', 'Public Cloud')
+                      routeChange(
+                        '/enterprise/public-cloud',
+                        constants.PUBLIC_CLOUD,
+                      )
                     }
                   >
                     Public Cloud
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/cloud-quote', 'Public Cloud')
+                      routeChange(
+                        '/enterprise/public-cloud',
+                        constants.PUBLIC_CLOUD,
+                      )
                     }
                     className="chevron-right"
                   />
                   <p>
                     Providing your customers with public cloud solutions like
-                    AWS® and Azure® is only the beginning. The DEI™ and partner
+                    AWS® and Azure® is only the beginning. The DEI®️ and partner
                     portfolio can show you a model that will optimize your
                     profitablity in these deals.
                   </p>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
                       routeChange(
-                        '/enterprise/cloud-quote',
-                        'Backup & Disaster Recovery Services',
+                        '/enterprise/backup-service',
+                        constants.BACKUP_DISASTER,
                       )
                     }
                   >
@@ -100,36 +114,36 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
                   <ChevronRightIcon
                     onClick={() =>
                       routeChange(
-                        '/enterprise/cloud-quote',
-                        'Backup & Disaster Recovery Services',
+                        '/enterprise/backup-service',
+                        constants.BACKUP_DISASTER,
                       )
                     }
                     className="chevron-right"
                   />
                   <p>
-                    There is a big difference between disaster recovery and DEI™
-                    back-up and data preservation. You should understand your
-                    organization&apos;s data footprint and exposure. When you do
-                    we can then define custom solutions to meet your back-up and
-                    recovery needs. Our solutions meet your budget goals and
-                    provide you with optimal versatility and reliability. From
-                    terabytes to petabites we can provide the best solutions
-                    that meet your needs.
+                    There is a big difference between disaster recovery and
+                    DEI®️ back-up and data preservation. You should understand
+                    your organization&apos;s data footprint and exposure. When
+                    you do we can then define custom solutions to meet your
+                    back-up and recovery needs. Our solutions meet your budget
+                    goals and provide you with optimal versatility and
+                    reliability. From terabytes to petabites we can provide the
+                    best solutions that meet your needs.
                   </p>
                 </div>
 
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/cloud-quote', 'Storage')
+                      routeChange('/enterprise/storage', constants.STORAGE)
                     }
                   >
                     Storage
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/cloud-quote', 'Storage')
+                      routeChange('/enterprise/storage', constants.STORAGE)
                     }
                     className="chevron-right"
                   />
@@ -147,7 +161,7 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
                     Above the traditional on-premises storage systems.
                     <br />
                     <br />
-                    The DEI™ offers a broad scope of storage services for your
+                    The DEI®️ offers a broad scope of storage services for your
                     application&apos;s archival requirements so you remain
                     compliant. with:
                     <br />
@@ -163,10 +177,13 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
                   </div>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/cloud-quote', 'Virtual Servers')
+                      routeChange(
+                        '/enterprise/virtual-servers',
+                        constants.VIRTUAL_SERVERS,
+                      )
                     }
                   >
                     Virtual Servers
@@ -174,11 +191,14 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
                   <ChevronRightIcon
                     className="chevron-right"
                     onClick={() =>
-                      routeChange('/enterprise/cloud-quote', 'Virtual Servers')
+                      routeChange(
+                        '/enterprise/virtual-servers',
+                        constants.VIRTUAL_SERVERS,
+                      )
                     }
                   />
                   <div className="feature-description">
-                    The DEI™ gives you the flexibility of virtualization for
+                    The DEI®️ gives you the flexibility of virtualization for
                     nearly all computing solutions:
                     <br />
                     <ul>
@@ -194,7 +214,7 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
                     running applications, even extending your data center.
                     Combined with the freedom of open-source software customized
                     for your need. You can deploy in minutes instead of weeks.
-                    Manifest Digital Destiny with The DEI™
+                    Manifest Digital Destiny with The DEI®️
                   </div>
                 </div>
               </div>
@@ -202,7 +222,7 @@ const CloudIntro: React.FC<any> = (props: any): ReactElement => {
           </Fragment>
         </div>
         <div className="hero-image">
-          <img src={heroImage} alt="Enterprise Image" />
+          <img src={heroImage} alt="Enterprise" />
         </div>
       </section>
       <div className="bottom-border"></div>

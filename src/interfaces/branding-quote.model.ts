@@ -8,4 +8,5 @@ export interface IBrandingQuoteModel {
   onError: any;
   fromPage: string;
   isEnabled: boolean;
+  path?: string;
 }

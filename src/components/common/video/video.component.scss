@@ -1,0 +1,60 @@
+@import '../../../assets/scss/abstracts/mixins';
+
+.payment-error {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+
+  .payment-error-message {
+    align-self: center;
+    h3 {
+      font-family: 'MontFont', sans-serif !important;
+      font-size: 48px;
+      padding-bottom: 0px !important;
+      margin-bottom: 0px !important;
+    }
+    span {
+      font-size: 16px;
+      font-family: 'OpenSansLight', sans-serif !important;
+      font-weight: 400 !important;
+    }
+    .success-description,
+    .error-description {
+      font-size: 16px;
+      font-family: 'OpenSansRegular', sans-serif !important;
+      font-weight: 400 !important;
+      padding-bottom: 16px;
+    }
+    .btn-basic {
+      background: #fdcf00 !important;
+      margin-top: 24px;
+    }
+  }
+}
+
+@include respond-below(sm) {
+  .payment-error {
+    grid-template-columns: 1fr;
+    padding-top: 64px;
+    img {
+      width: 196px;
+    }
+
+    .payment-error-message {
+      display: grid;
+      justify-items: center;
+      padding: 8px;
+      .success-description,
+      .error-description,
+      h3 {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@include respond-between(sm, md) {
+  .payment-error {
+    grid-template-columns: 1fr;
+  }
+}

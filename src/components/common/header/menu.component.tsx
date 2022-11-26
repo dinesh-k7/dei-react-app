@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -12,8 +12,6 @@ import { useHistory, useLocation } from 'react-router-dom';
 import hamIcon from '../../../assets/images/hamburger_icon.svg';
 
 import { constants } from '../../../constants';
-import { ExpandLess, ExpandMore } from '@material-ui/icons';
-import { Collapse, ListItemIcon } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,26 +79,51 @@ export default function TemporaryDrawer(): any {
     open: true,
   });
 
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setState({ ...state, right: false });
+        }
+      }
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [ref]);
+  }
+
   const toggleDrawer = (anchor, open) => () => {
     setState({ ...state, [anchor]: open });
   };
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
 
   const history = useHistory();
 
   const routeChange = (menu, from?: string) => {
-    if (from === 'submenu') {
+    if (from === 'submenu' || menu.target) {
       setState({ ...state, right: false });
-      history.push({
-        pathname: menu.url,
-      });
+      // history.push({
+      //   pathname: menu.url,
+      // });
+      window.open(menu.url, '_blank');
     } else {
       if (menu.children) {
         setSmbMenuOpen(!smbMenuOpen);
       } else {
-        setState({ ...state, right: false });
-        history.push({
-          pathname: menu.url,
-        });
+        if (menu.href) {
+          setState({ ...state, right: false });
+          history.push(`/${menu.href}`);
+          setTimeout(() => {
+            window.location.href = menu.href;
+          }, 1000);
+        } else {
+          setState({ ...state, right: false });
+          history.push({
+            pathname: menu.url,
+          });
+        }
       }
     }
   };
@@ -140,13 +163,13 @@ export default function TemporaryDrawer(): any {
                     : `${classes.menuText}`
                 }
               />
-              {smbMenuOpen && page.children ? (
+              {/* {smbMenuOpen && page.children ? (
                 <ExpandLess className={classes.chevronIcon} />
               ) : (
                 page.children && <ExpandMore className={classes.chevronIcon} />
-              )}
+              )} */}
             </ListItem>
-            {page.children && (
+            {/* {page.children && (
               <Collapse
                 in={smbMenuOpen}
                 timeout="auto"
@@ -170,7 +193,7 @@ export default function TemporaryDrawer(): any {
                     })}
                 </List>
               </Collapse>
-            )}
+            )} */}
           </Fragment>
         ))}
       </List>
@@ -178,7 +201,7 @@ export default function TemporaryDrawer(): any {
   );
 
   return (
-    <div>
+    <div ref={wrapperRef}>
       <React.Fragment>
         <Button
           aria-label="Hamburger Menu"

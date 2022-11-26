@@ -2,14 +2,15 @@ import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import FitbitIcon from '@mui/icons-material/Fitbit';
 
 import '../../../../assets/scss/styles.scss';
 import '../../container/hero/hero-container.scss';
 
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
 
-import blueBlob from '../../../../assets/images/service_blue.svg';
 import { setServiceAction } from '../../../../actions/enterprise';
+import { constants } from '../../../../constants';
 
 const PSIntro: React.FC<any> = (props: any): ReactElement => {
   // Google page event track
@@ -33,16 +34,16 @@ const PSIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="hero-title">
               <h1>Professional Services</h1>
               <div className="hero-mobile-image">
-                <img src={heroImage} alt="consultation Image" />
+                <img src={heroImage} alt="professional services" />
               </div>
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
-                  <img src={blueBlob} alt="sdwan" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
                       routeChange(
-                        '/enterprise/sdwan-service',
-                        'IT Consulting Services',
+                        '/enterprise/it-consulting',
+                        constants.IT_CONSULTING,
                       )
                     }
                   >
@@ -51,17 +52,17 @@ const PSIntro: React.FC<any> = (props: any): ReactElement => {
                   <ChevronRightIcon
                     onClick={() =>
                       routeChange(
-                        '/enterprise/sdwan-service',
-                        'IT Consulting Services',
+                        '/enterprise/it-consulting',
+                        constants.IT_CONSULTING,
                       )
                     }
                     className="chevron-right"
                   />
                   <p>
                     Optimizing your enterprise&apos;s efficiency is essential to
-                    compete in today&apos;s world, no matter your size. The DEI™
-                    provides IT consulting services to companies looking for
-                    more productivity and profitability. We can help you
+                    compete in today&apos;s world, no matter your size. The
+                    DEI®️ provides IT consulting services to companies looking
+                    for more productivity and profitability. We can help you
                     identify the unnecessary redundancies in your process and
                     cost. Our knowledge and expertise can make your technology
                     work for you!
@@ -78,17 +79,23 @@ const PSIntro: React.FC<any> = (props: any): ReactElement => {
                 </div>
 
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'IT Solutions')
+                      routeChange(
+                        '/enterprise/it-solutions',
+                        constants.IT_SOLUTION,
+                      )
                     }
                   >
                     IT Solutions
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/ucaas-service', 'IT Solutions')
+                      routeChange(
+                        '/enterprise/it-solutions',
+                        constants.IT_SOLUTION,
+                      )
                     }
                     className="chevron-right"
                   />
@@ -103,7 +110,7 @@ const PSIntro: React.FC<any> = (props: any): ReactElement => {
           </Fragment>
         </div>
         <div className="hero-image">
-          <img src={heroImage} alt="Enterprise Image" />
+          <img src={heroImage} alt="Enterprise" />
         </div>
       </section>
       <div className="bottom-border"></div>

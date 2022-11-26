@@ -32,14 +32,14 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
             <img src={fromPage ? dsImage : heroImage} alt="Site Security" />
           </div>
           <p className="secure-description">
-            <b>The DEI™ Sentinels Club includes a $1,000,000 USD warranty.</b>
+            <b>The DEI®️ Sentinels Club includes a $1,000,000 USD warranty.</b>
           </p>
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Background" />
               <h3 className="feature-title">Dark Web Sentry</h3>
               {!fromPage ? (
-                <a href="https://www.nwohub.com/products/website-security">
+                <a href="https://www.deiportal.com/products/website-security">
                   <LaunchIcon
                     style={{
                       color: '#42b9f8',
@@ -61,7 +61,7 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
               <img src={serviceBlue} alt="Email sentry blob" />
               <h3 className="feature-title">Email Sentry</h3>
               {!fromPage ? (
-                <a href="https://www.nwohub.com/products/website-security">
+                <a href="https://www.deiportal.com/products/website-security">
                   <LaunchIcon
                     style={{
                       color: '#42b9f8',
@@ -83,7 +83,7 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
               <img src={serviceBlue} alt="Website sentry blob" />
               <h3 className="feature-title">Website Sentry</h3>
               {!fromPage ? (
-                <a href="https://www.nwohub.com/products/website-security">
+                <a href="https://www.deiportal.com/products/website-security">
                   <LaunchIcon
                     style={{
                       color: '#42b9f8',
@@ -105,9 +105,9 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="SSL blob" />
-              <h3 className="feature-title">DEI™ Certified SSL</h3>
+              <h3 className="feature-title">DEI®️ Certified SSL</h3>
               {!fromPage ? (
-                <a href="https://www.nwohub.com/products/ssl">
+                <a href="https://www.deiportal.com/products/ssl">
                   <LaunchIcon
                     style={{
                       color: '#42b9f8',
@@ -127,9 +127,9 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
           <div className="hero-subtitle-container">
             <div className="features">
               <img src={serviceBlue} alt="Backup blob" />
-              <h3 className="feature-title">DEI™ Backup</h3>
+              <h3 className="feature-title">DEI®️ Backup</h3>
               {!fromPage ? (
-                <a href="https://www.nwohub.com/products/ssl-managed">
+                <a href="https://www.deiportal.com/products/ssl-managed">
                   <LaunchIcon
                     style={{
                       color: '#42b9f8',
@@ -151,7 +151,7 @@ const SecureIntro: React.FC<any> = (props: any): ReactElement => {
               <img src={serviceBlue} alt="Newsletter blob" />
               <h3 className="feature-title">Security Newsletter</h3>
               {!fromPage ? (
-                <a href="https://www.nwohub.com/products/ssl-managed">
+                <a href="https://www.deiportal.com/products/ssl-managed">
                   <LaunchIcon
                     style={{
                       color: '#42b9f8',

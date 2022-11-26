@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
+import FitbitIcon from '@mui/icons-material/Fitbit';
 
 import heroImage from '../../../../assets/images/branding.svg';
 import heroMobileImage from '../../../../assets/images/branding_mobile.svg';
 import '../../../../assets/scss/styles.scss';
-import serviceCoral from '../../../../assets/images/service_coral.svg';
 
 import './branding-intro.scss';
 
@@ -18,21 +18,21 @@ const BrandingIntro: React.FC<any> = (props: any): ReactElement => {
   return (
     <section className="branding-intro" ref={props.inputRef}>
       <div className="hero-image">
-        <img src={heroImage} alt="Branding Image" />
+        <img src={heroImage} alt="Branding" />
       </div>
       <div className="hero-content">
         <div className="hero-title">
           <h1>Branding</h1>
           <div className="hero-mobile-image">
-            <img src={heroMobileImage} alt="Branding Image" />
+            <img src={heroMobileImage} alt="Branding Mobile" />
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceCoral} alt="Background image" />
+              <FitbitIcon fontSize="large" className="fitbit-icon" />
               <h3>Graphic design</h3>
             </div>
             <div className="features">
-              <img src={serviceCoral} alt="Background image" />
+              <FitbitIcon fontSize="large" className="fitbit-icon" />
               <h3>Logo design</h3>
             </div>
           </div>

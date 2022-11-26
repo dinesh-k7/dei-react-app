@@ -1,9 +1,11 @@
 import React, { Fragment, ReactElement } from 'react';
 import LaunchIcon from '@material-ui/icons/Launch';
+import FitbitIcon from '@mui/icons-material/Fitbit';
 
+import VideoComponent from '../../../../components/common/video/video.component';
 import heroImage from '../../../../assets/images/website_security.svg';
-import serviceBlue from '../../../../assets/images/website_blob.svg';
 import './site-security-intro.scss';
+import { VIMEO_VIDEOIDS } from '../../../../constants/vimeo-videoids';
 
 const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
   return (
@@ -20,6 +22,9 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
           <Fragment>
             <h1>
               Site Sentinels<sup>™️</sup>
+              <VideoComponent
+                videoId={VIMEO_VIDEOIDS.SITE_SENTINELS_VIDEO_ID}
+              />
             </h1>
           </Fragment>
           <div className="hero-mobile-image">
@@ -27,13 +32,21 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Blue blob" />
+              <span className="site-feature-icon"></span>
               <h3 className="feature-title">
-                <a href="https://www.nwohub.com/products/website-security">
+                <a
+                  href="https://www.deiportal.com/products/website-security"
+                  target={'_blank'}
+                  rel="noreferrer"
+                >
                   Website Sentry
                 </a>
               </h3>
-              <a href="https://www.nwohub.com/products/website-security">
+              <a
+                href="https://www.deiportal.com/products/website-security"
+                target={'_blank'}
+                rel="noreferrer"
+              >
                 <LaunchIcon
                   style={{
                     color: '#9c47ed',
@@ -44,17 +57,29 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
                 />
               </a>
             </div>
-            <p>Daily malware scans and guaranteed malware removal.</p>
+            <p>
+              DEI® comprehensive and simplified security solution to protect
+              your site and keep customers safe. Daily malware scans and
+              guaranteed malware removal.
+            </p>
           </div>
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Blue blob two" />
+              <span className="site-feature-icon"></span>
               <h3 className="feature-title">
-                <a href="https://www.nwohub.com/products/ssl-managed">
-                  DEI™ Certified SSL
+                <a
+                  href="https://www.deiportal.com/products/ssl"
+                  target={'_blank'}
+                  rel="noreferrer"
+                >
+                  DEI®️ Certified SSL
                 </a>
               </h3>
-              <a href="https://www.nwohub.com/products/ssl-managed">
+              <a
+                href="https://www.deiportal.com/products/ssl"
+                target={'_blank'}
+                rel="noreferrer"
+              >
                 <LaunchIcon
                   style={{
                     color: '#9c47ed',
@@ -66,18 +91,30 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
               </a>
             </div>
 
-            <p>Server Support Unlimited</p>
+            <p>
+              DEI® Certified SSL certificates are used to secure everything from
+              credit card transactions to logins and are the backbone used to
+              create a secure communication between two devices.
+            </p>
           </div>
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Blue Blob three" />
+              <span className="site-feature-icon"></span>
               <h3 className="feature-title">
-                <a href="https://www.nwohub.com/products/website-backup">
-                  DEI™ Backup
+                <a
+                  href="https://www.deiportal.com/products/website-backup"
+                  target={'_blank'}
+                  rel="noreferrer"
+                >
+                  DEI®️ Backup
                 </a>
               </h3>
-              <a href="https://www.nwohub.com/products/website-backup">
+              <a
+                href="https://www.deiportal.com/products/website-backup"
+                target={'_blank'}
+                rel="noreferrer"
+              >
                 <LaunchIcon
                   style={{
                     color: '#9c47ed',
@@ -88,18 +125,29 @@ const SiteSecurityIntro: React.FC<any> = (props: any): ReactElement => {
                 />
               </a>
             </div>
-            <p>Worth Every Penny!</p>
+            <p>
+              Securely backing up your data is one of the most important pieces
+              of any cybersecurity strategy.
+            </p>
           </div>
 
           <div className="hero-subtitle-container">
             <div className="features">
-              <img src={serviceBlue} alt="Background" />
+              <span className="site-feature-icon"></span>
               <h3 className="feature-title">
-                <a href="https://novusordoseclorum.org/newsletter/ ">
-                  Security Now Newsletter
+                <a
+                  href="https://novusordoseclorum.org/newsletter/"
+                  target={'_blank'}
+                  rel="noreferrer"
+                >
+                  Order of the Ages Newsletter
                 </a>
               </h3>
-              <a href="https://novusordoseclorum.org/newsletter/ ">
+              <a
+                href="https://novusordoseclorum.org/newsletter/"
+                target={'_blank'}
+                rel="noreferrer"
+              >
                 <LaunchIcon
                   style={{
                     color: '#9c47ed',

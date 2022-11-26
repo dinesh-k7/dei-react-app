@@ -2,14 +2,14 @@ import React, { Fragment, ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import FitbitIcon from '@mui/icons-material/Fitbit';
 
 import '../../../../assets/scss/styles.scss';
 import '../../container/hero/hero-container.scss';
 
 import heroImage from '../../../../assets/images/data_security_dei_shield.svg';
-
-import blueBlob from '../../../../assets/images/service_blue.svg';
 import { setServiceAction } from '../../../../actions/enterprise';
+import { constants } from '../../../../constants';
 
 const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
   // Google page event track
@@ -34,21 +34,21 @@ const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
             <div className="hero-title">
               <h1>Data Plexus</h1>
               <div className="hero-mobile-image">
-                <img src={heroImage} alt="consultation Image" />
+                <img src={heroImage} alt="data plexus" />
               </div>
               <div className="hero-subtitle-container enterprise-service">
                 <div className="features">
-                  <img src={blueBlob} alt="sdwan" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/sdwan-service', 'SD-WAN')
+                      routeChange('/enterprise/sdwan-service', constants.SDWAN)
                     }
                   >
                     SD-WAN
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/sdwan-service', 'SD-WAN')
+                      routeChange('/enterprise/sdwan-service', constants.SDWAN)
                     }
                     className="chevron-right"
                   />
@@ -62,10 +62,13 @@ const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
                   </p>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/sdwan-service', 'Point To Point')
+                      routeChange(
+                        '/enterprise/point-to-point',
+                        constants.POINT_TO_POINT,
+                      )
                     }
                   >
                     Point To Point
@@ -73,8 +76,8 @@ const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
                   <ChevronRightIcon
                     onClick={() =>
                       routeChange(
-                        '/enterprise/sdwan-service',
-                        'Point  To  Point',
+                        '/enterprise/point-to-point',
+                        constants.POINT_TO_POINT,
                       )
                     }
                     className="chevron-right"
@@ -90,17 +93,17 @@ const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
                   </p>
                 </div>
                 <div className="features">
-                  <img src={blueBlob} alt="blue blob" />
+                  <FitbitIcon fontSize="large" className="fitbit-icon" />
                   <h3
                     onClick={() =>
-                      routeChange('/enterprise/sdwan-service', 'MPLS')
+                      routeChange('/enterprise/mpls', constants.MPLS)
                     }
                   >
                     MPLS
                   </h3>
                   <ChevronRightIcon
                     onClick={() =>
-                      routeChange('/enterprise/sdwan-service', 'MPLS')
+                      routeChange('/enterprise/mpls', constants.MPLS)
                     }
                     className="chevron-right"
                   />
@@ -137,7 +140,7 @@ const DataConnectivityIntro: React.FC<any> = (props: any): ReactElement => {
           </Fragment>
         </div>
         <div className="hero-image">
-          <img src={heroImage} alt="Enterprise Image" />
+          <img src={heroImage} alt="Enterprise" />
         </div>
       </section>
       <div className="bottom-border"></div>

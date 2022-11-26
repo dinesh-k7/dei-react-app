@@ -1,0 +1,112 @@
+@import '../../assets/scss/abstracts/mixins';
+
+.data-security-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+  min-height: 100vh;
+  align-items: center;
+  padding: 64px 0px;
+  p {
+    font-family: 'OpenSansRegular', sans-serif !important;
+    font-size: 1em !important;
+    font-weight: var(--font-weight400) !important;
+    font-style: normal !important;
+    padding: 0px !important;
+  }
+  .features {
+    align-items: center;
+    .feature-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #42b9f8;
+      align-self: center;
+      margin-top: 8px;
+    }
+    p {
+      display: block !important;
+    }
+    .fitbit-icon {
+      color: #42b9f8 !important;
+      font-size: 32px;
+      margin-top: 6px;
+    }
+  }
+  .hero-subtitle-container {
+    .features:nth-child(1) {
+      padding-bottom: 8px;
+    }
+  }
+  .hero-image img {
+    max-width: 500px !important;
+  }
+  .hero-mobile-image {
+    display: none;
+  }
+  .btn-data-security {
+    margin-top: 64px;
+  }
+
+  .hero-content {
+    .hero-title {
+      display: grid;
+      h1 {
+        sup {
+          font-size: 24px !important;
+        }
+      }
+      h3 {
+        margin: 0px !important;
+        a {
+          text-decoration: none;
+          color: var(--font-color);
+        }
+      }
+    }
+  }
+  .hero-description {
+    margin-top: 48px;
+    a {
+      text-decoration: none;
+      color: var(--font-color);
+    }
+  }
+  .hero-image {
+    justify-self: end;
+  }
+}
+
+@include respond-between(sm, md) {
+  .data-security-intro {
+    height: auto;
+  }
+}
+
+@include respond-below(sm) {
+  .data-security-intro {
+    height: auto;
+    .hero-content {
+      display: grid;
+    }
+    .hero-image {
+      display: none !important;
+    }
+    .hero-mobile-image {
+      display: grid;
+      justify-self: center;
+      padding-bottom: 16px;
+      img {
+        max-width: 296px;
+      }
+    }
+  }
+}
+
+@include respond-above(sm) {
+  .hero-subtitle-container {
+    .email-solution {
+      padding-left: 32px;
+    }
+  }
+}

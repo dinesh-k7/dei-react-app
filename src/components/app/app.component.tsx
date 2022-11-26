@@ -11,6 +11,10 @@ import ProtectedRoute from '../common/protected-route/protected-route';
 import { Suspense } from 'react';
 import LogoutPage from '../../pages/logout/logout-page';
 import LoaderComponent from '../common/loader/loader.component';
+import SecurityPage from '../../pages/security/security-page';
+import Help from '../../pages/help/help-page';
+import { field, signInFormData } from '../../constants/form-data/sign-in-form';
+import SentinelsClub from '../../pages/sentinels/sentinels-club';
 
 const SecurityIntro = React.lazy(
   () =>
@@ -39,8 +43,8 @@ const StartupKitPage = React.lazy(
   () => import('../../pages/startup-kit/startup-kit-page'),
 );
 
-const EnterprisePage = React.lazy(
-  () => import('../../pages/enterprise/enterprise-page'),
+const ItServicePage = React.lazy(
+  () => import('../../pages/branding/branding-page'),
 );
 
 const SDWANServicePage = React.lazy(
@@ -133,6 +137,19 @@ const ProfilePage = React.lazy(
 const CompliancePage = React.lazy(
   () => import('../../pages/compliance/compliance-page'),
 );
+const SentinelsClubPage = React.lazy(
+  () => import('../../pages/sentinels/sentinels-club'),
+);
+
+const TermsPage = React.lazy(() => import('../../pages/terms/terms-page'));
+
+const PrivacyPage = React.lazy(
+  () => import('../../pages/privacy/privacy-page'),
+);
+
+const WallOfLovePage = React.lazy(
+  () => import('../../pages/wall-of-love/wall-of-love-page'),
+);
 
 const App = (): ReactElement => {
   // Checked local storage to see whether user data is present or not
@@ -152,6 +169,7 @@ const App = (): ReactElement => {
       >
         <Switch>
           <Route exact path="/" render={() => <LandingPage />} />
+          <Route exact path="/#IT" render={() => <LandingPage />} />
           <Route path="/data-security" render={() => <DataSecurityPage />} />
           <Route
             path="/activate-account"
@@ -165,15 +183,50 @@ const App = (): ReactElement => {
 
           <Route path="/startup-kit" render={() => <StartupKitPage />} />
 
-          <Route path="/enterprise" exact render={() => <EnterprisePage />} />
-          <Route
-            path="/enterprise/sdwan-service"
-            render={() => <SDWANServicePage />}
-          />
-          <Route
-            path="/enterprise/cloud-quote"
-            render={() => <CloudServicePage />}
-          />
+          <Route path="/terms" render={() => <TermsPage />} />
+
+          <Route path="/privacy" render={() => <PrivacyPage />} />
+
+          <Route path="/it-plexus" exact render={() => <ItServicePage />} />
+
+          <Route path="/help" render={() => <Help formFields={field} />} />
+
+          {[
+            '/enterprise/sdwan-service',
+            '/enterprise/cyber-security',
+            '/enterprise/dei-backup',
+            '/enterprise/point-to-point',
+            '/enterprise/mpls',
+            '/enterprise/cloud-backup',
+            '/enterprise/it-consulting',
+            '/enterprise/unified-communications',
+          ].map((path, index) => {
+            return (
+              <Route
+                path={path}
+                render={() => <SDWANServicePage path={path} />}
+                key={index}
+              />
+            );
+          })}
+
+          {[
+            '/enterprise/colocation',
+            '/enterprise/cloud-quote',
+            '/enterprise/public-cloud',
+            '/enterprise/backup-service',
+            '/enterprise/storage',
+            '/enterprise/virtual-servers',
+          ].map((path, index) => {
+            return (
+              <Route
+                path={path}
+                render={() => <CloudServicePage path={path} />}
+                key={index}
+              />
+            );
+          })}
+
           <Route
             path="/enterprise/cable-service"
             render={() => <CableServicePage />}
@@ -187,7 +240,7 @@ const App = (): ReactElement => {
             render={() => <SecurityIntro />}
           />
           <Route
-            path="/enterprise/data-connectivity-service"
+            path="/enterprise/data-plexus-service"
             render={() => <DataConnectivityIntro />}
           />
           <Route
@@ -204,29 +257,71 @@ const App = (): ReactElement => {
             render={() => <PSIntro />}
           />
 
-          <Route
-            path="/enterprise/ucaas-service"
-            render={() => <UcaasServicePage />}
-          />
+          {[
+            '/enterprise/ucaas-service',
+            '/enterprise/cloud-backup',
+            '/enterprise/physical-security',
+            '/enterprise/dei-vsa',
+            '/enterprise/conferencing',
+            '/enterprise/contact-center',
+            '/enterprise/sip-trunk',
+            '/enterprise/hosted-voip',
+            '/enterprise/pots',
+            '/enterprise/pri',
+            '/enterprise/hands-free',
+          ].map((path, index) => {
+            return (
+              <Route
+                path={path}
+                render={() => <UcaasServicePage path={path} />}
+                key={index}
+              />
+            );
+          })}
 
           <Route path="/cart-page" render={() => <CartPage />} />
 
-          <Route
-            path="/website-development"
-            render={() => <WebsiteDevelopmentPage />}
-          />
+          {['/website-development', '/dao-builder'].map((path, index) => {
+            return (
+              <Route
+                path={path}
+                render={() => <WebsiteDevelopmentPage path={path} />}
+                key={index}
+              />
+            );
+          })}
 
           <Route path="/develop" render={() => <DevelopPage />} />
 
           <Route path="/logout" render={() => <LogoutPage />} />
 
-          <Route path="/secure" render={() => <SecurePage />} />
+          {['/data-sentinels', '/site-sentinels', '/secure'].map(
+            (path, index) => {
+              return (
+                <Route path={path} render={() => <SecurePage />} key={index} />
+              );
+            },
+          )}
 
           <Route path="/reconnect" render={() => <ReconnectPage />} />
 
           <Route path="/sign-in" render={() => <SignInPage />} />
 
           <Route path="/contributors" render={() => <ContributionPage />} />
+
+          <Route path="/security" render={() => <SecurityPage />} />
+
+          <Route path="/wall-of-love" render={() => <WallOfLovePage />} />
+
+          {['/nwo-registration'].map((path, index) => {
+            return (
+              <Route
+                path={path}
+                render={() => <SignUpPage type={`nwo`} />}
+                key={index}
+              />
+            );
+          })}
 
           <ProtectedRoute
             exact
@@ -238,7 +333,25 @@ const App = (): ReactElement => {
           <Route
             exact
             path="/active-ego-registration"
+            render={() => <SignUpPage type={`active-ego`} />}
+          />
+
+          <Route
+            exact
+            path="/freelance-certification"
             render={() => <SignUpPage type={`freelancer`} />}
+          />
+
+          <Route
+            exact
+            path="/dao-registration"
+            render={() => <SignUpPage type={`dao`} />}
+          />
+
+          <Route
+            exact
+            path="/dao-consultation"
+            render={() => <SignUpPage type={`dao-consultation`} />}
           />
 
           <Route
@@ -258,9 +371,18 @@ const App = (): ReactElement => {
             path="/compliance-central"
             render={() => <CompliancePage />}
           />
+          <Route
+            exact
+            path="/sentinels-club"
+            render={() => <SentinelsClubPage />}
+          />
 
           <Route path="/order-history" render={() => <OrderHistoryPage />} />
 
+          <Route
+            path="/resend-activation-link"
+            render={() => <ResetPasswordPage fromPage={`resend`} />}
+          />
           <Route path="/reset-password" render={() => <ResetPasswordPage />} />
           <Route path="/configuration" render={() => <ConfigPage />} />
           <Route path="/contactus" render={() => <ContactUsPage />} />

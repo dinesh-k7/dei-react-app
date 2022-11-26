@@ -11,6 +11,13 @@ const SnackBarComponent = (props: any): ReactElement => {
   const { isOpen, isError, message } = props;
   const [open, setOpen] = useState(isOpen);
 
+  // useEffect(() => {
+  //   const { isOpen } = props;
+  //   if (isOpen) {
+  //     setOpen(isOpen);
+  //   }
+  // }, [props]);
+
   const handleClose = () => {
     setOpen(false);
   };
